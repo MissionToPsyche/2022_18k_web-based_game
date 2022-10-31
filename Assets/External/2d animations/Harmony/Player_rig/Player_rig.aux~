@@ -1,0 +1,53 @@
+<!DOCTYPE SceneVersion>
+<SceneVersion VersionName="Player_rig" Modified="2022-10-31 08:47:32" ID="1">
+ <Element Name="rigjt_eye" ID="13" Folder="rigjt_eye">
+  <Drawing Key="" Name="1" Version="1"/>
+  <Drawing Key="" Name="2" Version="1"/>
+  <Drawing Key="" Name="3" Version="1"/>
+  <Drawing Key="" Name="4" Version="1"/>
+  <Drawing Key="" Name="5" Version="1"/>
+  <Drawing Key="" Name="6" Version="1"/>
+  <Drawing Key="" Name="7" Version="1"/>
+  <Drawing Key="" Name="8" Version="1"/>
+ </Element>
+ <Element Name="left_eye" ID="14" Folder="left_eye">
+  <Drawing Key="" Name="1" Version="1"/>
+  <Drawing Key="" Name="2_1" Version="1"/>
+  <Drawing Key="" Name="2" Version="1"/>
+  <Drawing Key="" Name="3" Version="1"/>
+  <Drawing Key="" Name="4" Version="1"/>
+  <Drawing Key="" Name="5" Version="1"/>
+  <Drawing Key="" Name="6" Version="1"/>
+  <Drawing Key="" Name="7" Version="1"/>
+  <Drawing Key="" Name="8" Version="1"/>
+ </Element>
+ <Element Name="visor" ID="15" Folder="visor">
+  <Drawing Key="" Name="1" Version="1"/>
+ </Element>
+ <Element Name="helmet" ID="16" Folder="helmet">
+  <Drawing Key="" Name="1" Version="1"/>
+ </Element>
+ <Element Name="flower" ID="17" Folder="flower">
+  <Drawing Key="" Name="1" Version="1"/>
+ </Element>
+ <Element Name="torso" ID="18" Folder="torso">
+  <Drawing Key="" Name="1" Version="1"/>
+  <Drawing Key="" Name="2" Version="1"/>
+ </Element>
+ <Element Name="right_arm" ID="19" Folder="right_arm">
+  <Drawing Key="" Name="1" Version="1"/>
+  <Drawing Key="" Name="2" Version="1"/>
+ </Element>
+ <Element Name="left_arm" ID="20" Folder="left_arm">
+  <Drawing Key="" Name="1" Version="1"/>
+  <Drawing Key="" Name="2" Version="1"/>
+ </Element>
+ <Element Name="right_leg" ID="21" Folder="right_leg">
+  <Drawing Key="" Name="1" Version="1"/>
+  <Drawing Key="" Name="2" Version="1"/>
+ </Element>
+ <Element Name="left_leg" ID="22" Folder="left_leg">
+  <Drawing Key="" Name="1" Version="1"/>
+  <Drawing Key="" Name="2" Version="1"/>
+ </Element>
+</SceneVersion>

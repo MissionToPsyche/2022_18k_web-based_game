@@ -1,0 +1,13 @@
+<!DOCTYPE spritesheets>
+<spritesheets>
+ <spritesheet resolution="ultra" width="2048" height="512" name="sheet_player_jump" filename="spriteSheets/sheet_player_jump-ultra.png">
+  <sprite scaleY="1" angleDegrees="0" rect="1383,0,204,279" offsetX="-110" offsetY="-54" name="Player_rig_JUMP-00005.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="1189,0,194,279" offsetX="-107" offsetY="-53" name="Player_rig_JUMP-00004.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="975,0,214,277" offsetX="-114" offsetY="-55" name="Player_rig_JUMP-00006.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="793,0,182,276" offsetX="-103" offsetY="-51" name="Player_rig_JUMP-00003.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="571,0,222,274" offsetX="-117" offsetY="-56" name="Player_rig_JUMP-00007.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="397,0,174,272" offsetX="-100" offsetY="-50" name="Player_rig_JUMP-00002.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="171,0,226,270" offsetX="-121" offsetY="-57" name="Player_rig_JUMP-00008.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="0,0,171,267" offsetX="-96" offsetY="-49" name="Player_rig_JUMP-00001.png" scaleX="1"/>
+ </spritesheet>
+</spritesheets>

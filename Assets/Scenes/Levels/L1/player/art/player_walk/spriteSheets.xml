@@ -1,0 +1,53 @@
+<!DOCTYPE spritesheets>
+<spritesheets>
+ <spritesheet resolution="ultra" width="4096" height="1024" name="sheet_player_walk" filename="spriteSheets/sheet_player_walk-ultra.png">
+  <sprite scaleY="1" angleDegrees="0" rect="3792,278,171,282" offsetX="-95" offsetY="-59" name="Player_rig_WALK-00010.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="3621,278,171,282" offsetX="-95" offsetY="-59" name="Player_rig_WALK-00034.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="3449,278,172,281" offsetX="-96" offsetY="-51" name="Player_rig_WALK-00048.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="3277,278,172,281" offsetX="-96" offsetY="-51" name="Player_rig_WALK-00024.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="3106,278,171,281" offsetX="-95" offsetY="-52" name="Player_rig_WALK-00023.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="2935,278,171,281" offsetX="-95" offsetY="-52" name="Player_rig_WALK-00047.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="2760,278,175,280" offsetX="-89" offsetY="-50" name="Player_rig_WALK-00004.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="2585,278,175,280" offsetX="-89" offsetY="-50" name="Player_rig_WALK-00028.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="2412,278,173,280" offsetX="-90" offsetY="-50" name="Player_rig_WALK-00003.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="2239,278,173,280" offsetX="-90" offsetY="-50" name="Player_rig_WALK-00027.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="2067,278,172,280" offsetX="-96" offsetY="-55" name="Player_rig_WALK-00035.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="1895,278,172,280" offsetX="-96" offsetY="-55" name="Player_rig_WALK-00011.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="1722,278,173,279" offsetX="-90" offsetY="-52" name="Player_rig_WALK-00005.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="1549,278,173,279" offsetX="-90" offsetY="-52" name="Player_rig_WALK-00029.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="1377,278,172,279" offsetX="-93" offsetY="-50" name="Player_rig_WALK-00002.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="1205,278,172,279" offsetX="-96" offsetY="-52" name="Player_rig_WALK-00036.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="1033,278,172,279" offsetX="-96" offsetY="-52" name="Player_rig_WALK-00012.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="861,278,172,279" offsetX="-93" offsetY="-50" name="Player_rig_WALK-00026.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="690,278,171,279" offsetX="-95" offsetY="-54" name="Player_rig_WALK-00022.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="517,278,173,278" offsetX="-90" offsetY="-49" name="Player_rig_WALK-00015.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="344,278,173,278" offsetX="-90" offsetY="-49" name="Player_rig_WALK-00039.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="172,278,172,278" offsetX="-92" offsetY="-53" name="Player_rig_WALK-00006.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="0,278,172,278" offsetX="-93" offsetY="-49" name="Player_rig_WALK-00014.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="3791,0,172,278" offsetX="-92" offsetY="-53" name="Player_rig_WALK-00030.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="3619,0,172,278" offsetX="-93" offsetY="-49" name="Player_rig_WALK-00038.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="3448,0,171,278" offsetX="-96" offsetY="-49" name="Player_rig_WALK-00001.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="3275,0,173,277" offsetX="-97" offsetY="-49" name="Player_rig_WALK-00013.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="3102,0,173,277" offsetX="-97" offsetY="-49" name="Player_rig_WALK-00037.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="2930,0,172,277" offsetX="-95" offsetY="-56" name="Player_rig_WALK-00032.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="2758,0,172,277" offsetX="-95" offsetY="-57" name="Player_rig_WALK-00033.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="2586,0,172,277" offsetX="-95" offsetY="-57" name="Player_rig_WALK-00009.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="2414,0,172,277" offsetX="-95" offsetY="-56" name="Player_rig_WALK-00008.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="2243,0,171,277" offsetX="-94" offsetY="-54" name="Player_rig_WALK-00007.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="2072,0,171,277" offsetX="-94" offsetY="-54" name="Player_rig_WALK-00031.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="1897,0,175,276" offsetX="-89" offsetY="-48" name="Player_rig_WALK-00016.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="1724,0,173,276" offsetX="-90" offsetY="-49" name="Player_rig_WALK-00017.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="1552,0,172,275" offsetX="-95" offsetY="-53" name="Player_rig_WALK-00021.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="1381,0,171,275" offsetX="-94" offsetY="-51" name="Player_rig_WALK-00019.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="1210,0,171,275" offsetX="-91" offsetY="-50" name="Player_rig_WALK-00018.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="1039,0,171,274" offsetX="-94" offsetY="-52" name="Player_rig_WALK-00020.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="690,278,171,279" offsetX="-95" offsetY="-54" name="Player_rig_WALK-00046.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="1897,0,175,276" offsetX="-89" offsetY="-48" name="Player_rig_WALK-00040.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="1552,0,172,275" offsetX="-95" offsetY="-53" name="Player_rig_WALK-00045.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="1210,0,171,275" offsetX="-91" offsetY="-50" name="Player_rig_WALK-00042.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="3448,0,171,278" offsetX="-96" offsetY="-49" name="Player_rig_WALK-00025.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="1381,0,171,275" offsetX="-94" offsetY="-51" name="Player_rig_WALK-00043.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="1724,0,173,276" offsetX="-90" offsetY="-49" name="Player_rig_WALK-00041.png" scaleX="1"/>
+  <sprite scaleY="1" angleDegrees="0" rect="1039,0,171,274" offsetX="-94" offsetY="-52" name="Player_rig_WALK-00044.png" scaleX="1"/>
+ </spritesheet>
+</spritesheets>
