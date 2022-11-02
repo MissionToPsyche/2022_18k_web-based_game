@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 71c2b7644037387429f08364ae8571c5
+guid: edbba63bf8f0b124f8a669f2bc63d683
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -67,7 +67,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -115,175 +115,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Player_rig_JUMP-00005.png
-      rect:
-        serializedVersion: 2
-        x: 1383
-        y: 233
-        width: 204
-        height: 279
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: bc4d11666349acde0800000000000000
-      internalID: -1312073380063488821
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player_rig_JUMP-00004.png
-      rect:
-        serializedVersion: 2
-        x: 1189
-        y: 233
-        width: 194
-        height: 279
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 98d6e5715dba92f70800000000000000
-      internalID: 9163043848570432905
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player_rig_JUMP-00006.png
-      rect:
-        serializedVersion: 2
-        x: 975
-        y: 235
-        width: 214
-        height: 277
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0679bf2401f664d60800000000000000
-      internalID: 7874103114137835360
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player_rig_JUMP-00003.png
-      rect:
-        serializedVersion: 2
-        x: 793
-        y: 236
-        width: 182
-        height: 276
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 85ac6489c32c598f0800000000000000
-      internalID: -534307415264933288
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player_rig_JUMP-00007.png
-      rect:
-        serializedVersion: 2
-        x: 571
-        y: 238
-        width: 222
-        height: 274
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ac00e21a1d1a019e0800000000000000
-      internalID: -1652643141520588598
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player_rig_JUMP-00002.png
-      rect:
-        serializedVersion: 2
-        x: 397
-        y: 240
-        width: 174
-        height: 272
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 54a8d3b3390820d60800000000000000
-      internalID: 7854982069930003013
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player_rig_JUMP-00008.png
-      rect:
-        serializedVersion: 2
-        x: 171
-        y: 242
-        width: 226
-        height: 270
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f02347a2153a0c500800000000000000
-      internalID: 414510734718022159
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player_rig_JUMP-00001.png
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 245
-        width: 171
-        height: 267
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 66f63767a47c9bdc0800000000000000
-      internalID: -3622645302614069402
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -294,15 +126,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Player_rig_JUMP-00004.png: 9163043848570432905
-      Player_rig_JUMP-00001.png: -3622645302614069402
-      Player_rig_JUMP-00007.png: -1652643141520588598
-      Player_rig_JUMP-00005.png: -1312073380063488821
-      Player_rig_JUMP-00006.png: 7874103114137835360
-      Player_rig_JUMP-00002.png: 7854982069930003013
-      Player_rig_JUMP-00008.png: 414510734718022159
-      Player_rig_JUMP-00003.png: -534307415264933288
+    nameFileIdTable: {}
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
