@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -67,7 +67,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -115,7 +115,1687 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00021.png
+      rect:
+        serializedVersion: 2
+        x: 3769
+        y: 487
+        width: 172
+        height: 269
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e412bde42dcebb80800000000000000
+      internalID: -8377032698372156183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00016.png
+      rect:
+        serializedVersion: 2
+        x: 3597
+        y: 487
+        width: 172
+        height: 269
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 517a3a95fdf179bd0800000000000000
+      internalID: -2623593213777959147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00017.png
+      rect:
+        serializedVersion: 2
+        x: 3425
+        y: 487
+        width: 172
+        height: 269
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5172b47ac131ecc60800000000000000
+      internalID: 7840225015085344533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00018.png
+      rect:
+        serializedVersion: 2
+        x: 3253
+        y: 487
+        width: 172
+        height: 269
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa18f307235bd0af0800000000000000
+      internalID: -428487161294126673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00019.png
+      rect:
+        serializedVersion: 2
+        x: 3081
+        y: 487
+        width: 172
+        height: 269
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20c284846b3b48050800000000000000
+      internalID: 5801959815438150658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00020.png
+      rect:
+        serializedVersion: 2
+        x: 2909
+        y: 487
+        width: 172
+        height: 269
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a1d08927a17e5e60800000000000000
+      internalID: 7952918954752659879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00027.png
+      rect:
+        serializedVersion: 2
+        x: 2738
+        y: 487
+        width: 171
+        height: 269
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c1e0d607509c0a50800000000000000
+      internalID: 6488719866584949187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00015.png
+      rect:
+        serializedVersion: 2
+        x: 2567
+        y: 487
+        width: 171
+        height: 269
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7322fa6b9592e30d0800000000000000
+      internalID: -3441267599970721225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00010.png
+      rect:
+        serializedVersion: 2
+        x: 2395
+        y: 488
+        width: 172
+        height: 268
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 570854dbdf4b49ed0800000000000000
+      internalID: -2408100898841198475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00032.png
+      rect:
+        serializedVersion: 2
+        x: 2223
+        y: 488
+        width: 172
+        height: 268
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1423ff86d8df55ae0800000000000000
+      internalID: -1561062912020237759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00012.png
+      rect:
+        serializedVersion: 2
+        x: 2052
+        y: 488
+        width: 171
+        height: 268
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ee3ff5f98ed2b600800000000000000
+      internalID: 482692794201095907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00013.png
+      rect:
+        serializedVersion: 2
+        x: 1881
+        y: 488
+        width: 171
+        height: 268
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69ea9f37628295240800000000000000
+      internalID: 4780896625050103446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00014.png
+      rect:
+        serializedVersion: 2
+        x: 1710
+        y: 488
+        width: 171
+        height: 268
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ecb9782203bd0af0800000000000000
+      internalID: -428489567679955735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00028.png
+      rect:
+        serializedVersion: 2
+        x: 1539
+        y: 488
+        width: 171
+        height: 268
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 723a5244c7e3340e0800000000000000
+      internalID: -2286915482333895897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00029.png
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 488
+        width: 171
+        height: 268
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 672aa35b82cc6f3b0800000000000000
+      internalID: -5478967421438352778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00030.png
+      rect:
+        serializedVersion: 2
+        x: 1197
+        y: 488
+        width: 171
+        height: 268
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 649dbebbd4173a020800000000000000
+      internalID: 2351848009096747334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00031.png
+      rect:
+        serializedVersion: 2
+        x: 1026
+        y: 488
+        width: 171
+        height: 268
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da30847dd17d75720800000000000000
+      internalID: 2834971013618860973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00033.png
+      rect:
+        serializedVersion: 2
+        x: 855
+        y: 488
+        width: 171
+        height: 268
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7dd7c3946e0533570800000000000000
+      internalID: 8445182676251213271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00034.png
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 488
+        width: 171
+        height: 268
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9e5b7b8a3e7b74a70800000000000000
+      internalID: 8811213384389735913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00035.png
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 488
+        width: 171
+        height: 268
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d94ee6aecb8e73900800000000000000
+      internalID: 664255368145069213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00007.png
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 488
+        width: 171
+        height: 268
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 238d6b8067af28af0800000000000000
+      internalID: -395478432395896782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00008.png
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 488
+        width: 171
+        height: 268
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64769ec381442e470800000000000000
+      internalID: 8422369124028081990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00009.png
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 488
+        width: 171
+        height: 268
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89614febb4a0cf8e0800000000000000
+      internalID: -1658439242336692584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00011.png
+      rect:
+        serializedVersion: 2
+        x: 3770
+        y: 756
+        width: 171
+        height: 268
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b022618fa5771d80800000000000000
+      internalID: -8280019993246949200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00001.png
+      rect:
+        serializedVersion: 2
+        x: 3599
+        y: 757
+        width: 171
+        height: 267
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b1030d1234c8d930800000000000000
+      internalID: 4168297174645539256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00006.png
+      rect:
+        serializedVersion: 2
+        x: 3428
+        y: 757
+        width: 171
+        height: 267
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a8a5544b8b6f35c0800000000000000
+      internalID: -4233546878813886304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00005.png
+      rect:
+        serializedVersion: 2
+        x: 3257
+        y: 757
+        width: 171
+        height: 267
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 146a32ad7aff70d50800000000000000
+      internalID: 6703607666748663361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00004.png
+      rect:
+        serializedVersion: 2
+        x: 3086
+        y: 757
+        width: 171
+        height: 267
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d12dc9a398ab12a0800000000000000
+      internalID: -6765628663031586350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00003.png
+      rect:
+        serializedVersion: 2
+        x: 2915
+        y: 757
+        width: 171
+        height: 267
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63c0f6a212e56c740800000000000000
+      internalID: 5171924718620445750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00002.png
+      rect:
+        serializedVersion: 2
+        x: 2744
+        y: 757
+        width: 171
+        height: 267
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb89305d947a21660800000000000000
+      internalID: 7355125076997675199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00039.png
+      rect:
+        serializedVersion: 2
+        x: 2573
+        y: 757
+        width: 171
+        height: 267
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 549fa1ee521814930800000000000000
+      internalID: 4125720733556603205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00038.png
+      rect:
+        serializedVersion: 2
+        x: 2402
+        y: 757
+        width: 171
+        height: 267
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a98f6d6e3cea75ab0800000000000000
+      internalID: -5019351103266424678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00037.png
+      rect:
+        serializedVersion: 2
+        x: 2231
+        y: 757
+        width: 171
+        height: 267
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bba6a33a8c7dfcc0800000000000000
+      internalID: -3675644787850564687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00036.png
+      rect:
+        serializedVersion: 2
+        x: 2060
+        y: 757
+        width: 171
+        height: 267
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d70a8e3e342827a0800000000000000
+      internalID: -6401827020551354414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00064.png
+      rect:
+        serializedVersion: 2
+        x: 3253
+        y: 487
+        width: 172
+        height: 269
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2149bccd3f5c1e250800000000000000
+      internalID: 5972272232042042386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00062.png
+      rect:
+        serializedVersion: 2
+        x: 2909
+        y: 487
+        width: 172
+        height: 269
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19f9ebada02c0e030800000000000000
+      internalID: 3522028260479115153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00060.png
+      rect:
+        serializedVersion: 2
+        x: 2909
+        y: 487
+        width: 172
+        height: 269
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91c49880ae1416520800000000000000
+      internalID: 2693506525565635609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00057.png
+      rect:
+        serializedVersion: 2
+        x: 3425
+        y: 487
+        width: 172
+        height: 269
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65622e2ad1c9c2da0800000000000000
+      internalID: -5968223755072035242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00059.png
+      rect:
+        serializedVersion: 2
+        x: 3081
+        y: 487
+        width: 172
+        height: 269
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ded4b3bc99919870800000000000000
+      internalID: 8687894054483320537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00023.png
+      rect:
+        serializedVersion: 2
+        x: 3081
+        y: 487
+        width: 172
+        height: 269
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 555868ef5400af370800000000000000
+      internalID: 8356992359162348885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00025.png
+      rect:
+        serializedVersion: 2
+        x: 3425
+        y: 487
+        width: 172
+        height: 269
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ff0406a794b2aa80800000000000000
+      internalID: -8456998586830024718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00065.png
+      rect:
+        serializedVersion: 2
+        x: 3425
+        y: 487
+        width: 172
+        height: 269
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c138f7d6bfe19a0a0800000000000000
+      internalID: -6869925691354283236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00055.png
+      rect:
+        serializedVersion: 2
+        x: 2738
+        y: 487
+        width: 171
+        height: 269
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a7c14ad365a647b0800000000000000
+      internalID: -5240319268116904023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00050.png
+      rect:
+        serializedVersion: 2
+        x: 2223
+        y: 488
+        width: 172
+        height: 268
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cd59cd886660bba0800000000000000
+      internalID: -6075243298081382970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00051.png
+      rect:
+        serializedVersion: 2
+        x: 1026
+        y: 488
+        width: 171
+        height: 268
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1175418d6e66c82a0800000000000000
+      internalID: -6733894201172011247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00048.png
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 488
+        width: 171
+        height: 268
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2232690f0646d3400800000000000000
+      internalID: 305510717247071010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00052.png
+      rect:
+        serializedVersion: 2
+        x: 1197
+        y: 488
+        width: 171
+        height: 268
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd98405cc646b5940800000000000000
+      internalID: 5285929005974063580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00054.png
+      rect:
+        serializedVersion: 2
+        x: 1539
+        y: 488
+        width: 171
+        height: 268
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2234fc0e65a55bb0800000000000000
+      internalID: -4947866723514306002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00069.png
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 488
+        width: 171
+        height: 268
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b89e2d5efae408370800000000000000
+      internalID: 8322738628762724747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00071.png
+      rect:
+        serializedVersion: 2
+        x: 1026
+        y: 488
+        width: 171
+        height: 268
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b249e59c45e55f90800000000000000
+      internalID: -6965409131563236688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00074.png
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 488
+        width: 171
+        height: 268
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cf07de65dfa4c630800000000000000
+      internalID: 3946472504705880006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00043.png
+      rect:
+        serializedVersion: 2
+        x: 2573
+        y: 757
+        width: 171
+        height: 267
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd63bcbb8e9ff2760800000000000000
+      internalID: 7435436287790364379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00040.png
+      rect:
+        serializedVersion: 2
+        x: 2744
+        y: 757
+        width: 171
+        height: 267
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a5dc93d00caa8870800000000000000
+      internalID: 8685943950887671201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00045.png
+      rect:
+        serializedVersion: 2
+        x: 2231
+        y: 757
+        width: 171
+        height: 267
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 042b06620a79325a0800000000000000
+      internalID: -6547222719172136384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00042.png
+      rect:
+        serializedVersion: 2
+        x: 2744
+        y: 757
+        width: 171
+        height: 267
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 572037b2578a77570800000000000000
+      internalID: 8464419245859734133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00077.png
+      rect:
+        serializedVersion: 2
+        x: 2231
+        y: 757
+        width: 171
+        height: 267
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6625ad33644a34e50800000000000000
+      internalID: 6792453284429451878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00079.png
+      rect:
+        serializedVersion: 2
+        x: 2573
+        y: 757
+        width: 171
+        height: 267
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f19e6c7fba4f53bb0800000000000000
+      internalID: -4956786795417769697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00063.png
+      rect:
+        serializedVersion: 2
+        x: 3081
+        y: 487
+        width: 172
+        height: 269
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34bccef93311b49e0800000000000000
+      internalID: -1636195126194943165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00058.png
+      rect:
+        serializedVersion: 2
+        x: 3253
+        y: 487
+        width: 172
+        height: 269
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47cb27e873ee07c40800000000000000
+      internalID: 5508164266654612596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00022.png
+      rect:
+        serializedVersion: 2
+        x: 2909
+        y: 487
+        width: 172
+        height: 269
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b5ee28f61360b8d0800000000000000
+      internalID: -2832655215311788615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00026.png
+      rect:
+        serializedVersion: 2
+        x: 3597
+        y: 487
+        width: 172
+        height: 269
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c70085a1525c9e50800000000000000
+      internalID: 6817414446554548166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00067.png
+      rect:
+        serializedVersion: 2
+        x: 2738
+        y: 487
+        width: 171
+        height: 269
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d89fb6f52b60e8000800000000000000
+      internalID: 39976809867770253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00047.png
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 488
+        width: 171
+        height: 268
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: defdc3f981df14120800000000000000
+      internalID: 2396474758930423789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00053.png
+      rect:
+        serializedVersion: 2
+        x: 1368
+        y: 488
+        width: 171
+        height: 268
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca8b02361cd90a750800000000000000
+      internalID: 6314220131490773164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00070.png
+      rect:
+        serializedVersion: 2
+        x: 1197
+        y: 488
+        width: 171
+        height: 268
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0449c6abefcad8f10800000000000000
+      internalID: 2273663596941317184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00075.png
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 488
+        width: 171
+        height: 268
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79c7534082c4d26b0800000000000000
+      internalID: -5319511850101670761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00041.png
+      rect:
+        serializedVersion: 2
+        x: 3599
+        y: 757
+        width: 171
+        height: 267
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82c82e737c45ce5c0800000000000000
+      internalID: -4184876739121214424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00076.png
+      rect:
+        serializedVersion: 2
+        x: 2060
+        y: 757
+        width: 171
+        height: 267
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4a91ecd8738781f0800000000000000
+      internalID: -1042720233587893681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00080.png
+      rect:
+        serializedVersion: 2
+        x: 2744
+        y: 757
+        width: 171
+        height: 267
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17c825743e4d99f00800000000000000
+      internalID: 1124163654624906353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00061.png
+      rect:
+        serializedVersion: 2
+        x: 3769
+        y: 487
+        width: 172
+        height: 269
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: df5df21534285b890800000000000000
+      internalID: -7442899583523367427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00024.png
+      rect:
+        serializedVersion: 2
+        x: 3253
+        y: 487
+        width: 172
+        height: 269
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1834c15f59993c590800000000000000
+      internalID: -7655106072258264191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00072.png
+      rect:
+        serializedVersion: 2
+        x: 2223
+        y: 488
+        width: 172
+        height: 268
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 340ae696f5d6acd90800000000000000
+      internalID: -7076723607901134781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00068.png
+      rect:
+        serializedVersion: 2
+        x: 1539
+        y: 488
+        width: 171
+        height: 268
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35eb07b07421b3a30800000000000000
+      internalID: 4195967574169665107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00044.png
+      rect:
+        serializedVersion: 2
+        x: 2402
+        y: 757
+        width: 171
+        height: 267
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 367446cb1446604c0800000000000000
+      internalID: -4321656558919071901
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00078.png
+      rect:
+        serializedVersion: 2
+        x: 2402
+        y: 757
+        width: 171
+        height: 267
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb7d6a9ba406bfab0800000000000000
+      internalID: -4973275489442015298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00056.png
+      rect:
+        serializedVersion: 2
+        x: 3597
+        y: 487
+        width: 172
+        height: 269
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04a2815d04b55bf50800000000000000
+      internalID: 6896518738398947904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00049.png
+      rect:
+        serializedVersion: 2
+        x: 855
+        y: 488
+        width: 171
+        height: 268
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 531fa056c55123fe0800000000000000
+      internalID: -1210881863232851659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00046.png
+      rect:
+        serializedVersion: 2
+        x: 2060
+        y: 757
+        width: 171
+        height: 267
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9dc7605c82fc5d880800000000000000
+      internalID: -8586729340500804391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00066.png
+      rect:
+        serializedVersion: 2
+        x: 3597
+        y: 487
+        width: 172
+        height: 269
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73cd15a6cc743bbe0800000000000000
+      internalID: -1462746510682629065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_IDLE-00073.png
+      rect:
+        serializedVersion: 2
+        x: 855
+        y: 488
+        width: 171
+        height: 268
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a779a653049a0980800000000000000
+      internalID: -8571876198686558297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -126,7 +1806,87 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Player_rig_IDLE-00032.png: -1561062912020237759
+      Player_rig_IDLE-00069.png: 8322738628762724747
+      Player_rig_IDLE-00033.png: 8445182676251213271
+      Player_rig_IDLE-00021.png: -8377032698372156183
+      Player_rig_IDLE-00065.png: -6869925691354283236
+      Player_rig_IDLE-00064.png: 5972272232042042386
+      Player_rig_IDLE-00011.png: -8280019993246949200
+      Player_rig_IDLE-00072.png: -7076723607901134781
+      Player_rig_IDLE-00028.png: -2286915482333895897
+      Player_rig_IDLE-00029.png: -5478967421438352778
+      Player_rig_IDLE-00012.png: 482692794201095907
+      Player_rig_IDLE-00010.png: -2408100898841198475
+      Player_rig_IDLE-00004.png: -6765628663031586350
+      Player_rig_IDLE-00016.png: -2623593213777959147
+      Player_rig_IDLE-00009.png: -1658439242336692584
+      Player_rig_IDLE-00022.png: -2832655215311788615
+      Player_rig_IDLE-00068.png: 4195967574169665107
+      Player_rig_IDLE-00049.png: -1210881863232851659
+      Player_rig_IDLE-00076.png: -1042720233587893681
+      Player_rig_IDLE-00058.png: 5508164266654612596
+      Player_rig_IDLE-00053.png: 6314220131490773164
+      Player_rig_IDLE-00027.png: 6488719866584949187
+      Player_rig_IDLE-00038.png: -5019351103266424678
+      Player_rig_IDLE-00025.png: -8456998586830024718
+      Player_rig_IDLE-00059.png: 8687894054483320537
+      Player_rig_IDLE-00055.png: -5240319268116904023
+      Player_rig_IDLE-00050.png: -6075243298081382970
+      Player_rig_IDLE-00023.png: 8356992359162348885
+      Player_rig_IDLE-00063.png: -1636195126194943165
+      Player_rig_IDLE-00005.png: 6703607666748663361
+      Player_rig_IDLE-00054.png: -4947866723514306002
+      Player_rig_IDLE-00041.png: -4184876739121214424
+      Player_rig_IDLE-00034.png: 8811213384389735913
+      Player_rig_IDLE-00037.png: -3675644787850564687
+      Player_rig_IDLE-00074.png: 3946472504705880006
+      Player_rig_IDLE-00067.png: 39976809867770253
+      Player_rig_IDLE-00030.png: 2351848009096747334
+      Player_rig_IDLE-00078.png: -4973275489442015298
+      Player_rig_IDLE-00035.png: 664255368145069213
+      Player_rig_IDLE-00057.png: -5968223755072035242
+      Player_rig_IDLE-00052.png: 5285929005974063580
+      Player_rig_IDLE-00007.png: -395478432395896782
+      Player_rig_IDLE-00042.png: 8464419245859734133
+      Player_rig_IDLE-00048.png: 305510717247071010
+      Player_rig_IDLE-00024.png: -7655106072258264191
+      Player_rig_IDLE-00075.png: -5319511850101670761
+      Player_rig_IDLE-00056.png: 6896518738398947904
+      Player_rig_IDLE-00070.png: 2273663596941317184
+      Player_rig_IDLE-00060.png: 2693506525565635609
+      Player_rig_IDLE-00006.png: -4233546878813886304
+      Player_rig_IDLE-00051.png: -6733894201172011247
+      Player_rig_IDLE-00026.png: 6817414446554548166
+      Player_rig_IDLE-00008.png: 8422369124028081990
+      Player_rig_IDLE-00047.png: 2396474758930423789
+      Player_rig_IDLE-00018.png: -428487161294126673
+      Player_rig_IDLE-00079.png: -4956786795417769697
+      Player_rig_IDLE-00073.png: -8571876198686558297
+      Player_rig_IDLE-00080.png: 1124163654624906353
+      Player_rig_IDLE-00003.png: 5171924718620445750
+      Player_rig_IDLE-00017.png: 7840225015085344533
+      Player_rig_IDLE-00014.png: -428489567679955735
+      Player_rig_IDLE-00019.png: 5801959815438150658
+      Player_rig_IDLE-00015.png: -3441267599970721225
+      Player_rig_IDLE-00045.png: -6547222719172136384
+      Player_rig_IDLE-00061.png: -7442899583523367427
+      Player_rig_IDLE-00020.png: 7952918954752659879
+      Player_rig_IDLE-00013.png: 4780896625050103446
+      Player_rig_IDLE-00062.png: 3522028260479115153
+      Player_rig_IDLE-00043.png: 7435436287790364379
+      Player_rig_IDLE-00031.png: 2834971013618860973
+      Player_rig_IDLE-00039.png: 4125720733556603205
+      Player_rig_IDLE-00036.png: -6401827020551354414
+      Player_rig_IDLE-00001.png: 4168297174645539256
+      Player_rig_IDLE-00046.png: -8586729340500804391
+      Player_rig_IDLE-00044.png: -4321656558919071901
+      Player_rig_IDLE-00002.png: 7355125076997675199
+      Player_rig_IDLE-00071.png: -6965409131563236688
+      Player_rig_IDLE-00077.png: 6792453284429451878
+      Player_rig_IDLE-00040.png: 8685943950887671201
+      Player_rig_IDLE-00066.png: -1462746510682629065
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
