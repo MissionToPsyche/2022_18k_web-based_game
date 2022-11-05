@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -67,7 +67,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -115,7 +115,1015 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Player_rig_RUN-00001.png
+      rect:
+        serializedVersion: 2
+        x: 3814
+        y: 166
+        width: 220
+        height: 293
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c82003a4083614470800000000000000
+      internalID: 8377086184537457292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00045.png
+      rect:
+        serializedVersion: 2
+        x: 3631
+        y: 166
+        width: 183
+        height: 293
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c58c5962f75169f0800000000000000
+      internalID: -477003386863188540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00013.png
+      rect:
+        serializedVersion: 2
+        x: 3418
+        y: 167
+        width: 213
+        height: 292
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e90811381e83bddd0800000000000000
+      internalID: -2460310230210084706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00037.png
+      rect:
+        serializedVersion: 2
+        x: 3205
+        y: 167
+        width: 213
+        height: 292
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97b5a97b3cf5ba8e0800000000000000
+      internalID: -1681144741689140359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00002.png
+      rect:
+        serializedVersion: 2
+        x: 2998
+        y: 167
+        width: 207
+        height: 292
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1a5cb86f80461160800000000000000
+      internalID: 6995850055848319514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00026.png
+      rect:
+        serializedVersion: 2
+        x: 2791
+        y: 167
+        width: 207
+        height: 292
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb9b53516287c4e10800000000000000
+      internalID: 2183252024327780795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00021.png
+      rect:
+        serializedVersion: 2
+        x: 2608
+        y: 167
+        width: 183
+        height: 292
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9633938a15e9335d0800000000000000
+      internalID: -3083947246266797207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00044.png
+      rect:
+        serializedVersion: 2
+        x: 2432
+        y: 167
+        width: 176
+        height: 292
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21fe4cb06c9f04c40800000000000000
+      internalID: 5494666174388301586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00014.png
+      rect:
+        serializedVersion: 2
+        x: 2224
+        y: 168
+        width: 208
+        height: 291
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4cf7a2d6f0a2f16e0800000000000000
+      internalID: -1864725474963718204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00038.png
+      rect:
+        serializedVersion: 2
+        x: 2016
+        y: 168
+        width: 208
+        height: 291
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12a4924d0f5bc13f0800000000000000
+      internalID: -928667377188910559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00009.png
+      rect:
+        serializedVersion: 2
+        x: 1839
+        y: 168
+        width: 177
+        height: 291
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55958eee466e600f0800000000000000
+      internalID: -1150979333567260331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00033.png
+      rect:
+        serializedVersion: 2
+        x: 1662
+        y: 168
+        width: 177
+        height: 291
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23e6edfb64d78f620800000000000000
+      internalID: 2808132110485712434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00020.png
+      rect:
+        serializedVersion: 2
+        x: 1486
+        y: 169
+        width: 176
+        height: 290
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c8cd2ab0986f6930800000000000000
+      internalID: 4138641553384917186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00010.png
+      rect:
+        serializedVersion: 2
+        x: 1306
+        y: 171
+        width: 180
+        height: 288
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a485733b20f1e2ee0800000000000000
+      internalID: -1284054747296868278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00034.png
+      rect:
+        serializedVersion: 2
+        x: 1126
+        y: 171
+        width: 180
+        height: 288
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b4df5d55c7a47cd0800000000000000
+      internalID: -2561237821950012232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00043.png
+      rect:
+        serializedVersion: 2
+        x: 953
+        y: 171
+        width: 173
+        height: 288
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9933b85491155e80800000000000000
+      internalID: -8190621018462406242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00024.png
+      rect:
+        serializedVersion: 2
+        x: 737
+        y: 172
+        width: 216
+        height: 287
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cda67bf869836e730800000000000000
+      internalID: 4027969136036899548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00032.png
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 172
+        width: 174
+        height: 287
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3abc677501823c50800000000000000
+      internalID: 6643514260803336767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00008.png
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 172
+        width: 174
+        height: 287
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84fd2f0e0976afe90800000000000000
+      internalID: -6991161599592308920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00019.png
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 172
+        width: 173
+        height: 287
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f6b38c78312a3b60800000000000000
+      internalID: 7726524637198399222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00048.png
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 173
+        width: 216
+        height: 286
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6f999a3b828e4ea0800000000000000
+      internalID: -5886624128431448213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00036.png
+      rect:
+        serializedVersion: 2
+        x: 3835
+        y: 459
+        width: 199
+        height: 286
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbfedc53faeabbf50800000000000000
+      internalID: 6898299321793245116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00012.png
+      rect:
+        serializedVersion: 2
+        x: 3636
+        y: 459
+        width: 199
+        height: 286
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4c940c5dee61e730800000000000000
+      internalID: 4026621507576044619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00022.png
+      rect:
+        serializedVersion: 2
+        x: 3440
+        y: 462
+        width: 196
+        height: 283
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e35ef97a6df625b30800000000000000
+      internalID: 4274601964053980478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00046.png
+      rect:
+        serializedVersion: 2
+        x: 3244
+        y: 462
+        width: 196
+        height: 283
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b5c67962044fb100800000000000000
+      internalID: 125894091739678129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00003.png
+      rect:
+        serializedVersion: 2
+        x: 3060
+        y: 462
+        width: 184
+        height: 283
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b36350f3665f27a0800000000000000
+      internalID: -6399801558236437580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00027.png
+      rect:
+        serializedVersion: 2
+        x: 2876
+        y: 462
+        width: 184
+        height: 283
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fdd3eaf0431f9250800000000000000
+      internalID: 5953498402215157237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00018.png
+      rect:
+        serializedVersion: 2
+        x: 2704
+        y: 462
+        width: 172
+        height: 283
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 347c7308621bd5d70800000000000000
+      internalID: 9033571206493095747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00015.png
+      rect:
+        serializedVersion: 2
+        x: 2504
+        y: 463
+        width: 200
+        height: 282
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 203c2e1b18cbc9230800000000000000
+      internalID: 3646997063484490498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00039.png
+      rect:
+        serializedVersion: 2
+        x: 2304
+        y: 463
+        width: 200
+        height: 282
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c5aa5f542d8312e0800000000000000
+      internalID: -2156224609222220351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00004.png
+      rect:
+        serializedVersion: 2
+        x: 2125
+        y: 463
+        width: 179
+        height: 282
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ab08ce30defa7b00800000000000000
+      internalID: 827253651935857569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00028.png
+      rect:
+        serializedVersion: 2
+        x: 1946
+        y: 463
+        width: 179
+        height: 282
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1241572749b7abff0800000000000000
+      internalID: -19567370864094175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00031.png
+      rect:
+        serializedVersion: 2
+        x: 1774
+        y: 463
+        width: 172
+        height: 282
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ec55d25c17c79c60800000000000000
+      internalID: 7824941802042252518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00007.png
+      rect:
+        serializedVersion: 2
+        x: 1602
+        y: 463
+        width: 172
+        height: 282
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a07d1bd36b53a4d0800000000000000
+      internalID: -3124553232028962652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00016.png
+      rect:
+        serializedVersion: 2
+        x: 1415
+        y: 464
+        width: 187
+        height: 281
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a1128ad262ddaa60800000000000000
+      internalID: 7687031461005889959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00040.png
+      rect:
+        serializedVersion: 2
+        x: 1228
+        y: 464
+        width: 187
+        height: 281
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a1e7647a290805c0800000000000000
+      internalID: -4249136170477821527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00006.png
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 464
+        width: 174
+        height: 281
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba824377cd79912c0800000000000000
+      internalID: -4460366982785259349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00030.png
+      rect:
+        serializedVersion: 2
+        x: 880
+        y: 464
+        width: 174
+        height: 281
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1ce8bdf3e40fcd90800000000000000
+      internalID: -7075431112314917857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00023.png
+      rect:
+        serializedVersion: 2
+        x: 671
+        y: 465
+        width: 209
+        height: 280
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ba14d9dc2e303700800000000000000
+      internalID: 517982319501646520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00047.png
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 465
+        width: 209
+        height: 280
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57fc16e621c6a15d0800000000000000
+      internalID: -3091039367819309195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00035.png
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 466
+        width: 185
+        height: 279
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6499f13befb279910800000000000000
+      internalID: 1843990945358387526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00011.png
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 466
+        width: 185
+        height: 279
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4b716cd1a895d9e0800000000000000
+      internalID: -1597202671878440115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00005.png
+      rect:
+        serializedVersion: 2
+        x: 3857
+        y: 745
+        width: 177
+        height: 279
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0d45bf032cc60190800000000000000
+      internalID: -7996479637390275314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00029.png
+      rect:
+        serializedVersion: 2
+        x: 3680
+        y: 745
+        width: 177
+        height: 279
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 925a5be0cc20a3940800000000000000
+      internalID: 5276532988861326633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00017.png
+      rect:
+        serializedVersion: 2
+        x: 3504
+        y: 746
+        width: 176
+        height: 278
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 181de15a62572e230800000000000000
+      internalID: 3666621855472472449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00025.png
+      rect:
+        serializedVersion: 2
+        x: 3814
+        y: 166
+        width: 220
+        height: 293
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6d10fddfa6674070800000000000000
+      internalID: 8090548161123196266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00041.png
+      rect:
+        serializedVersion: 2
+        x: 3504
+        y: 746
+        width: 176
+        height: 278
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57b2675432e7b73a0800000000000000
+      internalID: -6666596133437559947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player_rig_RUN-00042.png
+      rect:
+        serializedVersion: 2
+        x: 2704
+        y: 462
+        width: 172
+        height: 283
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82f24afde975e50c0800000000000000
+      internalID: -4585131030748057816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -126,7 +1134,55 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Player_rig_RUN-00044.png: 5494666174388301586
+      Player_rig_RUN-00035.png: 1843990945358387526
+      Player_rig_RUN-00009.png: -1150979333567260331
+      Player_rig_RUN-00007.png: -3124553232028962652
+      Player_rig_RUN-00015.png: 3646997063484490498
+      Player_rig_RUN-00006.png: -4460366982785259349
+      Player_rig_RUN-00032.png: 6643514260803336767
+      Player_rig_RUN-00004.png: 827253651935857569
+      Player_rig_RUN-00045.png: -477003386863188540
+      Player_rig_RUN-00014.png: -1864725474963718204
+      Player_rig_RUN-00043.png: -8190621018462406242
+      Player_rig_RUN-00005.png: -7996479637390275314
+      Player_rig_RUN-00020.png: 4138641553384917186
+      Player_rig_RUN-00047.png: -3091039367819309195
+      Player_rig_RUN-00018.png: 9033571206493095747
+      Player_rig_RUN-00038.png: -928667377188910559
+      Player_rig_RUN-00001.png: 8377086184537457292
+      Player_rig_RUN-00025.png: 8090548161123196266
+      Player_rig_RUN-00017.png: 3666621855472472449
+      Player_rig_RUN-00008.png: -6991161599592308920
+      Player_rig_RUN-00019.png: 7726524637198399222
+      Player_rig_RUN-00027.png: 5953498402215157237
+      Player_rig_RUN-00040.png: -4249136170477821527
+      Player_rig_RUN-00028.png: -19567370864094175
+      Player_rig_RUN-00042.png: -4585131030748057816
+      Player_rig_RUN-00022.png: 4274601964053980478
+      Player_rig_RUN-00039.png: -2156224609222220351
+      Player_rig_RUN-00046.png: 125894091739678129
+      Player_rig_RUN-00003.png: -6399801558236437580
+      Player_rig_RUN-00012.png: 4026621507576044619
+      Player_rig_RUN-00033.png: 2808132110485712434
+      Player_rig_RUN-00002.png: 6995850055848319514
+      Player_rig_RUN-00026.png: 2183252024327780795
+      Player_rig_RUN-00013.png: -2460310230210084706
+      Player_rig_RUN-00034.png: -2561237821950012232
+      Player_rig_RUN-00030.png: -7075431112314917857
+      Player_rig_RUN-00048.png: -5886624128431448213
+      Player_rig_RUN-00021.png: -3083947246266797207
+      Player_rig_RUN-00031.png: 7824941802042252518
+      Player_rig_RUN-00023.png: 517982319501646520
+      Player_rig_RUN-00036.png: 6898299321793245116
+      Player_rig_RUN-00029.png: 5276532988861326633
+      Player_rig_RUN-00024.png: 4027969136036899548
+      Player_rig_RUN-00037.png: -1681144741689140359
+      Player_rig_RUN-00010.png: -1284054747296868278
+      Player_rig_RUN-00041.png: -6666596133437559947
+      Player_rig_RUN-00016.png: 7687031461005889959
+      Player_rig_RUN-00011.png: -1597202671878440115
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
