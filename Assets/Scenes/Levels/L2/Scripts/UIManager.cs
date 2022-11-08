@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-public class EngineControllerBtn : MonoBehaviour
+public class UIManager : MonoBehaviour
 {
     public GameObject engineControllerButton;
     private TextMeshProUGUI _btnText;
