@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5875146080811044187}
   - component: {fileID: 1636870019686296678}
   - component: {fileID: 7310230135253691115}
+  - component: {fileID: 6721882819650026145}
   m_Layer: 0
   m_Name: 'Tier2 Capsule '
   m_TagString: Untagged
@@ -120,8 +121,8 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5875146080811044184}
-  m_BodyType: 0
-  m_Simulated: 0
+  m_BodyType: 2
+  m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
@@ -133,3 +134,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &6721882819650026145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5875146080811044184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec6e9dc12db50b84294e901faaf24cf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
