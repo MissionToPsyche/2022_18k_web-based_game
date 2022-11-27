@@ -22,7 +22,7 @@ public class Draggable : MonoBehaviour
         _dragOffset = transform.position - GetMousePos();
     }
 
-    void OnMouseDrag()
+    public void OnMouseDrag()
     {
         transform.position = GetMousePos() + _dragOffset;
     }
