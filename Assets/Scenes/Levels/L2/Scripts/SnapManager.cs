@@ -10,6 +10,7 @@ public class SnapManager : MonoBehaviour
     public float snapRange = 0.5f;
     private Draggable _currentDraggedObj;
     private Transform _closestSnapPoint = null;
+
     void Start()
     {
         foreach (Draggable draggableObj in draggableObjects)
@@ -21,7 +22,7 @@ public class SnapManager : MonoBehaviour
     private void OnDragEnded(Draggable draggedObj)
     {
         _currentDraggedObj = draggedObj;
-        float closestDistance = -1f;
+        float closestDistance = 100000f;
 
         foreach (Transform snapPoint in snapPoints)
         {
@@ -41,13 +42,13 @@ public class SnapManager : MonoBehaviour
                 // snap to top
                 if (_closestSnapPoint.transform.localPosition.z == 1)
                 {
-                    _currentDraggedObj.transform.localPosition = new Vector2(_closestSnapPoint.transform.parent.localPosition.x, -_currentDraggedObj.spriteRenderer.bounds.size.y / 2);
+                    _currentDraggedObj.transform.localPosition = new Vector2(_closestSnapPoint.transform.parent.localPosition.x, _currentDraggedObj.spriteRenderer.bounds.size.y / 2);
                 }
 
                 // snap to bottom
                 else if (_closestSnapPoint.transform.localPosition.z == -1)
                 {
-                    _currentDraggedObj.transform.localPosition = new Vector2(_closestSnapPoint.transform.parent.localPosition.x, _currentDraggedObj.spriteRenderer.bounds.size.y / 2);
+                    _currentDraggedObj.transform.localPosition = new Vector2(_closestSnapPoint.transform.parent.localPosition.x, -_currentDraggedObj.spriteRenderer.bounds.size.y / 2);
                 }
                 else
                 {
@@ -67,5 +68,9 @@ public class SnapManager : MonoBehaviour
     void objectSnappedInPlace()
     {
         _closestSnapPoint = null;
+    }
+    public void addDraggableObjCallback(Draggable draggableObj)
+    {
+        draggableObj.dragEndedCallback = OnDragEnded;
     }
 }

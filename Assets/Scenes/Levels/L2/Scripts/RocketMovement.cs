@@ -13,7 +13,7 @@ public class RocketMovement : MonoBehaviour
     {
         _rigidBody = gameObject.GetComponent<Rigidbody2D>();
         _accelerationCoroutine = AccelerateRocket();
-        init();
+        Init();
     }
 
     void FixedUpdate()
@@ -23,7 +23,7 @@ public class RocketMovement : MonoBehaviour
             transform.Translate(Vector2.up * (Time.deltaTime * _velocity));
         }
     }
-    void init()
+    void Init()
     {
         _enginesOn = false;
         _rigidBody.simulated = false;
