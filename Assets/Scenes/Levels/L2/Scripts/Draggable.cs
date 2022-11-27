@@ -5,6 +5,7 @@ using UnityEngine;
 public class Draggable : MonoBehaviour
 {
     public delegate void DragEndedDelegate(Draggable draggableObj);
+    [System.NonSerialized]
     public SpriteRenderer spriteRenderer;
     public DragEndedDelegate dragEndedCallback;
     private Vector3 _dragOffset;

@@ -4,47 +4,136 @@ using UnityEngine.UI;
 [System.Serializable]
 public class rocketPart
 {
-    public Button btnPrefab;
-    public GameObject prefab;
+    [System.NonSerialized]
+    public Button btn;
+    [System.NonSerialized]
+
     public int count = 0;
+    public GameObject prefab;
+
 }
 public class RocketPartsShopManager : MonoBehaviour
 {
     public SnapManager snapManager;
     public Transform content;
     public Transform rocket;
+    public Button btnPrefab;
+
     public rocketPart tier1Capsule;
-    private Button _tier1CapsuleBtn;
     public rocketPart tier2Capsule;
     public rocketPart tier3Capsule;
+    public rocketPart tier1NoseCone;
+    public rocketPart tier2NoseCone;
+    public rocketPart tier1Engine;
+    public rocketPart tier2Engine;
+    public rocketPart tier3Engine;
+    public rocketPart separator;
+    public rocketPart sideSeparator;
+    public rocketPart smallFuelTank;
+    public rocketPart mediumFuelTank;
+    public rocketPart largeFuelTank;
     GameObject instantiatedRocketPart;
     Draggable rocketPartDraggableScript;
-    private bool bruh = false;
+    private bool _applyDrag = false;
+    RocketInformation rocketInstance;
     void Start()
     {
-        RocketInformation rocketInstance = RocketInformation.instance;
-        rocketInstance.setTier1CapsuleCount(2);
-        tier1Capsule.count = rocketInstance.getTier1CapsuleCount();
+        rocketInstance = RocketInformation.instance;
+
+        // test
+        rocketInstance.tier1Capsule = 2;
+        rocketInstance.mediumFuelTank = 2;
+        rocketInstance.largeFuelTank = 2;
+        rocketInstance.tier1NoseCone = 2;
+        rocketInstance.tier2Engine = 3;
+
+        // capsules
+        tier1Capsule.count = rocketInstance.tier1Capsule;
         if (tier1Capsule.count > 0)
         {
-            _tier1CapsuleBtn = Instantiate(tier1Capsule.btnPrefab);
-            _tier1CapsuleBtn.transform.SetParent(content);
-            EventTrigger trigger = _tier1CapsuleBtn.gameObject.AddComponent<EventTrigger>();
-            var pointerDown = new EventTrigger.Entry();
-            pointerDown.eventID = EventTriggerType.PointerDown;
-            pointerDown.callback.AddListener((e) => instantiateRocketPart(tier1Capsule.prefab, ref tier1Capsule.count));
-            trigger.triggers.Add(pointerDown);
+            createRocketPartBtn(tier1Capsule);
+        }
 
-            var pointerUp = new EventTrigger.Entry();
-            pointerUp.eventID = EventTriggerType.PointerUp;
-            pointerUp.callback.AddListener((e) => rocketPartPlaced());
-            trigger.triggers.Add(pointerUp);
+        tier2Capsule.count = rocketInstance.tier2Capsule;
+        if (tier2Capsule.count > 0)
+        {
+            createRocketPartBtn(tier2Capsule);
+        }
+
+        tier3Capsule.count = rocketInstance.tier3Capsule;
+        if (tier3Capsule.count > 0)
+        {
+            createRocketPartBtn(tier3Capsule);
+        }
+
+        // nose cones
+        tier1NoseCone.count = rocketInstance.tier1NoseCone;
+        if (tier1NoseCone.count > 0)
+        {
+            createRocketPartBtn(tier1NoseCone);
+        }
+
+        tier2NoseCone.count = rocketInstance.tier2NoseCone;
+        if (tier2NoseCone.count > 0)
+        {
+            createRocketPartBtn(tier2NoseCone);
+        }
+
+        // engines
+        tier1Engine.count = rocketInstance.tier1Engine;
+        if (tier1Engine.count > 0)
+        {
+            createRocketPartBtn(tier1Engine);
+        }
+
+        tier2Engine.count = rocketInstance.tier2Engine;
+        if (tier2Engine.count > 0)
+        {
+            createRocketPartBtn(tier2Engine);
+        }
+
+        tier3Engine.count = rocketInstance.tier3Engine;
+        if (tier3Engine.count > 0)
+        {
+            createRocketPartBtn(tier3Engine);
+        }
+
+        // separators
+        separator.count = rocketInstance.separator;
+        if (separator.count > 0)
+        {
+            createRocketPartBtn(separator);
+        }
+
+        sideSeparator.count = rocketInstance.sideSeparator;
+        if (sideSeparator.count > 0)
+        {
+            createRocketPartBtn(sideSeparator);
+        }
+        // fuel tanks
+        smallFuelTank.count = rocketInstance.smallFuelTank;
+        if (smallFuelTank.count > 0)
+        {
+            // reduce height by 4 times that of large fuel tank
+            createRocketPartBtn(smallFuelTank, 0.25f);
+        }
+
+        mediumFuelTank.count = rocketInstance.mediumFuelTank;
+        if (mediumFuelTank.count > 0)
+        {
+            // reduce height by 2 times that of large fuel tank
+            createRocketPartBtn(mediumFuelTank, 0.5f);
+        }
+
+        largeFuelTank.count = rocketInstance.largeFuelTank;
+        if (largeFuelTank.count > 0)
+        {
+            createRocketPartBtn(largeFuelTank);
         }
     }
     void Update()
     {
-
-        if (bruh)
+        if (_applyDrag)
         {
             rocketPartDraggableScript.OnMouseDrag();
         }
@@ -63,18 +152,44 @@ public class RocketPartsShopManager : MonoBehaviour
         rocketPartDraggableScript = instantiatedRocketPart.GetComponent<Draggable>();
         snapManager.addDraggableObjCallback(rocketPartDraggableScript);
 
-        // drag focus the rocket part
-        bruh = true;
+        // drag focus the instantiated rocket part
+        _applyDrag = true;
 
         // reduce count on btn click
         count--;
     }
-    private void rocketPartPlaced()
+    private void createRocketPartBtn(rocketPart currentPart, float scaleImgBy = 1)
     {
-        bruh = false;
-        if (tier1Capsule.count < 1)
+        // instantiate buttons 
+        currentPart.btn = Instantiate(btnPrefab);
+        currentPart.btn.transform.SetParent(content);
+        GameObject btnImgObj = currentPart.btn.transform.GetChild(0).gameObject;
+        RectTransform btnImgRectTransform = btnImgObj.GetComponent<RectTransform>();
+        btnImgRectTransform.localScale = new Vector3(btnImgRectTransform.localScale.x, btnImgRectTransform.localScale.y * scaleImgBy, btnImgRectTransform.localScale.z);
+        Image btnImg = btnImgObj.GetComponent<Image>();
+        btnImg.sprite = currentPart.prefab.GetComponent<SpriteRenderer>().sprite;
+
+        // add event triggers to the button
+        EventTrigger trigger = currentPart.btn.gameObject.AddComponent<EventTrigger>();
+
+        // on rocket part UI button pointer down, instantiate the rocket part and apply drag on it
+        var pointerDown = new EventTrigger.Entry();
+        pointerDown.eventID = EventTriggerType.PointerDown;
+        pointerDown.callback.AddListener((e) => instantiateRocketPart(currentPart.prefab, ref currentPart.count));
+        trigger.triggers.Add(pointerDown);
+
+        // on rocket part UI button pointer up, do stuff
+        var pointerUp = new EventTrigger.Entry();
+        pointerUp.eventID = EventTriggerType.PointerUp;
+        pointerUp.callback.AddListener((e) => currentPartPlaced(currentPart));
+        trigger.triggers.Add(pointerUp);
+    }
+    private void currentPartPlaced(rocketPart currentPart)
+    {
+        _applyDrag = false;
+        if (currentPart.count < 1)
         {
-            _tier1CapsuleBtn.gameObject.SetActive(false);
+            currentPart.btn.gameObject.SetActive(false);
         }
     }
 }
