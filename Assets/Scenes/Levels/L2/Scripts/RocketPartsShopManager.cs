@@ -186,7 +186,11 @@ public class RocketPartsShopManager : MonoBehaviour
     }
     private void currentPartPlaced(rocketPart currentPart)
     {
+        // stop the object from following the mouse
         _applyDrag = false;
+
+        // trigger the drag ended callback on the referenced script which places the snaps the part to snap point 
+        rocketPartDraggableScript.OnMouseUp();
         if (currentPart.count < 1)
         {
             currentPart.btn.gameObject.SetActive(false);

@@ -28,7 +28,7 @@ public class Draggable : MonoBehaviour
         transform.position = GetMousePos() + _dragOffset;
     }
 
-    void OnMouseUp()
+    public void OnMouseUp()
     {
         dragEndedCallback(this);
     }
