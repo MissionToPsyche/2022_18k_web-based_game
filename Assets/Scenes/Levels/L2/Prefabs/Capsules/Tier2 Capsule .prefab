@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1636870019686296678}
   - component: {fileID: 7310230135253691115}
   - component: {fileID: 6721882819650026145}
+  - component: {fileID: 6792789022757614469}
   m_Layer: 0
   m_Name: 'Tier2 Capsule '
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5875146080811044184}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.13, y: 3.059, z: 0.05329234}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.13229088, y: 0.13229088, z: 0.13229088}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -146,3 +147,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec6e9dc12db50b84294e901faaf24cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6792789022757614469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5875146080811044184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 276ecd67d71056549899389a87880437, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generateOnTop: 0
+  generateOnBottom: 1
+  generateOnLeft: 0
+  generateOnRight: 0
+  snappingPointPrefab: {fileID: 7029666086727307086, guid: 3597a0d3e5787354ebedbc255d09b865, type: 3}

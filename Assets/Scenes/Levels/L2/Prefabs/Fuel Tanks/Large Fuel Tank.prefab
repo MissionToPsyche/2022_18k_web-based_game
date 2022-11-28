@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 503594055648925916}
   - component: {fileID: 1596836592232687947}
   - component: {fileID: 6888631239170563949}
+  - component: {fileID: 8360777835036862722}
   m_Layer: 0
   m_Name: Large Fuel Tank
   m_TagString: Untagged
@@ -146,3 +147,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec6e9dc12db50b84294e901faaf24cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8360777835036862722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503594055648925914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 276ecd67d71056549899389a87880437, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generateOnTop: 1
+  generateOnBottom: 1
+  generateOnLeft: 1
+  generateOnRight: 1
+  snappingPointPrefab: {fileID: 7029666086727307086, guid: 3597a0d3e5787354ebedbc255d09b865, type: 3}

@@ -150,13 +150,16 @@ public class RocketPartsShopManager : MonoBehaviour
 
         // add draggable callback
         rocketPartDraggableScript = instantiatedRocketPart.GetComponent<Draggable>();
-        snapManager.addDraggableObjCallback(rocketPartDraggableScript);
+        snapManager.AddDraggableObjCallback(rocketPartDraggableScript);
 
         // drag focus the instantiated rocket part
         _applyDrag = true;
 
         // reduce count on btn click
         count--;
+
+        // simulate mouse click
+        rocketPartDraggableScript.OnMouseDown();
     }
     private void createRocketPartBtn(rocketPart currentPart, float scaleImgBy = 1)
     {

@@ -4,13 +4,28 @@ using UnityEngine;
 
 public class SnapManager : MonoBehaviour
 {
-    public List<Transform> snapPoints;
+    private List<GameObject> _snappingPointObjs = new List<GameObject>();
+    public List<Draggable> draggableObjects = new List<Draggable>();
+
     public Transform rocket;
-    public List<Draggable> draggableObjects;
     public float snapRange = 0.5f;
     private Draggable _currentDraggedObj;
     private Transform _closestSnapPoint = null;
-
+    public static SnapManager instance;
+    void Awake()
+    {
+        // if there is already an instance, destroy it
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        // else, keep instance of this object
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
     void Start()
     {
         foreach (Draggable draggableObj in draggableObjects)
@@ -24,12 +39,12 @@ public class SnapManager : MonoBehaviour
         _currentDraggedObj = draggedObj;
         float closestDistance = 100000f;
 
-        foreach (Transform snapPoint in snapPoints)
+        foreach (GameObject snapPoint in _snappingPointObjs)
         {
-            float currentDistance = Vector2.Distance(_currentDraggedObj.transform.position, snapPoint.position);
+            float currentDistance = Vector2.Distance(_currentDraggedObj.transform.position, snapPoint.transform.position);
             if (_closestSnapPoint == null || currentDistance < closestDistance)
             {
-                _closestSnapPoint = snapPoint;
+                _closestSnapPoint = snapPoint.transform;
                 closestDistance = currentDistance;
             }
 
@@ -41,53 +56,72 @@ public class SnapManager : MonoBehaviour
                 // we will use the snap object's z position to know whether or not to put the dragging object on top or bottom of the snap point
                 float tmp;
                 SpriteRenderer closestSnapObjSpriteRenderer = _closestSnapPoint.transform.parent.GetComponent<SpriteRenderer>();
-
+                SnappingPoint closestSnapPointScript = _closestSnapPoint.GetComponent<SnappingPoint>();
                 // snap to top
-                if (_closestSnapPoint.transform.localPosition.z == 1)
+                if (closestSnapPointScript.direction == "top")
                 {
                     tmp = _closestSnapPoint.transform.parent.localPosition.y + closestSnapObjSpriteRenderer.bounds.size.y / 2 + _currentDraggedObj.spriteRenderer.bounds.size.y / 2;
                     _currentDraggedObj.transform.localPosition = new Vector2(_closestSnapPoint.transform.parent.localPosition.x, tmp);
                 }
 
                 // snap to bottom
-                else if (_closestSnapPoint.transform.localPosition.z == -1)
+                else if (closestSnapPointScript.direction == "bottom")
                 {
                     tmp = _closestSnapPoint.transform.parent.localPosition.y - closestSnapObjSpriteRenderer.bounds.size.y / 2 - _currentDraggedObj.spriteRenderer.bounds.size.y / 2;
                     _currentDraggedObj.transform.localPosition = new Vector2(_closestSnapPoint.transform.parent.localPosition.x, tmp);
                 }
                 // snap to left
-                else if (_closestSnapPoint.transform.localPosition.z == -2)
+                else if (closestSnapPointScript.direction == "left")
                 {
                     tmp = _closestSnapPoint.transform.parent.localPosition.x - closestSnapObjSpriteRenderer.bounds.size.x / 2 - _currentDraggedObj.spriteRenderer.bounds.size.x / 2;
                     _currentDraggedObj.transform.localPosition = new Vector2(tmp, -_closestSnapPoint.transform.parent.localPosition.y);
                 }
                 // snap to right
-                else if (_closestSnapPoint.transform.localPosition.z == 2)
+                else if (closestSnapPointScript.direction == "right")
                 {
                     tmp = _closestSnapPoint.transform.parent.localPosition.x + closestSnapObjSpriteRenderer.bounds.size.x / 2 + _currentDraggedObj.spriteRenderer.bounds.size.x / 2;
                     _currentDraggedObj.transform.localPosition = new Vector2(tmp, _closestSnapPoint.transform.parent.localPosition.y);
                 }
                 else
                 {
-                    Debug.Log("Snap point invali, check the z index of the snap point.");
+                    Debug.Log("Snap point invalid, check the direction of the snap point.");
                 }
-
                 // assign parent after delay
-                Invoke("assignParent", 0.01f);
+                Invoke("AssignParent", 0.01f);
             }
         }
     }
-    void assignParent()
+    void AssignParent()
     {
-        _currentDraggedObj.transform.SetParent(_closestSnapPoint.transform.parent.transform);
-        objectSnappedInPlace();
+        // feature for later. Need to group rocket parts so that they detatch together on separation.
+        // _currentDraggedObj.transform.SetParent(_closestSnapPoint.transform.parent.transform);
+        ObjectSnappedInPlace();
     }
-    void objectSnappedInPlace()
+    void ObjectSnappedInPlace()
     {
         _closestSnapPoint = null;
     }
-    public void addDraggableObjCallback(Draggable draggableObj)
+    public void AddDraggableObjCallback(Draggable draggableObj)
     {
         draggableObj.dragEndedCallback = OnDragEnded;
+    }
+    public void AddSnappingPointObj(GameObject snappingPointObj)
+    {
+        _snappingPointObjs.Add(snappingPointObj);
+    }
+
+    public void ToggleSnappingPoints()
+    {
+        foreach (GameObject snappingPointObj in _snappingPointObjs)
+        {
+            if (snappingPointObj.activeSelf)
+            {
+                snappingPointObj.SetActive(false);
+            }
+            else
+            {
+                snappingPointObj.SetActive(true);
+            }
+        }
     }
 }
