@@ -11,7 +11,7 @@ public class Parallax : MonoBehaviour
         _startPos = transform.position.y;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         float dist = cam.transform.position.y * _parallaxSpeed;
         transform.position = new Vector3(transform.position.x, _startPos + dist, transform.position.z);

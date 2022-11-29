@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - SnappingPoint
+  - Ground
+  - Capsule
   layers:
   - Default
   - TransparentFX

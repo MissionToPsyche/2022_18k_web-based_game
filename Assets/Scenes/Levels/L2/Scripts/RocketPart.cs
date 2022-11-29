@@ -5,20 +5,32 @@ using UnityEngine;
 public class RocketPart : MonoBehaviour
 {
     Rigidbody2D rocketPartRigidBody;
+    private float _maxVelocity = 20f;
     void Start()
     {
         rocketPartRigidBody = gameObject.GetComponent<Rigidbody2D>();
-        // the rocket parts are in a building state. They are able to be dragged properly
+        Init();
+    }
+    private void Init()
+    {
+        // the rocket parts are in a building state. With this rigidbody configuration, they are able to be dragged properly
         rocketPartRigidBody.bodyType = RigidbodyType2D.Static;
         rocketPartRigidBody.simulated = true;
     }
-    void OnCollisionEnter2D(Collision2D target)
+    void Update()
     {
-        // when the rocket part hits the ground, tell the rocket that it hit the ground
-        if (target.gameObject.tag.Equals("Ground") == true)
+        // set maximum velocity
+        if (Mathf.Abs(rocketPartRigidBody.velocity.y) > (Mathf.Abs(_maxVelocity)))
         {
-            this.transform.parent.gameObject.GetComponent<RocketMovement>().RocketHitTheGround();
+            // if falling, set max fall velocity as negative
+            if (rocketPartRigidBody.velocity.y < 0)
+            {
+                rocketPartRigidBody.velocity = new Vector2(rocketPartRigidBody.velocity.x, -_maxVelocity);
+            }
+            else
+            {
+                rocketPartRigidBody.velocity = new Vector2(rocketPartRigidBody.velocity.x, _maxVelocity);
+            }
         }
     }
-
 }

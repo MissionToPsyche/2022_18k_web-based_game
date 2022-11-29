@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1486083164260070175}
   m_Layer: 0
   m_Name: 'Tier3 Capsule '
-  m_TagString: Untagged
+  m_TagString: Capsule
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
