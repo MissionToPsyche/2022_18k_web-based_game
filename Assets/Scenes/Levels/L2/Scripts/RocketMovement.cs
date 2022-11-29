@@ -39,10 +39,10 @@ public class RocketMovement : MonoBehaviour
     {
         foreach (Transform child in transform)
         {
-            if (child.tag != "NotARocketPart")
+            rocketParts.Add(child);
+            rocketPartRigidbodies.Add(child.GetComponent<Rigidbody2D>());
+            if (child.tag == "Capsule")
             {
-                rocketParts.Add(child);
-                rocketPartRigidbodies.Add(child.GetComponent<Rigidbody2D>());
                 rocketFollowThisScript.FindAndFollowCapsule(child);
             }
         }

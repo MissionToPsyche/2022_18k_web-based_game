@@ -40,11 +40,13 @@ public class RocketPartsShopManager : MonoBehaviour
         RocketInformation rocketInstance = RocketInformation.instance;
 
         // test
-        rocketInstance.tier1Capsule = 2;
+        rocketInstance.tier3Capsule = 1;
         rocketInstance.mediumFuelTank = 2;
         rocketInstance.largeFuelTank = 2;
-        rocketInstance.tier1NoseCone = 2;
-        rocketInstance.tier2Engine = 3;
+        rocketInstance.smallFuelTank = 3;
+        rocketInstance.tier1NoseCone = 1;
+        rocketInstance.tier2NoseCone = 1;
+        rocketInstance.tier1Engine = 3;
 
         // capsules
         tier1Capsule.count = rocketInstance.tier1Capsule;
@@ -114,14 +116,14 @@ public class RocketPartsShopManager : MonoBehaviour
         if (smallFuelTank.count > 0)
         {
             // reduce height by 4 times that of large fuel tank
-            createRocketPartBtn(smallFuelTank, 0.25f);
+            createRocketPartBtn(smallFuelTank, 0.5f, 0.25f);
         }
 
         mediumFuelTank.count = rocketInstance.mediumFuelTank;
         if (mediumFuelTank.count > 0)
         {
             // reduce height by 2 times that of large fuel tank
-            createRocketPartBtn(mediumFuelTank, 0.5f);
+            createRocketPartBtn(mediumFuelTank, 1f, 0.5f);
         }
 
         largeFuelTank.count = rocketInstance.largeFuelTank;
@@ -160,14 +162,14 @@ public class RocketPartsShopManager : MonoBehaviour
         // simulate mouse click
         rocketPartDraggableScript.OnMouseDown();
     }
-    private void createRocketPartBtn(rocketPart currentPart, float scaleImgBy = 1)
+    private void createRocketPartBtn(rocketPart currentPart, float x_scaleImgBy = 1, float y_scaleImgBy = 1)
     {
         // instantiate buttons 
         currentPart.btn = Instantiate(btnPrefab);
         currentPart.btn.transform.SetParent(content);
         GameObject btnImgObj = currentPart.btn.transform.GetChild(0).gameObject;
         RectTransform btnImgRectTransform = btnImgObj.GetComponent<RectTransform>();
-        btnImgRectTransform.localScale = new Vector3(btnImgRectTransform.localScale.x, btnImgRectTransform.localScale.y * scaleImgBy, btnImgRectTransform.localScale.z);
+        btnImgRectTransform.localScale = new Vector3(btnImgRectTransform.localScale.x * x_scaleImgBy, btnImgRectTransform.localScale.y * y_scaleImgBy, btnImgRectTransform.localScale.z);
         Image btnImg = btnImgObj.GetComponent<Image>();
         btnImg.sprite = currentPart.prefab.GetComponent<SpriteRenderer>().sprite;
 
