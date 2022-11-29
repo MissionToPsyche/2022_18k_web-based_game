@@ -48,6 +48,7 @@ public class SnappingPointGenerator : MonoBehaviour
         _instantiatedSnappingPointObj.transform.localPosition = _snappingPointPosition;
         Invoke("AssignParent", 0.01f);
     }
+
     void AssignParent()
     {
         foreach (GameObject _instantiatedSnappingPointObj in _instantiatedSnappingPointObjs)

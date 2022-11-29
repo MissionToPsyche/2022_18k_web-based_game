@@ -14,7 +14,6 @@ public class rocketPart
 }
 public class RocketPartsShopManager : MonoBehaviour
 {
-    public SnapManager snapManager;
     public Transform content;
     public Transform rocket;
     public Button btnPrefab;
@@ -35,10 +34,10 @@ public class RocketPartsShopManager : MonoBehaviour
     GameObject instantiatedRocketPart;
     Draggable rocketPartDraggableScript;
     private bool _applyDrag = false;
-    RocketInformation rocketInstance;
+
     void Start()
     {
-        rocketInstance = RocketInformation.instance;
+        RocketInformation rocketInstance = RocketInformation.instance;
 
         // test
         rocketInstance.tier1Capsule = 2;
@@ -150,7 +149,7 @@ public class RocketPartsShopManager : MonoBehaviour
 
         // add draggable callback
         rocketPartDraggableScript = instantiatedRocketPart.GetComponent<Draggable>();
-        snapManager.AddDraggableObjCallback(rocketPartDraggableScript);
+        SnapManager.instance.AddDraggableObjCallback(rocketPartDraggableScript);
 
         // drag focus the instantiated rocket part
         _applyDrag = true;

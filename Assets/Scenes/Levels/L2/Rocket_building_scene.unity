@@ -205,7 +205,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e10cae243c668c1468e754ed8d429c11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  snapManager: {fileID: 479690639}
   content: {fileID: 545033851}
   rocket: {fileID: 927117999}
   btnPrefab: {fileID: 6655038742294810619, guid: 0d5566f75b21efd47b8c56823720d70e, type: 3}
@@ -799,9 +798,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 585a85c51cbabff4099eaeb513f78cfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  draggableObjects: []
+  draggableObjs: []
   rocket: {fileID: 927117999}
-  snapRange: 0.5
 --- !u!4 &479690640
 Transform:
   m_ObjectHideFlags: 0
@@ -1916,6 +1914,10 @@ PrefabInstance:
     - target: {fileID: 503594055648925914, guid: 67a363f4b33fd6f4a920465cbd21ac9c, type: 3}
       propertyPath: m_Name
       value: Large Fuel Tank
+      objectReference: {fileID: 0}
+    - target: {fileID: 503594055648925914, guid: 67a363f4b33fd6f4a920465cbd21ac9c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 503594055648925917, guid: 67a363f4b33fd6f4a920465cbd21ac9c, type: 3}
       propertyPath: m_RootOrder
