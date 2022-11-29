@@ -18,8 +18,9 @@ public class Draggable : MonoBehaviour
         _cam = Camera.main;
     }
 
-    void OnMouseDown()
+    public void OnMouseDown()
     {
+        SnapManager.instance.ToggleSnappingPoints();
         _dragOffset = transform.position - GetMousePos();
     }
 
@@ -28,8 +29,9 @@ public class Draggable : MonoBehaviour
         transform.position = GetMousePos() + _dragOffset;
     }
 
-    void OnMouseUp()
+    public void OnMouseUp()
     {
+        SnapManager.instance.ToggleSnappingPoints();
         dragEndedCallback(this);
     }
 

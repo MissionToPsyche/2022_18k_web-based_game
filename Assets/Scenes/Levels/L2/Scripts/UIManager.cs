@@ -5,6 +5,7 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     public GameObject engineControllerButton;
+    public GameObject finishedBuildingButton;
     private TextMeshProUGUI _btnText;
     private bool _enginesOn = false;
     private string _enginesOnText = "Engines on";
@@ -13,6 +14,7 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        engineControllerButton.SetActive(false);
         _btnText = engineControllerButton.GetComponentInChildren<TextMeshProUGUI>();
         _btnText.text = _enginesOffText;
     }
@@ -32,5 +34,11 @@ public class UIManager : MonoBehaviour
             rocketMovement.EnginesOn();
             _enginesOn = true;
         }
+    }
+    public void FinishedBuildingTheRocket()
+    {
+        rocketMovement.BuildFinished();
+        engineControllerButton.SetActive(true);
+        finishedBuildingButton.SetActive(false);
     }
 }
