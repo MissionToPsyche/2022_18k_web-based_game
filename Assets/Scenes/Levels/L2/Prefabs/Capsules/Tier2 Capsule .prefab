@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7310230135253691115}
   - component: {fileID: 6721882819650026145}
   - component: {fileID: 6792789022757614469}
+  - component: {fileID: 7275541031083877347}
   m_Layer: 0
   m_Name: 'Tier2 Capsule '
   m_TagString: Untagged
@@ -122,14 +123,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5875146080811044184}
-  m_BodyType: 2
-  m_Simulated: 1
+  m_BodyType: 0
+  m_Simulated: 0
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -164,3 +165,15 @@ MonoBehaviour:
   generateOnLeft: 0
   generateOnRight: 0
   snappingPointPrefab: {fileID: 7029666086727307086, guid: 3597a0d3e5787354ebedbc255d09b865, type: 3}
+--- !u!114 &7275541031083877347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5875146080811044184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8af31c266dc00be45a4ee1cd748d27c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
