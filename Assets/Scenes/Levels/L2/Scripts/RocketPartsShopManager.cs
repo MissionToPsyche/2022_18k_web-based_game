@@ -34,103 +34,105 @@ public class RocketPartsShopManager : MonoBehaviour
     GameObject instantiatedRocketPart;
     Draggable rocketPartDraggableScript;
     private bool _applyDrag = false;
-
+    private string _tooltipHeader;
+    private string _tooltipBody;
+    private RocketInformation _rocketInstance;
+    private int _remainingParts = 0;
     void Start()
     {
-        RocketInformation rocketInstance = RocketInformation.instance;
+        _rocketInstance = RocketInformation.instance;
 
         // test
-        rocketInstance.tier3Capsule = 1;
-        rocketInstance.mediumFuelTank = 2;
-        rocketInstance.largeFuelTank = 2;
-        rocketInstance.smallFuelTank = 3;
-        rocketInstance.tier1NoseCone = 1;
-        rocketInstance.tier2NoseCone = 1;
-        rocketInstance.tier1Engine = 3;
+        _rocketInstance.tier3Capsule = 1;
+        _rocketInstance.mediumFuelTank = 2;
+        _rocketInstance.largeFuelTank = 2;
+        _rocketInstance.smallFuelTank = 3;
+        _rocketInstance.tier1NoseCone = 1;
+        _rocketInstance.tier2NoseCone = 1;
+        _rocketInstance.tier1Engine = 3;
 
         // capsules
-        tier1Capsule.count = rocketInstance.tier1Capsule;
-        if (tier1Capsule.count > 0)
-        {
-            createRocketPartBtn(tier1Capsule);
-        }
+        _tooltipHeader = "Capsule (tier 1)";
+        _tooltipBody = "An old and chunky capsule containing a spacecraft.\nMass 6t";
+        _remainingParts = _rocketInstance.tier1Capsule;
+        _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
+        createRocketPart(tier1Capsule, _rocketInstance.tier1Capsule);
 
-        tier2Capsule.count = rocketInstance.tier2Capsule;
-        if (tier2Capsule.count > 0)
-        {
-            createRocketPartBtn(tier2Capsule);
-        }
+        _tooltipHeader = "Capsule (tier 2)";
+        _tooltipBody = "Although large, the interior makes up for the mass. A capsule containing a spacecraft.\nMass: 4t";
+        _remainingParts = _rocketInstance.tier2Capsule;
+        _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
+        createRocketPart(tier2Capsule, _rocketInstance.tier2Capsule);
 
-        tier3Capsule.count = rocketInstance.tier3Capsule;
-        if (tier3Capsule.count > 0)
-        {
-            createRocketPartBtn(tier3Capsule);
-        }
+        _tooltipHeader = "Capsule (tier 3)";
+        _tooltipBody = "Durable, modern, and lightweight capsule containing a spacecraft.\nMass: 2t";
+        _remainingParts = _rocketInstance.tier3Capsule;
+        _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
+        createRocketPart(tier3Capsule, _rocketInstance.tier3Capsule);
 
         // nose cones
-        tier1NoseCone.count = rocketInstance.tier1NoseCone;
-        if (tier1NoseCone.count > 0)
-        {
-            createRocketPartBtn(tier1NoseCone);
-        }
+        _tooltipHeader = "Aerodynamic Nose Cone (tier 1)";
+        _tooltipBody = "An aerodynamic nose cone used to improve the aerodynamics of the side boosters.\nMass: 2.5t";
+        _remainingParts = _rocketInstance.tier1NoseCone;
+        _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
+        createRocketPart(tier1NoseCone, _rocketInstance.tier1NoseCone);
 
-        tier2NoseCone.count = rocketInstance.tier2NoseCone;
-        if (tier2NoseCone.count > 0)
-        {
-            createRocketPartBtn(tier2NoseCone);
-        }
+        _tooltipHeader = "Aerodynamic Nose Cone (tier 2)";
+        _tooltipBody = "An aerodynamic nose cone used to improve the aerodynamics of the side boosters.\nMass: 0.5t";
+        _remainingParts = _rocketInstance.tier2NoseCone;
+        _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
+        createRocketPart(tier2NoseCone, _rocketInstance.tier2NoseCone);
 
         // engines
-        tier1Engine.count = rocketInstance.tier1Engine;
-        if (tier1Engine.count > 0)
-        {
-            createRocketPartBtn(tier1Engine);
-        }
+        _tooltipHeader = "Engine (tier 1)";
+        _tooltipBody = "Low efficiency and low thrust engine used to make the rocket fly.\nMass: 5t\nThrust: 40t";
+        _remainingParts = _rocketInstance.tier1Engine;
+        _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
+        createRocketPart(tier1Engine, _rocketInstance.tier1Engine);
 
-        tier2Engine.count = rocketInstance.tier2Engine;
-        if (tier2Engine.count > 0)
-        {
-            createRocketPartBtn(tier2Engine);
-        }
+        _tooltipHeader = "Engine (tier 2)";
+        _tooltipBody = "High efficiency but low thrust engine used to make the rocket fly.\nMass: 3t\nThrust: 65t";
+        _remainingParts = _rocketInstance.tier2Engine;
+        _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
+        createRocketPart(tier2Engine, _rocketInstance.tier2Engine);
 
-        tier3Engine.count = rocketInstance.tier3Engine;
-        if (tier3Engine.count > 0)
-        {
-            createRocketPartBtn(tier3Engine);
-        }
+        _tooltipHeader = "Engine (tier 3)";
+        _tooltipBody = "High efficiency and high thrust engine used to make the rocket fly.\nMass: 1.4t\nThrust: 95t";
+        _remainingParts = _rocketInstance.tier3Engine;
+        _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
+        createRocketPart(tier3Engine, _rocketInstance.tier3Engine);
 
         // separators
-        separator.count = rocketInstance.separator;
-        if (separator.count > 0)
-        {
-            createRocketPartBtn(separator);
-        }
+        _tooltipHeader = "Separator";
+        _tooltipBody = "A vertical separator used for detaching empty stages.\nMass: 0.4t";
+        _remainingParts = _rocketInstance.separator;
+        _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
+        createRocketPart(separator, _rocketInstance.separator);
 
-        sideSeparator.count = rocketInstance.sideSeparator;
-        if (sideSeparator.count > 0)
-        {
-            createRocketPartBtn(sideSeparator);
-        }
+        _tooltipHeader = "Side separator";
+        _tooltipBody = "A horizontal separator used for detaching side boosters\nMass: 0.2t";
+        _remainingParts = _rocketInstance.sideSeparator;
+        _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
+        createRocketPart(sideSeparator, _rocketInstance.sideSeparator);
+
         // fuel tanks
-        smallFuelTank.count = rocketInstance.smallFuelTank;
-        if (smallFuelTank.count > 0)
-        {
-            // reduce height by 4 times that of large fuel tank
-            createRocketPartBtn(smallFuelTank, 0.5f, 0.25f);
-        }
+        _tooltipHeader = "Fuel tank";
+        _tooltipBody = "A fuel tank carrying liquid fuel and liquid oxygen\nMass: 5t";
+        _remainingParts = _rocketInstance.smallFuelTank;
+        _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
+        createRocketPart(smallFuelTank, _rocketInstance.smallFuelTank, 0.5f, 0.25f);
 
-        mediumFuelTank.count = rocketInstance.mediumFuelTank;
-        if (mediumFuelTank.count > 0)
-        {
-            // reduce height by 2 times that of large fuel tank
-            createRocketPartBtn(mediumFuelTank, 1f, 0.5f);
-        }
+        _tooltipHeader = "Fuel tank";
+        _tooltipBody = "A fuel tank carrying liquid fuel and liquid oxygen\nMass: 10t";
+        _remainingParts = _rocketInstance.mediumFuelTank;
+        _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
+        createRocketPart(mediumFuelTank, _rocketInstance.mediumFuelTank, y: 0.5f);
 
-        largeFuelTank.count = rocketInstance.largeFuelTank;
-        if (largeFuelTank.count > 0)
-        {
-            createRocketPartBtn(largeFuelTank);
-        }
+        _tooltipHeader = "Fuel tank";
+        _tooltipBody = "A fuel tank carrying liquid fuel and liquid oxygen\nMass: 20t";
+        _remainingParts = _rocketInstance.largeFuelTank;
+        _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
+        createRocketPart(largeFuelTank, _rocketInstance.largeFuelTank);
     }
     void Update()
     {
@@ -162,7 +164,7 @@ public class RocketPartsShopManager : MonoBehaviour
         // simulate mouse click
         rocketPartDraggableScript.OnMouseDown();
     }
-    private void createRocketPartBtn(rocketPart currentPart, float x_scaleImgBy = 1, float y_scaleImgBy = 1)
+    private void createRocketPartBtn(rocketPart currentPart, string tooltipHeader, string tooltipBody, float x_scaleImgBy = 1, float y_scaleImgBy = 1)
     {
         // instantiate buttons 
         currentPart.btn = Instantiate(btnPrefab);
@@ -187,6 +189,12 @@ public class RocketPartsShopManager : MonoBehaviour
         pointerUp.eventID = EventTriggerType.PointerUp;
         pointerUp.callback.AddListener((e) => currentPartPlaced(currentPart));
         trigger.triggers.Add(pointerUp);
+
+        // add tooltip triggering function to the button
+        currentPart.btn.gameObject.AddComponent<TooltipTrigger>();
+        TooltipTrigger btnToolTipTrigger = currentPart.btn.gameObject.GetComponent<TooltipTrigger>();
+        btnToolTipTrigger.header = tooltipHeader;
+        btnToolTipTrigger.body = tooltipBody;
     }
     private void currentPartPlaced(rocketPart currentPart)
     {
@@ -199,5 +207,14 @@ public class RocketPartsShopManager : MonoBehaviour
         {
             currentPart.btn.gameObject.SetActive(false);
         }
+    }
+    private void createRocketPart(rocketPart rocketPart, int count, float x = 1, float y = 1)
+    {
+        if (count > 0)
+        {
+            rocketPart.count = count;
+            createRocketPartBtn(rocketPart, tooltipHeader: _tooltipHeader, tooltipBody: _tooltipBody, x_scaleImgBy: x, y_scaleImgBy: y);
+        }
+
     }
 }
