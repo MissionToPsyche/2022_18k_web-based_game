@@ -6,6 +6,7 @@ public class UIManager : MonoBehaviour
 {
     public GameObject engineControllerButton;
     public GameObject finishedBuildingButton;
+    public bool engineControllerBtnActive = false;
     private TextMeshProUGUI _btnText;
     private bool _enginesOn = false;
     private string _enginesOnText = "Engines on";
@@ -40,7 +41,10 @@ public class UIManager : MonoBehaviour
     public void FinishedBuildingTheRocket()
     {
         rocketMovement.BuildFinished();
-        engineControllerButton.SetActive(true);
         finishedBuildingButton.SetActive(false);
+    }
+    public void ActivateEngineControllerBtn()
+    {
+        engineControllerButton.SetActive(true);
     }
 }

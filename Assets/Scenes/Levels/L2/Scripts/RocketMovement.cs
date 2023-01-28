@@ -13,7 +13,7 @@ public class RocketMovement : MonoBehaviour
     private List<Rigidbody2D> rocketPartRigidbodies = new List<Rigidbody2D>();
     public RocketFollowThis rocketFollowThisScript;
     private Coroutine _accelerationCoroutine;
-
+    public UIManager uiManager;
     void Start()
     {
         Init();
@@ -117,6 +117,10 @@ public class RocketMovement : MonoBehaviour
         _isOnGround = true;
         _speed = 0;
         _acceleration = 0;
+        if (!uiManager.engineControllerBtnActive)
+        {
+            uiManager.ActivateEngineControllerBtn();
+        }
     }
     void OnCrash()
     {
