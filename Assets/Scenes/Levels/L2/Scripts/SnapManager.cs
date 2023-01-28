@@ -104,6 +104,7 @@ public class SnapManager : MonoBehaviour
     void ObjectSnappedInPlace()
     {
         _closestSnapPoint = null;
+        _currentDraggedObj.GetComponent<RocketPart>().isPartOfTheRocket = true;
     }
     public void AddDraggableObjCallback(Draggable draggableObj)
     {

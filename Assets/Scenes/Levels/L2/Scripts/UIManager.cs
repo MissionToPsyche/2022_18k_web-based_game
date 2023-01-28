@@ -11,9 +11,11 @@ public class UIManager : MonoBehaviour
     private string _enginesOnText = "Engines on";
     private string _enginesOffText = "Engines off";
     public RocketMovement rocketMovement;
+    public GameObject tooltip;
     // Start is called before the first frame update
     void Start()
     {
+        tooltip.SetActive(true);
         engineControllerButton.SetActive(false);
         _btnText = engineControllerButton.GetComponentInChildren<TextMeshProUGUI>();
         _btnText.text = _enginesOffText;

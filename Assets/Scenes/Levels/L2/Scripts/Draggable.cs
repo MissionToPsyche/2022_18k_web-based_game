@@ -10,31 +10,39 @@ public class Draggable : MonoBehaviour
     public DragEndedDelegate dragEndedCallback;
     private Vector3 _dragOffset;
     private Camera _cam;
-
+    public bool isDraggable;
 
     void Awake()
     {
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         _cam = Camera.main;
+        isDraggable = true;
     }
 
     public void OnMouseDown()
     {
-        SnapManager.instance.ToggleSnappingPoints();
-        _dragOffset = transform.position - GetMousePos();
+        if (isDraggable)
+        {
+            SnapManager.instance.ToggleSnappingPoints();
+            _dragOffset = transform.position - GetMousePos();
+        }
     }
-
     public void OnMouseDrag()
     {
-        transform.position = GetMousePos() + _dragOffset;
+        if (isDraggable)
+        {
+            transform.position = GetMousePos() + _dragOffset;
+        }
     }
 
     public void OnMouseUp()
     {
-        SnapManager.instance.ToggleSnappingPoints();
-        dragEndedCallback(this);
+        if (isDraggable)
+        {
+            SnapManager.instance.ToggleSnappingPoints();
+            dragEndedCallback(this);
+        }
     }
-
     Vector3 GetMousePos()
     {
         Vector3 mousePos = _cam.ScreenToWorldPoint(Input.mousePosition);

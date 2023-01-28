@@ -29,7 +29,10 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     }
     private void hide()
     {
-        StopCoroutine(_delayedShowCoroutine);
-        TooltipShower.instance.Hide();
+        if (_delayedShowCoroutine != null)
+        {
+            StopCoroutine(_delayedShowCoroutine);
+            TooltipShower.instance.Hide();
+        }
     }
 }

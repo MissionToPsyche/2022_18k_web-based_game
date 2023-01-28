@@ -31,6 +31,9 @@ public class TooltipShower : MonoBehaviour
     }
     public void Hide()
     {
-        tooltip.gameObject.SetActive(false);
+        if (tooltip)
+        {
+            tooltip.gameObject.SetActive(false);
+        }
     }
 }
