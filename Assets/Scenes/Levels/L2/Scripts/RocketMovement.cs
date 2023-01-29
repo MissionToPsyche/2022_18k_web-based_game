@@ -7,8 +7,11 @@ public class RocketMovement : MonoBehaviour
     private float _acceleration;
     private float _speed = 0f;
     private float _maxSpeed = 10f;
+    private float _torque = 0;
     private bool _enginesOn = false;
     private bool _isOnGround = true;
+    public float totalLeftThrust = 0f;
+    public float totalRightThrust = 0f;
     private List<Transform> rocketParts = new List<Transform>();
     private List<Rigidbody2D> rocketPartRigidbodies = new List<Rigidbody2D>();
     public RocketFollowThis rocketFollowThisScript;
@@ -32,6 +35,7 @@ public class RocketMovement : MonoBehaviour
     {
         if (!_isOnGround)
         {
+            // Set max speed
             if (Mathf.Abs(_speed) >= (Mathf.Abs(_maxSpeed)))
             {
                 // if falling, set max fall velocity as negative
@@ -44,9 +48,18 @@ public class RocketMovement : MonoBehaviour
                     _speed = _maxSpeed;
                 }
             }
-            transform.Translate(Vector3.up * _speed * Time.deltaTime);
-            transform.Rotate(0, 0, -90);
+            // Fly in the direction of the rocket
+            if (_enginesOn)
+            {
+                transform.Translate(Vector3.up * _speed * Time.deltaTime);
+            }
+            // When falling, the rocket needs to fall straight down without care for rotation
+            else
+            {
+                transform.Translate(Vector3.down * _speed * Time.deltaTime, Space.World);
+            }
 
+            transform.Rotate(Vector3.back * _torque * Time.deltaTime);
         }
     }
     void Init()
@@ -89,7 +102,7 @@ public class RocketMovement : MonoBehaviour
     }
     public void EnginesOff()
     {
-        _acceleration = -0.2f;
+        _acceleration = 0.2f;
         _enginesOn = false;
         MakeRocketPartsDynamicWithoutGravity();
     }

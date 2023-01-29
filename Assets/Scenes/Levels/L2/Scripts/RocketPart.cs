@@ -7,7 +7,7 @@ public class RocketPart : MonoBehaviour
     Rigidbody2D rocketPartRigidBody;
     public bool isFinishedBuilding = false;
     public bool isPartOfTheRocket = false;
-    private float _crashThreshold = -5f;
+    private float _crashThreshold = 4f;
     void Start()
     {
         rocketPartRigidBody = gameObject.GetComponent<Rigidbody2D>();
@@ -70,7 +70,7 @@ public class RocketPart : MonoBehaviour
             if (isPartOfTheRocket)
             {
                 // If crash too hard, the rocket crashes and the player loses
-                if (gameObject.GetComponentInParent<RocketMovement>().GetSpeed() < _crashThreshold)
+                if (gameObject.GetComponentInParent<RocketMovement>().GetSpeed() > _crashThreshold)
                 {
                     SendMessageUpwards("OnCrash", SendMessageOptions.RequireReceiver);
                 }
