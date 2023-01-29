@@ -1569,9 +1569,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 534cc08bf6bbc064e8282eb8c13af921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _acceleration: 0.5
-  _speed: 0
+  totalLeftThrust: 0
+  totalRightThrust: 0
   rocketFollowThisScript: {fileID: 1205968360}
+  uiManager: {fileID: 1394171389}
 --- !u!4 &927117999
 Transform:
   m_ObjectHideFlags: 0
@@ -1583,8 +1584,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1537592182}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1932,6 +1932,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   engineControllerButton: {fileID: 98420355}
   finishedBuildingButton: {fileID: 170302801}
+  engineControllerBtnActive: 0
   rocketMovement: {fileID: 927117998}
   tooltip: {fileID: 1805767568}
 --- !u!224 &1394171390
@@ -2102,11 +2103,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1500280213}
   m_CullTransparentMesh: 1
---- !u!4 &1537592182 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 503594055648925917, guid: 67a363f4b33fd6f4a920465cbd21ac9c, type: 3}
-  m_PrefabInstance: {fileID: 1728709026}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1555322855
 GameObject:
   m_ObjectHideFlags: 0
@@ -2322,67 +2318,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &1728709026
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 927117999}
-    m_Modifications:
-    - target: {fileID: 503594055648925914, guid: 67a363f4b33fd6f4a920465cbd21ac9c, type: 3}
-      propertyPath: m_Name
-      value: Large Fuel Tank
-      objectReference: {fileID: 0}
-    - target: {fileID: 503594055648925914, guid: 67a363f4b33fd6f4a920465cbd21ac9c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 503594055648925917, guid: 67a363f4b33fd6f4a920465cbd21ac9c, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 503594055648925917, guid: 67a363f4b33fd6f4a920465cbd21ac9c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 503594055648925917, guid: 67a363f4b33fd6f4a920465cbd21ac9c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 503594055648925917, guid: 67a363f4b33fd6f4a920465cbd21ac9c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 503594055648925917, guid: 67a363f4b33fd6f4a920465cbd21ac9c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 503594055648925917, guid: 67a363f4b33fd6f4a920465cbd21ac9c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 503594055648925917, guid: 67a363f4b33fd6f4a920465cbd21ac9c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 503594055648925917, guid: 67a363f4b33fd6f4a920465cbd21ac9c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 503594055648925917, guid: 67a363f4b33fd6f4a920465cbd21ac9c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 503594055648925917, guid: 67a363f4b33fd6f4a920465cbd21ac9c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 503594055648925917, guid: 67a363f4b33fd6f4a920465cbd21ac9c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 67a363f4b33fd6f4a920465cbd21ac9c, type: 3}
 --- !u!1 &1758957485
 GameObject:
   m_ObjectHideFlags: 0
@@ -2455,7 +2390,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: eed23d8c733c79f429bc94dec91567ca, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
