@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - Capsule
   - NotARocketPart
+  - SideSeparator
   layers:
   - Default
   - TransparentFX

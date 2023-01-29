@@ -43,7 +43,6 @@ public class SnapManager : MonoBehaviour
             if (!snappingPointScript.isAttached && snappingPointScript.isEnabled && snapPoint.transform.parent.gameObject != _currentDraggedObj.gameObject)
             {
                 float currentDistance = Vector2.Distance(_currentDraggedObj.transform.position, snapPoint.transform.position);
-                Debug.Log(currentDistance, snapPoint);
 
                 if (_closestSnapPoint == null || currentDistance < closestDistance)
                 {
@@ -139,7 +138,7 @@ public class SnapManager : MonoBehaviour
             snappedRocketPartScript.rocketPartOnRight = _currentDraggedObj.gameObject;
         }
 
-        // Disable snapping points that were connected
+        // Disable dragging of snapping points that are connected to more than 1 other parts
         SnappingPoint closestSnapPointScript = _closestSnapPoint.GetComponent<SnappingPoint>();
         closestSnapPointScript.isAttached = true;
 
