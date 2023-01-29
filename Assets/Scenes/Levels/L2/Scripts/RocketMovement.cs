@@ -45,6 +45,8 @@ public class RocketMovement : MonoBehaviour
                 }
             }
             transform.Translate(Vector3.up * _speed * Time.deltaTime);
+            transform.Rotate(0, 0, -90);
+
         }
     }
     void Init()
@@ -77,8 +79,9 @@ public class RocketMovement : MonoBehaviour
     public void EnginesOn()
     {
         _isOnGround = false;
-        _acceleration = 0.1f;
+        _acceleration = 0.05f;
         _enginesOn = true;
+
         foreach (Rigidbody2D rb in rocketPartRigidbodies)
         {
             rb.bodyType = RigidbodyType2D.Kinematic;

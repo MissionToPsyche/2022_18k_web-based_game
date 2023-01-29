@@ -18,7 +18,7 @@ public class RocketPart : MonoBehaviour
         // the rocket parts are in a building state. With this rigidbody configuration, they are able to be dragged properly
         rocketPartRigidBody.bodyType = RigidbodyType2D.Static;
         rocketPartRigidBody.simulated = true;
-        rocketPartRigidBody.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+        rocketPartRigidBody.collisionDetectionMode = CollisionDetectionMode2D.Discrete;
         rocketPartRigidBody.constraints = RigidbodyConstraints2D.FreezePositionX;
         rocketPartRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
@@ -47,16 +47,14 @@ public class RocketPart : MonoBehaviour
         // Detach part
         if (isFinishedBuilding)
         {
-            // if (gameObject.tag == "Separator")
-            // {
-            //     transform.SetParent(null); // Detach from parent
-            //     rocketPartRigidBody.bodyType = RigidbodyType2D.Dynamic;
-            // }
-            transform.SetParent(null); // Detach from parent
-            rocketPartRigidBody.bodyType = RigidbodyType2D.Dynamic;
-            rocketPartRigidBody.gravityScale = 1f;
-            rocketPartRigidBody.velocity = new Vector2(0, -20f);
-            isPartOfTheRocket = false;
+            if (gameObject.tag == "Separator")
+            {
+                transform.SetParent(null); // Detach from parent
+                rocketPartRigidBody.bodyType = RigidbodyType2D.Dynamic;
+                rocketPartRigidBody.gravityScale = 1f;
+                rocketPartRigidBody.velocity = new Vector2(0, -20f);
+                isPartOfTheRocket = false;
+            }
         }
     }
     void OnFinishedBuilding()
