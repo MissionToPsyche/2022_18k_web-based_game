@@ -148,6 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec6e9dc12db50b84294e901faaf24cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDraggable: 0
+  snapManager: {fileID: 0}
 --- !u!114 &6680077783227702735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,8 +164,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generateOnTop: 1
   generateOnBottom: 1
-  generateOnLeft: 0
-  generateOnRight: 0
+  generateOnLeft: 1
+  generateOnRight: 1
   snappingPointPrefab: {fileID: 7029666086727307086, guid: 3597a0d3e5787354ebedbc255d09b865, type: 3}
 --- !u!114 &4675876760325326786
 MonoBehaviour:
@@ -177,4 +179,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8af31c266dc00be45a4ee1cd748d27c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 0
+  isFinishedBuilding: 0
+  isPartOfTheRocket: 0
+  rocketPartOnTop: {fileID: 0}
+  rocketPartOnBottom: {fileID: 0}
+  rocketPartOnLeft: {fileID: 0}
+  rocketPartOnRight: {fileID: 0}

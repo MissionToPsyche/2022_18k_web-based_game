@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6127417632350676979}
   m_Layer: 0
   m_Name: Side Separator
-  m_TagString: Untagged
+  m_TagString: SideSeparator
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -148,6 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec6e9dc12db50b84294e901faaf24cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDraggable: 0
+  snapManager: {fileID: 0}
 --- !u!114 &884107219521457658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,4 +179,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8af31c266dc00be45a4ee1cd748d27c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 0
+  isFinishedBuilding: 0
+  isPartOfTheRocket: 0
+  rocketPartOnTop: {fileID: 0}
+  rocketPartOnBottom: {fileID: 0}
+  rocketPartOnLeft: {fileID: 0}
+  rocketPartOnRight: {fileID: 0}

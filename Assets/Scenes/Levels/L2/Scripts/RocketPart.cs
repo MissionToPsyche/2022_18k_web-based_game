@@ -7,6 +7,14 @@ public class RocketPart : MonoBehaviour
     Rigidbody2D rocketPartRigidBody;
     public bool isFinishedBuilding = false;
     public bool isPartOfTheRocket = false;
+    public GameObject rocketPartOnTop;
+    public GameObject rocketPartOnBottom;
+    public GameObject rocketPartOnLeft;
+    public GameObject rocketPartOnRight;
+    public GameObject snappingPointOnTop;
+    public GameObject snappingPointOnBottom;
+    public GameObject snappingPointOnLeft;
+    public GameObject snappingPointOnRight;
     private float _crashThreshold = 4f;
     void Start()
     {
@@ -84,6 +92,56 @@ public class RocketPart : MonoBehaviour
                 // If detached part touches the ground, it disappers immediately
                 gameObject.SetActive(false);
             }
+        }
+    }
+    public void OnDragStart()
+    {
+        // If middle part, do not move
+        // Detach all snapping points connected to this rocket part
+        if (snappingPointOnTop)
+        {
+            snappingPointOnTop.GetComponent<SnappingPoint>().isAttached = false;
+        }
+        if (snappingPointOnBottom)
+        {
+            snappingPointOnBottom.GetComponent<SnappingPoint>().isAttached = false;
+        }
+        if (snappingPointOnLeft)
+        {
+            snappingPointOnLeft.GetComponent<SnappingPoint>().isAttached = false;
+        }
+        if (snappingPointOnRight)
+        {
+            snappingPointOnRight.GetComponent<SnappingPoint>().isAttached = false;
+        }
+
+        if (rocketPartOnTop)
+        {
+            RocketPart tmp = rocketPartOnTop.GetComponent<RocketPart>();
+            tmp.snappingPointOnBottom.GetComponent<SnappingPoint>().isAttached = false;
+            tmp.rocketPartOnBottom = null;
+            rocketPartOnTop = null;
+        }
+        if (rocketPartOnBottom)
+        {
+            RocketPart tmp = rocketPartOnBottom.GetComponent<RocketPart>();
+            tmp.snappingPointOnTop.GetComponent<SnappingPoint>().isAttached = false;
+            tmp.rocketPartOnTop = null;
+            rocketPartOnBottom = null;
+        }
+        if (rocketPartOnLeft)
+        {
+            RocketPart tmp = rocketPartOnLeft.GetComponent<RocketPart>();
+            tmp.snappingPointOnRight.GetComponent<SnappingPoint>().isAttached = false;
+            tmp.rocketPartOnRight = null;
+            rocketPartOnLeft = null;
+        }
+        if (rocketPartOnRight)
+        {
+            RocketPart tmp = rocketPartOnRight.GetComponent<RocketPart>();
+            tmp.snappingPointOnLeft.GetComponent<SnappingPoint>().isAttached = false;
+            tmp.rocketPartOnLeft = null;
+            rocketPartOnRight = null;
         }
     }
 }

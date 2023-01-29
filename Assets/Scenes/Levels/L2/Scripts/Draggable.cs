@@ -11,19 +11,21 @@ public class Draggable : MonoBehaviour
     private Vector3 _dragOffset;
     private Camera _cam;
     public bool isDraggable;
-
+    private RocketPart _rocketPartScript;
     void Awake()
     {
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        _rocketPartScript = gameObject.GetComponent<RocketPart>();
         _cam = Camera.main;
-        isDraggable = true;
+        isDraggable = true;     // Unless set to true in Awake, it defaults to false no matter what
     }
 
     public void OnMouseDown()
     {
         if (isDraggable)
         {
-            SnapManager.instance.ToggleSnappingPoints();
+            _rocketPartScript.OnDragStart();
+            SnapManager.instance.ToggleSnappingPoints(gameObject);
             _dragOffset = transform.position - GetMousePos();
         }
     }
@@ -39,7 +41,7 @@ public class Draggable : MonoBehaviour
     {
         if (isDraggable)
         {
-            SnapManager.instance.ToggleSnappingPoints();
+            SnapManager.instance.ToggleSnappingPoints(gameObject);
             dragEndedCallback(this);
         }
     }

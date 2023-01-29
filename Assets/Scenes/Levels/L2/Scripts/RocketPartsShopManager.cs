@@ -38,6 +38,7 @@ public class RocketPartsShopManager : MonoBehaviour
     private string _tooltipBody;
     private RocketInformation _rocketInstance;
     private int _remainingParts = 0;
+    public SnapManager snapManager;
     void Start()
     {
         _rocketInstance = RocketInformation.instance;
