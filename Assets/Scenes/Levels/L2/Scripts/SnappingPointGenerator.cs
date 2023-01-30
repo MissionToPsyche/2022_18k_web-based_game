@@ -66,11 +66,10 @@ public class SnappingPointGenerator : MonoBehaviour
         instantiatedSnappingPointObjScript.direction = direction;
         if (gameObject.tag == "SideSeparator")
         {
-            instantiatedSnappingPointObjScript.isEnabled = true;
+            _instantiatedSnappingPointObj.SetActive(true);
         }
         else
         {
-            instantiatedSnappingPointObjScript.isEnabled = isEnabled;
             _instantiatedSnappingPointObj.SetActive(isEnabled);
         }
         _instantiatedSnappingPointObjs.Add(_instantiatedSnappingPointObj);

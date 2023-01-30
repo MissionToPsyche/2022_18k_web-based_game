@@ -40,14 +40,41 @@ public class SnapManager : MonoBehaviour
         {
             // should not snap to currently dragged object's own snapping points
             SnappingPoint snappingPointScript = snapPoint.GetComponent<SnappingPoint>();
-            if (!snappingPointScript.isAttached && snappingPointScript.isEnabled && snapPoint.transform.parent.gameObject != _currentDraggedObj.gameObject)
+            if (!snappingPointScript.isAttached && snapPoint.transform.parent.gameObject != _currentDraggedObj.gameObject)
             {
-                float currentDistance = Vector2.Distance(_currentDraggedObj.transform.position, snapPoint.transform.position);
+                RocketPart currentRocketPartScript = _currentDraggedObj.GetComponent<RocketPart>();
 
-                if (_closestSnapPoint == null || currentDistance < closestDistance)
+                // Get transform positions of the snapping points and calculate the distance of each snapping points
+                string currentRocketPartClosestSnappingPointDirection = "";
+                void calculateClosestDistance(Vector2 snappingPointPosition, string direction)
                 {
-                    _closestSnapPoint = snapPoint.transform;
-                    closestDistance = currentDistance;
+                    float currentDistance = Vector2.Distance(snappingPointPosition, snapPoint.transform.position);
+                    if (_closestSnapPoint == null || currentDistance < closestDistance)
+                    {
+                        _closestSnapPoint = snapPoint.transform;
+                        closestDistance = currentDistance;
+                        currentRocketPartClosestSnappingPointDirection = direction;
+                    }
+                }
+                if (currentRocketPartScript.snappingPointOnBottom)
+                {
+                    Vector2 snappingPointPosition = currentRocketPartScript.snappingPointOnBottom.transform.position;
+                    calculateClosestDistance(snappingPointPosition, "bottom");
+                }
+                if (currentRocketPartScript.snappingPointOnTop)
+                {
+                    Vector2 snappingPointPosition = currentRocketPartScript.snappingPointOnTop.transform.position;
+                    calculateClosestDistance(snappingPointPosition, "top");
+                }
+                if (currentRocketPartScript.snappingPointOnLeft)
+                {
+                    Vector2 snappingPointPosition = currentRocketPartScript.snappingPointOnLeft.transform.position;
+                    calculateClosestDistance(snappingPointPosition, "left");
+                }
+                if (currentRocketPartScript.snappingPointOnRight)
+                {
+                    Vector2 snappingPointPosition = currentRocketPartScript.snappingPointOnRight.transform.position;
+                    calculateClosestDistance(snappingPointPosition, "right");
                 }
 
                 if (_closestSnapPoint != null && closestDistance <= _snapRange)
@@ -59,26 +86,26 @@ public class SnapManager : MonoBehaviour
                     SpriteRenderer closestSnapObjSpriteRenderer = _closestSnapPoint.transform.parent.GetComponent<SpriteRenderer>();
                     SnappingPoint closestSnapPointScript = _closestSnapPoint.GetComponent<SnappingPoint>();
                     // snap to top
-                    if (closestSnapPointScript.direction == "top")
+                    if (closestSnapPointScript.direction == "top" && currentRocketPartClosestSnappingPointDirection == "bottom")
                     {
                         snapPosition = _closestSnapPoint.transform.parent.localPosition.y + closestSnapObjSpriteRenderer.bounds.size.y / 2 + _currentDraggedObj.spriteRenderer.bounds.size.y / 2;
                         SnapToPoint(snapPosition, "top");
                     }
 
                     // snap to bottom
-                    else if (closestSnapPointScript.direction == "bottom")
+                    else if (closestSnapPointScript.direction == "bottom" && currentRocketPartClosestSnappingPointDirection == "top")
                     {
                         snapPosition = _closestSnapPoint.transform.parent.localPosition.y - closestSnapObjSpriteRenderer.bounds.size.y / 2 - _currentDraggedObj.spriteRenderer.bounds.size.y / 2;
                         SnapToPoint(snapPosition, "bottom");
                     }
                     // snap to left
-                    else if (closestSnapPointScript.direction == "left")
+                    else if (closestSnapPointScript.direction == "left" && currentRocketPartClosestSnappingPointDirection == "right")
                     {
                         snapPosition = _closestSnapPoint.transform.parent.localPosition.x - closestSnapObjSpriteRenderer.bounds.size.x / 2 - _currentDraggedObj.spriteRenderer.bounds.size.x / 2;
                         SnapToPoint(snapPosition, "left");
                     }
                     // snap to right
-                    else if (closestSnapPointScript.direction == "right")
+                    else if (closestSnapPointScript.direction == "right" && currentRocketPartClosestSnappingPointDirection == "left")
                     {
                         snapPosition = _closestSnapPoint.transform.parent.localPosition.x + closestSnapObjSpriteRenderer.bounds.size.x / 2 + _currentDraggedObj.spriteRenderer.bounds.size.x / 2;
                         SnapToPoint(snapPosition, "right");
@@ -94,15 +121,15 @@ public class SnapManager : MonoBehaviour
     }
     void SnapToPoint(float snapPosition, string direction)
     {
-        // Snap the current dragged object to the snapping point
-        _currentDraggedObj.transform.localPosition = new Vector2(_closestSnapPoint.transform.parent.localPosition.x, snapPosition);
-
         // Give reference to the dragged rocket part which rocket part it was snapped to and vice-versa
         GameObject snappedRocketPart = _closestSnapPoint.transform.parent.gameObject;
         RocketPart snappedRocketPartScript = snappedRocketPart.GetComponent<RocketPart>();
         RocketPart currentRocketPartScript = _currentDraggedObj.GetComponent<RocketPart>();
         if (direction == "top")
         {
+            // Snap the current dragged object to the snapping point
+            _currentDraggedObj.transform.localPosition = new Vector2(_closestSnapPoint.transform.parent.localPosition.x, snapPosition);
+
             currentRocketPartScript.rocketPartOnBottom = snappedRocketPart;
             if (currentRocketPartScript.snappingPointOnBottom)
             {
@@ -112,6 +139,9 @@ public class SnapManager : MonoBehaviour
         }
         else if (direction == "bottom")
         {
+            // Snap the current dragged object to the snapping point
+            _currentDraggedObj.transform.localPosition = new Vector2(_closestSnapPoint.transform.parent.localPosition.x, snapPosition);
+
             currentRocketPartScript.rocketPartOnTop = snappedRocketPart;
             if (currentRocketPartScript.snappingPointOnTop)
             {
@@ -121,6 +151,9 @@ public class SnapManager : MonoBehaviour
         }
         else if (direction == "left")
         {
+            // Snap the current dragged object to the snapping point
+            _currentDraggedObj.transform.localPosition = new Vector2(snapPosition, _closestSnapPoint.transform.parent.localPosition.y);
+
             currentRocketPartScript.rocketPartOnRight = snappedRocketPart;
             if (currentRocketPartScript.snappingPointOnRight)
             {
@@ -130,6 +163,9 @@ public class SnapManager : MonoBehaviour
         }
         else if (direction == "right")
         {
+            // Snap the current dragged object to the snapping point
+            _currentDraggedObj.transform.localPosition = new Vector2(snapPosition, _closestSnapPoint.transform.parent.localPosition.y);
+
             currentRocketPartScript.rocketPartOnLeft = snappedRocketPart;
             if (currentRocketPartScript.snappingPointOnLeft)
             {
@@ -178,6 +214,7 @@ public class SnapManager : MonoBehaviour
                 {
                     if (snappingPointDirection == "left")
                     {
+
                         toggleSnappingPoint(snappingPointObj);
                     }
                     else if (snappingPointDirection == "right")

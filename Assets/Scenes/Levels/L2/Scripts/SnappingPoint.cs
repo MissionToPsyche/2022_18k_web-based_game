@@ -6,6 +6,4 @@ public class SnappingPoint : MonoBehaviour
 {
     public string direction; // left, right, top, or bottom
     public bool isAttached = false;
-    public bool isEnabled = true;
-
 }
