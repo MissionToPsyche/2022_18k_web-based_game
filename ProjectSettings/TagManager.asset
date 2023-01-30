@@ -9,6 +9,8 @@ TagManager:
   - Capsule
   - NotARocketPart
   - SideSeparator
+  - FuelTank
+  - Separator
   layers:
   - Default
   - TransparentFX

@@ -6,7 +6,9 @@ public class RocketPart : MonoBehaviour
 {
     Rigidbody2D rocketPartRigidBody;
     public bool isFinishedBuilding = false;
-    public bool isPartOfTheRocket = false;
+    public bool isPartOfTheRocket = true;
+    public bool isPartOfLeftBooster = false;
+    public bool isPartOfRightBooster = false;
     public GameObject rocketPartOnTop;
     public GameObject rocketPartOnBottom;
     public GameObject rocketPartOnLeft;
@@ -15,9 +17,18 @@ public class RocketPart : MonoBehaviour
     public GameObject snappingPointOnBottom;
     public GameObject snappingPointOnLeft;
     public GameObject snappingPointOnRight;
+    public GameObject attachedSeparator;
+    public GameObject attachedSideSeparator;
+    private bool isDetached = false;
+    private float _fallSpeed = -5f;
+    private float _maxVelocity = -20f;
+
     private float _crashThreshold = 4f;
     void Start()
     {
+        isPartOfTheRocket = true;
+        isPartOfLeftBooster = false;
+        isPartOfRightBooster = false;
         rocketPartRigidBody = gameObject.GetComponent<Rigidbody2D>();
         Init();
     }
@@ -27,24 +38,25 @@ public class RocketPart : MonoBehaviour
         rocketPartRigidBody.bodyType = RigidbodyType2D.Static;
         rocketPartRigidBody.simulated = true;
         rocketPartRigidBody.collisionDetectionMode = CollisionDetectionMode2D.Discrete;
-        rocketPartRigidBody.constraints = RigidbodyConstraints2D.FreezePositionX;
-        rocketPartRigidBody.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
     void Update()
     {
         // set maximum velocity
-        // if (Mathf.Abs(rocketPartRigidBody.velocity.y) > (Mathf.Abs(_maxVelocity)))
-        // {
-        //     // if falling, set max fall velocity as negative
-        //     if (rocketPartRigidBody.velocity.y < 0)
-        //     {
-        //         rocketPartRigidBody.velocity = new Vector2(rocketPartRigidBody.velocity.x, -_maxVelocity);
-        //     }
-        //     else
-        //     {
-        //         rocketPartRigidBody.velocity = new Vector2(rocketPartRigidBody.velocity.x, _maxVelocity);
-        //     }
-        // }
+        if (isDetached)
+        {
+            if (Mathf.Abs(rocketPartRigidBody.velocity.y) > (Mathf.Abs(_maxVelocity)))
+            {
+                // if falling, set max fall velocity as negative
+                if (rocketPartRigidBody.velocity.y < 0)
+                {
+                    rocketPartRigidBody.velocity = new Vector2(rocketPartRigidBody.velocity.x, -_maxVelocity);
+                }
+                else
+                {
+                    rocketPartRigidBody.velocity = new Vector2(rocketPartRigidBody.velocity.x, _maxVelocity);
+                }
+            }
+        }
     }
     void OnMouseDown()
     {
@@ -55,18 +67,50 @@ public class RocketPart : MonoBehaviour
         // Detach part
         if (isFinishedBuilding)
         {
-            if (gameObject.tag == "Separator")
+            if (gameObject.tag == "Separator" || gameObject.tag == "SideSeparator")
             {
+                GameObject rocketObject = gameObject.transform.parent.gameObject;
+                List<Transform> children = new List<Transform>();
+                foreach (Transform child in rocketObject.transform)
+                {
+                    children.Add(child);
+                }
+
+                foreach (Transform child in children)
+                {
+                    RocketPart childScript = child.gameObject.GetComponent<RocketPart>();
+                    if (childScript.attachedSeparator == this.gameObject || childScript.attachedSideSeparator == this.gameObject)
+                    {
+                        Rigidbody2D childRb2D = child.gameObject.GetComponent<Rigidbody2D>();
+                        child.SetParent(null); // Detach from parent
+                        childRb2D.bodyType = RigidbodyType2D.Dynamic;
+                        childRb2D.gravityScale = 1f;
+                        childRb2D.velocity = new Vector2(0, _fallSpeed);
+                        childScript.isPartOfTheRocket = false;
+                        childRb2D.constraints = RigidbodyConstraints2D.None;
+
+                    }
+                }
                 transform.SetParent(null); // Detach from parent
                 rocketPartRigidBody.bodyType = RigidbodyType2D.Dynamic;
                 rocketPartRigidBody.gravityScale = 1f;
-                rocketPartRigidBody.velocity = new Vector2(0, -20f);
+                rocketPartRigidBody.constraints = RigidbodyConstraints2D.None;
+                rocketPartRigidBody.velocity = new Vector2(0, _fallSpeed);
+
                 isPartOfTheRocket = false;
+                isDetached = true;
+
             }
         }
     }
     void OnFinishedBuilding()
     {
+        if (!isPartOfTheRocket)
+        {
+            gameObject.transform.SetParent(null);
+            rocketPartRigidBody.bodyType = RigidbodyType2D.Dynamic;
+            rocketPartRigidBody.gravityScale = 1f;
+        }
         gameObject.GetComponent<Draggable>().isDraggable = false;
         isFinishedBuilding = true;
     }
@@ -142,6 +186,14 @@ public class RocketPart : MonoBehaviour
             tmp.snappingPointOnLeft.GetComponent<SnappingPoint>().isAttached = false;
             tmp.rocketPartOnLeft = null;
             rocketPartOnRight = null;
+        }
+        if (attachedSeparator)
+        {
+            attachedSeparator = null;
+        }
+        if (attachedSideSeparator)
+        {
+            attachedSideSeparator = null;
         }
     }
 }

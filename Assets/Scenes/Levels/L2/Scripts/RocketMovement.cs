@@ -91,6 +91,7 @@ public class RocketMovement : MonoBehaviour
     }
     public void EnginesOn()
     {
+        GetReferenceToRocketParts();
         _isOnGround = false;
         _acceleration = 0.05f;
         _enginesOn = true;
@@ -99,6 +100,7 @@ public class RocketMovement : MonoBehaviour
         {
             rb.bodyType = RigidbodyType2D.Kinematic;
         }
+
     }
     public void EnginesOff()
     {
@@ -106,17 +108,7 @@ public class RocketMovement : MonoBehaviour
         _enginesOn = false;
         MakeRocketPartsDynamicWithoutGravity();
     }
-    private void MakeRocketPartsDynamic()
-    {
-        foreach (Transform child in rocketParts)
-        {
-            Rigidbody2D childRigidbody = child.GetComponent<Rigidbody2D>();
-            childRigidbody.bodyType = RigidbodyType2D.Dynamic;
-            childRigidbody.simulated = true;
-            childRigidbody.drag = 0.3f;
-            childRigidbody.gravityScale = 1f;
-        }
-    }
+
     private void MakeRocketPartsDynamicWithoutGravity()
     {
         foreach (Transform child in rocketParts)
@@ -126,6 +118,7 @@ public class RocketMovement : MonoBehaviour
             childRigidbody.simulated = true;
             childRigidbody.drag = 0.3f;
             childRigidbody.gravityScale = 0f;   // Off gravity so it doesn't affect the movement
+            childRigidbody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
         }
     }
     void OnHitGround()

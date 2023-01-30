@@ -41,7 +41,7 @@ public class SnapManager : MonoBehaviour
         {
             // should not snap to currently dragged object's own snapping points
             SnappingPoint snappingPointScript = snapPoint.GetComponent<SnappingPoint>();
-            if (!snappingPointScript.isAttached && snapPoint.transform.parent.gameObject != _currentDraggedObj.gameObject)
+            if (!snappingPointScript.isAttached && snapPoint.transform.parent.gameObject != _currentDraggedObj.gameObject && snapPoint.transform.parent.gameObject.GetComponent<RocketPart>().isPartOfTheRocket)
             {
                 RocketPart currentRocketPartScript = _currentDraggedObj.GetComponent<RocketPart>();
 
@@ -116,13 +116,17 @@ public class SnapManager : MonoBehaviour
                         }
                         else
                         {
-                            Debug.Log("When horizontally snapping, one rocket part must be a side separator");
+                            // Debug.Log("When horizontally snapping, one rocket part must be a side separator");
                         }
                     }
                     else
                     {
-                        Debug.Log("Snap point invalid, make sure that the snapping points are in opposite direction and have correct directions set");
+                        // Debug.Log("Snap point invalid, make sure that the snapping points are in opposite direction and have correct directions set");
                     }
+                }
+                else
+                {
+                    _currentDraggedObj.GetComponent<RocketPart>().isPartOfTheRocket = false;
                 }
             }
         }
@@ -135,6 +139,14 @@ public class SnapManager : MonoBehaviour
         RocketPart currentRocketPartScript = _currentDraggedObj.GetComponent<RocketPart>();
         if (direction == "top")
         {
+            if (snappedRocketPartScript.isPartOfLeftBooster)
+            {
+                currentRocketPartScript.isPartOfLeftBooster = true;
+            }
+            else if (snappedRocketPartScript.isPartOfRightBooster)
+            {
+                currentRocketPartScript.isPartOfRightBooster = true;
+            }
             // Snap the current dragged object to the snapping point
             _currentDraggedObj.transform.localPosition = new Vector2(_closestSnapPoint.transform.parent.localPosition.x, snapPosition);
 
@@ -147,6 +159,14 @@ public class SnapManager : MonoBehaviour
         }
         else if (direction == "bottom")
         {
+            if (snappedRocketPartScript.isPartOfLeftBooster)
+            {
+                currentRocketPartScript.isPartOfLeftBooster = true;
+            }
+            else if (snappedRocketPartScript.isPartOfRightBooster)
+            {
+                currentRocketPartScript.isPartOfRightBooster = true;
+            }
             // Snap the current dragged object to the snapping point
             _currentDraggedObj.transform.localPosition = new Vector2(_closestSnapPoint.transform.parent.localPosition.x, snapPosition);
 
@@ -159,6 +179,8 @@ public class SnapManager : MonoBehaviour
         }
         else if (direction == "left")
         {
+            currentRocketPartScript.isPartOfLeftBooster = true;
+
             // Snap the current dragged object to the snapping point
             _currentDraggedObj.transform.localPosition = new Vector2(snapPosition, _closestSnapPoint.transform.parent.localPosition.y);
 
@@ -171,6 +193,8 @@ public class SnapManager : MonoBehaviour
         }
         else if (direction == "right")
         {
+            currentRocketPartScript.isPartOfRightBooster = true;
+
             // Snap the current dragged object to the snapping point
             _currentDraggedObj.transform.localPosition = new Vector2(snapPosition, _closestSnapPoint.transform.parent.localPosition.y);
 
@@ -191,14 +215,33 @@ public class SnapManager : MonoBehaviour
     }
     void AssignParent()
     {
-        // feature for later. Need to group rocket parts so that they detatch together on separation.
-        // _currentDraggedObj.transform.SetParent(_closestSnapPoint.transform.parent.transform);
         ObjectSnappedInPlace();
     }
     void ObjectSnappedInPlace()
     {
+        RocketPart rocketPartScript = _currentDraggedObj.GetComponent<RocketPart>();
+        GameObject connectedRocketPart = _closestSnapPoint.transform.parent.gameObject;
+        RocketPart connectedRocketPartScript = connectedRocketPart.GetComponent<RocketPart>();
+
+        rocketPartScript.isPartOfTheRocket = true;
+
+        if (connectedRocketPart.tag == "Separator")
+        {
+            rocketPartScript.attachedSeparator = connectedRocketPart;
+        }
+        else if (connectedRocketPart.tag == "SideSeparator")
+        {
+            rocketPartScript.attachedSideSeparator = connectedRocketPart;
+        }
+        else if (connectedRocketPartScript.attachedSeparator)
+        {
+            rocketPartScript.attachedSeparator = connectedRocketPartScript.attachedSeparator;
+        }
+        else if (connectedRocketPartScript.attachedSideSeparator)
+        {
+            rocketPartScript.attachedSideSeparator = connectedRocketPartScript.attachedSideSeparator;
+        }
         _closestSnapPoint = null;
-        _currentDraggedObj.GetComponent<RocketPart>().isPartOfTheRocket = true;
     }
     public void AddDraggableObjCallback(Draggable draggableObj)
     {
