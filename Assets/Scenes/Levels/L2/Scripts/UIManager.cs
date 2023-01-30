@@ -13,7 +13,7 @@ public class UIManager : MonoBehaviour
     private string _enginesOffText = "Engines off";
     public RocketMovement rocketMovement;
     public GameObject tooltip;
-    // Start is called before the first frame update
+
     void Start()
     {
         tooltip.SetActive(true);
@@ -21,7 +21,6 @@ public class UIManager : MonoBehaviour
         _btnText = engineControllerButton.GetComponentInChildren<TextMeshProUGUI>();
         _btnText.text = _enginesOffText;
     }
-
     public void ToggleEngines()
     {
         if (_enginesOn)
@@ -29,7 +28,6 @@ public class UIManager : MonoBehaviour
             _btnText.text = _enginesOffText;
             rocketMovement.EnginesOff();
             _enginesOn = false;
-
         }
         else
         {

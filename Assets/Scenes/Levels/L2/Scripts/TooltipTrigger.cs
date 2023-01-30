@@ -11,7 +11,6 @@ public class TooltipTrigger : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public void OnPointerEnter(PointerEventData eventData)
     {
         _delayedShowCoroutine = StartCoroutine(DelayedShow());
-
     }
     public void OnPointerExit(PointerEventData eventData)
     {

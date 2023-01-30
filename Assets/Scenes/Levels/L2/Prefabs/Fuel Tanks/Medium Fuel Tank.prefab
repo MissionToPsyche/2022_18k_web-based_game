@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7659393771144243880}
   m_Layer: 0
   m_Name: Medium Fuel Tank
-  m_TagString: Untagged
+  m_TagString: FuelTank
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -149,7 +149,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDraggable: 0
-  snapManager: {fileID: 0}
 --- !u!114 &207195240882389820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,3 +184,7 @@ MonoBehaviour:
   rocketPartOnBottom: {fileID: 0}
   rocketPartOnLeft: {fileID: 0}
   rocketPartOnRight: {fileID: 0}
+  snappingPointOnTop: {fileID: 0}
+  snappingPointOnBottom: {fileID: 0}
+  snappingPointOnLeft: {fileID: 0}
+  snappingPointOnRight: {fileID: 0}

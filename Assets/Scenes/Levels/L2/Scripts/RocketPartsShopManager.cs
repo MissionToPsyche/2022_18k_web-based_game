@@ -39,6 +39,7 @@ public class RocketPartsShopManager : MonoBehaviour
     private RocketInformation _rocketInstance;
     private int _remainingParts = 0;
     public SnapManager snapManager;
+    private rocketPart _currentlyInstantiatedPart;
     void Start()
     {
         _rocketInstance = RocketInformation.instance;
@@ -219,6 +220,5 @@ public class RocketPartsShopManager : MonoBehaviour
             rocketPart.count = count;
             createRocketPartBtn(rocketPart, tooltipHeader: _tooltipHeader, tooltipBody: _tooltipBody, x_scaleImgBy: x, y_scaleImgBy: y);
         }
-
     }
 }

@@ -39,7 +39,6 @@ public class SnappingPointGenerator : MonoBehaviour
             _snappingPointPosition = new Vector3(transform.localPosition.x + parentRocketPartSpriteRenderer.bounds.size.x / 2, transform.localPosition.y);
             GenerateSnappingPoint("right", false);
         }
-
     }
     void GenerateSnappingPoint(string direction, bool isEnabled = true)
     {
