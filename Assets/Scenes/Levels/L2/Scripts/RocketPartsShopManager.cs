@@ -38,6 +38,8 @@ public class RocketPartsShopManager : MonoBehaviour
     private string _tooltipBody;
     private RocketInformation _rocketInstance;
     private int _remainingParts = 0;
+    public SnapManager snapManager;
+    private rocketPart _currentlyInstantiatedPart;
     void Start()
     {
         _rocketInstance = RocketInformation.instance;
@@ -45,11 +47,14 @@ public class RocketPartsShopManager : MonoBehaviour
         // test
         _rocketInstance.tier3Capsule = 1;
         _rocketInstance.mediumFuelTank = 2;
-        _rocketInstance.largeFuelTank = 2;
+        _rocketInstance.largeFuelTank = 3;
         _rocketInstance.smallFuelTank = 3;
         _rocketInstance.tier1NoseCone = 1;
         _rocketInstance.tier2NoseCone = 1;
-        _rocketInstance.tier1Engine = 3;
+        _rocketInstance.tier1Engine = 2;
+        _rocketInstance.tier2Engine = 1;
+        _rocketInstance.separator = 6;
+        _rocketInstance.sideSeparator = 2;
 
         // capsules
         _tooltipHeader = "Capsule (tier 1)";
@@ -215,6 +220,5 @@ public class RocketPartsShopManager : MonoBehaviour
             rocketPart.count = count;
             createRocketPartBtn(rocketPart, tooltipHeader: _tooltipHeader, tooltipBody: _tooltipBody, x_scaleImgBy: x, y_scaleImgBy: y);
         }
-
     }
 }

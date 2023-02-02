@@ -8,6 +8,9 @@ TagManager:
   - Ground
   - Capsule
   - NotARocketPart
+  - SideSeparator
+  - FuelTank
+  - Separator
   layers:
   - Default
   - TransparentFX
