@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7659393771144243880}
   m_Layer: 0
   m_Name: Medium Fuel Tank
-  m_TagString: Untagged
+  m_TagString: FuelTank
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,7 +123,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2766062560144497722}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 0
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec6e9dc12db50b84294e901faaf24cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDraggable: 0
 --- !u!114 &207195240882389820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,8 +163,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   generateOnTop: 1
   generateOnBottom: 1
-  generateOnLeft: 0
-  generateOnRight: 0
+  generateOnLeft: 1
+  generateOnRight: 1
   snappingPointPrefab: {fileID: 7029666086727307086, guid: 3597a0d3e5787354ebedbc255d09b865, type: 3}
 --- !u!114 &7659393771144243880
 MonoBehaviour:
@@ -177,4 +178,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8af31c266dc00be45a4ee1cd748d27c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  count: 0
+  isFinishedBuilding: 0
+  isPartOfTheRocket: 0
+  rocketPartOnTop: {fileID: 0}
+  rocketPartOnBottom: {fileID: 0}
+  rocketPartOnLeft: {fileID: 0}
+  rocketPartOnRight: {fileID: 0}
+  snappingPointOnTop: {fileID: 0}
+  snappingPointOnBottom: {fileID: 0}
+  snappingPointOnLeft: {fileID: 0}
+  snappingPointOnRight: {fileID: 0}
