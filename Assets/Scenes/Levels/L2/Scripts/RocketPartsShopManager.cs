@@ -38,8 +38,6 @@ public class RocketPartsShopManager : MonoBehaviour
     private string _tooltipBody;
     private RocketInformation _rocketInstance;
     private int _remainingParts = 0;
-    public SnapManager snapManager;
-    private rocketPart _currentlyInstantiatedPart;
     void Start()
     {
         _rocketInstance = RocketInformation.instance;
@@ -102,7 +100,7 @@ public class RocketPartsShopManager : MonoBehaviour
         createRocketPart(tier2Engine, _rocketInstance.tier2Engine);
 
         _tooltipHeader = "Engine (tier 3)";
-        _tooltipBody = "High efficiency and high thrust engine used to make the rocket fly.\nMass: 1.4t\nThrust: 95t";
+        _tooltipBody = "High efficiency and high thrust engine used to make the rocket fly.\nMass: 1.5t\nThrust: 95t";
         _remainingParts = _rocketInstance.tier3Engine;
         _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
         createRocketPart(tier3Engine, _rocketInstance.tier3Engine);
@@ -128,13 +126,13 @@ public class RocketPartsShopManager : MonoBehaviour
         createRocketPart(smallFuelTank, _rocketInstance.smallFuelTank, 0.5f, 0.25f);
 
         _tooltipHeader = "Fuel tank";
-        _tooltipBody = "A fuel tank carrying liquid fuel and liquid oxygen\nMass: 10t\nThrust: 9t";
+        _tooltipBody = "A fuel tank carrying liquid fuel and liquid oxygen\nMass: 10t\nFuel: 9t";
         _remainingParts = _rocketInstance.mediumFuelTank;
         _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
         createRocketPart(mediumFuelTank, _rocketInstance.mediumFuelTank, y: 0.5f);
 
         _tooltipHeader = "Fuel tank";
-        _tooltipBody = "A fuel tank carrying liquid fuel and liquid oxygen\nMass: 20t\nThrust: 18t";
+        _tooltipBody = "A fuel tank carrying liquid fuel and liquid oxygen\nMass: 20t\nFuel: 18t";
         _remainingParts = _rocketInstance.largeFuelTank;
         _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
         createRocketPart(largeFuelTank, _rocketInstance.largeFuelTank);
@@ -211,6 +209,44 @@ public class RocketPartsShopManager : MonoBehaviour
         if (currentPart.count < 1)
         {
             currentPart.btn.gameObject.SetActive(false);
+        }
+
+        // Add fuel, thrust, and mass
+        Rocket rocketScript = rocket.gameObject.GetComponent<Rocket>();
+        RocketPart currentRocketPartScript = instantiatedRocketPart.GetComponent<RocketPart>();
+
+        // If fuel tank, add fuel
+        if (currentRocketPartScript.fuel > 0)
+        {
+            rocketScript.totalFuel += currentRocketPartScript.fuel;
+        }
+
+        // If engine, add thrust
+        if (currentRocketPartScript.thrust > 0)
+        {
+            if (currentRocketPartScript.isPartOfLeftBooster)
+            {
+                rocketScript.totalLeftThrust += currentRocketPartScript.thrust;
+            }
+            else if (currentRocketPartScript.isPartOfRightBooster)
+            {
+                rocketScript.totalRightThrust += currentRocketPartScript.thrust;
+            }
+            rocketScript.totalThrust += currentRocketPartScript.thrust;
+        }
+
+        // Add mass
+        if (currentRocketPartScript.mass > 0)
+        {
+            if (currentRocketPartScript.isPartOfLeftBooster)
+            {
+                rocketScript.totalLeftMass += currentRocketPartScript.mass;
+            }
+            else if (currentRocketPartScript.isPartOfRightBooster)
+            {
+                rocketScript.totalRightMass += currentRocketPartScript.mass;
+            }
+            rocketScript.totalMass += currentRocketPartScript.mass;
         }
     }
     private void createRocketPart(rocketPart rocketPart, int count, float x = 1, float y = 1)

@@ -133,10 +133,11 @@ public class SnapManager : MonoBehaviour
     }
     void SnapToPoint(float snapPosition, string direction)
     {
-        // Give reference to the dragged rocket part which rocket part it was snapped to and vice-versa
         GameObject snappedRocketPart = _closestSnapPoint.transform.parent.gameObject;
         RocketPart snappedRocketPartScript = snappedRocketPart.GetComponent<RocketPart>();
         RocketPart currentRocketPartScript = _currentDraggedObj.GetComponent<RocketPart>();
+
+        // Give reference to the dragged rocket part which rocket part it was snapped to and vice-versa
         if (direction == "top")
         {
             if (snappedRocketPartScript.isPartOfLeftBooster)

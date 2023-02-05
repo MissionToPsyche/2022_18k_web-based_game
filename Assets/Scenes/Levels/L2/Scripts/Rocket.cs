@@ -145,4 +145,33 @@ public class Rocket : MonoBehaviour
     {
         return _speed;
     }
+    public void OnReduceFuel(float fuelVal)
+    {
+        totalFuel -= fuelVal;
+    }
+    public void OnReduceTotalThrust(float thrustVal)
+    {
+        totalThrust -= thrustVal;
+    }
+    public void OnReduceTotalRightThrust(float thrustVal)
+    {
+        totalRightThrust -= thrustVal;
+    }
+    public void OnReduceTotalLeftThrust(float thrustVal)
+    {
+        totalLeftThrust -= thrustVal;
+    }
+
+    public void OnReduceTotalMass(float massVal)
+    {
+        totalMass -= massVal;
+    }
+    public void OnReduceTotalRightMass(float massVal)
+    {
+        totalRightMass -= massVal;
+    }
+    public void OnReduceTotalLeftMass(float massVal)
+    {
+        totalLeftMass -= massVal;
+    }
 }

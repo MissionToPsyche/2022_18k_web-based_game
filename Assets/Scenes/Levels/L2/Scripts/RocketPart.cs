@@ -22,8 +22,11 @@ public class RocketPart : MonoBehaviour
     private bool isDetached = false;
     private float _fallSpeed = -15f;
     private float _maxVelocity = -20f;
-
     private float _crashThreshold = 4f;
+    public float mass = 0f;
+    public float fuel = 0f;
+    public float thrust = 0f;
+
     void Start()
     {
         isPartOfTheRocket = true;
@@ -60,9 +63,9 @@ public class RocketPart : MonoBehaviour
     }
     void OnMouseDown()
     {
-        DetachPart();
+        DetachAllParts();
     }
-    void DetachPart()
+    void DetachAllParts()
     {
         // Detach part
         if (isFinishedBuilding)
@@ -76,40 +79,71 @@ public class RocketPart : MonoBehaviour
                     children.Add(child);
                 }
 
+                // Remove all parts attached to the separator
                 foreach (Transform child in children)
                 {
                     RocketPart childScript = child.gameObject.GetComponent<RocketPart>();
                     if (childScript.attachedSeparator == this.gameObject || childScript.attachedSideSeparator == this.gameObject)
                     {
-                        Rigidbody2D childRb2D = child.gameObject.GetComponent<Rigidbody2D>();
-                        child.SetParent(null); // Detach from parent
-                        childRb2D.bodyType = RigidbodyType2D.Dynamic;
-                        childRb2D.gravityScale = 1f;
-                        childRb2D.velocity = new Vector2(0, _fallSpeed);
-                        childScript.isPartOfTheRocket = false;
-                        childRb2D.constraints = RigidbodyConstraints2D.None;
-
+                        DetachPart(child, childScript);
                     }
                 }
-                transform.SetParent(null); // Detach from parent
-                rocketPartRigidBody.bodyType = RigidbodyType2D.Dynamic;
-                rocketPartRigidBody.gravityScale = 1f;
-                rocketPartRigidBody.constraints = RigidbodyConstraints2D.None;
-                rocketPartRigidBody.velocity = new Vector2(0, _fallSpeed);
 
-                isPartOfTheRocket = false;
-                isDetached = true;
-
+                // Detach the separator itself
+                DetachPart(this.transform, this.GetComponent<RocketPart>());
             }
         }
     }
+    void DetachPart(Transform rocketPart, RocketPart rocketPartScript)
+    {
+        // Remove fuel, thrust, and mass
+        if (rocketPartScript.fuel > 0)
+        {
+            SendMessageUpwards("OnReduceFuel", rocketPartScript.fuel, SendMessageOptions.RequireReceiver);
+        }
+        // If engine, remove thrust
+        if (rocketPartScript.thrust > 0)
+        {
+            if (rocketPartScript.isPartOfLeftBooster)
+            {
+                SendMessageUpwards("OnReduceTotalLeftThrust", rocketPartScript.thrust, SendMessageOptions.RequireReceiver);
+            }
+            else if (rocketPartScript.isPartOfRightBooster)
+            {
+                SendMessageUpwards("OnReduceTotalRightThrust", rocketPartScript.thrust, SendMessageOptions.RequireReceiver);
+            }
+            SendMessageUpwards("OnReduceTotalThrust", rocketPartScript.thrust, SendMessageOptions.RequireReceiver);
+        }
+
+        // Remove mass
+        if (rocketPartScript.mass > 0)
+        {
+            if (rocketPartScript.isPartOfLeftBooster)
+            {
+                SendMessageUpwards("OnReduceTotalLeftMass", rocketPartScript.mass, SendMessageOptions.RequireReceiver);
+            }
+            else if (rocketPartScript.isPartOfRightBooster)
+            {
+                SendMessageUpwards("OnReduceTotalRightMass", rocketPartScript.mass, SendMessageOptions.RequireReceiver);
+            }
+            SendMessageUpwards("OnReduceTotalMass", rocketPartScript.mass, SendMessageOptions.RequireReceiver);
+        }
+
+        Rigidbody2D rocketPartRb2D = rocketPart.gameObject.GetComponent<Rigidbody2D>();
+        rocketPart.SetParent(null); // Detach from parent
+        rocketPartRb2D.bodyType = RigidbodyType2D.Dynamic;
+        rocketPartRb2D.gravityScale = 1f;
+        rocketPartRb2D.velocity = new Vector2(0, _fallSpeed);
+        rocketPartScript.isPartOfTheRocket = false;
+        rocketPartScript.isDetached = true;
+        rocketPartRb2D.constraints = RigidbodyConstraints2D.None;
+    }
     void OnFinishedBuilding()
     {
+        // If not part of the rocket, detach the part
         if (!isPartOfTheRocket)
         {
-            gameObject.transform.SetParent(null);
-            rocketPartRigidBody.bodyType = RigidbodyType2D.Dynamic;
-            rocketPartRigidBody.gravityScale = 1f;
+            DetachPart(this.transform, this.GetComponent<RocketPart>());
         }
         gameObject.GetComponent<Draggable>().isDraggable = false;
         isFinishedBuilding = true;

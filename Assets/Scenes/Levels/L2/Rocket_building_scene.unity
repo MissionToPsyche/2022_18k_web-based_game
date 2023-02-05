@@ -234,7 +234,6 @@ MonoBehaviour:
     prefab: {fileID: 2766062560144497722, guid: 659d84016e8849f4597bf8c663d944b8, type: 3}
   largeFuelTank:
     prefab: {fileID: 503594055648925914, guid: 67a363f4b33fd6f4a920465cbd21ac9c, type: 3}
-  snapManager: {fileID: 0}
 --- !u!1 &98420355
 GameObject:
   m_ObjectHideFlags: 0
@@ -8854,7 +8853,7 @@ Animation:
   m_GameObject: {fileID: 1768606960}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: b33f1ddd4c561cb49926964d43d8e822, type: 2}
+  m_Animation: {fileID: 0}
   m_Animations: []
   m_WrapMode: 0
   m_PlayAutomatically: 1
