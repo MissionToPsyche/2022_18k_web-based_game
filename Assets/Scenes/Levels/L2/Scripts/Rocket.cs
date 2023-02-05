@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RocketMovement : MonoBehaviour
+public class Rocket : MonoBehaviour
 {
     private float _acceleration;
     private float _speed = 0f;
@@ -10,8 +10,14 @@ public class RocketMovement : MonoBehaviour
     private float _torque = 0;
     private bool _enginesOn = false;
     private bool _isOnGround = true;
+    public float totalThrust = 0f;
     public float totalLeftThrust = 0f;
     public float totalRightThrust = 0f;
+    public float totalMass = 0f;
+    public float totalLeftMass = 0f;
+    public float totalRightMass = 0f;
+    public float totalFuel = 0f;
+    public float TWR = 0f;
     private List<Transform> rocketParts = new List<Transform>();
     private List<Rigidbody2D> rocketPartRigidbodies = new List<Rigidbody2D>();
     public RocketFollowThis rocketFollowThisScript;

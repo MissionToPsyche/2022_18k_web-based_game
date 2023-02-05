@@ -58,7 +58,7 @@ public class RocketPartsShopManager : MonoBehaviour
 
         // capsules
         _tooltipHeader = "Capsule (tier 1)";
-        _tooltipBody = "An old and chunky capsule containing a spacecraft.\nMass 6t";
+        _tooltipBody = "An old and chunky capsule containing a spacecraft.\nMass: 6t";
         _remainingParts = _rocketInstance.tier1Capsule;
         _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
         createRocketPart(tier1Capsule, _rocketInstance.tier1Capsule);
@@ -122,19 +122,19 @@ public class RocketPartsShopManager : MonoBehaviour
 
         // fuel tanks
         _tooltipHeader = "Fuel tank";
-        _tooltipBody = "A fuel tank carrying liquid fuel and liquid oxygen\nMass: 5t";
+        _tooltipBody = "A fuel tank carrying liquid fuel and liquid oxygen\nMass: 5t\nFuel: 4.5t";
         _remainingParts = _rocketInstance.smallFuelTank;
         _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
         createRocketPart(smallFuelTank, _rocketInstance.smallFuelTank, 0.5f, 0.25f);
 
         _tooltipHeader = "Fuel tank";
-        _tooltipBody = "A fuel tank carrying liquid fuel and liquid oxygen\nMass: 10t";
+        _tooltipBody = "A fuel tank carrying liquid fuel and liquid oxygen\nMass: 10t\nThrust: 9t";
         _remainingParts = _rocketInstance.mediumFuelTank;
         _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
         createRocketPart(mediumFuelTank, _rocketInstance.mediumFuelTank, y: 0.5f);
 
         _tooltipHeader = "Fuel tank";
-        _tooltipBody = "A fuel tank carrying liquid fuel and liquid oxygen\nMass: 20t";
+        _tooltipBody = "A fuel tank carrying liquid fuel and liquid oxygen\nMass: 20t\nThrust: 18t";
         _remainingParts = _rocketInstance.largeFuelTank;
         _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
         createRocketPart(largeFuelTank, _rocketInstance.largeFuelTank);

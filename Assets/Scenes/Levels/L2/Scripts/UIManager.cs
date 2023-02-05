@@ -11,13 +11,15 @@ public class UIManager : MonoBehaviour
     private bool _enginesOn = false;
     private string _enginesOnText = "Engines on";
     private string _enginesOffText = "Engines off";
-    public RocketMovement rocketMovement;
+    public Rocket rocket;
     public GameObject tooltip;
+    public GameObject blackPanel;
+    public GameObject controlsTutorial;
+    public GameObject player;
 
     void Start()
     {
-        tooltip.SetActive(true);
-        engineControllerButton.SetActive(false);
+        Init();
         _btnText = engineControllerButton.GetComponentInChildren<TextMeshProUGUI>();
         _btnText.text = _enginesOffText;
     }
@@ -26,20 +28,35 @@ public class UIManager : MonoBehaviour
         if (_enginesOn)
         {
             _btnText.text = _enginesOffText;
-            rocketMovement.EnginesOff();
+            rocket.EnginesOff();
             _enginesOn = false;
         }
         else
         {
             _btnText.text = _enginesOnText;
-            rocketMovement.EnginesOn();
+            rocket.EnginesOn();
             _enginesOn = true;
         }
     }
     public void FinishedBuildingTheRocket()
     {
-        rocketMovement.BuildFinished();
+        blackPanel.SetActive(true);
+    }
+    private void Init()
+    {
+        tooltip.SetActive(true);
+        engineControllerButton.SetActive(false);
+        finishedBuildingButton.SetActive(true);
+        blackPanel.SetActive(false);
+        controlsTutorial.SetActive(false);
+        player.SetActive(true);
+    }
+    public void OnFinishedBuilding()
+    {
         finishedBuildingButton.SetActive(false);
+        rocket.BuildFinished();
+        controlsTutorial.SetActive(true);
+        player.SetActive(false);
     }
     public void ActivateEngineControllerBtn()
     {
