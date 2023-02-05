@@ -132,7 +132,7 @@ public class SnapManager : MonoBehaviour
                 }
             }
         }
-        if (!_hasSnapped && rocketPartsShopManagerScript.firstRocketPartPlaced)
+        if (!_hasSnapped && !_currentDraggedObj.GetComponent<RocketPart>().isFirstRocketPart)
         {
             rocketPartsShopManagerScript.DestroyMisplacedRocketPart();
         }

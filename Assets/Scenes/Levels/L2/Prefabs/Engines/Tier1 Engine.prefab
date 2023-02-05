@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 896171748336054943}
   m_Layer: 0
   m_Name: Tier1 Engine
-  m_TagString: Untagged
+  m_TagString: Engine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -182,6 +182,7 @@ MonoBehaviour:
   isPartOfTheRocket: 1
   isPartOfLeftBooster: 0
   isPartOfRightBooster: 0
+  isFirstRocketPart: 0
   rocketPartOnTop: {fileID: 0}
   rocketPartOnBottom: {fileID: 0}
   rocketPartOnLeft: {fileID: 0}
@@ -195,3 +196,4 @@ MonoBehaviour:
   mass: 5
   fuel: 0
   thrust: 40
+  count: 0

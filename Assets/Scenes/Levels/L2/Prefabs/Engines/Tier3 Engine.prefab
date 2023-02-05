@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 815475363154267552}
   m_Layer: 0
   m_Name: Tier3 Engine
-  m_TagString: Untagged
+  m_TagString: Engine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -195,3 +195,4 @@ MonoBehaviour:
   mass: 1.5
   fuel: 0
   thrust: 95
+  count: 0

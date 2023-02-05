@@ -7,9 +7,13 @@ public class Rocket : MonoBehaviour
     private float _acceleration;
     private float _speed = 0f;
     private float _maxSpeed = 10f;
+    private float _rotationSpeed = 0f;
+    private float _rotationMaxSpeed = 100f;
     private float _torque = 0;
+    private float _torqueByMass = 0;
+    private float _torqueByThrust = 0;
     private bool _enginesOn = false;
-    private bool _isOnGround = true;
+    public bool isOnGround = true;
     public float totalThrust = 0f;
     public float totalLeftThrust = 0f;
     public float totalRightThrust = 0f;
@@ -22,6 +26,7 @@ public class Rocket : MonoBehaviour
     private List<Rigidbody2D> rocketPartRigidbodies = new List<Rigidbody2D>();
     public RocketFollowThis rocketFollowThisScript;
     private Coroutine _accelerationCoroutine;
+    private Coroutine _torqueCoroutine;
     public UIManager uiManager;
     void Start()
     {
@@ -36,10 +41,19 @@ public class Rocket : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
     }
-
+    IEnumerator AccelerateTorque()
+    {
+        while (true)
+        {
+            _torque = _torqueByMass + _torqueByThrust;
+            _rotationSpeed += _torque;
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
     void Update()
     {
-        if (!_isOnGround)
+        // Debug.Log(_rotationSpeed);
+        if (!isOnGround)
         {
             // Set max speed
             if (Mathf.Abs(_speed) >= (Mathf.Abs(_maxSpeed)))
@@ -65,7 +79,23 @@ public class Rocket : MonoBehaviour
                 transform.Translate(Vector3.up * _speed * Time.deltaTime, Space.World);
             }
 
-            transform.Rotate(Vector3.back * _torque * Time.deltaTime);
+        }
+        if (_rotationSpeed != 0)
+        {
+            // Set max speed
+            if (Mathf.Abs(_rotationSpeed) >= (Mathf.Abs(_rotationMaxSpeed)))
+            {
+                // if falling, set max fall velocity as negative
+                if (_rotationSpeed < 0)
+                {
+                    _rotationSpeed = -_rotationMaxSpeed;
+                }
+                else
+                {
+                    _rotationSpeed = _rotationMaxSpeed;
+                }
+            }
+            transform.Rotate(Vector3.back * _rotationSpeed * Time.deltaTime);
         }
     }
     void Init()
@@ -75,13 +105,37 @@ public class Rocket : MonoBehaviour
     public void BuildFinished()
     {
         _accelerationCoroutine = StartCoroutine(Accelerate());
-        _isOnGround = false;
+        _torqueCoroutine = StartCoroutine(AccelerateTorque());
+        isOnGround = false;
         GetReferenceToRocketParts();
         EnginesOff();
+        CalculateMassDistribution();
         foreach (Transform child in rocketParts)
         {
             child.SendMessage("OnFinishedBuilding");
         }
+    }
+    public void CalculateMassDistribution()
+    {
+        float massDifference = Mathf.Abs(totalLeftMass - totalRightMass);
+        float percentage = massDifference * totalMass / 100;
+        if (percentage >= 25)
+        {
+            float torqueToApply = percentage / 100;
+            if (totalLeftMass > totalRightMass)
+            {
+                _torqueByMass = -torqueToApply;
+            }
+            else if (totalLeftMass < totalRightMass)
+            {
+                _torqueByMass = torqueToApply;
+            }
+        }
+        // Debug.Log(totalLeftMass);
+        // Debug.Log(totalRightMass);
+        // Debug.Log(massDifference);
+        // Debug.Log(percentage);
+        // Debug.Log(_torqueByMass);
     }
     private void GetReferenceToRocketParts()
     {
@@ -98,7 +152,6 @@ public class Rocket : MonoBehaviour
     public void EnginesOn()
     {
         GetReferenceToRocketParts();
-        _isOnGround = false;
         _acceleration = 0.05f;
         _enginesOn = true;
 
@@ -110,11 +163,14 @@ public class Rocket : MonoBehaviour
     }
     public void EnginesOff()
     {
-        _acceleration = -0.2f;
         _enginesOn = false;
+        ApplyGravity();
         MakeRocketPartsDynamicWithoutGravity();
     }
-
+    public void ApplyGravity()
+    {
+        _acceleration = -0.2f;
+    }
     private void MakeRocketPartsDynamicWithoutGravity()
     {
         foreach (Transform child in rocketParts)
@@ -124,12 +180,11 @@ public class Rocket : MonoBehaviour
             childRigidbody.simulated = true;
             childRigidbody.drag = 0.3f;
             childRigidbody.gravityScale = 0f;   // Off gravity so it doesn't affect the movement
-            childRigidbody.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+            childRigidbody.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
         }
     }
     void OnHitGround()
     {
-        _isOnGround = true;
         _speed = 0;
         _acceleration = 0;
         if (!uiManager.engineControllerBtnActive)
@@ -148,6 +203,10 @@ public class Rocket : MonoBehaviour
     public float GetSpeed()
     {
         return _speed;
+    }
+    public float GetRotationSpeed()
+    {
+        return _rotationSpeed;
     }
     public void OnReduceFuel(float fuelVal)
     {

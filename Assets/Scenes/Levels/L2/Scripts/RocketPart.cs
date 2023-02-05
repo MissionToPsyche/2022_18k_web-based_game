@@ -9,6 +9,7 @@ public class RocketPart : MonoBehaviour
     public bool isPartOfTheRocket = true;
     public bool isPartOfLeftBooster = false;
     public bool isPartOfRightBooster = false;
+    public bool isFirstRocketPart = false;
     public GameObject rocketPartOnTop;
     public GameObject rocketPartOnBottom;
     public GameObject rocketPartOnLeft;
@@ -91,6 +92,9 @@ public class RocketPart : MonoBehaviour
 
                 // Detach the separator itself
                 DetachPart(this.transform, this.GetComponent<RocketPart>());
+
+                // Recalculate mass distribution of the rocket
+                rocketObject.GetComponent<Rocket>().CalculateMassDistribution();
             }
         }
     }
@@ -158,7 +162,10 @@ public class RocketPart : MonoBehaviour
             if (isPartOfTheRocket)
             {
                 // If crash too hard, the rocket crashes and the player loses
-                if (gameObject.GetComponentInParent<Rocket>().GetSpeed() < _crashThreshold)
+                Rocket rocketScript = gameObject.GetComponentInParent<Rocket>();
+                rocketScript.isOnGround = true;
+
+                if (rocketScript.GetSpeed() < _crashThreshold)
                 {
                     SendMessageUpwards("OnCrash", SendMessageOptions.RequireReceiver);
                 }
@@ -166,11 +173,29 @@ public class RocketPart : MonoBehaviour
                 {
                     SendMessageUpwards("OnHitGround", SendMessageOptions.RequireReceiver);
                 }
+
+                // If not engine and no crash, crash it
+                if (gameObject.tag != "Engine")
+                {
+                    SendMessageUpwards("OnCrash", SendMessageOptions.RequireReceiver);
+                }
             }
             else
             {
                 // If detached part touches the ground, it disappers immediately
                 gameObject.SetActive(false);
+            }
+        }
+    }
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Ground")
+        {
+            if (isPartOfTheRocket)
+            {
+                Rocket rocketScript = gameObject.GetComponentInParent<Rocket>();
+                rocketScript.isOnGround = false;
+                rocketScript.ApplyGravity();
             }
         }
     }

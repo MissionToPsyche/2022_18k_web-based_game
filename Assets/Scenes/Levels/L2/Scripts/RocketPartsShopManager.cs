@@ -211,16 +211,17 @@ public class RocketPartsShopManager : MonoBehaviour
         // stop the object from following the mouse
         _applyDrag = false;
 
-        // trigger the drag ended callback on the referenced script which places the snaps the part to snap point 
-        rocketPartDraggableScript.OnMouseUp();
-
         // Place first rocket part even if it doesn snap
         if (!firstRocketPartPlaced)
         {
             Rocket rocketScript = rocket.GetComponent<Rocket>();
             SnapManager.instance.UpdateRocketProperties(rocketPartScript, rocketScript);
             firstRocketPartPlaced = true;
+            rocketPartScript.isFirstRocketPart = true;
         }
+
+        // trigger the drag ended callback on the referenced script which places the snaps the part to snap point 
+        rocketPartDraggableScript.OnMouseUp();
 
         // Disable the rocket part button 
         if (rocketPartScript.count < 1)

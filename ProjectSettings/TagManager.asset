@@ -11,6 +11,7 @@ TagManager:
   - SideSeparator
   - FuelTank
   - Separator
+  - Engine
   layers:
   - Default
   - TransparentFX
