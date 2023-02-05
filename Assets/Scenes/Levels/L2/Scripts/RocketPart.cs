@@ -143,7 +143,9 @@ public class RocketPart : MonoBehaviour
         // If not part of the rocket, detach the part
         if (!isPartOfTheRocket)
         {
-            DetachPart(this.transform, this.GetComponent<RocketPart>());
+            gameObject.transform.SetParent(null);
+            rocketPartRigidBody.bodyType = RigidbodyType2D.Dynamic;
+            rocketPartRigidBody.gravityScale = 1f;
         }
         gameObject.GetComponent<Draggable>().isDraggable = false;
         isFinishedBuilding = true;

@@ -211,6 +211,43 @@ public class SnapManager : MonoBehaviour
         SnappingPoint closestSnapPointScript = _closestSnapPoint.GetComponent<SnappingPoint>();
         closestSnapPointScript.isAttached = true;
 
+        // Add fuel, thrust, and mass
+        Rocket rocketScript = rocket.gameObject.GetComponent<Rocket>();
+
+        // If fuel tank, add fuel
+        if (currentRocketPartScript.fuel > 0)
+        {
+            rocketScript.totalFuel += currentRocketPartScript.fuel;
+        }
+
+        // If engine, add thrust
+        if (currentRocketPartScript.thrust > 0)
+        {
+            if (currentRocketPartScript.isPartOfLeftBooster)
+            {
+                rocketScript.totalLeftThrust += currentRocketPartScript.thrust;
+            }
+            else if (currentRocketPartScript.isPartOfRightBooster)
+            {
+                rocketScript.totalRightThrust += currentRocketPartScript.thrust;
+            }
+            rocketScript.totalThrust += currentRocketPartScript.thrust;
+        }
+
+        // Add mass
+        if (currentRocketPartScript.mass > 0)
+        {
+            if (currentRocketPartScript.isPartOfLeftBooster)
+            {
+                rocketScript.totalLeftMass += currentRocketPartScript.mass;
+            }
+            else if (currentRocketPartScript.isPartOfRightBooster)
+            {
+                rocketScript.totalRightMass += currentRocketPartScript.mass;
+            }
+            rocketScript.totalMass += currentRocketPartScript.mass;
+        }
+
         // Assign parent after delay
         Invoke("AssignParent", 0.01f);
     }

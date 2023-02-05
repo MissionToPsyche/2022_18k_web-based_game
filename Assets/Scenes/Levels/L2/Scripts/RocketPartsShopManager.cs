@@ -38,6 +38,7 @@ public class RocketPartsShopManager : MonoBehaviour
     private string _tooltipBody;
     private RocketInformation _rocketInstance;
     private int _remainingParts = 0;
+    private bool _firstRocketPartPlaced = false;
     void Start()
     {
         _rocketInstance = RocketInformation.instance;
@@ -211,42 +212,46 @@ public class RocketPartsShopManager : MonoBehaviour
             currentPart.btn.gameObject.SetActive(false);
         }
 
-        // Add fuel, thrust, and mass
-        Rocket rocketScript = rocket.gameObject.GetComponent<Rocket>();
-        RocketPart currentRocketPartScript = instantiatedRocketPart.GetComponent<RocketPart>();
-
-        // If fuel tank, add fuel
-        if (currentRocketPartScript.fuel > 0)
+        // Add fuel, thrust, and mass for the first rocket part placed 
+        if (!_firstRocketPartPlaced)
         {
-            rocketScript.totalFuel += currentRocketPartScript.fuel;
-        }
+            _firstRocketPartPlaced = true;
+            Rocket rocketScript = rocket.gameObject.GetComponent<Rocket>();
+            RocketPart currentRocketPartScript = instantiatedRocketPart.GetComponent<RocketPart>();
 
-        // If engine, add thrust
-        if (currentRocketPartScript.thrust > 0)
-        {
-            if (currentRocketPartScript.isPartOfLeftBooster)
+            // If fuel tank, add fuel
+            if (currentRocketPartScript.fuel > 0)
             {
-                rocketScript.totalLeftThrust += currentRocketPartScript.thrust;
+                rocketScript.totalFuel += currentRocketPartScript.fuel;
             }
-            else if (currentRocketPartScript.isPartOfRightBooster)
-            {
-                rocketScript.totalRightThrust += currentRocketPartScript.thrust;
-            }
-            rocketScript.totalThrust += currentRocketPartScript.thrust;
-        }
 
-        // Add mass
-        if (currentRocketPartScript.mass > 0)
-        {
-            if (currentRocketPartScript.isPartOfLeftBooster)
+            // If engine, add thrust
+            if (currentRocketPartScript.thrust > 0)
             {
-                rocketScript.totalLeftMass += currentRocketPartScript.mass;
+                if (currentRocketPartScript.isPartOfLeftBooster)
+                {
+                    rocketScript.totalLeftThrust += currentRocketPartScript.thrust;
+                }
+                else if (currentRocketPartScript.isPartOfRightBooster)
+                {
+                    rocketScript.totalRightThrust += currentRocketPartScript.thrust;
+                }
+                rocketScript.totalThrust += currentRocketPartScript.thrust;
             }
-            else if (currentRocketPartScript.isPartOfRightBooster)
+
+            // Add mass
+            if (currentRocketPartScript.mass > 0)
             {
-                rocketScript.totalRightMass += currentRocketPartScript.mass;
+                if (currentRocketPartScript.isPartOfLeftBooster)
+                {
+                    rocketScript.totalLeftMass += currentRocketPartScript.mass;
+                }
+                else if (currentRocketPartScript.isPartOfRightBooster)
+                {
+                    rocketScript.totalRightMass += currentRocketPartScript.mass;
+                }
+                rocketScript.totalMass += currentRocketPartScript.mass;
             }
-            rocketScript.totalMass += currentRocketPartScript.mass;
         }
     }
     private void createRocketPart(rocketPart rocketPart, int count, float x = 1, float y = 1)
