@@ -62,7 +62,7 @@ public class Rocket : MonoBehaviour
             // When falling, the rocket needs to fall straight down without care for rotation
             else
             {
-                transform.Translate(Vector3.down * _speed * Time.deltaTime, Space.World);
+                transform.Translate(Vector3.up * _speed * Time.deltaTime, Space.World);
             }
 
             transform.Rotate(Vector3.back * _torque * Time.deltaTime);
@@ -110,7 +110,7 @@ public class Rocket : MonoBehaviour
     }
     public void EnginesOff()
     {
-        _acceleration = 0.2f;
+        _acceleration = -0.2f;
         _enginesOn = false;
         MakeRocketPartsDynamicWithoutGravity();
     }
@@ -137,6 +137,10 @@ public class Rocket : MonoBehaviour
             uiManager.ActivateEngineControllerBtn();
         }
     }
+    public void CalculateTWR()
+    {
+        TWR = totalThrust / totalMass;
+    }
     void OnCrash()
     {
         gameObject.SetActive(false);
@@ -152,6 +156,7 @@ public class Rocket : MonoBehaviour
     public void OnReduceTotalThrust(float thrustVal)
     {
         totalThrust -= thrustVal;
+        CalculateTWR();
     }
     public void OnReduceTotalRightThrust(float thrustVal)
     {
@@ -165,6 +170,7 @@ public class Rocket : MonoBehaviour
     public void OnReduceTotalMass(float massVal)
     {
         totalMass -= massVal;
+        CalculateTWR();
     }
     public void OnReduceTotalRightMass(float massVal)
     {

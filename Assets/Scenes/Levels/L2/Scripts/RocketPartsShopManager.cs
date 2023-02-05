@@ -33,12 +33,14 @@ public class RocketPartsShopManager : MonoBehaviour
     public rocketPart largeFuelTank;
     GameObject instantiatedRocketPart;
     Draggable rocketPartDraggableScript;
+    RocketPart rocketPartScript;
     private bool _applyDrag = false;
     private string _tooltipHeader;
     private string _tooltipBody;
     private RocketInformation _rocketInstance;
     private int _remainingParts = 0;
-    private bool _firstRocketPartPlaced = false;
+    public bool firstRocketPartPlaced = false;
+    public UIManager uIManager;
     void Start()
     {
         _rocketInstance = RocketInformation.instance;
@@ -145,12 +147,12 @@ public class RocketPartsShopManager : MonoBehaviour
             rocketPartDraggableScript.OnMouseDrag();
         }
     }
-    private void instantiateRocketPart(GameObject rocketPartPrefab, ref int count)
+    private void instantiateRocketPart(rocketPart rocketPart)
     {
         Vector3 mousePosition = Input.mousePosition;
         Vector3 btnLocation = Camera.main.ScreenToWorldPoint(mousePosition);
         Vector3 spawnPosition = new Vector3(btnLocation.x, btnLocation.y, 0);
-        instantiatedRocketPart = Instantiate(rocketPartPrefab, spawnPosition, Quaternion.identity);
+        instantiatedRocketPart = Instantiate(rocketPart.prefab, spawnPosition, Quaternion.identity);
 
         // set the parent to the rocket gameobject
         instantiatedRocketPart.transform.SetParent(rocket);
@@ -159,11 +161,15 @@ public class RocketPartsShopManager : MonoBehaviour
         rocketPartDraggableScript = instantiatedRocketPart.GetComponent<Draggable>();
         SnapManager.instance.AddDraggableObjCallback(rocketPartDraggableScript);
 
+        // Get script and set its count
+        rocketPartScript = instantiatedRocketPart.GetComponent<RocketPart>();
+        rocketPartScript.count = rocketPart.count;
+
         // drag focus the instantiated rocket part
         _applyDrag = true;
 
         // reduce count on btn click
-        count--;
+        rocketPartScript.count--;
 
         // simulate mouse click
         rocketPartDraggableScript.OnMouseDown();
@@ -185,7 +191,7 @@ public class RocketPartsShopManager : MonoBehaviour
         // on rocket part UI button pointer down, instantiate the rocket part and apply drag on it
         var pointerDown = new EventTrigger.Entry();
         pointerDown.eventID = EventTriggerType.PointerDown;
-        pointerDown.callback.AddListener((e) => instantiateRocketPart(currentPart.prefab, ref currentPart.count));
+        pointerDown.callback.AddListener((e) => instantiateRocketPart(currentPart));
         trigger.triggers.Add(pointerDown);
 
         // on rocket part UI button pointer up, do stuff
@@ -207,51 +213,19 @@ public class RocketPartsShopManager : MonoBehaviour
 
         // trigger the drag ended callback on the referenced script which places the snaps the part to snap point 
         rocketPartDraggableScript.OnMouseUp();
-        if (currentPart.count < 1)
+
+        // Place first rocket part even if it doesn snap
+        if (!firstRocketPartPlaced)
         {
-            currentPart.btn.gameObject.SetActive(false);
+            Rocket rocketScript = rocket.GetComponent<Rocket>();
+            SnapManager.instance.UpdateRocketProperties(rocketPartScript, rocketScript);
+            firstRocketPartPlaced = true;
         }
 
-        // Add fuel, thrust, and mass for the first rocket part placed 
-        if (!_firstRocketPartPlaced)
+        // Disable the rocket part button 
+        if (rocketPartScript.count < 1)
         {
-            _firstRocketPartPlaced = true;
-            Rocket rocketScript = rocket.gameObject.GetComponent<Rocket>();
-            RocketPart currentRocketPartScript = instantiatedRocketPart.GetComponent<RocketPart>();
-
-            // If fuel tank, add fuel
-            if (currentRocketPartScript.fuel > 0)
-            {
-                rocketScript.totalFuel += currentRocketPartScript.fuel;
-            }
-
-            // If engine, add thrust
-            if (currentRocketPartScript.thrust > 0)
-            {
-                if (currentRocketPartScript.isPartOfLeftBooster)
-                {
-                    rocketScript.totalLeftThrust += currentRocketPartScript.thrust;
-                }
-                else if (currentRocketPartScript.isPartOfRightBooster)
-                {
-                    rocketScript.totalRightThrust += currentRocketPartScript.thrust;
-                }
-                rocketScript.totalThrust += currentRocketPartScript.thrust;
-            }
-
-            // Add mass
-            if (currentRocketPartScript.mass > 0)
-            {
-                if (currentRocketPartScript.isPartOfLeftBooster)
-                {
-                    rocketScript.totalLeftMass += currentRocketPartScript.mass;
-                }
-                else if (currentRocketPartScript.isPartOfRightBooster)
-                {
-                    rocketScript.totalRightMass += currentRocketPartScript.mass;
-                }
-                rocketScript.totalMass += currentRocketPartScript.mass;
-            }
+            currentPart.btn.gameObject.SetActive(false);
         }
     }
     private void createRocketPart(rocketPart rocketPart, int count, float x = 1, float y = 1)
@@ -261,5 +235,11 @@ public class RocketPartsShopManager : MonoBehaviour
             rocketPart.count = count;
             createRocketPartBtn(rocketPart, tooltipHeader: _tooltipHeader, tooltipBody: _tooltipBody, x_scaleImgBy: x, y_scaleImgBy: y);
         }
+    }
+    public void DestroyMisplacedRocketPart()
+    {
+        rocketPartScript.count++;
+        rocketPartScript.isPartOfTheRocket = false;
+        Destroy(instantiatedRocketPart);
     }
 }

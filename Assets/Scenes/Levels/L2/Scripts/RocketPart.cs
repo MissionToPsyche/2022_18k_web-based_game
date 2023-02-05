@@ -22,11 +22,11 @@ public class RocketPart : MonoBehaviour
     private bool isDetached = false;
     private float _fallSpeed = -15f;
     private float _maxVelocity = -20f;
-    private float _crashThreshold = 4f;
+    private float _crashThreshold = -4f;
     public float mass = 0f;
     public float fuel = 0f;
     public float thrust = 0f;
-
+    public int count = 0;
     void Start()
     {
         isPartOfTheRocket = true;
@@ -158,7 +158,7 @@ public class RocketPart : MonoBehaviour
             if (isPartOfTheRocket)
             {
                 // If crash too hard, the rocket crashes and the player loses
-                if (gameObject.GetComponentInParent<Rocket>().GetSpeed() > _crashThreshold)
+                if (gameObject.GetComponentInParent<Rocket>().GetSpeed() < _crashThreshold)
                 {
                     SendMessageUpwards("OnCrash", SendMessageOptions.RequireReceiver);
                 }
