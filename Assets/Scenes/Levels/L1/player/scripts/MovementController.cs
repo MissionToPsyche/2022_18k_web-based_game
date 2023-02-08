@@ -7,7 +7,7 @@ public class MovementController : MonoBehaviour
     #region components
     Animator animator;
     Rigidbody2D body;
-    SpriteRenderer spriteRenderer;
+    private SpriteRenderer spriteRenderer;
     PlayerParticleSystemController playerParticles;
     #endregion
 
@@ -45,6 +45,8 @@ public class MovementController : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))
         {
+            Debug.Log($"is Grounded : {playerCollision.isGrounded}");
+
             //single jump
             if (playerCollision.isGrounded)
             {
