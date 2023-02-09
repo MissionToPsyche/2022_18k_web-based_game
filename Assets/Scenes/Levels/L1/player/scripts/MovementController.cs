@@ -45,8 +45,6 @@ public class MovementController : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))
         {
-            Debug.Log($"is Grounded : {playerCollision.isGrounded}");
-
             //single jump
             if (playerCollision.isGrounded)
             {
