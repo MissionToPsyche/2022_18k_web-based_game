@@ -149,7 +149,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDraggable: 0
-  snapManager: {fileID: 0}
 --- !u!114 &884107219521457658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,7 +180,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFinishedBuilding: 0
   isPartOfTheRocket: 0
+  isPartOfLeftBooster: 0
+  isPartOfRightBooster: 0
   rocketPartOnTop: {fileID: 0}
   rocketPartOnBottom: {fileID: 0}
   rocketPartOnLeft: {fileID: 0}
   rocketPartOnRight: {fileID: 0}
+  snappingPointOnTop: {fileID: 0}
+  snappingPointOnBottom: {fileID: 0}
+  snappingPointOnLeft: {fileID: 0}
+  snappingPointOnRight: {fileID: 0}
+  attachedSeparator: {fileID: 0}
+  attachedSideSeparator: {fileID: 0}
+  mass: 0.2
+  fuel: 0
+  thrust: 0
