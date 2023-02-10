@@ -12,6 +12,15 @@ TagManager:
   - FuelTank
   - Separator
   - Engine
+  - gold
+  - iron
+  - nickel
+  - ScanUI
+  - Ship
+  - CollideObject
+  - Health
+  - Goal
+  - Ice
   layers:
   - Default
   - TransparentFX

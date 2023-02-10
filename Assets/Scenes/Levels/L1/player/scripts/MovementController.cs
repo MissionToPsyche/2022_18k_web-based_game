@@ -7,7 +7,7 @@ public class MovementController : MonoBehaviour
     #region components
     Animator animator;
     Rigidbody2D body;
-    SpriteRenderer spriteRenderer;
+    private SpriteRenderer spriteRenderer;
     PlayerParticleSystemController playerParticles;
     #endregion
 
