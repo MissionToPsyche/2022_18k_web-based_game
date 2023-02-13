@@ -180,6 +180,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFinishedBuilding: 0
   isPartOfTheRocket: 0
+  isPartOfLeftBooster: 0
+  isPartOfRightBooster: 0
   rocketPartOnTop: {fileID: 0}
   rocketPartOnBottom: {fileID: 0}
   rocketPartOnLeft: {fileID: 0}
@@ -188,3 +190,8 @@ MonoBehaviour:
   snappingPointOnBottom: {fileID: 0}
   snappingPointOnLeft: {fileID: 0}
   snappingPointOnRight: {fileID: 0}
+  attachedSeparator: {fileID: 0}
+  attachedSideSeparator: {fileID: 0}
+  mass: 20
+  fuel: 18
+  thrust: 0

@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class SnapManager : MonoBehaviour
 {
-    private List<GameObject> _snappingPointObjs = new List<GameObject>();
+    public List<GameObject> _snappingPointObjs = new List<GameObject>();
     public Transform rocket;
     private float _snapRange = 0.5f;
     private Draggable _currentDraggedObj;
     private Transform _closestSnapPoint = null;
     public static SnapManager instance;     // Needs to create an instance because all the instantiated rocket parts use this script
-    public RocketPartsShopManager rocketPartsShopManager;
+    public UIManager uIManager;
+    private bool _hasSnapped = false;
+    public RocketPartsShopManager rocketPartsShopManagerScript;
+
     void Awake()
     {
         // if there is already an instance, destroy it
@@ -34,89 +37,92 @@ public class SnapManager : MonoBehaviour
 
     private void OnDragEnded(Draggable draggedObj)
     {
+        _hasSnapped = false;
         _currentDraggedObj = draggedObj;
         float closestDistance = 100000f;
-
         foreach (GameObject snapPoint in _snappingPointObjs)
         {
-            // should not snap to currently dragged object's own snapping points
-            SnappingPoint snappingPointScript = snapPoint.GetComponent<SnappingPoint>();
-            if (!snappingPointScript.isAttached && snapPoint.transform.parent.gameObject != _currentDraggedObj.gameObject && snapPoint.transform.parent.gameObject.GetComponent<RocketPart>().isPartOfTheRocket)
+            if (snapPoint != null)
             {
-                RocketPart currentRocketPartScript = _currentDraggedObj.GetComponent<RocketPart>();
+                // should not snap to currently dragged object's own snapping points
+                SnappingPoint snappingPointScript = snapPoint.GetComponent<SnappingPoint>();
+                if (!snappingPointScript.isAttached && snapPoint.transform.parent.gameObject != _currentDraggedObj.gameObject && snapPoint.transform.parent.gameObject.GetComponent<RocketPart>().isPartOfTheRocket)
+                {
+                    RocketPart currentRocketPartScript = _currentDraggedObj.GetComponent<RocketPart>();
 
-                // Get transform positions of the snapping points and calculate the distance of each snapping points
-                string currentRocketPartClosestSnappingPointDirection = "";
-                void calculateClosestDistance(Vector2 snappingPointPosition, string direction)
-                {
-                    float currentDistance = Vector2.Distance(snappingPointPosition, snapPoint.transform.position);
-                    if (_closestSnapPoint == null || currentDistance < closestDistance)
+                    // Get transform positions of the snapping points and calculate the distance of each snapping points
+                    string currentRocketPartClosestSnappingPointDirection = "";
+                    void calculateClosestDistance(Vector2 snappingPointPosition, string direction)
                     {
-                        _closestSnapPoint = snapPoint.transform;
-                        closestDistance = currentDistance;
-                        currentRocketPartClosestSnappingPointDirection = direction;
-                    }
-                }
-                if (currentRocketPartScript.snappingPointOnBottom)
-                {
-                    Vector2 snappingPointPosition = currentRocketPartScript.snappingPointOnBottom.transform.position;
-                    calculateClosestDistance(snappingPointPosition, "bottom");
-                }
-                if (currentRocketPartScript.snappingPointOnTop)
-                {
-                    Vector2 snappingPointPosition = currentRocketPartScript.snappingPointOnTop.transform.position;
-                    calculateClosestDistance(snappingPointPosition, "top");
-                }
-                if (currentRocketPartScript.snappingPointOnLeft)
-                {
-                    Vector2 snappingPointPosition = currentRocketPartScript.snappingPointOnLeft.transform.position;
-                    calculateClosestDistance(snappingPointPosition, "left");
-                }
-                if (currentRocketPartScript.snappingPointOnRight)
-                {
-                    Vector2 snappingPointPosition = currentRocketPartScript.snappingPointOnRight.transform.position;
-                    calculateClosestDistance(snappingPointPosition, "right");
-                }
-
-                if (_closestSnapPoint != null && closestDistance <= _snapRange)
-                {
-                    // reset parent to rocket (or the local position translation won't be correct)
-                    _currentDraggedObj.transform.SetParent(rocket.transform);
-
-                    float snapPosition;
-                    SpriteRenderer closestSnapObjSpriteRenderer = _closestSnapPoint.transform.parent.GetComponent<SpriteRenderer>();
-                    SnappingPoint closestSnapPointScript = _closestSnapPoint.GetComponent<SnappingPoint>();
-
-                    // snap to top
-                    if (closestSnapPointScript.direction == "top" && currentRocketPartClosestSnappingPointDirection == "bottom")
-                    {
-                        snapPosition = _closestSnapPoint.transform.parent.localPosition.y + closestSnapObjSpriteRenderer.bounds.size.y / 2 + _currentDraggedObj.spriteRenderer.bounds.size.y / 2;
-                        SnapToPoint(snapPosition, "top");
-                    }
-                    // snap to bottom
-                    else if (closestSnapPointScript.direction == "bottom" && currentRocketPartClosestSnappingPointDirection == "top")
-                    {
-                        snapPosition = _closestSnapPoint.transform.parent.localPosition.y - closestSnapObjSpriteRenderer.bounds.size.y / 2 - _currentDraggedObj.spriteRenderer.bounds.size.y / 2;
-                        SnapToPoint(snapPosition, "bottom");
-                    }
-                    // If it is horizontal snapping, at least one of the rocket part should be a side separator and both cannot be side separators
-                    else if ((_currentDraggedObj.gameObject.tag == "SideSeparator" || _closestSnapPoint.transform.parent.gameObject.tag == "SideSeparator") && !(_currentDraggedObj.gameObject.tag == "SideSeparator" && _closestSnapPoint.transform.parent.gameObject.tag == "SideSeparator"))
-                    {
-                        // snap to left
-                        if (closestSnapPointScript.direction == "left" && currentRocketPartClosestSnappingPointDirection == "right")
+                        float currentDistance = Vector2.Distance(snappingPointPosition, snapPoint.transform.position);
+                        if (_closestSnapPoint == null || currentDistance < closestDistance)
                         {
-                            snapPosition = _closestSnapPoint.transform.parent.localPosition.x - closestSnapObjSpriteRenderer.bounds.size.x / 2 - _currentDraggedObj.spriteRenderer.bounds.size.x / 2;
-                            SnapToPoint(snapPosition, "left");
+                            _closestSnapPoint = snapPoint.transform;
+                            closestDistance = currentDistance;
+                            currentRocketPartClosestSnappingPointDirection = direction;
                         }
-                        // snap to right
-                        else if (closestSnapPointScript.direction == "right" && currentRocketPartClosestSnappingPointDirection == "left")
+                    }
+                    if (currentRocketPartScript.snappingPointOnBottom)
+                    {
+                        Vector2 snappingPointPosition = currentRocketPartScript.snappingPointOnBottom.transform.position;
+                        calculateClosestDistance(snappingPointPosition, "bottom");
+                    }
+                    if (currentRocketPartScript.snappingPointOnTop)
+                    {
+                        Vector2 snappingPointPosition = currentRocketPartScript.snappingPointOnTop.transform.position;
+                        calculateClosestDistance(snappingPointPosition, "top");
+                    }
+                    if (currentRocketPartScript.snappingPointOnLeft)
+                    {
+                        Vector2 snappingPointPosition = currentRocketPartScript.snappingPointOnLeft.transform.position;
+                        calculateClosestDistance(snappingPointPosition, "left");
+                    }
+                    if (currentRocketPartScript.snappingPointOnRight)
+                    {
+                        Vector2 snappingPointPosition = currentRocketPartScript.snappingPointOnRight.transform.position;
+                        calculateClosestDistance(snappingPointPosition, "right");
+                    }
+
+                    if (_closestSnapPoint != null && closestDistance <= _snapRange)
+                    {
+                        // reset parent to rocket (or the local position translation won't be correct)
+                        _currentDraggedObj.transform.SetParent(rocket.transform);
+
+                        float snapPosition;
+                        SpriteRenderer closestSnapObjSpriteRenderer = _closestSnapPoint.transform.parent.GetComponent<SpriteRenderer>();
+                        SnappingPoint closestSnapPointScript = _closestSnapPoint.GetComponent<SnappingPoint>();
+
+                        // snap to top
+                        if (closestSnapPointScript.direction == "top" && currentRocketPartClosestSnappingPointDirection == "bottom")
                         {
-                            snapPosition = _closestSnapPoint.transform.parent.localPosition.x + closestSnapObjSpriteRenderer.bounds.size.x / 2 + _currentDraggedObj.spriteRenderer.bounds.size.x / 2;
-                            SnapToPoint(snapPosition, "right");
+                            snapPosition = _closestSnapPoint.transform.parent.localPosition.y + closestSnapObjSpriteRenderer.bounds.size.y / 2 + _currentDraggedObj.spriteRenderer.bounds.size.y / 2;
+                            SnapToPoint(snapPosition, "top");
                         }
-                        else
+                        // snap to bottom
+                        else if (closestSnapPointScript.direction == "bottom" && currentRocketPartClosestSnappingPointDirection == "top")
                         {
-                            // Debug.Log("When horizontally snapping, one rocket part must be a side separator");
+                            snapPosition = _closestSnapPoint.transform.parent.localPosition.y - closestSnapObjSpriteRenderer.bounds.size.y / 2 - _currentDraggedObj.spriteRenderer.bounds.size.y / 2;
+                            SnapToPoint(snapPosition, "bottom");
+                        }
+                        // If it is horizontal snapping, at least one of the rocket part should be a side separator and both cannot be side separators
+                        else if ((_currentDraggedObj.gameObject.tag == "SideSeparator" || _closestSnapPoint.transform.parent.gameObject.tag == "SideSeparator") && !(_currentDraggedObj.gameObject.tag == "SideSeparator" && _closestSnapPoint.transform.parent.gameObject.tag == "SideSeparator"))
+                        {
+                            // snap to left
+                            if (closestSnapPointScript.direction == "left" && currentRocketPartClosestSnappingPointDirection == "right")
+                            {
+                                snapPosition = _closestSnapPoint.transform.parent.localPosition.x - closestSnapObjSpriteRenderer.bounds.size.x / 2 - _currentDraggedObj.spriteRenderer.bounds.size.x / 2;
+                                SnapToPoint(snapPosition, "left");
+                            }
+                            // snap to right
+                            else if (closestSnapPointScript.direction == "right" && currentRocketPartClosestSnappingPointDirection == "left")
+                            {
+                                snapPosition = _closestSnapPoint.transform.parent.localPosition.x + closestSnapObjSpriteRenderer.bounds.size.x / 2 + _currentDraggedObj.spriteRenderer.bounds.size.x / 2;
+                                SnapToPoint(snapPosition, "right");
+                            }
+                            else
+                            {
+                                // Debug.Log("When horizontally snapping, one rocket part must be a side separator");
+                            }
                         }
                     }
                     else
@@ -124,19 +130,21 @@ public class SnapManager : MonoBehaviour
                         // Debug.Log("Snap point invalid, make sure that the snapping points are in opposite direction and have correct directions set");
                     }
                 }
-                else
-                {
-                    _currentDraggedObj.GetComponent<RocketPart>().isPartOfTheRocket = false;
-                }
             }
+        }
+        if (!_hasSnapped && !_currentDraggedObj.GetComponent<RocketPart>().isFirstRocketPart)
+        {
+            rocketPartsShopManagerScript.DestroyMisplacedRocketPart();
         }
     }
     void SnapToPoint(float snapPosition, string direction)
     {
-        // Give reference to the dragged rocket part which rocket part it was snapped to and vice-versa
+        _hasSnapped = true;
         GameObject snappedRocketPart = _closestSnapPoint.transform.parent.gameObject;
         RocketPart snappedRocketPartScript = snappedRocketPart.GetComponent<RocketPart>();
         RocketPart currentRocketPartScript = _currentDraggedObj.GetComponent<RocketPart>();
+
+        // Give reference to the dragged rocket part which rocket part it was snapped to and vice-versa
         if (direction == "top")
         {
             if (snappedRocketPartScript.isPartOfLeftBooster)
@@ -210,8 +218,54 @@ public class SnapManager : MonoBehaviour
         SnappingPoint closestSnapPointScript = _closestSnapPoint.GetComponent<SnappingPoint>();
         closestSnapPointScript.isAttached = true;
 
+        // Add fuel, thrust, and mass
+        Rocket rocketScript = rocket.gameObject.GetComponent<Rocket>();
+        UpdateRocketProperties(currentRocketPartScript, rocketScript);
+
         // Assign parent after delay
         Invoke("AssignParent", 0.01f);
+    }
+    public void UpdateRocketProperties(RocketPart currentRocketPartScript, Rocket rocketScript)
+    {
+        // If fuel tank, add fuel
+        if (currentRocketPartScript.fuel > 0)
+        {
+            rocketScript.totalFuel += currentRocketPartScript.fuel;
+        }
+
+        // If engine, add thrust
+        if (currentRocketPartScript.thrust > 0)
+        {
+            if (currentRocketPartScript.isPartOfLeftBooster)
+            {
+                rocketScript.totalLeftThrust += currentRocketPartScript.thrust;
+            }
+            else if (currentRocketPartScript.isPartOfRightBooster)
+            {
+                rocketScript.totalRightThrust += currentRocketPartScript.thrust;
+            }
+            rocketScript.totalThrust += currentRocketPartScript.thrust;
+        }
+
+        // Add mass
+        if (currentRocketPartScript.mass > 0)
+        {
+            if (currentRocketPartScript.isPartOfLeftBooster)
+            {
+                rocketScript.totalLeftMass += currentRocketPartScript.mass;
+            }
+            else if (currentRocketPartScript.isPartOfRightBooster)
+            {
+                rocketScript.totalRightMass += currentRocketPartScript.mass;
+            }
+            rocketScript.totalMass += currentRocketPartScript.mass;
+        }
+
+        // Update TWR
+        rocketScript.CalculateTWR();
+
+        // Update text in UI
+        uIManager.OnCorrectlyPlacedRocketPart();
     }
     void AssignParent()
     {
@@ -256,45 +310,48 @@ public class SnapManager : MonoBehaviour
         // If side separator show all snapping points available on the left or right
         foreach (GameObject snappingPointObj in _snappingPointObjs)
         {
-            SnappingPoint snappingPointScript = snappingPointObj.GetComponent<SnappingPoint>();
-            if (!snappingPointScript.isAttached)
+            if (snappingPointObj != null)
             {
-                string snappingPointDirection = snappingPointScript.direction;
-                if (currentDraggedObj.tag == "SideSeparator")
+                SnappingPoint snappingPointScript = snappingPointObj.GetComponent<SnappingPoint>();
+                if (!snappingPointScript.isAttached)
                 {
-                    if (snappingPointDirection == "left")
+                    string snappingPointDirection = snappingPointScript.direction;
+                    if (currentDraggedObj.tag == "SideSeparator")
                     {
-                        toggleSnappingPoint(snappingPointObj);
-                    }
-                    else if (snappingPointDirection == "right")
-                    {
-                        toggleSnappingPoint(snappingPointObj);
-                    }
-                }
-                else
-                {
-                    // Fuel tanks should see horizontal snapping points if side separator is present
-                    if (currentDraggedObj.gameObject.tag == "FuelTank")
-                    {
-                        if (snappingPointObj.transform.parent.gameObject.tag == "SideSeparator")
+                        if (snappingPointDirection == "left")
                         {
-                            if (snappingPointDirection == "left")
-                            {
-                                toggleSnappingPoint(snappingPointObj);
-                            }
-                            else if (snappingPointDirection == "right")
-                            {
-                                toggleSnappingPoint(snappingPointObj);
-                            }
+                            toggleSnappingPoint(snappingPointObj);
+                        }
+                        else if (snappingPointDirection == "right")
+                        {
+                            toggleSnappingPoint(snappingPointObj);
                         }
                     }
-                    if (snappingPointDirection == "top")
+                    else
                     {
-                        toggleSnappingPoint(snappingPointObj);
-                    }
-                    else if (snappingPointDirection == "bottom")
-                    {
-                        toggleSnappingPoint(snappingPointObj);
+                        // Fuel tanks should see horizontal snapping points if side separator is present
+                        if (currentDraggedObj.gameObject.tag == "FuelTank")
+                        {
+                            if (snappingPointObj.transform.parent.gameObject.tag == "SideSeparator")
+                            {
+                                if (snappingPointDirection == "left")
+                                {
+                                    toggleSnappingPoint(snappingPointObj);
+                                }
+                                else if (snappingPointDirection == "right")
+                                {
+                                    toggleSnappingPoint(snappingPointObj);
+                                }
+                            }
+                        }
+                        if (snappingPointDirection == "top")
+                        {
+                            toggleSnappingPoint(snappingPointObj);
+                        }
+                        else if (snappingPointDirection == "bottom")
+                        {
+                            toggleSnappingPoint(snappingPointObj);
+                        }
                     }
                 }
             }
