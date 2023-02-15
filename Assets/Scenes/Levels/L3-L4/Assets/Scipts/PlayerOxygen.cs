@@ -86,7 +86,7 @@ public class PlayerOxygen : MonoBehaviour
 
     void UpdateEverySecondRefill()
     {
-        currentOxy = currentOxy + 3;
+        currentOxy = currentOxy + 10;
         if (currentOxy > 200)
         {
             currentOxy = 200;

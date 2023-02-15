@@ -14,6 +14,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip running;
     public AudioClip reel;
     public AudioClip grapple;
+    public AudioClip scan;
 
 
     // Start is called before the first frame update
@@ -55,8 +56,13 @@ public class AudioManager : MonoBehaviour
                     audios.clip = reel;
                     audios.pitch = 1f;
                     audios.Play();
-                }
 
+                    if (player.state != PlayerMovement.MovementState.air)
+                    {
+                        audios.Stop();
+                    }
+                }
+                
             }
         }
 
@@ -70,7 +76,12 @@ public class AudioManager : MonoBehaviour
             audios.Play();
         }
 
-        
+        if (Input.GetMouseButton(0))
+        {
+            audios.clip = scan;
+            audios.pitch = 1f;
+            audios.Play();
+        }
 
         if (Input.GetKey(KeyCode.Space))
         {
