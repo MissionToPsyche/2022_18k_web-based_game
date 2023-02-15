@@ -27,6 +27,7 @@ public class RocketPart : MonoBehaviour
     private float _crashThreshold = -4f;
     public float mass = 0f;
     public float fuel = 0f;
+    public float fuelConsumptionRate = 0f;
     public float thrust = 0f;
     public int count = 0;
     void Start()
@@ -107,7 +108,7 @@ public class RocketPart : MonoBehaviour
         {
             SendMessageUpwards("OnReduceFuel", rocketPartScript.fuel, SendMessageOptions.RequireReceiver);
         }
-        // If engine, remove thrust
+        // If engine, remove thrust and fuel consumption rate
         if (rocketPartScript.thrust > 0)
         {
             if (rocketPartScript.isPartOfLeftBooster)
@@ -119,6 +120,7 @@ public class RocketPart : MonoBehaviour
                 SendMessageUpwards("OnReduceTotalRightThrust", rocketPartScript.thrust, SendMessageOptions.RequireReceiver);
             }
             SendMessageUpwards("OnReduceTotalThrust", rocketPartScript.thrust, SendMessageOptions.RequireReceiver);
+            SendMessageUpwards("OnReduceTotalFuelConsumptionRate", rocketPartScript.fuelConsumptionRate, SendMessageOptions.RequireReceiver);
         }
 
         // Remove mass

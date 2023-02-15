@@ -16,14 +16,14 @@ public class UIManager : MonoBehaviour
     public GameObject blackPanel;
     public GameObject controlsTutorial;
     public GameObject player;
-    public GameObject TWRPanel;
-    private TextMeshProUGUI _TWRText;
+    public GameObject rocketInfoPanel;
+    private TextMeshProUGUI _rocketInfoText;
     public GameObject playerDialogue;
 
     void Start()
     {
         _btnText = engineControllerButton.GetComponentInChildren<TextMeshProUGUI>();
-        _TWRText = TWRPanel.GetComponentInChildren<TextMeshProUGUI>();
+        _rocketInfoText = rocketInfoPanel.GetComponentInChildren<TextMeshProUGUI>();
         _btnText.text = _enginesOffText;
         Init();
     }
@@ -44,7 +44,7 @@ public class UIManager : MonoBehaviour
     }
     public void OnClickFinishedBuildingBtn()
     {
-        // TWR greater than or equal to 1 is needed for the rocket to takeoff
+        // rocketInfo greater than or equal to 1 is needed for the rocket to takeoff
         if (rocket.TWR >= 1)
         {
             blackPanel.SetActive(true);
@@ -62,7 +62,7 @@ public class UIManager : MonoBehaviour
         blackPanel.SetActive(false);
         controlsTutorial.SetActive(false);
         player.SetActive(true);
-        _TWRText.text = "Mass: 0t\nThrust: 0t\nThrust/Weight: 0";
+        _rocketInfoText.text = "Mass: 0t\nThrust: 0t\nThrust/Weight: 0 \nFuel: 0t \nFuel Consumption Rate: 0t/sec";
 
     }
     public void OnFinishedBuilding()
@@ -71,7 +71,7 @@ public class UIManager : MonoBehaviour
         rocket.BuildFinished();
         controlsTutorial.SetActive(true);
         player.SetActive(false);
-        TWRPanel.SetActive(false);
+        rocketInfoPanel.SetActive(false);
     }
     public void ActivateEngineControllerBtn()
     {
@@ -81,11 +81,11 @@ public class UIManager : MonoBehaviour
     {
         if (rocket.TWR > 0)
         {
-            _TWRText.text = "Mass: " + rocket.totalMass.ToString("F1") + "t\nThrust: " + rocket.totalThrust + "t\nThrust/Weight: " + rocket.TWR.ToString("F2");
+            _rocketInfoText.text = "Mass: " + rocket.totalMass.ToString("F1") + "t\nThrust: " + rocket.totalThrust + "t\nThrust/Weight: " + rocket.TWR.ToString("F2") + "\nFuel: " + rocket.totalFuel.ToString("F1") + "t\nFuel Consumption Rate: " + rocket.totalFuelConsumptionRate.ToString("F1") + "t/sec";
         }
         else
         {
-            _TWRText.text = "Mass: " + rocket.totalMass.ToString("F1") + "t\nThrust: " + rocket.totalThrust + "t\nThrust/Weight: " + rocket.TWR;
+            _rocketInfoText.text = "Mass: " + rocket.totalMass.ToString("F1") + "t\nThrust: " + rocket.totalThrust + "t\nThrust/Weight: " + rocket.TWR + "\nFuel: " + rocket.totalFuel.ToString("F1") + "t\nFuel Consumption Rate: " + rocket.totalFuelConsumptionRate.ToString("F1") + "t/sec";
         }
     }
 }

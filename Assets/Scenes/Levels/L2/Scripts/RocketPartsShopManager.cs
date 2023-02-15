@@ -91,19 +91,19 @@ public class RocketPartsShopManager : MonoBehaviour
 
         // engines
         _tooltipHeader = "Engine (tier 1)";
-        _tooltipBody = "Low efficiency and low thrust engine used to make the rocket fly.\nMass: 5t\nThrust: 40t";
+        _tooltipBody = "Low efficiency and low thrust engine used to make the rocket fly.\nMass: 5t\nThrust: 40t \nFuel Consumption: 0.7t/sec";
         _remainingParts = _rocketInstance.tier1Engine;
         _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
         createRocketPart(tier1Engine, _rocketInstance.tier1Engine);
 
         _tooltipHeader = "Engine (tier 2)";
-        _tooltipBody = "High efficiency but low thrust engine used to make the rocket fly.\nMass: 3t\nThrust: 65t";
+        _tooltipBody = "High efficiency but low thrust engine used to make the rocket fly.\nMass: 3t\nThrust: 65t \nFuel Consumption: 0.6t/sec";
         _remainingParts = _rocketInstance.tier2Engine;
         _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
         createRocketPart(tier2Engine, _rocketInstance.tier2Engine);
 
         _tooltipHeader = "Engine (tier 3)";
-        _tooltipBody = "High efficiency and high thrust engine used to make the rocket fly.\nMass: 1.5t\nThrust: 95t";
+        _tooltipBody = "High efficiency and high thrust engine used to make the rocket fly.\nMass: 2t\nThrust: 95t \nFuel Consumption: 0.5t/sec";
         _remainingParts = _rocketInstance.tier3Engine;
         _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
         createRocketPart(tier3Engine, _rocketInstance.tier3Engine);

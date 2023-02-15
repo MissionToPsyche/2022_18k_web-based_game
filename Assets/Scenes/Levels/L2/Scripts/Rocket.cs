@@ -22,6 +22,7 @@ public class Rocket : MonoBehaviour
     public float totalLeftMass = 0f;
     public float totalRightMass = 0f;
     public float totalFuel = 0f;
+    public float totalFuelConsumptionRate = 0f;
     public float TWR = 0f;
     private List<Transform> rocketParts = new List<Transform>();
     private List<Rigidbody2D> rocketPartRigidbodies = new List<Rigidbody2D>();
@@ -211,6 +212,10 @@ public class Rocket : MonoBehaviour
     public void OnReduceFuel(float fuelVal)
     {
         totalFuel -= fuelVal;
+    }
+    public void OnReduceTotalFuelConsumptionRate(float fuelConsumptionRateVal)
+    {
+        totalFuelConsumptionRate -= fuelConsumptionRateVal;
     }
     public void OnReduceTotalThrust(float thrustVal)
     {
