@@ -62,7 +62,7 @@ public class UIManager : MonoBehaviour
         blackPanel.SetActive(false);
         controlsTutorial.SetActive(false);
         player.SetActive(true);
-        _rocketInfoText.text = "Mass: 0t\nThrust: 0t\nThrust/Weight: 0 \nFuel: 0t \nFuel Consumption Rate: 0t/sec";
+        _rocketInfoText.text = "Mass: 0t\nThrust: 0t\nThrust/Weight: 0 \nFuel: 0t \nFuel Consumption: 0t/sec";
 
     }
     public void OnFinishedBuilding()
@@ -81,11 +81,11 @@ public class UIManager : MonoBehaviour
     {
         if (rocket.TWR > 0)
         {
-            _rocketInfoText.text = "Mass: " + rocket.totalMass.ToString("F1") + "t\nThrust: " + rocket.totalThrust + "t\nThrust/Weight: " + rocket.TWR.ToString("F2") + "\nFuel: " + rocket.totalFuel.ToString("F1") + "t\nFuel Consumption Rate: " + rocket.totalFuelConsumptionRate.ToString("F1") + "t/sec";
+            _rocketInfoText.text = "Mass: " + rocket.totalMass.ToString("F1") + "t\nThrust: " + rocket.totalThrust + "t\nThrust/Weight: " + rocket.TWR.ToString("F2") + "\nFuel: " + rocket.totalFuel.ToString("F1") + "t\nFuel Consumption: " + rocket.totalFuelConsumptionRate.ToString("F1") + "t/sec";
         }
         else
         {
-            _rocketInfoText.text = "Mass: " + rocket.totalMass.ToString("F1") + "t\nThrust: " + rocket.totalThrust + "t\nThrust/Weight: " + rocket.TWR + "\nFuel: " + rocket.totalFuel.ToString("F1") + "t\nFuel Consumption Rate: " + rocket.totalFuelConsumptionRate.ToString("F1") + "t/sec";
+            _rocketInfoText.text = "Mass: " + rocket.totalMass.ToString("F1") + "t\nThrust: " + rocket.totalThrust + "t\nThrust/Weight: " + rocket.TWR + "\nFuel: " + rocket.totalFuel.ToString("F1") + "t\nFuel Consumption: " + rocket.totalFuelConsumptionRate.ToString("F1") + "t/sec";
         }
     }
 }
