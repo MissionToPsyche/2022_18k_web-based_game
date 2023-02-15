@@ -20,6 +20,7 @@ public class RocketPart : MonoBehaviour
     public GameObject snappingPointOnRight;
     public GameObject attachedSeparator;
     public GameObject attachedSideSeparator;
+    Rocket rocketScript;
     private bool isDetached = false;
     private float _fallSpeed = -15f;
     private float _maxVelocity = -20f;
@@ -34,6 +35,7 @@ public class RocketPart : MonoBehaviour
         isPartOfLeftBooster = false;
         isPartOfRightBooster = false;
         rocketPartRigidBody = gameObject.GetComponent<Rigidbody2D>();
+        rocketScript = gameObject.GetComponentInParent<Rocket>();
         Init();
     }
     private void Init()
@@ -162,7 +164,6 @@ public class RocketPart : MonoBehaviour
             if (isPartOfTheRocket)
             {
                 // If crash too hard, the rocket crashes and the player loses
-                Rocket rocketScript = gameObject.GetComponentInParent<Rocket>();
                 rocketScript.isOnGround = true;
 
                 if (rocketScript.GetSpeed() < _crashThreshold)
@@ -193,7 +194,6 @@ public class RocketPart : MonoBehaviour
         {
             if (isPartOfTheRocket)
             {
-                Rocket rocketScript = gameObject.GetComponentInParent<Rocket>();
                 rocketScript.isOnGround = false;
                 rocketScript.ApplyGravity();
             }

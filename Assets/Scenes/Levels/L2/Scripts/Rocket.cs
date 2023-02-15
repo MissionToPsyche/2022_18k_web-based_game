@@ -154,7 +154,6 @@ public class Rocket : MonoBehaviour
         GetReferenceToRocketParts();
         _acceleration = 0.05f;
         _enginesOn = true;
-
         foreach (Rigidbody2D rb in rocketPartRigidbodies)
         {
             rb.bodyType = RigidbodyType2D.Kinematic;
@@ -169,7 +168,10 @@ public class Rocket : MonoBehaviour
     }
     public void ApplyGravity()
     {
-        _acceleration = -0.2f;
+        if (!_enginesOn)
+        {
+            _acceleration = -0.2f;
+        }
     }
     private void MakeRocketPartsDynamicWithoutGravity()
     {
