@@ -9,7 +9,7 @@ namespace InterWorld.Shared.Enums
     }
 
     // first part of the number is for teir, second is for part
-    // 0000 0000 : first 4 bits store teir, second 4 bits store part
+    // 0000 0000 : first 4 bits store tier, second 4 bits store part
     public enum RocketPartType
     {
         None,
@@ -19,7 +19,6 @@ namespace InterWorld.Shared.Enums
         Nose,
         Tank,
     }
-
     public enum RocketPartTeir
     {
         none = 8,

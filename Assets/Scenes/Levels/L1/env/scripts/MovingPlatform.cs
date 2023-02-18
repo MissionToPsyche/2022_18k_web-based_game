@@ -12,12 +12,20 @@ public class MovingPlatform : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = points[0].position;
+        if (points.Length > 0)
+        {
+            transform.position = points[0].position;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (points.Length == 0)
+        {
+            return;
+        }
+
         float distanceFromPlatformToNextPoint = Vector2.Distance(transform.position, points[currentIndex].position);
         bool hasReachedNextPoint = distanceFromPlatformToNextPoint < 0.02f;
         if (hasReachedNextPoint)
@@ -33,9 +41,11 @@ public class MovingPlatform : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        bool isTopCollision = collision.relativeVelocity.y < 0;
+        if (collision.gameObject.CompareTag("Player") && collision.transform.parent != transform && isTopCollision)
         {
             collision.transform.SetParent(transform);
+            transform.position = new Vector2(transform.position.x, transform.position.y - 0.2f);
         }
     }
 
@@ -44,6 +54,7 @@ public class MovingPlatform : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && collision.transform.parent == transform)
         {
             collision.transform.SetParent(null);
+            transform.position = new Vector2(transform.position.x, transform.position.y + 0.2f);
         }
     }
 }

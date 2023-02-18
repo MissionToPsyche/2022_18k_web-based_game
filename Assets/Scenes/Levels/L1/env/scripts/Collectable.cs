@@ -9,11 +9,13 @@ public class Collectable : MonoBehaviour
     public RocketPartType type;
     public RocketPartTeir teir = RocketPartTeir.none;
     private RocketInformation rocketInformation;
-
+    public ParticleSystem particleSystem;
+    public TextMesh text;
     // Start is called before the first frame update
     void Start()
     {
         rocketInformation = RocketInformation.instance;
+        text = transform.parent.GetComponent<TextMesh>();
     }
 
     // Update is called once per frame
@@ -22,7 +24,7 @@ public class Collectable : MonoBehaviour
         
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    async void OnTriggerEnter2D(Collider2D collision)
     {
         bool isCollisionWithPlayer = collision.gameObject.CompareTag("Player");
         if (!isCollisionWithPlayer)
@@ -33,6 +35,11 @@ public class Collectable : MonoBehaviour
         // Collided with player
         short rocketPart = (short)((short)teir | (short)type);
         rocketInformation.Collect(rocketPart);
+
+        // TODO : spawn a particle effect
+        particleSystem.Play();
         Destroy(gameObject);
+        Destroy(text);
+        Destroy(particleSystem.transform.parent.gameObject, particleSystem.main.duration);
     }
 }
