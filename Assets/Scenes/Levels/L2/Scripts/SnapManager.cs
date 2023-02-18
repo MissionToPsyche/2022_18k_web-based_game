@@ -233,7 +233,7 @@ public class SnapManager : MonoBehaviour
             rocketScript.totalFuel += currentRocketPartScript.fuel;
         }
 
-        // If engine, add thrust
+        // If engine, add thrust and fuel consumption rate
         if (currentRocketPartScript.thrust > 0)
         {
             if (currentRocketPartScript.isPartOfLeftBooster)
@@ -245,6 +245,7 @@ public class SnapManager : MonoBehaviour
                 rocketScript.totalRightThrust += currentRocketPartScript.thrust;
             }
             rocketScript.totalThrust += currentRocketPartScript.thrust;
+            rocketScript.totalFuelConsumptionRate += currentRocketPartScript.fuelConsumptionRate;
         }
 
         // Add mass

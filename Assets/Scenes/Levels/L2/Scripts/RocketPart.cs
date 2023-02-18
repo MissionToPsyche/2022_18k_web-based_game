@@ -20,12 +20,14 @@ public class RocketPart : MonoBehaviour
     public GameObject snappingPointOnRight;
     public GameObject attachedSeparator;
     public GameObject attachedSideSeparator;
+    Rocket rocketScript;
     private bool isDetached = false;
     private float _fallSpeed = -15f;
     private float _maxVelocity = -20f;
     private float _crashThreshold = -4f;
     public float mass = 0f;
     public float fuel = 0f;
+    public float fuelConsumptionRate = 0f;
     public float thrust = 0f;
     public int count = 0;
     void Start()
@@ -34,6 +36,7 @@ public class RocketPart : MonoBehaviour
         isPartOfLeftBooster = false;
         isPartOfRightBooster = false;
         rocketPartRigidBody = gameObject.GetComponent<Rigidbody2D>();
+        rocketScript = gameObject.GetComponentInParent<Rocket>();
         Init();
     }
     private void Init()
@@ -105,7 +108,7 @@ public class RocketPart : MonoBehaviour
         {
             SendMessageUpwards("OnReduceFuel", rocketPartScript.fuel, SendMessageOptions.RequireReceiver);
         }
-        // If engine, remove thrust
+        // If engine, remove thrust and fuel consumption rate
         if (rocketPartScript.thrust > 0)
         {
             if (rocketPartScript.isPartOfLeftBooster)
@@ -117,6 +120,7 @@ public class RocketPart : MonoBehaviour
                 SendMessageUpwards("OnReduceTotalRightThrust", rocketPartScript.thrust, SendMessageOptions.RequireReceiver);
             }
             SendMessageUpwards("OnReduceTotalThrust", rocketPartScript.thrust, SendMessageOptions.RequireReceiver);
+            SendMessageUpwards("OnReduceTotalFuelConsumptionRate", rocketPartScript.fuelConsumptionRate, SendMessageOptions.RequireReceiver);
         }
 
         // Remove mass
@@ -162,7 +166,6 @@ public class RocketPart : MonoBehaviour
             if (isPartOfTheRocket)
             {
                 // If crash too hard, the rocket crashes and the player loses
-                Rocket rocketScript = gameObject.GetComponentInParent<Rocket>();
                 rocketScript.isOnGround = true;
 
                 if (rocketScript.GetSpeed() < _crashThreshold)
@@ -193,7 +196,6 @@ public class RocketPart : MonoBehaviour
         {
             if (isPartOfTheRocket)
             {
-                Rocket rocketScript = gameObject.GetComponentInParent<Rocket>();
                 rocketScript.isOnGround = false;
                 rocketScript.ApplyGravity();
             }

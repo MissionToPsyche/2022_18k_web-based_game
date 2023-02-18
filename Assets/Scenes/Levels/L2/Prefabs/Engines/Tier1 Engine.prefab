@@ -195,5 +195,6 @@ MonoBehaviour:
   attachedSideSeparator: {fileID: 0}
   mass: 5
   fuel: 0
+  fuelConsumptionRate: 0.7
   thrust: 40
   count: 0

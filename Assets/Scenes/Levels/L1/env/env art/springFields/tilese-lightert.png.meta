@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -3105,21 +3105,21 @@ TextureImporter:
       tilese-lightert_15: -898945265
       tilese-lightert_18: -209312968
       tilese-lightert_27: -728055214
-      tilese-lightert_14: 2041084604
-      tilese-lightert_20: 1203563668
-      tilese-lightert_31: -915020933
       tilese-lightert_72: 354708642
+      tilese-lightert_14: 2041084604
+      tilese-lightert_131: -680123134
+      tilese-lightert_31: -915020933
       tilese-lightert_92: 1009055820
-      tilese-lightert_99: 1354394055
+      tilese-lightert_20: 1203563668
       tilese-lightert_54: -957868388
       tilese-lightert_4: 793398043
-      tilese-lightert_68: -1268827865
-      tilese-lightert_62: -591884652
-      tilese-lightert_39: 1366440440
       tilese-lightert_112: 1969751675
+      tilese-lightert_39: 1366440440
+      tilese-lightert_68: -1268827865
+      tilese-lightert_99: 1354394055
       tilese-lightert_11: -2012690774
       tilese-lightert_90: -1075788547
-      tilese-lightert_131: -680123134
+      tilese-lightert_62: -591884652
       tilese-lightert_123: 1264297341
       tilese-lightert_63: 858798562
       tilese-lightert_69: -1287277337
