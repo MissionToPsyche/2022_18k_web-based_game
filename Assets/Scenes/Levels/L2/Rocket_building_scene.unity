@@ -273,7 +273,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.7626524, y: 0.09050076}
   m_AnchorMax: {x: 0.9386524, y: 0.20449926}
-  m_AnchoredPosition: {x: 0.22973633, y: 0.6519165}
+  m_AnchoredPosition: {x: 0.22973633, y: 0.65197754}
   m_SizeDelta: {x: 0.125, y: -0.1167984}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &170302803
@@ -716,7 +716,7 @@ GameObject:
   - component: {fileID: 357864580}
   - component: {fileID: 357864579}
   m_Layer: 5
-  m_Name: SidePanel
+  m_Name: Rocket Parts SidePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1343,7 +1343,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 456469205}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.328, y: -3.202, z: 0}
+  m_LocalPosition: {x: -9.94, y: -3.202, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3050,7 +3050,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.40300003, y: 0}
   m_AnchorMax: {x: 0.59800005, y: 0.1714985}
-  m_AnchoredPosition: {x: -0.37869263, y: 0.59368896}
+  m_AnchoredPosition: {x: -0.37869263, y: 0.59375}
   m_SizeDelta: {x: 0.83720016, y: 0.24740005}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1238646079
@@ -3126,7 +3126,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.2601731, y: 0.38182828}
   m_AnchorMax: {x: 0.7396926, y: 0.61817175}
-  m_AnchoredPosition: {x: -0.000030517578, y: -0.0000047683716}
+  m_AnchoredPosition: {x: -0.000030517578, y: -0.0000038146973}
   m_SizeDelta: {x: 0.3731, y: 0.0000095367}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1239550869
@@ -3176,11 +3176,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 8.4
+  m_fontSize: 10.05
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 6
+  m_fontSizeMin: 4
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
@@ -3192,7 +3192,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -3438,6 +3438,7 @@ MonoBehaviour:
   player: {fileID: 456469205}
   rocketInfoPanel: {fileID: 1238646077}
   playerDialogue: {fileID: 856501559}
+  rocketPartsSidePanel: {fileID: 357864577}
 --- !u!224 &1394171390
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3565,11 +3566,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 10.3
+  m_fontSize: 12.35
   m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 9
+  m_fontSizeMin: 4
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 1
@@ -3581,7 +3582,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -4045,7 +4046,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.7626524, y: 0.09050076}
   m_AnchorMax: {x: 0.9386524, y: 0.20449926}
-  m_AnchoredPosition: {x: 0.22973633, y: 0.6519165}
+  m_AnchoredPosition: {x: 0.22973633, y: 0.65197754}
   m_SizeDelta: {x: 0.125, y: -0.1167984}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1742335492
@@ -5101,7 +5102,7 @@ MonoBehaviour:
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 6
+  m_fontSizeMin: 4
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
@@ -5113,7 +5114,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}

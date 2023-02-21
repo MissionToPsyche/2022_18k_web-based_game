@@ -19,7 +19,7 @@ public class UIManager : MonoBehaviour
     public GameObject rocketInfoPanel;
     private TextMeshProUGUI _rocketInfoText;
     public GameObject playerDialogue;
-
+    public GameObject rocketPartsSidePanel;
     void Start()
     {
         _btnText = engineControllerButton.GetComponentInChildren<TextMeshProUGUI>();
@@ -72,6 +72,7 @@ public class UIManager : MonoBehaviour
         controlsTutorial.SetActive(true);
         player.SetActive(false);
         rocketInfoPanel.SetActive(false);
+        rocketPartsSidePanel.SetActive(false);
     }
     public void ActivateEngineControllerBtn()
     {
