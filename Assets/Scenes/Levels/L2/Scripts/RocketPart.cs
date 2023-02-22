@@ -189,6 +189,8 @@ public class RocketPart : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
+
+
     }
     void OnCollisionExit2D(Collision2D collision)
     {

@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Rocket : MonoBehaviour
 {
-    private float _acceleration;
+    public float _acceleration;
     private float _accelerationRate = 0.1f;
     public float _speed = 0f;
-    private float _maxSpeed = 10f;
+    public float _maxSpeed = 5f;
     private float _rotationSpeed = 0f;
     private float _rotationMaxSpeed = 100f;
     private float _torque = 0;
@@ -26,10 +26,11 @@ public class Rocket : MonoBehaviour
     public float TWR = 0f;
     private List<Transform> rocketParts = new List<Transform>();
     private List<Rigidbody2D> rocketPartRigidbodies = new List<Rigidbody2D>();
-    public RocketFollowThis rocketFollowThisScript;
+    public CameraFollow cameraFollowScript;
     private Coroutine _accelerationCoroutine;
     private Coroutine _torqueCoroutine;
     public UIManager uiManager;
+    public GameObject endingPanel;
     void Start()
     {
         Init();
@@ -143,13 +144,13 @@ public class Rocket : MonoBehaviour
             rocketPartRigidbodies.Add(child.GetComponent<Rigidbody2D>());
             if (child.tag == "Capsule")
             {
-                rocketFollowThisScript.FindAndFollowCapsule(child);
+                cameraFollowScript.target = child;
             }
         }
     }
     public void EnginesOn()
     {
-        _acceleration = 0.05f;
+        _acceleration = 0.01f;
         _enginesOn = true;
         GetReferenceToRocketParts();
         foreach (Rigidbody2D rb in rocketPartRigidbodies)
@@ -187,7 +188,10 @@ public class Rocket : MonoBehaviour
     void OnHitGround()
     {
         _speed = 0;
-        _acceleration = 0;
+        if (!_enginesOn)
+        {
+            _acceleration = 0;
+        }
         if (!uiManager.engineControllerBtnActive)
         {
             uiManager.ActivateEngineControllerBtn();
@@ -243,5 +247,11 @@ public class Rocket : MonoBehaviour
     public void OnReduceTotalLeftMass(float massVal)
     {
         totalLeftMass -= massVal;
+    }
+    public void OnWinGame()
+    {
+        _speed = 0.5f;
+        _acceleration = 0;
+        endingPanel.SetActive(true);
     }
 }

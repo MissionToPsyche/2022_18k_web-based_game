@@ -73,6 +73,7 @@ public class SnappingPointGenerator : MonoBehaviour
         }
         _instantiatedSnappingPointObjs.Add(_instantiatedSnappingPointObj);
         SnapManager.instance.AddSnappingPointObj(_instantiatedSnappingPointObj);
+        _instantiatedSnappingPointObj.transform.SetParent(transform.parent.transform);
         _instantiatedSnappingPointObj.transform.localPosition = _snappingPointPosition;
         Invoke("AssignParent", 0.01f);
     }

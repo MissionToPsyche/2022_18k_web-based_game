@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6721882819650026145}
   - component: {fileID: 6792789022757614469}
   - component: {fileID: 7275541031083877347}
+  - component: {fileID: 6732710307008848917}
   m_Layer: 0
   m_Name: 'Tier2 Capsule '
   m_TagString: Capsule
@@ -182,6 +183,7 @@ MonoBehaviour:
   isPartOfTheRocket: 1
   isPartOfLeftBooster: 0
   isPartOfRightBooster: 0
+  isFirstRocketPart: 0
   rocketPartOnTop: {fileID: 0}
   rocketPartOnBottom: {fileID: 0}
   rocketPartOnLeft: {fileID: 0}
@@ -194,4 +196,19 @@ MonoBehaviour:
   attachedSideSeparator: {fileID: 0}
   mass: 4
   fuel: 0
+  fuelConsumptionRate: 0
   thrust: 0
+  count: 0
+--- !u!114 &6732710307008848917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5875146080811044184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fafc5a9ef44d7148a663eb022e11db1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 1285095025525835939, guid: 29d5f05c4f83d374dbf18e55b0d0f6e5, type: 3}

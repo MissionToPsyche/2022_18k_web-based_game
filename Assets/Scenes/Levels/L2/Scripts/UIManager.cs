@@ -20,6 +20,9 @@ public class UIManager : MonoBehaviour
     private TextMeshProUGUI _rocketInfoText;
     public GameObject playerDialogue;
     public GameObject rocketPartsSidePanel;
+    public SpriteRenderer nebulaSpace;
+    public GameObject space;
+    public GameObject endPortal;
     void Start()
     {
         _btnText = engineControllerButton.GetComponentInChildren<TextMeshProUGUI>();
@@ -73,6 +76,14 @@ public class UIManager : MonoBehaviour
         player.SetActive(false);
         rocketInfoPanel.SetActive(false);
         rocketPartsSidePanel.SetActive(false);
+    }
+    public void OnWinGame()
+    {
+        nebulaSpace.enabled = true;
+        space.SetActive(false);
+        engineControllerButton.SetActive(false);
+        endPortal.SetActive(false);
+        rocket.gameObject.SetActive(false);
     }
     public void ActivateEngineControllerBtn()
     {
