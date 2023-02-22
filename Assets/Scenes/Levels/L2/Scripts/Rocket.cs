@@ -250,7 +250,7 @@ public class Rocket : MonoBehaviour
     }
     public void OnWinGame()
     {
-        _speed = 0.5f;
+        _speed = 0.2f;
         _acceleration = 0;
         endingPanel.SetActive(true);
     }

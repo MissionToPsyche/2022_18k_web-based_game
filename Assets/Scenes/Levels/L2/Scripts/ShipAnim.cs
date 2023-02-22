@@ -9,7 +9,7 @@ public class ShipAnim : MonoBehaviour
     private Vector3 startScale;
 
     public float duration = 3f;
-    public float speed = 2f;
+    private float speed = 1f;
     private float _size = 0.3f;
     public AudioClip audioClip;
 
@@ -19,6 +19,7 @@ public class ShipAnim : MonoBehaviour
         startScale = transform.localScale;
         startTime = Time.time;
         audioSource = GetComponent<AudioSource>();
+        transform.position = new Vector3(transform.position.x, transform.position.y - 5f, transform.position.z);
         Invoke("SpeedBurst", 7f);
     }
 
@@ -46,6 +47,6 @@ public class ShipAnim : MonoBehaviour
     }
     private void SpeedBurst()
     {
-        speed *= 20;
+        speed = 20f;
     }
 }
