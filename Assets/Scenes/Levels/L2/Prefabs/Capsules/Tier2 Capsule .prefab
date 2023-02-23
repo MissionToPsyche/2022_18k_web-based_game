@@ -32,8 +32,8 @@ Transform:
   m_GameObject: {fileID: 5875146080811044184}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.13229088, y: 0.13229088, z: 0.13229088}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -212,3 +212,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 1285095025525835939, guid: 29d5f05c4f83d374dbf18e55b0d0f6e5, type: 3}
+  instantiatedShip: {fileID: 0}
