@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4002141394441988279}
   - component: {fileID: 6504715446795700103}
   - component: {fileID: 4760599570314640910}
-  - component: {fileID: 815475363154267552}
+  - component: {fileID: 4220952557800910192}
   m_Layer: 0
   m_Name: Tier3 Engine
   m_TagString: Engine
@@ -106,7 +106,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.42}
+    oldSize: {x: 0.74, y: 0.48}
     newSize: {x: 21.346224, y: 10.35}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -166,7 +166,7 @@ MonoBehaviour:
   generateOnLeft: 0
   generateOnRight: 0
   snappingPointPrefab: {fileID: 7029666086727307086, guid: 3597a0d3e5787354ebedbc255d09b865, type: 3}
---- !u!114 &815475363154267552
+--- !u!114 &4220952557800910192
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -193,8 +193,8 @@ MonoBehaviour:
   snappingPointOnRight: {fileID: 0}
   attachedSeparator: {fileID: 0}
   attachedSideSeparator: {fileID: 0}
-  mass: 1.5
+  mass: 5
   fuel: 0
-  fuelConsumptionRate: 0.5
-  thrust: 95
+  fuelConsumptionRate: 0.7
+  thrust: 40
   count: 0

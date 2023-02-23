@@ -106,7 +106,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.66, y: 0.74}
+    oldSize: {x: 0.64, y: 0.7}
     newSize: {x: 8.34, y: 21.350399}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -193,7 +193,7 @@ MonoBehaviour:
   snappingPointOnRight: {fileID: 0}
   attachedSeparator: {fileID: 0}
   attachedSideSeparator: {fileID: 0}
-  mass: 0.5
+  mass: 2.5
   fuel: 0
   fuelConsumptionRate: 0
   thrust: 0

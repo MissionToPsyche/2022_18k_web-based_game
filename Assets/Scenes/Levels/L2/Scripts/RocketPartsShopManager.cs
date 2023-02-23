@@ -64,7 +64,8 @@ public class RocketPartsShopManager : MonoBehaviour
 
         // capsules
         _tooltipHeader = "Capsule (tier 1)";
-        _tooltipBody = "An old and chunky capsule containing a spacecraft.\nMass: 6t";
+        _tooltipBody = "Durable, modern, and lightweight capsule containing a spacecraft.\nMass: 2t";
+
         _remainingParts = _rocketInstance.tier1Capsule;
         _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
         createRocketPart(tier1Capsule, _rocketInstance.tier1Capsule);
@@ -76,27 +77,27 @@ public class RocketPartsShopManager : MonoBehaviour
         createRocketPart(tier2Capsule, _rocketInstance.tier2Capsule);
 
         _tooltipHeader = "Capsule (tier 3)";
-        _tooltipBody = "Durable, modern, and lightweight capsule containing a spacecraft.\nMass: 2t";
+        _tooltipBody = "An old and chunky capsule containing a spacecraft.\nMass: 6t";
         _remainingParts = _rocketInstance.tier3Capsule;
         _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
         createRocketPart(tier3Capsule, _rocketInstance.tier3Capsule);
 
         // nose cones
         _tooltipHeader = "Aerodynamic Nose Cone (tier 1)";
-        _tooltipBody = "An aerodynamic nose cone used to improve the aerodynamics of the side boosters.\nMass: 2.5t";
+        _tooltipBody = "An aerodynamic nose cone used to improve the aerodynamics of the side boosters.\nMass: 0.5t";
         _remainingParts = _rocketInstance.tier1NoseCone;
         _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
         createRocketPart(tier1NoseCone, _rocketInstance.tier1NoseCone);
 
         _tooltipHeader = "Aerodynamic Nose Cone (tier 2)";
-        _tooltipBody = "An aerodynamic nose cone used to improve the aerodynamics of the side boosters.\nMass: 0.5t";
+        _tooltipBody = "An aerodynamic nose cone used to improve the aerodynamics of the side boosters.\nMass: 2.5t";
         _remainingParts = _rocketInstance.tier2NoseCone;
         _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
         createRocketPart(tier2NoseCone, _rocketInstance.tier2NoseCone);
 
         // engines
         _tooltipHeader = "Engine (tier 1)";
-        _tooltipBody = "Low efficiency and low thrust engine used to make the rocket fly.\nMass: 5t\nThrust: 40t \nFuel Consumption: 0.7t/sec";
+        _tooltipBody = "High efficiency and high thrust engine used to make the rocket fly.\nMass: 2t\nThrust: 95t \nFuel Consumption: 0.5t/sec";
         _remainingParts = _rocketInstance.tier1Engine;
         _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
         createRocketPart(tier1Engine, _rocketInstance.tier1Engine);
@@ -108,7 +109,7 @@ public class RocketPartsShopManager : MonoBehaviour
         createRocketPart(tier2Engine, _rocketInstance.tier2Engine);
 
         _tooltipHeader = "Engine (tier 3)";
-        _tooltipBody = "High efficiency and high thrust engine used to make the rocket fly.\nMass: 2t\nThrust: 95t \nFuel Consumption: 0.5t/sec";
+        _tooltipBody = "Low efficiency and low thrust engine used to make the rocket fly.\nMass: 5t\nThrust: 40t \nFuel Consumption: 0.7t/sec";
         _remainingParts = _rocketInstance.tier3Engine;
         _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
         createRocketPart(tier3Engine, _rocketInstance.tier3Engine);

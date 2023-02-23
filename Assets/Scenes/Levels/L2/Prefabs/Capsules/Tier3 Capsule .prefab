@@ -194,7 +194,7 @@ MonoBehaviour:
   snappingPointOnRight: {fileID: 0}
   attachedSeparator: {fileID: 0}
   attachedSideSeparator: {fileID: 0}
-  mass: 2
+  mass: 6
   fuel: 0
   fuelConsumptionRate: 0
   thrust: 0
