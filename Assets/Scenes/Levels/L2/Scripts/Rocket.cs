@@ -165,6 +165,9 @@ public class Rocket : MonoBehaviour
         _enginesOn = false;
         ApplyGravity();
         MakeRocketPartsDynamicWithoutGravity();
+        // Turn off engine animation
+
+        // Turn off engine audio
     }
     public void ApplyGravity()
     {
@@ -216,37 +219,45 @@ public class Rocket : MonoBehaviour
     public void OnReduceFuel(float fuelVal)
     {
         totalFuel -= fuelVal;
+        uiManager.UpdateRocketProperties();
     }
     public void OnReduceTotalFuelConsumptionRate(float fuelConsumptionRateVal)
     {
         totalFuelConsumptionRate -= fuelConsumptionRateVal;
+        uiManager.UpdateRocketProperties();
     }
     public void OnReduceTotalThrust(float thrustVal)
     {
         totalThrust -= thrustVal;
         CalculateTWR();
+        uiManager.UpdateRocketProperties();
     }
     public void OnReduceTotalRightThrust(float thrustVal)
     {
         totalRightThrust -= thrustVal;
+        uiManager.UpdateRocketProperties();
     }
     public void OnReduceTotalLeftThrust(float thrustVal)
     {
         totalLeftThrust -= thrustVal;
+        uiManager.UpdateRocketProperties();
     }
 
     public void OnReduceTotalMass(float massVal)
     {
         totalMass -= massVal;
         CalculateTWR();
+        uiManager.UpdateRocketProperties();
     }
     public void OnReduceTotalRightMass(float massVal)
     {
         totalRightMass -= massVal;
+        uiManager.UpdateRocketProperties();
     }
     public void OnReduceTotalLeftMass(float massVal)
     {
         totalLeftMass -= massVal;
+        uiManager.UpdateRocketProperties();
     }
     public void OnWinGame()
     {

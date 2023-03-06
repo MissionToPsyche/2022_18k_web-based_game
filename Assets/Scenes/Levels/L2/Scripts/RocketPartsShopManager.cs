@@ -38,9 +38,7 @@ public class RocketPartsShopManager : MonoBehaviour
     private string _tooltipHeader;
     private string _tooltipBody;
     private RocketInformation _rocketInstance;
-    private int _remainingParts = 0;
     public bool firstRocketPartPlaced = false;
-    public UIManager uIManager;
     void Start()
     {
         _rocketInstance = RocketInformation.instance;
@@ -65,85 +63,58 @@ public class RocketPartsShopManager : MonoBehaviour
         // capsules
         _tooltipHeader = "Capsule (tier 1)";
         _tooltipBody = "Durable, modern, and lightweight capsule containing a spacecraft.\nMass: 2t";
-
-        _remainingParts = _rocketInstance.tier1Capsule;
-        _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
         createRocketPart(tier1Capsule, _rocketInstance.tier1Capsule);
 
         _tooltipHeader = "Capsule (tier 2)";
         _tooltipBody = "Although large, the interior makes up for the mass. A capsule containing a spacecraft.\nMass: 4t";
-        _remainingParts = _rocketInstance.tier2Capsule;
-        _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
         createRocketPart(tier2Capsule, _rocketInstance.tier2Capsule);
 
         _tooltipHeader = "Capsule (tier 3)";
         _tooltipBody = "An old and chunky capsule containing a spacecraft.\nMass: 6t";
-        _remainingParts = _rocketInstance.tier3Capsule;
-        _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
         createRocketPart(tier3Capsule, _rocketInstance.tier3Capsule);
 
         // nose cones
         _tooltipHeader = "Aerodynamic Nose Cone (tier 1)";
         _tooltipBody = "An aerodynamic nose cone used to improve the aerodynamics of the side boosters.\nMass: 0.5t";
-        _remainingParts = _rocketInstance.tier1NoseCone;
-        _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
         createRocketPart(tier1NoseCone, _rocketInstance.tier1NoseCone);
 
         _tooltipHeader = "Aerodynamic Nose Cone (tier 2)";
         _tooltipBody = "An aerodynamic nose cone used to improve the aerodynamics of the side boosters.\nMass: 2.5t";
-        _remainingParts = _rocketInstance.tier2NoseCone;
-        _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
         createRocketPart(tier2NoseCone, _rocketInstance.tier2NoseCone);
 
         // engines
         _tooltipHeader = "Engine (tier 1)";
         _tooltipBody = "High efficiency and high thrust engine used to make the rocket fly.\nMass: 2t\nThrust: 95t \nFuel Consumption: 0.5t/sec";
-        _remainingParts = _rocketInstance.tier1Engine;
-        _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
         createRocketPart(tier1Engine, _rocketInstance.tier1Engine);
 
         _tooltipHeader = "Engine (tier 2)";
         _tooltipBody = "High efficiency but low thrust engine used to make the rocket fly.\nMass: 3t\nThrust: 65t \nFuel Consumption: 0.6t/sec";
-        _remainingParts = _rocketInstance.tier2Engine;
-        _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
         createRocketPart(tier2Engine, _rocketInstance.tier2Engine);
 
         _tooltipHeader = "Engine (tier 3)";
         _tooltipBody = "Low efficiency and low thrust engine used to make the rocket fly.\nMass: 5t\nThrust: 40t \nFuel Consumption: 0.7t/sec";
-        _remainingParts = _rocketInstance.tier3Engine;
-        _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
         createRocketPart(tier3Engine, _rocketInstance.tier3Engine);
 
         // separators
         _tooltipHeader = "Separator";
         _tooltipBody = "A vertical separator used for detaching empty stages.\nMass: 0.4t";
-        _remainingParts = _rocketInstance.separator;
-        _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
         createRocketPart(separator, _rocketInstance.separator);
 
         _tooltipHeader = "Side separator";
         _tooltipBody = "A horizontal separator used for detaching side boosters\nMass: 0.2t";
-        _remainingParts = _rocketInstance.sideSeparator;
-        _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
         createRocketPart(sideSeparator, _rocketInstance.sideSeparator);
 
         // fuel tanks
         _tooltipHeader = "Fuel tank";
         _tooltipBody = "A fuel tank carrying liquid fuel and liquid oxygen\nMass: 5t\nFuel: 4.5t";
-        _remainingParts = _rocketInstance.smallFuelTank;
-        _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
         createRocketPart(smallFuelTank, _rocketInstance.smallFuelTank, 0.5f, 0.25f);
 
         _tooltipHeader = "Fuel tank";
         _tooltipBody = "A fuel tank carrying liquid fuel and liquid oxygen\nMass: 10t\nFuel: 9t";
-        _remainingParts = _rocketInstance.mediumFuelTank;
-        _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
         createRocketPart(mediumFuelTank, _rocketInstance.mediumFuelTank, y: 0.5f);
 
         _tooltipHeader = "Fuel tank";
         _tooltipBody = "A fuel tank carrying liquid fuel and liquid oxygen\nMass: 20t\nFuel: 18t";
-        _remainingParts = _rocketInstance.largeFuelTank;
-        _tooltipBody = _tooltipBody + "\nRemaining: " + _remainingParts;
         createRocketPart(largeFuelTank, _rocketInstance.largeFuelTank);
     }
     void Update()
@@ -180,7 +151,7 @@ public class RocketPartsShopManager : MonoBehaviour
         // simulate mouse click
         rocketPartDraggableScript.OnMouseDown();
     }
-    private void createRocketPartBtn(rocketPart currentPart, string tooltipHeader, string tooltipBody, float x_scaleImgBy = 1, float y_scaleImgBy = 1)
+    private void createRocketPartBtn(rocketPart currentPart, string tooltipHeader, string tooltipBody, int remainingParts, float x_scaleImgBy = 1, float y_scaleImgBy = 1)
     {
         // instantiate buttons 
         currentPart.btn = Instantiate(btnPrefab);
@@ -210,7 +181,7 @@ public class RocketPartsShopManager : MonoBehaviour
         currentPart.btn.gameObject.AddComponent<TooltipTrigger>();
         TooltipTrigger btnToolTipTrigger = currentPart.btn.gameObject.GetComponent<TooltipTrigger>();
         btnToolTipTrigger.header = tooltipHeader;
-        btnToolTipTrigger.body = tooltipBody;
+        btnToolTipTrigger.body = tooltipBody + "\nRemaining: " + remainingParts;
     }
     private void currentPartPlaced(rocketPart currentPart)
     {
@@ -240,13 +211,13 @@ public class RocketPartsShopManager : MonoBehaviour
         if (count > 0)
         {
             rocketPart.count = count;
-            createRocketPartBtn(rocketPart, tooltipHeader: _tooltipHeader, tooltipBody: _tooltipBody, x_scaleImgBy: x, y_scaleImgBy: y);
+            createRocketPartBtn(rocketPart, tooltipHeader: _tooltipHeader, tooltipBody: _tooltipBody, remainingParts: count, x_scaleImgBy: x, y_scaleImgBy: y);
         }
     }
     public void DestroyMisplacedRocketPart()
     {
         rocketPartScript.count++;
-        rocketPartScript.isPartOfTheRocket = false;
+        rocketPartScript.RemoveRocketPartProperty(rocketPartScript);
         Destroy(instantiatedRocketPart);
     }
 }

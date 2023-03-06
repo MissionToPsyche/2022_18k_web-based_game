@@ -5,6 +5,7 @@ using UnityEngine;
 public class RocketPart : MonoBehaviour
 {
     Rigidbody2D rocketPartRigidBody;
+    RocketPart rocketPartScript;
     public bool isFinishedBuilding = false;
     public bool isPartOfTheRocket = true;
     public bool isPartOfLeftBooster = false;
@@ -37,6 +38,7 @@ public class RocketPart : MonoBehaviour
         isPartOfRightBooster = false;
         rocketPartRigidBody = gameObject.GetComponent<Rigidbody2D>();
         rocketScript = gameObject.GetComponentInParent<Rocket>();
+        rocketPartScript = gameObject.GetComponent<RocketPart>();
         Init();
     }
     private void Init()
@@ -103,6 +105,18 @@ public class RocketPart : MonoBehaviour
     }
     void DetachPart(Transform rocketPart, RocketPart rocketPartScript)
     {
+        RemoveRocketPartProperty(rocketPartScript);
+        Rigidbody2D rocketPartRb2D = rocketPart.gameObject.GetComponent<Rigidbody2D>();
+        rocketPart.SetParent(null); // Detach from parent
+        rocketPartRb2D.bodyType = RigidbodyType2D.Dynamic;
+        rocketPartRb2D.gravityScale = 1f;
+        rocketPartRb2D.velocity = new Vector2(0, _fallSpeed);
+        rocketPartScript.isPartOfTheRocket = false;
+        rocketPartScript.isDetached = true;
+        rocketPartRb2D.constraints = RigidbodyConstraints2D.None;
+    }
+    public void RemoveRocketPartProperty(RocketPart rocketPartScript)
+    {
         // Remove fuel, thrust, and mass
         if (rocketPartScript.fuel > 0)
         {
@@ -111,6 +125,7 @@ public class RocketPart : MonoBehaviour
         // If engine, remove thrust and fuel consumption rate
         if (rocketPartScript.thrust > 0)
         {
+            SendMessageUpwards("OnReduceTotalThrust", rocketPartScript.thrust, SendMessageOptions.RequireReceiver);
             if (rocketPartScript.isPartOfLeftBooster)
             {
                 SendMessageUpwards("OnReduceTotalLeftThrust", rocketPartScript.thrust, SendMessageOptions.RequireReceiver);
@@ -119,7 +134,6 @@ public class RocketPart : MonoBehaviour
             {
                 SendMessageUpwards("OnReduceTotalRightThrust", rocketPartScript.thrust, SendMessageOptions.RequireReceiver);
             }
-            SendMessageUpwards("OnReduceTotalThrust", rocketPartScript.thrust, SendMessageOptions.RequireReceiver);
             SendMessageUpwards("OnReduceTotalFuelConsumptionRate", rocketPartScript.fuelConsumptionRate, SendMessageOptions.RequireReceiver);
         }
 
@@ -136,15 +150,6 @@ public class RocketPart : MonoBehaviour
             }
             SendMessageUpwards("OnReduceTotalMass", rocketPartScript.mass, SendMessageOptions.RequireReceiver);
         }
-
-        Rigidbody2D rocketPartRb2D = rocketPart.gameObject.GetComponent<Rigidbody2D>();
-        rocketPart.SetParent(null); // Detach from parent
-        rocketPartRb2D.bodyType = RigidbodyType2D.Dynamic;
-        rocketPartRb2D.gravityScale = 1f;
-        rocketPartRb2D.velocity = new Vector2(0, _fallSpeed);
-        rocketPartScript.isPartOfTheRocket = false;
-        rocketPartScript.isDetached = true;
-        rocketPartRb2D.constraints = RigidbodyConstraints2D.None;
     }
     void OnFinishedBuilding()
     {
@@ -189,8 +194,6 @@ public class RocketPart : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
-
-
     }
     void OnCollisionExit2D(Collision2D collision)
     {
@@ -223,7 +226,6 @@ public class RocketPart : MonoBehaviour
         {
             snappingPointOnRight.GetComponent<SnappingPoint>().isAttached = false;
         }
-
         if (rocketPartOnTop)
         {
             RocketPart tmp = rocketPartOnTop.GetComponent<RocketPart>();
