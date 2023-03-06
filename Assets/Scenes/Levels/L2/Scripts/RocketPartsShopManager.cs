@@ -186,29 +186,36 @@ public class RocketPartsShopManager : MonoBehaviour
     }
     private void currentPartPlaced(rocketPart currentPart, string tooltipBody)
     {
-        // stop the object from following the mouse
+        // Stop the object from following the mouse
         _applyDrag = false;
 
-        // Place first rocket part even if it doesn snap
-        if (!firstRocketPartPlaced)
+        if (rocketPartScript.canBePlaced)
         {
-            Rocket rocketScript = rocket.GetComponent<Rocket>();
-            SnapManager.instance.UpdateRocketProperties(rocketPartScript, rocketScript);
-            firstRocketPartPlaced = true;
-            rocketPartScript.isFirstRocketPart = true;
+            // Place first rocket part even if it doesn snap
+            if (!firstRocketPartPlaced)
+            {
+                Rocket rocketScript = rocket.GetComponent<Rocket>();
+                SnapManager.instance.UpdateRocketProperties(rocketPartScript, rocketScript);
+                firstRocketPartPlaced = true;
+                rocketPartScript.isFirstRocketPart = true;
+            }
+
+            // trigger the drag ended callback on the referenced script which places the snaps the part to snap point 
+            rocketPartDraggableScript.OnMouseUp();
+
+            // reduce count on btn click
+            currentPart.count--;
+            currentPart.btn.gameObject.GetComponent<TooltipTrigger>().body = tooltipBody + "\nRemaining: " + currentPart.count;
+
+            // Disable the rocket part button 
+            if (currentPart.count < 1)
+            {
+                currentPart.btn.gameObject.SetActive(false);
+            }
         }
-
-        // trigger the drag ended callback on the referenced script which places the snaps the part to snap point 
-        rocketPartDraggableScript.OnMouseUp();
-
-        // reduce count on btn click
-        currentPart.count--;
-        currentPart.btn.gameObject.GetComponent<TooltipTrigger>().body = tooltipBody + "\nRemaining: " + currentPart.count;
-
-        // Disable the rocket part button 
-        if (currentPart.count < 1)
+        else
         {
-            currentPart.btn.gameObject.SetActive(false);
+            Destroy(instantiatedRocketPart);
         }
     }
     private void createRocketPart(rocketPart rocketPart, int count, float x = 1, float y = 1)

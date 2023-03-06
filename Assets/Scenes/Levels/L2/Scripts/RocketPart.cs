@@ -31,6 +31,7 @@ public class RocketPart : MonoBehaviour
     public float fuelConsumptionRate = 0f;
     public float thrust = 0f;
     public rocketPart rocketPartBtnReference;
+    public bool canBePlaced;
     void Start()
     {
         isPartOfTheRocket = true;
@@ -44,7 +45,8 @@ public class RocketPart : MonoBehaviour
     private void Init()
     {
         // the rocket parts are in a building state. With this rigidbody configuration, they are able to be dragged properly
-        rocketPartRigidBody.bodyType = RigidbodyType2D.Static;
+        rocketPartRigidBody.bodyType = RigidbodyType2D.Kinematic;
+        rocketPartRigidBody.useFullKinematicContacts = true;
         rocketPartRigidBody.simulated = true;
         rocketPartRigidBody.collisionDetectionMode = CollisionDetectionMode2D.Discrete;
     }
@@ -166,44 +168,62 @@ public class RocketPart : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.tag == "Ground")
+        if (isFinishedBuilding)
         {
-            if (isPartOfTheRocket)
+            if (collision.collider.tag == "Ground")
             {
-                // If crash too hard, the rocket crashes and the player loses
-                rocketScript.isOnGround = true;
 
-                if (rocketScript.GetSpeed() < _crashThreshold)
+                if (isPartOfTheRocket)
                 {
-                    SendMessageUpwards("OnCrash", SendMessageOptions.RequireReceiver);
+                    // If crash too hard, the rocket crashes and the player loses
+                    rocketScript.isOnGround = true;
+
+                    if (rocketScript.GetSpeed() < _crashThreshold)
+                    {
+                        SendMessageUpwards("OnCrash", SendMessageOptions.RequireReceiver);
+                    }
+                    else
+                    {
+                        SendMessageUpwards("OnHitGround", SendMessageOptions.RequireReceiver);
+                    }
+
+                    // If not engine and no crash, crash it
+                    if (gameObject.tag != "Engine")
+                    {
+                        SendMessageUpwards("OnCrash", SendMessageOptions.RequireReceiver);
+                    }
                 }
                 else
                 {
-                    SendMessageUpwards("OnHitGround", SendMessageOptions.RequireReceiver);
+                    // If detached part touches the ground, it disappers immediately
+                    gameObject.SetActive(false);
                 }
-
-                // If not engine and no crash, crash it
-                if (gameObject.tag != "Engine")
-                {
-                    SendMessageUpwards("OnCrash", SendMessageOptions.RequireReceiver);
-                }
-            }
-            else
-            {
-                // If detached part touches the ground, it disappers immediately
-                gameObject.SetActive(false);
             }
         }
     }
     void OnCollisionExit2D(Collision2D collision)
     {
+        if (isFinishedBuilding)
+        {
+            if (collision.collider.tag == "Ground")
+            {
+                if (isPartOfTheRocket)
+                {
+                    rocketScript.isOnGround = false;
+                    rocketScript.ApplyGravity();
+                }
+            }
+        }
+        else
+        {
+            canBePlaced = true;
+        }
+    }
+    void OnCollisionStay2D(Collision2D collision)
+    {
         if (collision.collider.tag == "Ground")
         {
-            if (isPartOfTheRocket)
-            {
-                rocketScript.isOnGround = false;
-                rocketScript.ApplyGravity();
-            }
+            canBePlaced = false;
         }
     }
     public void OnDragStart()

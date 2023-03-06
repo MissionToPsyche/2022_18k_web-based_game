@@ -210,32 +210,57 @@ MonoBehaviour:
   btnPrefab: {fileID: 6655038742294810619, guid: 0d5566f75b21efd47b8c56823720d70e, type: 3}
   tier1Capsule:
     prefab: {fileID: 3968338965507858349, guid: ef99fa9e51c6c1044908c78f0404022c, type: 3}
+    tooltipBody: 
+    tooltipHeader: 
   tier2Capsule:
     prefab: {fileID: 5875146080811044184, guid: b9c4a3604561d25429b6bdc8a466f278, type: 3}
+    tooltipBody: 
+    tooltipHeader: 
   tier3Capsule:
     prefab: {fileID: 1443336674678087790, guid: 92b27133ab8df354b83f761d3435068c, type: 3}
+    tooltipBody: 
+    tooltipHeader: 
   tier1NoseCone:
     prefab: {fileID: 9182013978549689008, guid: 22e7477f4dd1f2541aa23ddca5f5fef6, type: 3}
+    tooltipBody: 
+    tooltipHeader: 
   tier2NoseCone:
     prefab: {fileID: 7208796227606289888, guid: 17a743464dd6d904d8de1ed1f5b9112d, type: 3}
+    tooltipBody: 
+    tooltipHeader: 
   tier1Engine:
     prefab: {fileID: 8133271451995109532, guid: 9920e68079a5da6429df01a9c3747cb9, type: 3}
+    tooltipBody: 
+    tooltipHeader: 
   tier2Engine:
     prefab: {fileID: 1677145715951866639, guid: ea24b694ca9226842a32989c2eb1b8f4, type: 3}
+    tooltipBody: 
+    tooltipHeader: 
   tier3Engine:
     prefab: {fileID: 3787400760448501355, guid: d429115a03d26fd4f9add44c506c3be6, type: 3}
+    tooltipBody: 
+    tooltipHeader: 
   separator:
     prefab: {fileID: 6975482066738238171, guid: 2835e2dd991739f4caae91154dbab762, type: 3}
+    tooltipBody: 
+    tooltipHeader: 
   sideSeparator:
     prefab: {fileID: 6272713347169607779, guid: c774ed1878628034383b200107c03e86, type: 3}
+    tooltipBody: 
+    tooltipHeader: 
   smallFuelTank:
     prefab: {fileID: 664935976357423322, guid: a81f727d12584db46a516be58bb04151, type: 3}
+    tooltipBody: 
+    tooltipHeader: 
   mediumFuelTank:
     prefab: {fileID: 2766062560144497722, guid: 659d84016e8849f4597bf8c663d944b8, type: 3}
+    tooltipBody: 
+    tooltipHeader: 
   largeFuelTank:
     prefab: {fileID: 503594055648925914, guid: 67a363f4b33fd6f4a920465cbd21ac9c, type: 3}
+    tooltipBody: 
+    tooltipHeader: 
   firstRocketPartPlaced: 0
-  uIManager: {fileID: 1394171389}
 --- !u!1 &168091571
 GameObject:
   m_ObjectHideFlags: 0
@@ -1576,7 +1601,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: c9f340f4fafb3ec469dcf8b9704bf37d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
