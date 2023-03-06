@@ -30,7 +30,7 @@ public class RocketPart : MonoBehaviour
     public float fuel = 0f;
     public float fuelConsumptionRate = 0f;
     public float thrust = 0f;
-    public int count = 0;
+    public rocketPart rocketPartBtnReference;
     void Start()
     {
         isPartOfTheRocket = true;

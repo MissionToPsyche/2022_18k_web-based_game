@@ -347,12 +347,12 @@ public class SnapManager : MonoBehaviour
                         }
                         if (snappingPointDirection == "top")
                         {
-                            Debug.Log("Snapping to top of the rocket part");
+                            // Debug.Log("Snapping to top of the rocket part");
                             ToggleSnappingPoint(snappingPointObj);
                         }
                         else if (snappingPointDirection == "bottom")
                         {
-                            Debug.Log("Snapping to bottom of the rocket part");
+                            // Debug.Log("Snapping to bottom of the rocket part");
                             ToggleSnappingPoint(snappingPointObj);
                         }
                     }
