@@ -7,7 +7,7 @@ public class RocketPart : MonoBehaviour
     Rigidbody2D rocketPartRigidBody;
     RocketPart rocketPartScript;
     public bool isFinishedBuilding = false;
-    public bool isPartOfTheRocket = true;
+    public bool isPartOfTheRocket = false;
     public bool isPartOfLeftBooster = false;
     public bool isPartOfRightBooster = false;
     public bool isFirstRocketPart = false;
@@ -34,7 +34,7 @@ public class RocketPart : MonoBehaviour
     public bool canBePlaced;
     void Start()
     {
-        isPartOfTheRocket = true;
+        isPartOfTheRocket = false;
         isPartOfLeftBooster = false;
         isPartOfRightBooster = false;
         rocketPartRigidBody = gameObject.GetComponent<Rigidbody2D>();
