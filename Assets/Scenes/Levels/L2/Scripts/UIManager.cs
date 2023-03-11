@@ -89,7 +89,7 @@ public class UIManager : MonoBehaviour
     {
         engineControllerButton.SetActive(true);
     }
-    public void OnCorrectlyPlacedRocketPart()
+    public void UpdateRocketProperties()
     {
         if (rocket.TWR > 0)
         {

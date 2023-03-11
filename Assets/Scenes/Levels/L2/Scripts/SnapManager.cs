@@ -266,7 +266,7 @@ public class SnapManager : MonoBehaviour
         rocketScript.CalculateTWR();
 
         // Update text in UI
-        uIManager.OnCorrectlyPlacedRocketPart();
+        uIManager.UpdateRocketProperties();
     }
     void AssignParent()
     {
@@ -321,11 +321,11 @@ public class SnapManager : MonoBehaviour
                     {
                         if (snappingPointDirection == "left")
                         {
-                            toggleSnappingPoint(snappingPointObj);
+                            ToggleSnappingPoint(snappingPointObj);
                         }
                         else if (snappingPointDirection == "right")
                         {
-                            toggleSnappingPoint(snappingPointObj);
+                            ToggleSnappingPoint(snappingPointObj);
                         }
                     }
                     else
@@ -337,28 +337,30 @@ public class SnapManager : MonoBehaviour
                             {
                                 if (snappingPointDirection == "left")
                                 {
-                                    toggleSnappingPoint(snappingPointObj);
+                                    ToggleSnappingPoint(snappingPointObj);
                                 }
                                 else if (snappingPointDirection == "right")
                                 {
-                                    toggleSnappingPoint(snappingPointObj);
+                                    ToggleSnappingPoint(snappingPointObj);
                                 }
                             }
                         }
                         if (snappingPointDirection == "top")
                         {
-                            toggleSnappingPoint(snappingPointObj);
+                            // Debug.Log("Snapping to top of the rocket part");
+                            ToggleSnappingPoint(snappingPointObj);
                         }
                         else if (snappingPointDirection == "bottom")
                         {
-                            toggleSnappingPoint(snappingPointObj);
+                            // Debug.Log("Snapping to bottom of the rocket part");
+                            ToggleSnappingPoint(snappingPointObj);
                         }
                     }
                 }
             }
         }
     }
-    void toggleSnappingPoint(GameObject snappingPointObj)
+    void ToggleSnappingPoint(GameObject snappingPointObj)
     {
         if (snappingPointObj.activeSelf)
         {

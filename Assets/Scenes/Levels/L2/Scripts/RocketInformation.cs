@@ -7,6 +7,21 @@ using UnityEngine;
 
 public class RocketInformation : MonoBehaviour
 {
+    void Awake()
+    {
+        // if there is already an instance, destroy it
+        if (instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        // else, keep instance of this object
+        instance = this;
+        collected = new();
+        DontDestroyOnLoad(gameObject);
+    }
+
     public int
         tier1Capsule,
         tier2Capsule,
@@ -58,7 +73,7 @@ public class RocketInformation : MonoBehaviour
         short expected = (short)type;
         foreach (short part in collected)
         {
-            if((expected & part) != 0)
+            if ((expected & part) != 0)
             {
                 return true;
             }
@@ -66,7 +81,7 @@ public class RocketInformation : MonoBehaviour
         return false;
     }
 
-   
+
     /// <summary>
     /// Checks if all the supplied types are collected
     /// </summary>
@@ -75,20 +90,5 @@ public class RocketInformation : MonoBehaviour
     public bool IsCollectedTypes(params RocketPartType[] types)
     {
         return types.All(IsCollectedType);
-    }
-
-    void Awake()
-    {
-        // if there is already an instance, destroy it
-        if (instance != null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        // else, keep instance of this object
-        instance = this;
-        collected = new();
-        DontDestroyOnLoad(gameObject);
     }
 }

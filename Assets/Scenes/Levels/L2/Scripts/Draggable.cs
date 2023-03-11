@@ -44,9 +44,10 @@ public class Draggable : MonoBehaviour
         // Cannot move rocket parts with more than 1 connections
         if (isDraggable && _numberOfConnectedParts <= 1)
         {
-            SnapManager.instance.ToggleSnappingPoints(gameObject);
+            // Order matters here. Toggle should happen last
             _rocketPartScript.OnDragStart();
             _dragOffset = transform.position - GetMousePos();
+            SnapManager.instance.ToggleSnappingPoints(gameObject);
         }
     }
     public void OnMouseDrag()
