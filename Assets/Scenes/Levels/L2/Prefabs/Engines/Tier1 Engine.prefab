@@ -179,7 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishedBuilding: 0
-  isPartOfTheRocket: 0
+  isPartOfTheRocket: 1
   isPartOfLeftBooster: 0
   isPartOfRightBooster: 0
   isFirstRocketPart: 0
@@ -201,4 +201,4 @@ MonoBehaviour:
     prefab: {fileID: 0}
     tooltipBody: 
     tooltipHeader: 
-  canBePlaced: 0
+  canBePlaced: 1

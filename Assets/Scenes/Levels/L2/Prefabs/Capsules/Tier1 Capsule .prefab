@@ -202,7 +202,7 @@ MonoBehaviour:
     prefab: {fileID: 0}
     tooltipBody: 
     tooltipHeader: 
-  canBePlaced: 0
+  canBePlaced: 1
 --- !u!114 &90603461879260713
 MonoBehaviour:
   m_ObjectHideFlags: 0

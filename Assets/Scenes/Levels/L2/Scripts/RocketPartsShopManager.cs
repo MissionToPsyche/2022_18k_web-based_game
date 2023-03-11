@@ -191,13 +191,14 @@ public class RocketPartsShopManager : MonoBehaviour
 
         if (rocketPartScript.canBePlaced)
         {
-            // Place first rocket part even if it doesn snap
+            // Place first rocket part even if it doesnt snap
             if (!firstRocketPartPlaced)
             {
                 Rocket rocketScript = rocket.GetComponent<Rocket>();
                 SnapManager.instance.UpdateRocketProperties(rocketPartScript, rocketScript);
                 firstRocketPartPlaced = true;
                 rocketPartScript.isFirstRocketPart = true;
+                rocketPartScript.isPartOfTheRocket = true;
             }
 
             // trigger the drag ended callback on the referenced script which places the snaps the part to snap point 

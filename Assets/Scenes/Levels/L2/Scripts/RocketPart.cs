@@ -37,6 +37,7 @@ public class RocketPart : MonoBehaviour
         isPartOfTheRocket = false;
         isPartOfLeftBooster = false;
         isPartOfRightBooster = false;
+        canBePlaced = true;
         rocketPartRigidBody = gameObject.GetComponent<Rigidbody2D>();
         rocketScript = gameObject.GetComponentInParent<Rocket>();
         rocketPartScript = gameObject.GetComponent<RocketPart>();
