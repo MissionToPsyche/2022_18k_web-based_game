@@ -10,7 +10,7 @@ public class Collectable : MonoBehaviour
     public RocketPartTeir teir = RocketPartTeir.none;
     private RocketInformation rocketInformation;
     public ParticleSystem particleSystem;
-    public TextMesh text;
+    private TextMesh text;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,7 +36,6 @@ public class Collectable : MonoBehaviour
         short rocketPart = (short)((short)teir | (short)type);
         rocketInformation.Collect(rocketPart);
 
-        // TODO : spawn a particle effect
         particleSystem.Play();
         Destroy(gameObject);
         Destroy(text);
