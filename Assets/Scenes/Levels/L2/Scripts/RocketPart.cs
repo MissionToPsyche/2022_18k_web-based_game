@@ -108,22 +108,29 @@ public class RocketPart : MonoBehaviour
     }
     void DetachPart(Transform rocketPart, RocketPart rocketPartScript)
     {
+        rocketPartScript.isPartOfTheRocket = false;
+        rocketPartScript.isDetached = true;
+
         RemoveRocketPartProperty(rocketPartScript);
         Rigidbody2D rocketPartRb2D = rocketPart.gameObject.GetComponent<Rigidbody2D>();
         rocketPart.SetParent(null); // Detach from parent
         rocketPartRb2D.bodyType = RigidbodyType2D.Dynamic;
+        rocketPartRb2D.constraints = RigidbodyConstraints2D.None;
         rocketPartRb2D.gravityScale = 1f;
         rocketPartRb2D.velocity = new Vector2(0, _fallSpeed);
-        rocketPartScript.isPartOfTheRocket = false;
-        rocketPartScript.isDetached = true;
-        rocketPartRb2D.constraints = RigidbodyConstraints2D.None;
     }
     public void RemoveRocketPartProperty(RocketPart rocketPartScript)
     {
         // Remove fuel, thrust, and mass
         if (rocketPartScript.fuel > 0)
         {
-            SendMessageUpwards("OnReduceFuel", rocketPartScript.fuel, SendMessageOptions.RequireReceiver);
+            rocketScript.numberOfFuelTanks--;
+            float fuelToSubtract = rocketPartScript.fuel - rocketScript.fuelDrainagePerTank;
+            if (fuelToSubtract < 0)
+            {
+                fuelToSubtract = 0;
+            }
+            SendMessageUpwards("OnReduceFuel", fuelToSubtract, SendMessageOptions.RequireReceiver);
         }
         // If engine, remove thrust and fuel consumption rate
         if (rocketPartScript.thrust > 0)

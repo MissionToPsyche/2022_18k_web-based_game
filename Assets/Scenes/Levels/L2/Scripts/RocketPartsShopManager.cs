@@ -216,6 +216,7 @@ public class RocketPartsShopManager : MonoBehaviour
         }
         else
         {
+            SnapManager.instance.ToggleSnappingPoints(instantiatedRocketPart);
             Destroy(instantiatedRocketPart);
         }
     }
@@ -229,72 +230,12 @@ public class RocketPartsShopManager : MonoBehaviour
     }
     public void DestroyMisplacedRocketPart()
     {
-        if (rocketPartScript.rocketPartBtnReference == tier1Capsule)
+        if (rocketPartScript.rocketPartBtnReference.count <= 0)
         {
-            tier1Capsule.count++;
-            tier1Capsule.btn.gameObject.GetComponent<TooltipTrigger>().body = tier1Capsule.tooltipBody + "\nRemaining: " + tier1Capsule.count;
+            rocketPartScript.rocketPartBtnReference.btn.gameObject.SetActive(true);
         }
-        else if (rocketPartScript.rocketPartBtnReference == tier2Capsule)
-        {
-            tier2Capsule.count++;
-            tier2Capsule.btn.gameObject.GetComponent<TooltipTrigger>().body = tier2Capsule.tooltipBody + "\nRemaining: " + tier2Capsule.count;
-        }
-        else if (rocketPartScript.rocketPartBtnReference == tier3Capsule)
-        {
-            tier3Capsule.count++;
-            tier3Capsule.btn.gameObject.GetComponent<TooltipTrigger>().body = tier3Capsule.tooltipBody + "\nRemaining: " + tier3Capsule.count;
-        }
-        else if (rocketPartScript.rocketPartBtnReference == tier1NoseCone)
-        {
-            tier1NoseCone.count++;
-            tier1NoseCone.btn.gameObject.GetComponent<TooltipTrigger>().body = tier1NoseCone.tooltipBody + "\nRemaining: " + tier1NoseCone.count;
-        }
-        else if (rocketPartScript.rocketPartBtnReference == tier2NoseCone)
-        {
-            tier2NoseCone.count++;
-            tier2NoseCone.btn.gameObject.GetComponent<TooltipTrigger>().body = tier2NoseCone.tooltipBody + "\nRemaining: " + tier2NoseCone.count;
-        }
-        else if (rocketPartScript.rocketPartBtnReference == tier1Engine)
-        {
-            tier1Engine.count++;
-            tier1Engine.btn.gameObject.GetComponent<TooltipTrigger>().body = tier1Engine.tooltipBody + "\nRemaining: " + tier1Engine.count;
-        }
-        else if (rocketPartScript.rocketPartBtnReference == tier2Engine)
-        {
-            tier2Engine.count++;
-            tier2Engine.btn.gameObject.GetComponent<TooltipTrigger>().body = tier2Engine.tooltipBody + "\nRemaining: " + tier2Engine.count;
-        }
-        else if (rocketPartScript.rocketPartBtnReference == tier3Engine)
-        {
-            tier3Engine.count++;
-            tier3Engine.btn.gameObject.GetComponent<TooltipTrigger>().body = tier3Engine.tooltipBody + "\nRemaining: " + tier3Engine.count;
-        }
-        else if (rocketPartScript.rocketPartBtnReference == separator)
-        {
-            separator.count++;
-            separator.btn.gameObject.GetComponent<TooltipTrigger>().body = separator.tooltipBody + "\nRemaining: " + separator.count;
-        }
-        else if (rocketPartScript.rocketPartBtnReference == sideSeparator)
-        {
-            sideSeparator.count++;
-            sideSeparator.btn.gameObject.GetComponent<TooltipTrigger>().body = sideSeparator.tooltipBody + "\nRemaining: " + sideSeparator.count;
-        }
-        else if (rocketPartScript.rocketPartBtnReference == smallFuelTank)
-        {
-            smallFuelTank.count++;
-            smallFuelTank.btn.gameObject.GetComponent<TooltipTrigger>().body = smallFuelTank.tooltipBody + "\nRemaining: " + smallFuelTank.count;
-        }
-
-        else if (rocketPartScript.rocketPartBtnReference == mediumFuelTank)
-        {
-            mediumFuelTank.count++;
-            mediumFuelTank.btn.gameObject.GetComponent<TooltipTrigger>().body = mediumFuelTank.tooltipBody + "\nRemaining: " + mediumFuelTank.count;
-        }
-        else if (rocketPartScript.rocketPartBtnReference == largeFuelTank)
-        {
-            largeFuelTank.count++;
-            largeFuelTank.btn.gameObject.GetComponent<TooltipTrigger>().body = largeFuelTank.tooltipBody + "\nRemaining: " + largeFuelTank.count;
-        }
+        rocketPartScript.rocketPartBtnReference.count++;
+        rocketPartScript.rocketPartBtnReference.btn.gameObject.GetComponent<TooltipTrigger>().body = rocketPartScript.rocketPartBtnReference.tooltipBody + "\nRemaining: " + rocketPartScript.rocketPartBtnReference.count;
 
         rocketPartScript.RemoveRocketPartProperty(rocketPartScript);
         Destroy(instantiatedRocketPart);
