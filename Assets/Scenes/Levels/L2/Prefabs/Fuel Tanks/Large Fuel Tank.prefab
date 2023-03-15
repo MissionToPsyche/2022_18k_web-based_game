@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 6
-  m_Sprite: {fileID: 21300000, guid: a22c55f7011db4b4e9c6cdb29f0a156b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8397b1653dbb76142a69ca3d159f4c3c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -106,7 +106,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.68, y: 1.33}
+    oldSize: {x: 0.64, y: 1.28}
     newSize: {x: 5.85, y: 21.35615}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -197,4 +197,8 @@ MonoBehaviour:
   fuel: 18
   fuelConsumptionRate: 0
   thrust: 0
-  count: 0
+  rocketPartBtnReference:
+    prefab: {fileID: 0}
+    tooltipBody: 
+    tooltipHeader: 
+  canBePlaced: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 public class UIManager : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class UIManager : MonoBehaviour
     public SpriteRenderer nebulaSpace;
     public GameObject space;
     public GameObject endPortal;
+    public Slider fuelBarSlider;
+
     void Start()
     {
         _btnText = engineControllerButton.GetComponentInChildren<TextMeshProUGUI>();
@@ -65,6 +68,7 @@ public class UIManager : MonoBehaviour
         blackPanel.SetActive(false);
         controlsTutorial.SetActive(false);
         player.SetActive(true);
+        fuelBarSlider.gameObject.SetActive(false);
         _rocketInfoText.text = "Mass: 0t\nThrust: 0t\nThrust/Weight: 0 \nFuel: 0t \nFuel Consumption: 0t/sec";
 
     }
@@ -76,6 +80,7 @@ public class UIManager : MonoBehaviour
         player.SetActive(false);
         rocketInfoPanel.SetActive(false);
         rocketPartsSidePanel.SetActive(false);
+        fuelBarSlider.gameObject.SetActive(true);
     }
     public void OnWinGame()
     {
@@ -99,5 +104,14 @@ public class UIManager : MonoBehaviour
         {
             _rocketInfoText.text = "Mass: " + rocket.totalMass.ToString("F1") + "t\nThrust: " + rocket.totalThrust + "t\nThrust/Weight: " + rocket.TWR + "\nFuel: " + rocket.totalFuel.ToString("F1") + "t\nFuel Consumption: " + rocket.totalFuelConsumptionRate.ToString("F1") + "t/sec";
         }
+    }
+    public void SetMaxFuelBarAmount(float fuel)
+    {
+        fuelBarSlider.maxValue = fuel;
+        fuelBarSlider.value = fuel;
+    }
+    public void SetFuelBar(float fuel)
+    {
+        fuelBarSlider.value = fuel;
     }
 }

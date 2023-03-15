@@ -7,7 +7,7 @@ public class RocketPart : MonoBehaviour
     Rigidbody2D rocketPartRigidBody;
     RocketPart rocketPartScript;
     public bool isFinishedBuilding = false;
-    public bool isPartOfTheRocket = true;
+    public bool isPartOfTheRocket = false;
     public bool isPartOfLeftBooster = false;
     public bool isPartOfRightBooster = false;
     public bool isFirstRocketPart = false;
@@ -34,9 +34,10 @@ public class RocketPart : MonoBehaviour
     public bool canBePlaced;
     void Start()
     {
-        isPartOfTheRocket = true;
+        isPartOfTheRocket = false;
         isPartOfLeftBooster = false;
         isPartOfRightBooster = false;
+        canBePlaced = true;
         rocketPartRigidBody = gameObject.GetComponent<Rigidbody2D>();
         rocketScript = gameObject.GetComponentInParent<Rocket>();
         rocketPartScript = gameObject.GetComponent<RocketPart>();
@@ -107,22 +108,29 @@ public class RocketPart : MonoBehaviour
     }
     void DetachPart(Transform rocketPart, RocketPart rocketPartScript)
     {
+        rocketPartScript.isPartOfTheRocket = false;
+        rocketPartScript.isDetached = true;
+
         RemoveRocketPartProperty(rocketPartScript);
         Rigidbody2D rocketPartRb2D = rocketPart.gameObject.GetComponent<Rigidbody2D>();
         rocketPart.SetParent(null); // Detach from parent
         rocketPartRb2D.bodyType = RigidbodyType2D.Dynamic;
+        rocketPartRb2D.constraints = RigidbodyConstraints2D.None;
         rocketPartRb2D.gravityScale = 1f;
         rocketPartRb2D.velocity = new Vector2(0, _fallSpeed);
-        rocketPartScript.isPartOfTheRocket = false;
-        rocketPartScript.isDetached = true;
-        rocketPartRb2D.constraints = RigidbodyConstraints2D.None;
     }
     public void RemoveRocketPartProperty(RocketPart rocketPartScript)
     {
         // Remove fuel, thrust, and mass
         if (rocketPartScript.fuel > 0)
         {
-            SendMessageUpwards("OnReduceFuel", rocketPartScript.fuel, SendMessageOptions.RequireReceiver);
+            rocketScript.numberOfFuelTanks--;
+            float fuelToSubtract = rocketPartScript.fuel - rocketScript.fuelDrainagePerTank;
+            if (fuelToSubtract < 0)
+            {
+                fuelToSubtract = 0;
+            }
+            SendMessageUpwards("OnReduceFuel", fuelToSubtract, SendMessageOptions.RequireReceiver);
         }
         // If engine, remove thrust and fuel consumption rate
         if (rocketPartScript.thrust > 0)

@@ -31,8 +31,13 @@ public class Rocket : MonoBehaviour
     private Coroutine _torqueCoroutine;
     public UIManager uiManager;
     public GameObject endingPanel;
+    private IEnumerator _consumeFuelEnumerator;
+    public int numberOfFuelTanks;
+    public float fuelDrainagePerTank;
+    public float fuelDrainageRatePerTank;
     void Start()
     {
+        _consumeFuelEnumerator = ConsumeFuel();
         Init();
     }
 
@@ -113,6 +118,8 @@ public class Rocket : MonoBehaviour
         {
             child.SendMessage("OnFinishedBuilding");
         }
+        CalculateFuelDrainageRatePerTank();
+        uiManager.SetMaxFuelBarAmount(totalFuel);
     }
     public void CalculateMassDistribution()
     {
@@ -146,6 +153,10 @@ public class Rocket : MonoBehaviour
             {
                 cameraFollowScript.target = child;
             }
+            else if (child.tag == "FuelTank")
+            {
+                numberOfFuelTanks++;
+            }
         }
     }
     public void EnginesOn()
@@ -158,11 +169,12 @@ public class Rocket : MonoBehaviour
             rb.bodyType = RigidbodyType2D.Kinematic;
             rb.useFullKinematicContacts = true;
         }
-
+        StartCoroutine(_consumeFuelEnumerator);
     }
     public void EnginesOff()
     {
         _enginesOn = false;
+        StopCoroutine(_consumeFuelEnumerator);
         ApplyGravity();
         MakeRocketPartsDynamicWithoutGravity();
         // Turn off engine animation
@@ -180,13 +192,20 @@ public class Rocket : MonoBehaviour
     {
         foreach (Transform child in rocketParts)
         {
-            Rigidbody2D childRigidbody = child.GetComponent<Rigidbody2D>();
-            childRigidbody.bodyType = RigidbodyType2D.Dynamic;
-            childRigidbody.simulated = true;
-            childRigidbody.drag = 0.3f;
-            childRigidbody.gravityScale = 0f;   // Off gravity so it doesn't affect the movement
-            childRigidbody.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
+            if (child.GetComponent<RocketPart>().isPartOfTheRocket)
+            {
+                Rigidbody2D childRigidbody = child.GetComponent<Rigidbody2D>();
+                childRigidbody.bodyType = RigidbodyType2D.Dynamic;
+                childRigidbody.simulated = true;
+                childRigidbody.drag = 0.3f;
+                childRigidbody.gravityScale = 0f;   // Off gravity so it doesn't affect the movement
+                childRigidbody.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
+            }
         }
+    }
+    void CalculateFuelDrainageRatePerTank()
+    {
+        fuelDrainageRatePerTank = totalFuelConsumptionRate / numberOfFuelTanks;
     }
     void OnHitGround()
     {
@@ -198,6 +217,22 @@ public class Rocket : MonoBehaviour
         if (!uiManager.engineControllerBtnActive)
         {
             uiManager.ActivateEngineControllerBtn();
+        }
+    }
+    IEnumerator ConsumeFuel()
+    {
+        while (totalFuel > 0)
+        {
+            totalFuel -= totalFuelConsumptionRate * Time.deltaTime;
+            fuelDrainagePerTank += fuelDrainageRatePerTank * Time.deltaTime;
+            uiManager.SetFuelBar(totalFuel);
+            if (totalFuel < 0)
+            {
+                totalFuel = 0;
+                // Turn off the engine when there is no fuel
+                EnginesOff();
+            }
+            yield return null;
         }
     }
     public void CalculateTWR()
@@ -219,12 +254,18 @@ public class Rocket : MonoBehaviour
     public void OnReduceFuel(float fuelVal)
     {
         totalFuel -= fuelVal;
+        CalculateFuelDrainageRatePerTank();
         uiManager.UpdateRocketProperties();
+        uiManager.SetFuelBar(totalFuel);
     }
     public void OnReduceTotalFuelConsumptionRate(float fuelConsumptionRateVal)
     {
         totalFuelConsumptionRate -= fuelConsumptionRateVal;
         uiManager.UpdateRocketProperties();
+        if (totalFuelConsumptionRate <= 0)
+        {
+            EnginesOff();
+        }
     }
     public void OnReduceTotalThrust(float thrustVal)
     {
