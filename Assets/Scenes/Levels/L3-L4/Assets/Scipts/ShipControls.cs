@@ -179,7 +179,14 @@ public class ShipControls : MonoBehaviour
 
         if(collision.gameObject.tag == "Goal")
         {
-            ChangeScene();
+            forwardspeed = 0;
+            strafespeed = 0;
+            rollspeed = 0;
+            hoverspeed = 0;
+            lookrotatespeed = 0;
+            //ChangeScene();
+
+            change.Setup();
         }
     }
 
