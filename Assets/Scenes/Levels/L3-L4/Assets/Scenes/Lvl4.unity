@@ -1549,7 +1549,7 @@ MonoBehaviour:
   nickelPrefab: {fileID: 3108709421314773672, guid: e6421bd50c9340d4b970e4e2b54ea0c7, type: 3}
   silicatePrefab: {fileID: 488228555}
   fieldRadius: 100
-  oreCount: 0
+  oreCount: 50
 --- !u!1 &1282882635
 GameObject:
   m_ObjectHideFlags: 0

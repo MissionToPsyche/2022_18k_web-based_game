@@ -12150,6 +12150,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1923381153}
     m_Modifications:
+    - target: {fileID: 391535424855659580, guid: 1855031769af02c459f93c9630d483c3, type: 3}
+      propertyPath: m_TagString
+      value: collectible
+      objectReference: {fileID: 0}
     - target: {fileID: 1710678898418569216, guid: 1855031769af02c459f93c9630d483c3, type: 3}
       propertyPath: type
       value: 4
@@ -12251,6 +12255,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 391535424855659580, guid: 1855031769af02c459f93c9630d483c3, type: 3}
+      propertyPath: m_TagString
+      value: collectible
+      objectReference: {fileID: 0}
     - target: {fileID: 1710678898418569216, guid: 1855031769af02c459f93c9630d483c3, type: 3}
       propertyPath: teir
       value: 32
@@ -25744,6 +25752,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 391535424855659580, guid: 1855031769af02c459f93c9630d483c3, type: 3}
+      propertyPath: m_TagString
+      value: collectible
+      objectReference: {fileID: 0}
     - target: {fileID: 1710678898418569216, guid: 1855031769af02c459f93c9630d483c3, type: 3}
       propertyPath: teir
       value: 32
@@ -25865,6 +25877,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 391535424855659580, guid: 1855031769af02c459f93c9630d483c3, type: 3}
+      propertyPath: m_TagString
+      value: collectible
+      objectReference: {fileID: 0}
     - target: {fileID: 1710678898418569216, guid: 1855031769af02c459f93c9630d483c3, type: 3}
       propertyPath: type
       value: 3
@@ -26140,6 +26156,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 391535424855659580, guid: 1855031769af02c459f93c9630d483c3, type: 3}
+      propertyPath: m_TagString
+      value: collectible
+      objectReference: {fileID: 0}
     - target: {fileID: 1792122517035079767, guid: 1855031769af02c459f93c9630d483c3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -26147,6 +26167,10 @@ PrefabInstance:
     - target: {fileID: 2841495486209793169, guid: 1855031769af02c459f93c9630d483c3, type: 3}
       propertyPath: m_Name
       value: Collectible
+      objectReference: {fileID: 0}
+    - target: {fileID: 2841495486209793169, guid: 1855031769af02c459f93c9630d483c3, type: 3}
+      propertyPath: m_TagString
+      value: collectible
       objectReference: {fileID: 0}
     - target: {fileID: 8514886503776002467, guid: 1855031769af02c459f93c9630d483c3, type: 3}
       propertyPath: m_RootOrder
@@ -50270,6 +50294,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1805876894}
     m_Modifications:
+    - target: {fileID: 391535424855659580, guid: 1855031769af02c459f93c9630d483c3, type: 3}
+      propertyPath: m_TagString
+      value: collectible
+      objectReference: {fileID: 0}
     - target: {fileID: 1710678898418569216, guid: 1855031769af02c459f93c9630d483c3, type: 3}
       propertyPath: type
       value: 1
@@ -50391,6 +50419,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2121705994}
     m_Modifications:
+    - target: {fileID: 391535424855659580, guid: 1855031769af02c459f93c9630d483c3, type: 3}
+      propertyPath: m_TagString
+      value: collectible
+      objectReference: {fileID: 0}
     - target: {fileID: 1710678898418569216, guid: 1855031769af02c459f93c9630d483c3, type: 3}
       propertyPath: type
       value: 2
