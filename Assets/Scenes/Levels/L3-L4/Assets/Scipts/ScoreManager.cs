@@ -61,7 +61,7 @@ public class ScoreManager : MonoBehaviour
         if (x == "ice")
         {
             score += 2;
-            scoreSys.text = "Ice Scanned +2";
+            scoreSys.text = "Silicate Scanned +2";
             showScore.text = "Score: " + score;
         }
     }
