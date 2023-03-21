@@ -13,6 +13,7 @@ public class SnapManager : MonoBehaviour
     public UIManager uIManager;
     private bool _hasSnapped = false;
     public RocketPartsShopManager rocketPartsShopManagerScript;
+    public GameObject TrashCanSnappingPoint;
 
     void Awake()
     {
@@ -33,6 +34,7 @@ public class SnapManager : MonoBehaviour
         // {
         //     draggableObj.dragEndedCallback = OnDragEnded;
         // }
+        TrashCanSnappingPoint.SetActive(false);
     }
 
     private void OnDragEnded(Draggable draggedObj)
@@ -132,8 +134,14 @@ public class SnapManager : MonoBehaviour
                 }
             }
         }
-        if (!_hasSnapped && !_currentDraggedObj.GetComponent<RocketPart>().isFirstRocketPart)
+        RocketPart rocketPartScript = _currentDraggedObj.GetComponent<RocketPart>();
+        if (!_hasSnapped && !rocketPartScript.isFirstRocketPart)
         {
+            rocketPartsShopManagerScript.DestroyMisplacedRocketPart();
+        }
+        else if (rocketPartScript.isFirstRocketPart && !rocketPartScript.canBePlaced)
+        {
+            rocketPartsShopManagerScript.firstRocketPartPlaced = false;
             rocketPartsShopManagerScript.DestroyMisplacedRocketPart();
         }
     }
@@ -308,6 +316,14 @@ public class SnapManager : MonoBehaviour
     }
     public void ToggleSnappingPoints(GameObject currentDraggedObj)
     {
+        if (TrashCanSnappingPoint.activeSelf)
+        {
+            TrashCanSnappingPoint.SetActive(false);
+        }
+        else
+        {
+            TrashCanSnappingPoint.SetActive(true);
+        }
         // If side separator show all snapping points available on the left or right
         foreach (GameObject snappingPointObj in _snappingPointObjs)
         {

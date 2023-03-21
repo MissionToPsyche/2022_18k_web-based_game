@@ -32,6 +32,8 @@ public class RocketPart : MonoBehaviour
     public float thrust = 0f;
     public rocketPart rocketPartBtnReference;
     public bool canBePlaced;
+    public GameObject poof;
+    private SpriteRenderer spriteRenderer;
     void Start()
     {
         isPartOfTheRocket = false;
@@ -41,6 +43,7 @@ public class RocketPart : MonoBehaviour
         rocketPartRigidBody = gameObject.GetComponent<Rigidbody2D>();
         rocketScript = gameObject.GetComponentInParent<Rocket>();
         rocketPartScript = gameObject.GetComponent<RocketPart>();
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         Init();
     }
     private void Init()
@@ -183,22 +186,21 @@ public class RocketPart : MonoBehaviour
 
                 if (isPartOfTheRocket)
                 {
-                    // If crash too hard, the rocket crashes and the player loses
                     rocketScript.isOnGround = true;
 
+                    // If crash too hard, the rocket part gets crashed 
                     if (rocketScript.GetSpeed() < _crashThreshold)
                     {
-                        SendMessageUpwards("OnCrash", SendMessageOptions.RequireReceiver);
+                        RocketPartCrashed();
+                        // If it is the capsule, game is over
+                        if (gameObject.tag == "Capsule")
+                        {
+                            Invoke("GameOver", 1f); // Invoke game over after 1 second to let the poof animation play
+                        }
                     }
                     else
                     {
                         SendMessageUpwards("OnHitGround", SendMessageOptions.RequireReceiver);
-                    }
-
-                    // If not engine and no crash, crash it
-                    if (gameObject.tag != "Engine")
-                    {
-                        SendMessageUpwards("OnCrash", SendMessageOptions.RequireReceiver);
                     }
                 }
                 else
@@ -209,6 +211,16 @@ public class RocketPart : MonoBehaviour
             }
         }
     }
+    void RocketPartCrashed()
+    {
+        spriteRenderer.enabled = false;
+        poof.SetActive(true);
+    }
+    void GameOver()
+    {
+        SendMessageUpwards("OnGameOver", SendMessageOptions.RequireReceiver);
+    }
+
     void OnCollisionExit2D(Collision2D collision)
     {
         if (isFinishedBuilding)
@@ -229,7 +241,7 @@ public class RocketPart : MonoBehaviour
     }
     void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.collider.tag == "Ground")
+        if (collision.collider.tag == "Ground" || collision.collider.tag == "TrashCan")
         {
             canBePlaced = false;
         }

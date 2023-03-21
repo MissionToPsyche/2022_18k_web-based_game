@@ -239,7 +239,7 @@ public class Rocket : MonoBehaviour
     {
         TWR = totalThrust / totalMass;
     }
-    void OnCrash()
+    void OnGameOver()
     {
         gameObject.SetActive(false);
     }
