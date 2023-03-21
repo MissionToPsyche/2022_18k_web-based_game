@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 public class Level1AudioManager : MonoBehaviour
 {
     public MovementController player;
-    public PlayerCollision ground;
+    
 
     public AudioSource audios;
     public AudioClip walking;
@@ -18,7 +18,7 @@ public class Level1AudioManager : MonoBehaviour
     {
         audios = GetComponent<AudioSource>();
         player = GetComponent<MovementController>();
-        ground = GetComponent<PlayerCollision>();
+        
     }
 
     // Update is called once per frame
