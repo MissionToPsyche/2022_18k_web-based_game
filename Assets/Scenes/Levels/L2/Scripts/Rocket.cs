@@ -161,7 +161,7 @@ public class Rocket : MonoBehaviour
     }
     public void EnginesOn()
     {
-        _acceleration = 0.01f;
+        _acceleration = 0.05f;
         _enginesOn = true;
         GetReferenceToRocketParts();
         foreach (Rigidbody2D rb in rocketPartRigidbodies)

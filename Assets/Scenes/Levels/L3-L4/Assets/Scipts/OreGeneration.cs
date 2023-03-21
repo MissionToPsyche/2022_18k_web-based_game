@@ -7,7 +7,7 @@ public class OreGeneration : MonoBehaviour
     public Transform goldPrefab;
     public Transform ironPrefab;
     public Transform nickelPrefab;
-    public Transform icePrefab;
+    public Transform silicatePrefab;
     public int fieldRadius = 100;
     public int oreCount = 50;
     // Start is called before the first frame update
@@ -22,7 +22,7 @@ public class OreGeneration : MonoBehaviour
             Vector3 randomGold = new Vector3(Random.Range(0, 1000), 0, Random.Range(0, 1000));
             Vector3 randomIron = new Vector3(Random.Range(0, 1000), 0, Random.Range(0, 1000));
             Vector3 randomNickel = new Vector3(Random.Range(0, 1000), 0, Random.Range(0, 1000));
-            Vector3 randomIce = new Vector3(Random.Range(0, 1000), 0, Random.Range(0, 1000));
+            Vector3 randomSilicate = new Vector3(Random.Range(0, 1000), 0, Random.Range(0, 1000));
 
             if (Physics.Raycast(randomGold + new Vector3(0, 100.0f, 0), Vector3.down, out raycastHit, 300.0f))
             {
@@ -42,9 +42,9 @@ public class OreGeneration : MonoBehaviour
                 temp.localScale = temp.localScale * Random.Range(.05f, 1f);
             }
 
-            if (Physics.Raycast(randomIce + new Vector3(0, 100.0f, 0), Vector3.down, out raycastHit, 300.0f))
+            if (Physics.Raycast(randomSilicate + new Vector3(0, 100.0f, 0), Vector3.down, out raycastHit, 300.0f))
             {
-                temp = Instantiate(icePrefab, raycastHit.point, Random.rotation);
+                temp = Instantiate(silicatePrefab, raycastHit.point, Random.rotation);
                 temp.localScale = temp.localScale * Random.Range(.05f, 1f);
             }
 
