@@ -7,7 +7,7 @@ public class Rocket : MonoBehaviour
     public float _acceleration;
     private float _accelerationRate = 0.1f;
     public float _speed = 0f;
-    public float _maxSpeed = 5f;
+    public float _maxSpeed = 15f;
     private float _rotationSpeed = 0f;
     private float _rotationMaxSpeed = 100f;
     private float _torque = 0;
@@ -239,7 +239,7 @@ public class Rocket : MonoBehaviour
     {
         TWR = totalThrust / totalMass;
     }
-    void OnGameOver()
+    void OnCrash()
     {
         gameObject.SetActive(false);
     }

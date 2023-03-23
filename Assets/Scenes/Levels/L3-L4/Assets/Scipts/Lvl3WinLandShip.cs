@@ -16,7 +16,7 @@ public class Lvl3WinLandShip : MonoBehaviour
         gameObject.SetActive(true);
         ship = GameObject.Find("Ship");
         StartCoroutine(Land());
-        
+        Cursor.visible = true;
     }
 
 
