@@ -306,4 +306,10 @@ public class Rocket : MonoBehaviour
         _acceleration = 0;
         endingPanel.SetActive(true);
     }
+    public void OnGameOver()
+    {
+        _speed = 0f;
+        _acceleration = 0;
+        gameObject.SetActive(false);
+    }
 }

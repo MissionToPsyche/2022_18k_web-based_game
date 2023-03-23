@@ -80,15 +80,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 6
-  m_Sprite: {fileID: 21300000, guid: c065ae828a35ab647a899330f946ec05, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9974894a078c95644ae65749b4dcc9fc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 8.34, y: 21.350399}
+  m_Size: {x: 0.64, y: 2.02}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &1636870019686296678
@@ -108,14 +108,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.21, y: 21.344416}
-    newSize: {x: 8.34, y: 21.350399}
+    oldSize: {x: 0.64, y: 2.02}
+    newSize: {x: 0.64, y: 2.02}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.21, y: 21.344416}
+  m_Size: {x: 0.64, y: 2.02}
   m_EdgeRadius: 0
 --- !u!50 &7310230135253691115
 Rigidbody2D:
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFinishedBuilding: 0
-  isPartOfTheRocket: 1
+  isPartOfTheRocket: 0
   isPartOfLeftBooster: 0
   isPartOfRightBooster: 0
   isFirstRocketPart: 0
@@ -203,7 +203,7 @@ MonoBehaviour:
     prefab: {fileID: 0}
     tooltipBody: 
     tooltipHeader: 
-  canBePlaced: 0
+  canBePlaced: 1
   poof: {fileID: 3864309048100910547}
 --- !u!114 &6732710307008848917
 MonoBehaviour:

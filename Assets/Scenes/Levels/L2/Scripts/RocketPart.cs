@@ -192,11 +192,6 @@ public class RocketPart : MonoBehaviour
                     if (rocketScript.GetSpeed() < _crashThreshold)
                     {
                         RocketPartCrashed();
-                        // If it is the capsule, game is over
-                        if (gameObject.tag == "Capsule")
-                        {
-                            Invoke("GameOver", 1f); // Invoke game over after 1 second to let the poof animation play
-                        }
                     }
                     else
                     {
@@ -216,11 +211,6 @@ public class RocketPart : MonoBehaviour
         spriteRenderer.enabled = false;
         poof.SetActive(true);
     }
-    void GameOver()
-    {
-        SendMessageUpwards("OnGameOver", SendMessageOptions.RequireReceiver);
-    }
-
     void OnCollisionExit2D(Collision2D collision)
     {
         if (isFinishedBuilding)
