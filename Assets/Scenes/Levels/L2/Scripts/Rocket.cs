@@ -35,6 +35,9 @@ public class Rocket : MonoBehaviour
     public int numberOfFuelTanks;
     public float fuelDrainagePerTank;
     public float fuelDrainageRatePerTank;
+    public bool hasLaunched = false;
+    public bool alreadyPlayingLaunchAudio = false;
+    public bool alreadyPlayingEngineOnAudio = false;
     void Start()
     {
         _consumeFuelEnumerator = ConsumeFuel();
@@ -170,6 +173,15 @@ public class Rocket : MonoBehaviour
             rb.useFullKinematicContacts = true;
         }
         StartCoroutine(_consumeFuelEnumerator);
+        // Turn on engine animation
+        foreach (Transform child in rocketParts)
+        {
+            if (child.tag == "Engine")
+            {
+                child.GetComponent<RocketPart>().EngineOn();
+            }
+        }
+
     }
     public void EnginesOff()
     {
@@ -178,8 +190,16 @@ public class Rocket : MonoBehaviour
         ApplyGravity();
         MakeRocketPartsDynamicWithoutGravity();
         // Turn off engine animation
-
+        foreach (Transform child in rocketParts)
+        {
+            if (child.tag == "Engine")
+            {
+                child.GetComponent<RocketPart>().EngineOff();
+            }
+        }
         // Turn off engine audio
+        AudioManager.instance.Stop("EngineOn");
+        alreadyPlayingEngineOnAudio = false;
     }
     public void ApplyGravity()
     {

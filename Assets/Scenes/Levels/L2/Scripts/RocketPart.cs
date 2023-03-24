@@ -34,6 +34,8 @@ public class RocketPart : MonoBehaviour
     public bool canBePlaced;
     public GameObject poof;
     private SpriteRenderer spriteRenderer;
+    public GameObject engineFire;
+    private Animator _engineFireAnimator;
     void Start()
     {
         isPartOfTheRocket = false;
@@ -44,6 +46,12 @@ public class RocketPart : MonoBehaviour
         rocketScript = gameObject.GetComponentInParent<Rocket>();
         rocketPartScript = gameObject.GetComponent<RocketPart>();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        poof.SetActive(false);
+        if (gameObject.tag == "Engine")
+        {
+            engineFire.SetActive(true);
+            _engineFireAnimator = engineFire.GetComponent<Animator>();
+        }
         Init();
     }
     private void Init()
@@ -291,6 +299,32 @@ public class RocketPart : MonoBehaviour
         if (attachedSideSeparator)
         {
             attachedSideSeparator = null;
+        }
+    }
+    public void EngineOff()
+    {
+        _engineFireAnimator.SetBool("EngineOn", false);
+    }
+    public void EngineOn()
+    {
+        _engineFireAnimator.SetBool("EngineOn", true);
+        // Turn on engine audio
+        if (!rocketScript.hasLaunched)
+        {
+            rocketScript.hasLaunched = true;
+            if (rocketScript.alreadyPlayingLaunchAudio == false)
+            {
+                AudioManager.instance.Play("Launch");
+                rocketScript.alreadyPlayingLaunchAudio = true;
+            }
+        }
+        else
+        {
+            if (rocketScript.alreadyPlayingEngineOnAudio == false)
+            {
+                AudioManager.instance.Play("EngineOn");
+                rocketScript.alreadyPlayingEngineOnAudio = true;
+            }
         }
     }
 }

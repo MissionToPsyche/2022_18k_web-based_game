@@ -155,6 +155,75 @@ Transform:
   m_Father: {fileID: 649747905}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &43488709
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 43488711}
+  - component: {fileID: 43488710}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &43488710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43488709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd70b1550f8b9954fb0e8042eebc52c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: EngineOn
+    clip: {fileID: 8300000, guid: 63b0afec8b55e2b449ca175b616315b3, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Poof
+    clip: {fileID: 8300000, guid: 75e5f25189c67334aa0833829d02db6c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Launch
+    clip: {fileID: 8300000, guid: b58273d6240176e45891687236a1f330, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Theme
+    clip: {fileID: 8300000, guid: 1c3b1de98ed288e49bfcdc500f488fdb, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+--- !u!4 &43488711
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 43488709}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.03717643, y: -0.22786129, z: 0.04126074}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &59341996
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,7 +461,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &170302801
 GameObject:
@@ -1040,7 +1109,7 @@ RectTransform:
   - {fileID: 690735565}
   - {fileID: 1033797314}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1290,7 +1359,7 @@ Transform:
   m_Children:
   - {fileID: 856501560}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &465240240
 GameObject:
@@ -1439,7 +1508,7 @@ GameObject:
   - component: {fileID: 479690640}
   - component: {fileID: 479690639}
   m_Layer: 0
-  m_Name: Level Manager
+  m_Name: LevelManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1728,7 +1797,7 @@ Transform:
   - {fileID: 629564777}
   - {fileID: 17317839}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &651565991
 PrefabInstance:
@@ -2346,7 +2415,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &918791999
 GameObject:
@@ -2480,6 +2549,9 @@ MonoBehaviour:
   numberOfFuelTanks: 0
   fuelDrainagePerTank: 0
   fuelDrainageRatePerTank: 0
+  hasLaunched: 0
+  alreadyPlayingLaunchAudio: 0
+  alreadyPlayingEngineOnAudio: 0
 --- !u!4 &927117999
 Transform:
   m_ObjectHideFlags: 0
@@ -2493,7 +2565,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1033797313
 GameObject:
@@ -2873,7 +2945,7 @@ Transform:
   - {fileID: 809301523}
   - {fileID: 2094293674}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1172116938
 GameObject:
@@ -3029,7 +3101,7 @@ Transform:
   m_Children:
   - {fileID: 1382725882}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1205968360
 MonoBehaviour:
@@ -3641,7 +3713,7 @@ RectTransform:
   m_Children:
   - {fileID: 1805767569}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4367,7 +4439,7 @@ Transform:
   m_Children:
   - {fileID: 651565992}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1951812290
 Rigidbody2D:
@@ -4597,7 +4669,6 @@ GameObject:
   - component: {fileID: 2099866928}
   - component: {fileID: 2099866933}
   - component: {fileID: 2099866932}
-  - component: {fileID: 2099866935}
   - component: {fileID: 2099866934}
   m_Layer: 0
   m_Name: Main Camera
@@ -4670,7 +4741,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2099866932
 MonoBehaviour:
@@ -4815,20 +4886,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2099866935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2099866927}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8104f737a2fd164f8a02a0f9189b736, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audios: {fileID: 2099866934}
-  engine: {fileID: 8300000, guid: e29257a4391369548bad5b7e9b175bf3, type: 3}
 --- !u!1 &2101041991
 GameObject:
   m_ObjectHideFlags: 0
@@ -5062,7 +5119,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5544892239890550342, guid: a85c53303aa2b8e42955d4bc7a2096ce, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5544892239890550342, guid: a85c53303aa2b8e42955d4bc7a2096ce, type: 3}
       propertyPath: m_LocalPosition.x
