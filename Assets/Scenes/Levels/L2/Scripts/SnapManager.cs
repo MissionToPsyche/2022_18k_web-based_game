@@ -137,12 +137,12 @@ public class SnapManager : MonoBehaviour
         RocketPart rocketPartScript = _currentDraggedObj.GetComponent<RocketPart>();
         if (!_hasSnapped && !rocketPartScript.isFirstRocketPart)
         {
-            rocketPartsShopManagerScript.DestroyMisplacedRocketPart();
+            rocketPartsShopManagerScript.DestroyMisplacedRocketPart(rocketPartScript);
         }
         else if (rocketPartScript.isFirstRocketPart && !rocketPartScript.canBePlaced)
         {
             rocketPartsShopManagerScript.firstRocketPartPlaced = false;
-            rocketPartsShopManagerScript.DestroyMisplacedRocketPart();
+            rocketPartsShopManagerScript.DestroyMisplacedRocketPart(rocketPartScript);
         }
     }
     void SnapToPoint(float snapPosition, string direction)

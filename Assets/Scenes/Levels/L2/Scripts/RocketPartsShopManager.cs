@@ -228,7 +228,7 @@ public class RocketPartsShopManager : MonoBehaviour
             createRocketPartBtn(rocketPart, tooltipHeader: _tooltipHeader, tooltipBody: _tooltipBody, remainingParts: count, x_scaleImgBy: x, y_scaleImgBy: y);
         }
     }
-    public void DestroyMisplacedRocketPart()
+    public void DestroyMisplacedRocketPart(RocketPart rocketPartScript)
     {
         if (rocketPartScript.rocketPartBtnReference.count <= 0)
         {
@@ -238,6 +238,6 @@ public class RocketPartsShopManager : MonoBehaviour
         rocketPartScript.rocketPartBtnReference.btn.gameObject.GetComponent<TooltipTrigger>().body = rocketPartScript.rocketPartBtnReference.tooltipBody + "\nRemaining: " + rocketPartScript.rocketPartBtnReference.count;
 
         rocketPartScript.RemoveRocketPartProperty(rocketPartScript);
-        Destroy(instantiatedRocketPart);
+        Destroy(rocketPartScript.gameObject);
     }
 }
