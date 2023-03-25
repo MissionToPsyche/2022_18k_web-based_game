@@ -280,6 +280,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8133271451995109533}
     m_Modifications:
+    - target: {fileID: 2554791327589621182, guid: eedf30f34aeec9d4e9eb05a26716973c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1962156419, guid: 4941f1010b42b4440959f435a717f365, type: 3}
     - target: {fileID: 5048809901809271068, guid: eedf30f34aeec9d4e9eb05a26716973c, type: 3}
       propertyPath: m_Name
       value: EngineFire
@@ -294,7 +298,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8033804309561574042, guid: eedf30f34aeec9d4e9eb05a26716973c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.022
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8033804309561574042, guid: eedf30f34aeec9d4e9eb05a26716973c, type: 3}
       propertyPath: m_LocalPosition.y

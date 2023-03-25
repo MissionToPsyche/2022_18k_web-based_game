@@ -164,24 +164,28 @@ public class Rocket : MonoBehaviour
     }
     public void EnginesOn()
     {
-        _acceleration = 0.05f;
-        _enginesOn = true;
-        GetReferenceToRocketParts();
-        foreach (Rigidbody2D rb in rocketPartRigidbodies)
+        if (totalFuel > 0)
         {
-            rb.bodyType = RigidbodyType2D.Kinematic;
-            rb.useFullKinematicContacts = true;
-        }
-        StartCoroutine(_consumeFuelEnumerator);
-        // Turn on engine animation
-        foreach (Transform child in rocketParts)
-        {
-            if (child.tag == "Engine")
+
+
+            _acceleration = 0.05f;
+            _enginesOn = true;
+            GetReferenceToRocketParts();
+            foreach (Rigidbody2D rb in rocketPartRigidbodies)
             {
-                child.GetComponent<RocketPart>().EngineOn();
+                rb.bodyType = RigidbodyType2D.Kinematic;
+                rb.useFullKinematicContacts = true;
+            }
+            StartCoroutine(_consumeFuelEnumerator);
+            // Turn on engine animation
+            foreach (Transform child in rocketParts)
+            {
+                if (child.tag == "Engine")
+                {
+                    child.GetComponent<RocketPart>().EngineOn();
+                }
             }
         }
-
     }
     public void EnginesOff()
     {
@@ -200,6 +204,7 @@ public class Rocket : MonoBehaviour
         // Turn off engine audio
         AudioManager.instance.Stop("EngineOn");
         alreadyPlayingEngineOnAudio = false;
+
     }
     public void ApplyGravity()
     {
@@ -248,12 +253,19 @@ public class Rocket : MonoBehaviour
             uiManager.SetFuelBar(totalFuel);
             if (totalFuel < 0)
             {
-                totalFuel = 0;
-                // Turn off the engine when there is no fuel
-                EnginesOff();
+                AllFuelRanOut();
             }
             yield return null;
         }
+    }
+    void AllFuelRanOut()
+    {
+        totalFuel = 0;
+        // Turn off the engine when there is no fuel
+        EnginesOff();
+        // Change the Theme music into disasterTheme music
+        AudioManager.instance.Stop("Theme");
+        AudioManager.instance.Play("DisasterTheme");
     }
     public void CalculateTWR()
     {
@@ -325,11 +337,13 @@ public class Rocket : MonoBehaviour
         _speed = 0.2f;
         _acceleration = 0;
         endingPanel.SetActive(true);
+        AudioManager.instance.StopAll();
     }
     public void OnGameOver()
     {
         _speed = 0f;
         _acceleration = 0;
         gameObject.SetActive(false);
+        AudioManager.instance.StopAll();
     }
 }

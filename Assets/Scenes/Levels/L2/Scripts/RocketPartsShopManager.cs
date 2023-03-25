@@ -236,8 +236,10 @@ public class RocketPartsShopManager : MonoBehaviour
         }
         rocketPartScript.rocketPartBtnReference.count++;
         rocketPartScript.rocketPartBtnReference.btn.gameObject.GetComponent<TooltipTrigger>().body = rocketPartScript.rocketPartBtnReference.tooltipBody + "\nRemaining: " + rocketPartScript.rocketPartBtnReference.count;
-
-        rocketPartScript.RemoveRocketPartProperty(rocketPartScript);
+        if (rocketPartScript.isPartOfTheRocket)
+        {
+            rocketPartScript.RemoveRocketPartProperty(rocketPartScript);
+        }
         Destroy(rocketPartScript.gameObject);
     }
 }
