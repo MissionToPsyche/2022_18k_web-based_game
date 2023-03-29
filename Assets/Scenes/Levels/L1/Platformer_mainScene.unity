@@ -18086,6 +18086,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78507a16d09d9989f82cf3c73774b851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audios: {fileID: 208944847}
+  death: {fileID: 8300000, guid: b62f37e833c843c4497832133703afbe, type: 3}
 --- !u!483693784 &558034445
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -44295,6 +44297,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78507a16d09d9989f82cf3c73774b851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audios: {fileID: 208944847}
+  death: {fileID: 8300000, guid: b62f37e833c843c4497832133703afbe, type: 3}
 --- !u!483693784 &1736016144
 TilemapRenderer:
   m_ObjectHideFlags: 0
