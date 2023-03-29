@@ -26,7 +26,7 @@ public class Level1AudioManager : MonoBehaviour
     {
         if (!audios.isPlaying)
         {
-                if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+                if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow))
                 {
                         audios.clip = walking;
                         audios.volume = .75f;
