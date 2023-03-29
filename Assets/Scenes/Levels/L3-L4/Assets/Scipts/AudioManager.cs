@@ -16,6 +16,9 @@ public class AudioManager : MonoBehaviour
     public AudioClip grapple;
     public AudioClip scan;
 
+    public AudioSource music;
+    public AudioClip mus;
+
 
     // Start is called before the first frame update
 
@@ -24,6 +27,10 @@ public class AudioManager : MonoBehaviour
         audios = GetComponent<AudioSource>();
         player = GetComponent<PlayerMovement>();
         grappleGun = GetComponent<Grappling>();
+
+        music.clip = mus;
+        music.volume = .1f;
+        music.Play();
     }
 
 

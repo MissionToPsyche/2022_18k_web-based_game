@@ -13,12 +13,20 @@ public class Level1AudioManager : MonoBehaviour
     public AudioClip land;
     public AudioClip jump;
     public AudioClip collected;
+
+    public AudioSource music;
+    public AudioClip mus;
+
     // Start is called before the first frame update
     void Start()
     {
         audios = GetComponent<AudioSource>();
         player = GetComponent<MovementController>();
-        
+
+        music.clip = mus;
+        music.volume = .1f;
+        music.Play();
+
     }
 
     // Update is called once per frame
