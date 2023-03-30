@@ -36,6 +36,7 @@ public class Collectable : MonoBehaviour
         short rocketPart = (short)((short)teir | (short)type);
         rocketInformation.Collect(rocketPart);
 
+        collision.gameObject.GetComponent<Level1AudioManager>()?.PlayCollectible();
         particleSystem.Play();
         Destroy(gameObject);
         Destroy(text);
