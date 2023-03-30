@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,11 +12,14 @@ public class Waypoint : MonoBehaviour
     public Text meter;
     public Vector3 offset;
     public Transform ship;
+    Scene currentscene;
+    string sceneName;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        currentscene = SceneManager.GetActiveScene();
+        sceneName = currentscene.name;
     }
 
     // Update is called once per frame
@@ -29,7 +33,8 @@ public class Waypoint : MonoBehaviour
 
         Vector2 pos = Camera.main.WorldToScreenPoint(target.position + offset);
 
-        if(Vector3.Dot((target.position - transform.position), transform.forward) < 0)
+
+        if (Vector3.Dot((target.position - transform.position), transform.forward) < 0)
         {
             if(pos.x < Screen.width / 2)
             {
@@ -46,6 +51,14 @@ public class Waypoint : MonoBehaviour
 
         img.transform.position = pos;
         //- 150 due to waypoint being in the center of the asteriod.
-        meter.text = ((int)Vector3.Distance(target.position, ship.position) - 150).ToString() + "m";
+        if(sceneName == "Lvl3")
+        {
+            meter.text = ((int)Vector3.Distance(target.position, ship.position) - 150).ToString() + "m";
+        }
+        else
+        {
+            meter.text = ((int)Vector3.Distance(target.position, ship.position)).ToString() + "m";
+        }
+        
     }
 }
