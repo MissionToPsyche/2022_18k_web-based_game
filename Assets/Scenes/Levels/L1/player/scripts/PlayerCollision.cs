@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
@@ -15,11 +16,14 @@ public class PlayerCollision : MonoBehaviour
     [Header("Collision")]
     public float collisionRadius = 0.1f;
     public Vector2 bottomOffset, topOffset, rightOffset, leftOffset;
+    private Level1AudioManager audioManager;
+
+    public Vector3 lastCheckpoint;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        audioManager = GetComponent<Level1AudioManager>();
     }
 
     // Update is called once per frame
@@ -29,6 +33,21 @@ public class PlayerCollision : MonoBehaviour
         isOnTopWall = getOverLapCircle((Vector2)transform.position + topOffset);
         isOnRightWall = getOverLapCircle((Vector2)transform.position + rightOffset);
         isOnLeftWall = getOverLapCircle((Vector2)transform.position + leftOffset);
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        switch (collision.tag.ToLower())
+        {
+            case "checkpoint":
+                lastCheckpoint = new Vector3(collision.transform.position.x, collision.transform.position.y);
+                Destroy(collision.gameObject);
+                break;
+            case "spikes":
+                audioManager.PlayDeath();
+                transform.position = lastCheckpoint;
+                break;
+        }
     }
 
     private Collider2D getOverLapCircle(Vector2 point)

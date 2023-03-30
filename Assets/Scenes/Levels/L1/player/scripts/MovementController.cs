@@ -13,6 +13,7 @@ public class MovementController : MonoBehaviour
 
     #region scripts
     PlayerCollision playerCollision;
+    Level1AudioManager audioManager;
 
     #endregion
 
@@ -32,6 +33,7 @@ public class MovementController : MonoBehaviour
         this.spriteRenderer = GetComponent<SpriteRenderer>();
         this.playerCollision = GetComponent<PlayerCollision>();
         this.playerParticles = GetComponent<PlayerParticleSystemController>();
+        this.audioManager = GetComponent<Level1AudioManager>();
     }
 
     // Update is called once per frame
@@ -50,6 +52,7 @@ public class MovementController : MonoBehaviour
             {
                 body.velocity += Vector2.up * jumpMultiplier;
                 animator.SetBool("isJumping", true);
+                audioManager.PlayJump();
                 playerParticles.CreateDust();
             }
 
@@ -58,6 +61,7 @@ public class MovementController : MonoBehaviour
             {
                 body.velocity = new Vector2(body.velocity.x, 12);
                 isDoubleJumped = true;
+                audioManager.PlayJump();
             }
 
         }
@@ -77,6 +81,11 @@ public class MovementController : MonoBehaviour
 
         var speed = xInput * speedMultiplier;
         body.velocity = new Vector2(speed, body.velocity.y);
+
+        if(speed != 0)
+        {
+            audioManager.PlayWalk();
+        }
 
         //was left, is going right
         if (xInput > 0.01f && direction == Direction.Left)
