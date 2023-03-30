@@ -36,6 +36,9 @@ public class RocketPart : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     public GameObject engineFire;
     private Animator _engineFireAnimator;
+    public GameObject groundExplosion;
+    private Animator _groundExplosionAnimator;
+    private bool _isOnGround;
     void Start()
     {
         isPartOfTheRocket = false;
@@ -51,6 +54,8 @@ public class RocketPart : MonoBehaviour
         {
             engineFire.SetActive(true);
             _engineFireAnimator = engineFire.GetComponent<Animator>();
+            groundExplosion.SetActive(true);
+            _groundExplosionAnimator = groundExplosion.GetComponent<Animator>();
         }
         Init();
     }
@@ -191,11 +196,10 @@ public class RocketPart : MonoBehaviour
         {
             if (collision.collider.tag == "Ground")
             {
-
                 if (isPartOfTheRocket)
                 {
                     rocketScript.isOnGround = true;
-
+                    _isOnGround = true;
                     // If crash too hard, the rocket part gets crashed 
                     if (rocketScript.GetSpeed() < _crashThreshold)
                     {
@@ -216,6 +220,7 @@ public class RocketPart : MonoBehaviour
     }
     void RocketPartCrashed()
     {
+        RemoveRocketPartProperty(rocketPartScript);
         spriteRenderer.enabled = false;
         poof.SetActive(true);
     }
@@ -227,6 +232,7 @@ public class RocketPart : MonoBehaviour
             {
                 if (isPartOfTheRocket)
                 {
+                    _isOnGround = false;
                     rocketScript.isOnGround = false;
                     rocketScript.ApplyGravity();
                 }
@@ -307,14 +313,21 @@ public class RocketPart : MonoBehaviour
     }
     public void EngineOn()
     {
+        // Trigger ground explosion animation if the rocket is on ground
+        if (_isOnGround)
+        {
+            _groundExplosionAnimator.SetTrigger("GroundExplosion");
+        }
+        // Trigger engine fire animation
         _engineFireAnimator.SetBool("EngineOn", true);
+
         // Turn on engine audio
         if (!rocketScript.hasLaunched)
         {
             rocketScript.hasLaunched = true;
             if (rocketScript.alreadyPlayingLaunchAudio == false)
             {
-                AudioManager.instance.Play("Launch");
+                SoundManager.instance.Play("Launch");
                 rocketScript.alreadyPlayingLaunchAudio = true;
             }
         }
@@ -322,7 +335,7 @@ public class RocketPart : MonoBehaviour
         {
             if (rocketScript.alreadyPlayingEngineOnAudio == false)
             {
-                AudioManager.instance.Play("EngineOn");
+                SoundManager.instance.Play("EngineOn");
                 rocketScript.alreadyPlayingEngineOnAudio = true;
             }
         }

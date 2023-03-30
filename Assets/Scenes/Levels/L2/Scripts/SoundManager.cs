@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+public class SoundManager : MonoBehaviour
 {
     public Sound[] sounds;
-    public static AudioManager instance;
+    public static SoundManager instance;
     void Awake()
     {
         if (instance == null)
@@ -31,12 +31,12 @@ public class AudioManager : MonoBehaviour
     public void Play(string name)
     {
         Sound s = System.Array.Find(sounds, sound => sound.name == name);
-        s.source.Play();
+        StartCoroutine(FadeIn(s.source, 0.1f));
     }
     public void Stop(string name)
     {
         Sound s = System.Array.Find(sounds, sound => sound.name == name);
-        s.source.Stop();
+        StartCoroutine(FadeOut(s.source, 0.1f));
     }
     public void StopAll()
     {
@@ -44,5 +44,33 @@ public class AudioManager : MonoBehaviour
         {
             s.source.Stop();
         }
+    }
+    private IEnumerator FadeIn(AudioSource audioSource, float duration)
+    {
+        float startVolume = 0;
+        audioSource.volume = startVolume;
+        audioSource.Play();
+
+        while (audioSource.volume < 1.0f)
+        {
+            audioSource.volume += Time.deltaTime / duration;
+            yield return null;
+        }
+
+        audioSource.volume = 1.0f;
+    }
+
+    private IEnumerator FadeOut(AudioSource audioSource, float duration)
+    {
+        float startVolume = audioSource.volume;
+
+        while (audioSource.volume > 0)
+        {
+            audioSource.volume -= startVolume * Time.deltaTime / duration;
+            yield return null;
+        }
+
+        audioSource.Stop();
+        audioSource.volume = startVolume;
     }
 }

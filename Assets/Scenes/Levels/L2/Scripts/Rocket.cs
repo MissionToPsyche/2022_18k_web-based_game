@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class Rocket : MonoBehaviour
 {
     public float _acceleration;
@@ -13,6 +12,8 @@ public class Rocket : MonoBehaviour
     private float _torque = 0;
     private float _torqueByMass = 0;
     private float _torqueByThrust = 0;
+    private float _torqueByControls = 0;
+    private float _torqueByControlsPower = 0.2f;
     private bool _enginesOn = false;
     public bool isOnGround = true;
     public float totalThrust = 0f;
@@ -28,6 +29,7 @@ public class Rocket : MonoBehaviour
     private List<Rigidbody2D> rocketPartRigidbodies = new List<Rigidbody2D>();
     public CameraFollow cameraFollowScript;
     private Coroutine _accelerationCoroutine;
+    private Coroutine _smoothVelocityChangeCoroutine;
     private Coroutine _torqueCoroutine;
     public UIManager uiManager;
     public GameObject endingPanel;
@@ -38,6 +40,11 @@ public class Rocket : MonoBehaviour
     public bool hasLaunched = false;
     public bool alreadyPlayingLaunchAudio = false;
     public bool alreadyPlayingEngineOnAudio = false;
+    public float heightAboveGround = 0;
+    public float velocity;
+    public GameObject groundObject;
+    private float _shakeAmount = 0.1f;
+    bool once = true;
     void Start()
     {
         _consumeFuelEnumerator = ConsumeFuel();
@@ -48,7 +55,15 @@ public class Rocket : MonoBehaviour
     {
         while (true)
         {
-            _speed += _acceleration;
+            if (_enginesOn)
+            {
+                _speed += _acceleration;
+            }
+            else
+            {
+                _speed -= _acceleration;
+            }
+            SmoothVelocityIncrease(_speed * 50f);
             yield return new WaitForSeconds(_accelerationRate);
         }
     }
@@ -56,13 +71,42 @@ public class Rocket : MonoBehaviour
     {
         while (true)
         {
-            _torque = _torqueByMass + _torqueByThrust;
+            _torque = _torqueByMass + _torqueByThrust + _torqueByControls;
             _rotationSpeed += _torque;
             yield return new WaitForSeconds(_accelerationRate);
         }
     }
+    IEnumerator IncreaseVelocity(float targetVelocity)
+    {
+        float currentVelocity = velocity;
+        float smoothTime = 0.1f; // adjust this value to control the smoothness of the change
+        float smoothVelocity = 0.0f;
+
+        while (Mathf.Abs(currentVelocity - targetVelocity) > 0.01f)
+        {
+            currentVelocity = Mathf.SmoothDamp(currentVelocity, targetVelocity, ref smoothVelocity, smoothTime);
+            velocity = currentVelocity;
+            yield return null;
+        }
+    }
+    private void SmoothVelocityIncrease(float targetVelocity)
+    {
+        StartCoroutine(IncreaseVelocity(targetVelocity));
+    }
     void Update()
     {
+        // Calculate Height Above Ground
+        float currentHeightAboveGround = transform.position.y - groundObject.transform.position.y - 11.4f;
+        heightAboveGround = currentHeightAboveGround * 50;
+
+        // Keep height above 0
+        if (heightAboveGround < 0)
+        {
+            heightAboveGround = 0;
+        }
+        uiManager.UpdateRocketStats();
+
+
         // Set max speed
         if (Mathf.Abs(_speed) >= (Mathf.Abs(_maxSpeed)))
         {
@@ -76,12 +120,36 @@ public class Rocket : MonoBehaviour
                 _speed = _maxSpeed;
             }
         }
+
         // Fly in the direction of the rocket
         if (_enginesOn)
         {
-            transform.Translate(Vector3.up * _speed * Time.deltaTime);
+            // Move in the direction of the rocket
+            Vector3 moveDirection = new Vector3(0, 1, 0);
+            float transitionalSpeed = _speed / 5;
+            if (transform.eulerAngles.z > 90 && transform.eulerAngles.z < 270)
+            {
+                // If facing down, move in the opposite direction
+                moveDirection = new Vector3(0, -1, 0);
+                if (once)
+                {
+                    _speed = Mathf.Abs(transitionalSpeed);
+                    once = false;
+                }
+                _acceleration = -Mathf.Abs(_acceleration);
+            }
+            else
+            {
+                if (!once)
+                {
+                    _speed = -Mathf.Abs(transitionalSpeed);
+                    once = true;
+                }
+                _acceleration = Mathf.Abs(_acceleration);
+            }
+            transform.Translate(moveDirection * _speed * Time.deltaTime);
         }
-        // Debug.Log(_rotationSpeed);
+
         if (!isOnGround)
         {
             // When falling, the rocket needs to fall straight down without care for rotation
@@ -104,10 +172,63 @@ public class Rocket : MonoBehaviour
             }
             transform.Rotate(Vector3.back * _rotationSpeed * Time.deltaTime);
         }
+
+        // Shake the rocket when velocity is above certain threshold
+        // Check if velocity is above a threshold
+        if (Mathf.Abs(velocity) > 100)
+        {
+            if (heightAboveGround < 10000)
+            {
+                _shakeAmount = 0.1f;
+            }
+            else if (heightAboveGround > 10000 && heightAboveGround < 20000)
+            {
+                _shakeAmount = 0.5f;
+            }
+            else if (heightAboveGround > 20000 && heightAboveGround < 30000)
+            {
+                _shakeAmount = 0.3f;
+            }
+            else if (heightAboveGround > 30000 && heightAboveGround < 50000)
+            {
+                _shakeAmount = 0.05f;
+            }
+            else if (heightAboveGround > 50000)
+            {
+                _shakeAmount = 0;
+            }
+            // Apply a random offset to the rocket rotation
+            float angleZ = Random.Range(-_shakeAmount, _shakeAmount);
+            Vector3 rotationOffset = new Vector3(0, 0, angleZ);
+            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles + rotationOffset);
+        }
+
+        // Key controls
+        if (Input.GetKey(KeyCode.A))
+        {
+            // Rotate left
+            _torqueByControls = -_torqueByControlsPower;
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            // Rotate right
+            _torqueByControls = _torqueByControlsPower;
+        }
+        else
+        {
+            // Stop rotating
+            _torqueByControls = 0;
+            if (_torqueByMass == 0f && _torqueByThrust == 0f)
+            {
+                _torque = 0;
+                _rotationSpeed = 0;
+            }
+        }
     }
     void Init()
     {
         _enginesOn = false;
+        heightAboveGround = 0;
     }
     public void BuildFinished()
     {
@@ -128,7 +249,7 @@ public class Rocket : MonoBehaviour
     {
         float massDifference = Mathf.Abs(totalLeftMass - totalRightMass);
         float percentage = massDifference * totalMass / 100;
-        if (percentage >= 25)
+        if (percentage >= 20)
         {
             float torqueToApply = percentage / 100;
             if (totalLeftMass > totalRightMass)
@@ -164,10 +285,8 @@ public class Rocket : MonoBehaviour
     }
     public void EnginesOn()
     {
-        if (totalFuel > 0)
+        if (totalFuel > 0 && totalFuelConsumptionRate > 0)
         {
-
-
             _acceleration = 0.05f;
             _enginesOn = true;
             GetReferenceToRocketParts();
@@ -202,7 +321,8 @@ public class Rocket : MonoBehaviour
             }
         }
         // Turn off engine audio
-        AudioManager.instance.Stop("EngineOn");
+        SoundManager.instance.Stop("EngineOn");
+        SoundManager.instance.Stop("Launch");
         alreadyPlayingEngineOnAudio = false;
 
     }
@@ -210,7 +330,7 @@ public class Rocket : MonoBehaviour
     {
         if (!_enginesOn && !isOnGround)
         {
-            _acceleration = -0.2f;
+            _acceleration = 0.2f;
         }
     }
     private void MakeRocketPartsDynamicWithoutGravity()
@@ -264,8 +384,8 @@ public class Rocket : MonoBehaviour
         // Turn off the engine when there is no fuel
         EnginesOff();
         // Change the Theme music into disasterTheme music
-        AudioManager.instance.Stop("Theme");
-        AudioManager.instance.Play("DisasterTheme");
+        SoundManager.instance.Stop("Theme");
+        SoundManager.instance.Play("DisasterTheme");
     }
     public void CalculateTWR()
     {
@@ -337,13 +457,13 @@ public class Rocket : MonoBehaviour
         _speed = 0.2f;
         _acceleration = 0;
         endingPanel.SetActive(true);
-        AudioManager.instance.StopAll();
+        SoundManager.instance.StopAll();
     }
     public void OnGameOver()
     {
         _speed = 0f;
         _acceleration = 0;
         gameObject.SetActive(false);
-        AudioManager.instance.StopAll();
+        SoundManager.instance.StopAll();
     }
 }

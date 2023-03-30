@@ -25,14 +25,19 @@ public class UIManager : MonoBehaviour
     public GameObject space;
     public GameObject endPortal;
     public Slider fuelBarSlider;
+    public GameObject rocketStats;
+    private TextMeshProUGUI _rocketStatsText;
+    public GameObject trashCan;
 
     void Start()
     {
         _btnText = engineControllerButton.GetComponentInChildren<TextMeshProUGUI>();
         _rocketInfoText = rocketInfoPanel.GetComponentInChildren<TextMeshProUGUI>();
+        _rocketStatsText = rocketStats.GetComponentInChildren<TextMeshProUGUI>();
         _btnText.text = _enginesOffText;
         Init();
     }
+
     public void ToggleEngines()
     {
         if (_enginesOn)
@@ -70,7 +75,7 @@ public class UIManager : MonoBehaviour
         player.SetActive(true);
         fuelBarSlider.gameObject.SetActive(false);
         _rocketInfoText.text = "Mass: 0t\nThrust: 0t\nThrust/Weight: 0 \nFuel: 0t \nFuel Consumption: 0t/sec";
-
+        _rocketStatsText.text = "Height: 0.0m\nVelocity: 0.0m/s";
     }
     public void OnFinishedBuilding()
     {
@@ -81,6 +86,7 @@ public class UIManager : MonoBehaviour
         rocketInfoPanel.SetActive(false);
         rocketPartsSidePanel.SetActive(false);
         fuelBarSlider.gameObject.SetActive(true);
+        trashCan.SetActive(false);
     }
     public void OnWinGame()
     {
@@ -103,6 +109,18 @@ public class UIManager : MonoBehaviour
         else
         {
             _rocketInfoText.text = "Mass: " + rocket.totalMass.ToString("F1") + "t\nThrust: " + rocket.totalThrust + "t\nThrust/Weight: " + rocket.TWR + "\nFuel: " + rocket.totalFuel.ToString("F1") + "t\nFuel Consumption: " + rocket.totalFuelConsumptionRate.ToString("F1") + "t/sec";
+        }
+    }
+    public void UpdateRocketStats()
+    {
+        if (rocket.heightAboveGround > 1000)
+        {
+            float tmp = rocket.heightAboveGround / 1000;
+            _rocketStatsText.text = "Height: " + tmp.ToString("F1") + "km\nVelocity: " + rocket.velocity.ToString("F1") + "m/s";
+        }
+        else
+        {
+            _rocketStatsText.text = "Height: " + rocket.heightAboveGround.ToString("F1") + "m\nVelocity: " + rocket.velocity.ToString("F1") + "m/s";
         }
     }
     public void SetMaxFuelBarAmount(float fuel)

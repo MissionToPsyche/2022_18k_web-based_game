@@ -14,7 +14,7 @@ public class Poof : MonoBehaviour
     {
         PoofText.SetActive(true);
         // Play poof audio
-        AudioManager.instance.Play("Poof");
+        SoundManager.instance.Play("Poof");
     }
     public void PoofEnd()
     {
