@@ -16,12 +16,14 @@ public class PlayerCollision : MonoBehaviour
     [Header("Collision")]
     public float collisionRadius = 0.1f;
     public Vector2 bottomOffset, topOffset, rightOffset, leftOffset;
+    private Level1AudioManager audioManager;
 
     public Vector3 lastCheckpoint;
 
     // Start is called before the first frame update
     void Start()
     {
+        audioManager = GetComponent<Level1AudioManager>();
     }
 
     // Update is called once per frame
@@ -42,6 +44,7 @@ public class PlayerCollision : MonoBehaviour
                 Destroy(collision.gameObject);
                 break;
             case "spikes":
+                audioManager.PlayDeath();
                 transform.position = lastCheckpoint;
                 break;
         }

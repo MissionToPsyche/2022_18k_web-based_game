@@ -55,7 +55,7 @@ public class PauseMenu : MonoBehaviour
     {
         foreach (AudioSource audioS in audioSources)
         {
-            audioS.enabled = enabled;
+            audioS.mute = !enabled;
         }
     }
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class Level1AudioManager : MonoBehaviour
     public AudioClip land;
     public AudioClip jump;
     public AudioClip collected;
+    public AudioClip death;
     void Start()
     {
         audios = GetComponent<AudioSource>();
@@ -44,4 +46,12 @@ public class Level1AudioManager : MonoBehaviour
         audios.Play();
     }
 
+    public void PlayDeath()
+    {
+        audios.Stop();
+        audios.clip = death;
+        audios.pitch = 1f;
+        audios.volume = 1f;
+        audios.Play();
+    }
 }
