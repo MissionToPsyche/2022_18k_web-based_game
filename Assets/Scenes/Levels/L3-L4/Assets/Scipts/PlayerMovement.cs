@@ -82,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
 
         startYScale = transform.localScale.y;
 
-        StartCoroutine(Intro(5));
+        StartCoroutine(Intro(8));
     }
 
     private void MyInput()

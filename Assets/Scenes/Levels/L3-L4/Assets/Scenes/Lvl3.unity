@@ -10525,7 +10525,9 @@ MonoBehaviour:
     Avoid the red asteroids
 
     Refill fuel
-    by picking up blue fuel sources'
+    by picking up blue fuel sources
+
+    Use mouse to begin flight'
 --- !u!222 &670763256
 CanvasRenderer:
   m_ObjectHideFlags: 0

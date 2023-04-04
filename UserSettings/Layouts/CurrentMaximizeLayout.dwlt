@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 12251
+  controlID: 13492
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 12252
+  controlID: 13493
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 12215
+  controlID: 13494
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -228,7 +228,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 2accf9ff86cff9fff65ffbff7862fbff2a70fbff7c74fbff4077fcffca12fdff206affff346dffff4e23010064230100404e0100564e0100a64e0100a6610100646201003e6c010010730100a67b0100
+      m_ExpandedIDs: 6a91f9ff2accf9ff86cff9fff65ffbff7862fbff2a70fbff7c74fbff4077fcffca12fdff206affff346dffff4e23010064230100404e0100564e0100a64e0100a6610100646201003e6c010010730100a67b0100fa83010012840100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -742,21 +742,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes/Levels/L3-L4/Assets/Scipts
+    - Assets/Scenes/Levels/L3-L4/Assets/Scenes
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes/Levels/L3-L4/Assets/Scipts
+  - Assets/Scenes/Levels/L3-L4/Assets/Scenes
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Chansen\Documents\UnityGames\NewMain\2022_18k_web-based_game
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 243}
-    m_SelectedIDs: 50220100
-    m_LastClickedID: 74320
+    m_SelectedIDs: 4e220100
+    m_LastClickedID: 74318
     m_ExpandedIDs: 0000000022220100282201003a2201003c2201003e220100143701006443010000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -810,8 +810,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 2eccf9ff
-    m_LastClickedInstanceID: -406482
+    m_SelectedInstanceIDs: 62830100
+    m_LastClickedInstanceID: 99170
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
@@ -931,7 +931,7 @@ MonoBehaviour:
     m_CachedPref: 160
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: -406482
+  m_LastInspectedObjectInstanceID: 99170
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0

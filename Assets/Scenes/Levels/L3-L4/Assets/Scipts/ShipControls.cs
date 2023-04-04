@@ -69,7 +69,7 @@ public class ShipControls : MonoBehaviour
         currentHealth = maxHealth;
         healthBar.setMaxHealth(maxHealth);
 
-        StartCoroutine(Intro(5));
+        StartCoroutine(Intro(8));
     }
 
     // Update is called once per frame
