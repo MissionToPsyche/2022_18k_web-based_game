@@ -70,6 +70,8 @@ public class PlayerMovement : MonoBehaviour
 
     public bool activeGrapple;
 
+    public GameObject introScreen;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -79,6 +81,8 @@ public class PlayerMovement : MonoBehaviour
 
 
         startYScale = transform.localScale.y;
+
+        StartCoroutine(Intro(5));
     }
 
     private void MyInput()
@@ -339,5 +343,13 @@ public class PlayerMovement : MonoBehaviour
         locked = true;
         state = MovementState.locked;
         StateHandler();
+    }
+
+    IEnumerator Intro(float delay)
+    {
+        introScreen.SetActive(true);
+        yield return new WaitForSeconds(delay);
+        introScreen.SetActive(false);
+
     }
 }
