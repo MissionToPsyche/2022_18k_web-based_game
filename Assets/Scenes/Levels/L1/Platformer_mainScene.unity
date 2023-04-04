@@ -13118,7 +13118,7 @@ MonoBehaviour:
   land: {fileID: 0}
   jump: {fileID: 8300000, guid: ee5ca359984478b4ca811de7e49fedcf, type: 3}
   collected: {fileID: 8300000, guid: d10604443809a13438119ddb8cd57fed, type: 3}
-  death: {fileID: 8300000, guid: b62f37e833c843c4497832133703afbe, type: 3}
+  death: {fileID: 8300000, guid: 556c952190e1d9349b9429ac4eec9990, type: 3}
 --- !u!1 &247459979
 GameObject:
   m_ObjectHideFlags: 0
