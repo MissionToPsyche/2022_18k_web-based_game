@@ -31801,6 +31801,14 @@ PrefabInstance:
       propertyPath: m_MatchWidthOrHeight
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1474788022131797164, guid: 9c7ac424f5e35574f8fbaa5cb53ebf1e, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1600
+      objectReference: {fileID: 0}
+    - target: {fileID: 1474788022131797164, guid: 9c7ac424f5e35574f8fbaa5cb53ebf1e, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 900
+      objectReference: {fileID: 0}
     - target: {fileID: 4039171912877847435, guid: 9c7ac424f5e35574f8fbaa5cb53ebf1e, type: 3}
       propertyPath: m_RootOrder
       value: 21
