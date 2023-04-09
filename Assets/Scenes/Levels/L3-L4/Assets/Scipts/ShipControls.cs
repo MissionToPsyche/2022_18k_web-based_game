@@ -68,18 +68,21 @@ public class ShipControls : MonoBehaviour
         currentHealth = maxHealth;
         healthBar.setMaxHealth(maxHealth);
 
-        StartCoroutine(Intro(8));
+        introScreen.SetActive(true);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0)
+
+        //took out Input.anykeydown for level 3 as I want the first input from the player to be the mouse
+        if(Input.anyKeyDown)
         {
             startCursorLock = 1;
+            introScreen.SetActive(false);
         }
 
-        if(startCursorLock == 1)
+        if (startCursorLock == 1)
         {
             if (getHealth() <= 0)
             {
@@ -91,7 +94,7 @@ public class ShipControls : MonoBehaviour
 
                 rollinput = Mathf.Lerp(rollinput, UnityService.GetAxisRaw("Roll"), rollAcceleration * UnityService.GetDeltaTime());
 
-                mouseDistance = Vector2.ClampMagnitude(mouseDistance, 1f);
+                mouseDistance = Vector2.ClampMagnitude(mouseDistance, .1f);
 
                 transform.Rotate(-mouseDistance.y * lookrotatespeed * UnityService.GetDeltaTime(), mouseDistance.x * lookrotatespeed * UnityService.GetDeltaTime(), rollinput * rollspeed * UnityService.GetDeltaTime(), Space.Self);
 
@@ -143,7 +146,7 @@ public class ShipControls : MonoBehaviour
 
                 rollinput = Mathf.Lerp(rollinput, UnityService.GetAxisRaw("Roll"), rollAcceleration * UnityService.GetDeltaTime());
 
-                mouseDistance = Vector2.ClampMagnitude(mouseDistance, 1f);
+                mouseDistance = Vector2.ClampMagnitude(mouseDistance, .75f);
 
                 transform.Rotate(-mouseDistance.y * lookrotatespeed * UnityService.GetDeltaTime(), mouseDistance.x * lookrotatespeed * UnityService.GetDeltaTime(), rollinput * rollspeed * UnityService.GetDeltaTime(), Space.Self);
 
@@ -237,11 +240,5 @@ public class ShipControls : MonoBehaviour
         return currentHealth;
     }
 
-    IEnumerator Intro (float delay)
-    {
-        introScreen.SetActive(true);
-        yield return new WaitForSeconds(delay);
-        introScreen.SetActive(false);
-
-    }
+    
 }

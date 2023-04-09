@@ -82,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
 
         startYScale = transform.localScale.y;
 
-        StartCoroutine(Intro(8));
+        introScreen.SetActive(true);
     }
 
     private void MyInput()
@@ -169,6 +169,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.anyKeyDown)
+        {
+            introScreen.SetActive(false);
+        }
+
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * .5f + .2f, whatIsGround);
 
         StateHandler();
@@ -345,11 +350,5 @@ public class PlayerMovement : MonoBehaviour
         StateHandler();
     }
 
-    IEnumerator Intro(float delay)
-    {
-        introScreen.SetActive(true);
-        yield return new WaitForSeconds(delay);
-        introScreen.SetActive(false);
-
-    }
+    
 }
