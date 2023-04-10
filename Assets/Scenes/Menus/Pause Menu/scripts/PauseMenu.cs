@@ -29,7 +29,7 @@ public class PauseMenu : MonoBehaviour
             Cursor.visible = true;
         }
 
-        if (!Input.GetKeyDown(KeyCode.Escape))
+        if (!Input.GetKeyDown(KeyCode.P))
         {
             return;
         }
