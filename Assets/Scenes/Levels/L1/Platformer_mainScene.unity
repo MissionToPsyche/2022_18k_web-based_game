@@ -26981,8 +26981,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 142}
-  m_SizeDelta: {x: 400, y: 300}
+  m_AnchoredPosition: {x: 0, y: 160}
+  m_SizeDelta: {x: 450, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1249695018
 MonoBehaviour:
@@ -27019,11 +27019,14 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Reach the end
 
-    While collecting ship parts
+    While collecting rocket parts
 
 
     Press any Key to
-    continue'
+    continue
+
+
+    Press ''p'' to pause at any point'
 --- !u!222 &1249695019
 CanvasRenderer:
   m_ObjectHideFlags: 0
