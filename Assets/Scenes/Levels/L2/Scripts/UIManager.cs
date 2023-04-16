@@ -29,13 +29,24 @@ public class UIManager : MonoBehaviour
     private TextMeshProUGUI _rocketStatsText;
     public GameObject trashCan;
 
+    public GameObject Intro;
+
     void Start()
     {
+
         _btnText = engineControllerButton.GetComponentInChildren<TextMeshProUGUI>();
         _rocketInfoText = rocketInfoPanel.GetComponentInChildren<TextMeshProUGUI>();
         _rocketStatsText = rocketStats.GetComponentInChildren<TextMeshProUGUI>();
         _btnText.text = _enginesOffText;
         Init();
+    }
+
+    void Update()
+    {
+        if (Input.anyKeyDown)
+        {
+            Intro.SetActive(false);
+        }
     }
 
     public void ToggleEngines()
@@ -74,6 +85,7 @@ public class UIManager : MonoBehaviour
         controlsTutorial.SetActive(false);
         player.SetActive(true);
         fuelBarSlider.gameObject.SetActive(false);
+        Intro.SetActive(true);
         _rocketInfoText.text = "Mass: 0t\nThrust: 0t\nThrust/Weight: 0 \nFuel: 0t \nFuel Consumption: 0t/sec";
         _rocketStatsText.text = "Height: 0.0m\nVelocity: 0.0m/s";
     }

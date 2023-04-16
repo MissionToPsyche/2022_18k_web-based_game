@@ -25,6 +25,8 @@ public class MovementController : MonoBehaviour
     private Direction direction = Direction.Right;
     private bool isDoubleJumped = false;
 
+    public GameObject Intro;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,11 +36,19 @@ public class MovementController : MonoBehaviour
         this.playerCollision = GetComponent<PlayerCollision>();
         this.playerParticles = GetComponent<PlayerParticleSystemController>();
         this.audioManager = GetComponent<Level1AudioManager>();
+
+        Intro.SetActive(true);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.anyKeyDown)
+        {
+            Intro.SetActive(false);
+        }
+
+
         Move();
         Jump();
     }

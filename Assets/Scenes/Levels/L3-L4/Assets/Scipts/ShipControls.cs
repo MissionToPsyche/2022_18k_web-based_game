@@ -1,6 +1,7 @@
 using Assets.Scipts;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -33,6 +34,10 @@ public class ShipControls : MonoBehaviour
 
     public IUnityService UnityService;
 
+    private int startCursorLock = 0;
+
+    public GameObject introScreen;
+
     public void GameOver()
     {
         gameOver.Setup();
@@ -62,96 +67,110 @@ public class ShipControls : MonoBehaviour
 
         currentHealth = maxHealth;
         healthBar.setMaxHealth(maxHealth);
+
+        introScreen.SetActive(true);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(getHealth() <= 0)
+
+        //took out Input.anykeydown for level 3 as I want the first input from the player to be the mouse
+        if(Input.anyKeyDown)
         {
-            lookinput.x = Input.mousePosition.x;
-            lookinput.y = Input.mousePosition.y;
-
-            mouseDistance.x = (lookinput.x - screenCenter.x) / screenCenter.y;
-            mouseDistance.y = (lookinput.y - screenCenter.y) / screenCenter.y;
-
-            rollinput = Mathf.Lerp(rollinput, UnityService.GetAxisRaw("Roll"), rollAcceleration * UnityService.GetDeltaTime());
-
-            mouseDistance = Vector2.ClampMagnitude(mouseDistance, 1f);
-
-            transform.Rotate(-mouseDistance.y * lookrotatespeed * UnityService.GetDeltaTime(), mouseDistance.x * lookrotatespeed * UnityService.GetDeltaTime(), rollinput * rollspeed * UnityService.GetDeltaTime(), Space.Self);
-
-            GameOver();
-
+            startCursorLock = 1;
+            introScreen.SetActive(false);
         }
-        else
+
+        if (startCursorLock == 1)
         {
-            myTime = myTime + Time.deltaTime;
-
-            if (Input.GetButton("Boost") && myTime > nexthealthLoss)
+            if (getHealth() <= 0)
             {
+                lookinput.x = Input.mousePosition.x;
+                lookinput.y = Input.mousePosition.y;
 
-                nexthealthLoss = myTime + healthLoss;
-                TakeDamage(.75f);
-                nexthealthLoss = nexthealthLoss - myTime;
-                myTime = .01f;
+                mouseDistance.x = (lookinput.x - screenCenter.x) / screenCenter.y;
+                mouseDistance.y = (lookinput.y - screenCenter.y) / screenCenter.y;
+
+                rollinput = Mathf.Lerp(rollinput, UnityService.GetAxisRaw("Roll"), rollAcceleration * UnityService.GetDeltaTime());
+
+                mouseDistance = Vector2.ClampMagnitude(mouseDistance, .1f);
+
+                transform.Rotate(-mouseDistance.y * lookrotatespeed * UnityService.GetDeltaTime(), mouseDistance.x * lookrotatespeed * UnityService.GetDeltaTime(), rollinput * rollspeed * UnityService.GetDeltaTime(), Space.Self);
+
+                GameOver();
+
             }
-            if (Input.GetButton("Horizontal") && myTime > nexthealthLoss)
+            else
             {
+                myTime = myTime + Time.deltaTime;
 
-                nexthealthLoss = myTime + healthLoss;
-                TakeDamage(.1f);
-                nexthealthLoss = nexthealthLoss - myTime;
-                myTime = .01f;
+                if (Input.GetButton("Boost") && myTime > nexthealthLoss)
+                {
+
+                    nexthealthLoss = myTime + healthLoss;
+                    TakeDamage(.75f);
+                    nexthealthLoss = nexthealthLoss - myTime;
+                    myTime = .01f;
+                }
+                if (Input.GetButton("Horizontal") && myTime > nexthealthLoss)
+                {
+
+                    nexthealthLoss = myTime + healthLoss;
+                    TakeDamage(.1f);
+                    nexthealthLoss = nexthealthLoss - myTime;
+                    myTime = .01f;
+                }
+                if (Input.GetButton("Vertical") && myTime > nexthealthLoss)
+                {
+
+                    nexthealthLoss = myTime + healthLoss;
+                    TakeDamage(.1f);
+                    nexthealthLoss = nexthealthLoss - myTime;
+                    myTime = .01f;
+                }
+                if (Input.GetButton("Hover") && myTime > nexthealthLoss)
+                {
+
+                    nexthealthLoss = myTime + healthLoss;
+                    TakeDamage(.1f);
+                    nexthealthLoss = nexthealthLoss - myTime;
+                    myTime = .01f;
+                }
+
+                lookinput.x = Input.mousePosition.x;
+                lookinput.y = Input.mousePosition.y;
+
+                mouseDistance.x = (lookinput.x - screenCenter.x) / screenCenter.y;
+                mouseDistance.y = (lookinput.y - screenCenter.y) / screenCenter.y;
+
+                rollinput = Mathf.Lerp(rollinput, UnityService.GetAxisRaw("Roll"), rollAcceleration * UnityService.GetDeltaTime());
+
+                mouseDistance = Vector2.ClampMagnitude(mouseDistance, .75f);
+
+                transform.Rotate(-mouseDistance.y * lookrotatespeed * UnityService.GetDeltaTime(), mouseDistance.x * lookrotatespeed * UnityService.GetDeltaTime(), rollinput * rollspeed * UnityService.GetDeltaTime(), Space.Self);
+
+
+                //boost feature
+                if (Input.GetKeyDown(KeyCode.LeftShift))
+                {
+                    forwardspeed = 120f;
+                }
+                if (Input.GetKeyUp(KeyCode.LeftShift))
+                {
+                    forwardspeed = 25f;
+                }
+
+                activeforwardspeed = Mathf.Lerp(activeforwardspeed, UnityService.GetAxisRaw("Vertical") * forwardspeed, forwardAccelertation * UnityService.GetDeltaTime());
+                activestrafespeed = Mathf.Lerp(activestrafespeed, UnityService.GetAxisRaw("Horizontal") * strafespeed, strafespeedAccelertation * UnityService.GetDeltaTime());
+                activehoverspeed = Mathf.Lerp(activehoverspeed, UnityService.GetAxisRaw("Hover") * hoverspeed, hoveraccelertation * UnityService.GetDeltaTime());
+
+                transform.position += (transform.forward * activeforwardspeed * UnityService.GetDeltaTime());
+                transform.position += (transform.right * activestrafespeed * UnityService.GetDeltaTime());
+                transform.position += (transform.up * activehoverspeed * UnityService.GetDeltaTime());
             }
-            if (Input.GetButton("Vertical") && myTime > nexthealthLoss)
-            {
-
-                nexthealthLoss = myTime + healthLoss;
-                TakeDamage(.1f);
-                nexthealthLoss = nexthealthLoss - myTime;
-                myTime = .01f;
-            }
-            if (Input.GetButton("Hover") && myTime > nexthealthLoss)
-            {
-
-                nexthealthLoss = myTime + healthLoss;
-                TakeDamage(.1f);
-                nexthealthLoss = nexthealthLoss - myTime;
-                myTime = .01f;
-            }
-
-            lookinput.x = Input.mousePosition.x;
-            lookinput.y = Input.mousePosition.y;
-
-            mouseDistance.x = (lookinput.x - screenCenter.x) / screenCenter.y;
-            mouseDistance.y = (lookinput.y - screenCenter.y) / screenCenter.y;
-
-            rollinput = Mathf.Lerp(rollinput, UnityService.GetAxisRaw("Roll"), rollAcceleration * UnityService.GetDeltaTime());
-
-            mouseDistance = Vector2.ClampMagnitude(mouseDistance, 1f);
-
-            transform.Rotate(-mouseDistance.y * lookrotatespeed * UnityService.GetDeltaTime(), mouseDistance.x * lookrotatespeed * UnityService.GetDeltaTime(), rollinput * rollspeed * UnityService.GetDeltaTime(), Space.Self);
-
-
-            //boost feature
-            if (Input.GetKeyDown(KeyCode.LeftShift))
-            {
-                forwardspeed = 120f;
-            }
-            if (Input.GetKeyUp(KeyCode.LeftShift))
-            {
-                forwardspeed = 25f;
-            }
-
-            activeforwardspeed = Mathf.Lerp(activeforwardspeed, UnityService.GetAxisRaw("Vertical") * forwardspeed, forwardAccelertation * UnityService.GetDeltaTime());
-            activestrafespeed = Mathf.Lerp(activestrafespeed, UnityService.GetAxisRaw("Horizontal") * strafespeed, strafespeedAccelertation * UnityService.GetDeltaTime());
-            activehoverspeed = Mathf.Lerp(activehoverspeed, UnityService.GetAxisRaw("Hover") * hoverspeed, hoveraccelertation * UnityService.GetDeltaTime());
-
-            transform.position += (transform.forward * activeforwardspeed * UnityService.GetDeltaTime());
-            transform.position += (transform.right * activestrafespeed * UnityService.GetDeltaTime());
-            transform.position += (transform.up * activehoverspeed * UnityService.GetDeltaTime());
         }
+        
         
     }
 
@@ -220,4 +239,6 @@ public class ShipControls : MonoBehaviour
     {
         return currentHealth;
     }
+
+    
 }

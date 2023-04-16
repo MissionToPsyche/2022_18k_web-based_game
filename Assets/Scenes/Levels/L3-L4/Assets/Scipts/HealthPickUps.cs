@@ -6,7 +6,7 @@ public class HealthPickUps : MonoBehaviour
 {
     public Transform healthPrefab;
     public int fieldRadius = 100;
-    public int count = 60;     
+    public int count = 120;     
     
 
     // Start is called before the first frame update

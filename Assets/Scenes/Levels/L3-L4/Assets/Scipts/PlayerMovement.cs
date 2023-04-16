@@ -70,6 +70,8 @@ public class PlayerMovement : MonoBehaviour
 
     public bool activeGrapple;
 
+    public GameObject introScreen;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -79,6 +81,8 @@ public class PlayerMovement : MonoBehaviour
 
 
         startYScale = transform.localScale.y;
+
+        introScreen.SetActive(true);
     }
 
     private void MyInput()
@@ -165,6 +169,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.anyKeyDown)
+        {
+            introScreen.SetActive(false);
+        }
+
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * .5f + .2f, whatIsGround);
 
         StateHandler();
@@ -340,4 +349,6 @@ public class PlayerMovement : MonoBehaviour
         state = MovementState.locked;
         StateHandler();
     }
+
+    
 }
