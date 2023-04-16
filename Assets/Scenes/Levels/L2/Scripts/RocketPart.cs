@@ -23,7 +23,7 @@ public class RocketPart : MonoBehaviour
     public GameObject attachedSideSeparator;
     Rocket rocketScript;
     private bool isDetached = false;
-    private float _fallSpeed = -15f;
+    private float _fallSpeed = -30f;
     private float _maxVelocity = -20f;
     private float _crashThreshold = -4f;
     public float mass = 0f;
@@ -39,6 +39,7 @@ public class RocketPart : MonoBehaviour
     public GameObject groundExplosion;
     private Animator _groundExplosionAnimator;
     private bool _isOnGround;
+    private bool _isFalling = false;
     void Start()
     {
         isPartOfTheRocket = false;
@@ -85,6 +86,14 @@ public class RocketPart : MonoBehaviour
                 }
             }
         }
+        if (_isFalling)
+        {
+            transform.Translate(Vector3.up * _fallSpeed * Time.deltaTime, Space.World);
+        }
+    }
+    void Fall()
+    {
+        _isFalling = true;
     }
     void OnMouseDown()
     {
@@ -128,12 +137,9 @@ public class RocketPart : MonoBehaviour
         rocketPartScript.isDetached = true;
 
         RemoveRocketPartProperty(rocketPartScript);
-        Rigidbody2D rocketPartRb2D = rocketPart.gameObject.GetComponent<Rigidbody2D>();
+        RocketPart separatedRocketPartScript = rocketPart.gameObject.GetComponent<RocketPart>();
         rocketPart.SetParent(null); // Detach from parent
-        rocketPartRb2D.bodyType = RigidbodyType2D.Dynamic;
-        rocketPartRb2D.constraints = RigidbodyConstraints2D.None;
-        rocketPartRb2D.gravityScale = 1f;
-        rocketPartRb2D.velocity = new Vector2(0, _fallSpeed);
+        separatedRocketPartScript.Fall();
     }
     public void RemoveRocketPartProperty(RocketPart rocketPartScript)
     {

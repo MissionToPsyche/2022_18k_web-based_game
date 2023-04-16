@@ -49,17 +49,17 @@ public class RocketPartsShopManager : MonoBehaviour
         _rocketInstance.tier2Capsule = 1;
         _rocketInstance.tier1Capsule = 1;
 
-        _rocketInstance.mediumFuelTank = 2;
-        _rocketInstance.largeFuelTank = 3;
-        _rocketInstance.smallFuelTank = 3;
-        _rocketInstance.tier1NoseCone = 1;
-        _rocketInstance.tier2NoseCone = 1;
-        _rocketInstance.tier1Engine = 2;
-        _rocketInstance.tier2Engine = 1;
-        _rocketInstance.tier3Engine = 1;
+        _rocketInstance.mediumFuelTank = 6;
+        _rocketInstance.largeFuelTank = 8;
+        _rocketInstance.smallFuelTank = 6;
+        _rocketInstance.tier1NoseCone = 2;
+        _rocketInstance.tier2NoseCone = 2;
+        _rocketInstance.tier1Engine = 3;
+        _rocketInstance.tier2Engine = 3;
+        _rocketInstance.tier3Engine = 3;
 
         _rocketInstance.separator = 6;
-        _rocketInstance.sideSeparator = 2;
+        _rocketInstance.sideSeparator = 4;
 
         // capsules
         _tooltipHeader = "Capsule (tier 1)";
@@ -84,16 +84,20 @@ public class RocketPartsShopManager : MonoBehaviour
         createRocketPart(tier2NoseCone, _rocketInstance.tier2NoseCone);
 
         // engines
+        RocketPart tier1EngineScript = tier1Engine.prefab.GetComponent<RocketPart>();
+        RocketPart tier2EngineScript = tier2Engine.prefab.GetComponent<RocketPart>();
+        RocketPart tier3EngineScript = tier3Engine.prefab.GetComponent<RocketPart>();
+
         _tooltipHeader = "Engine (tier 1)";
-        _tooltipBody = "High efficiency and high thrust engine used to make the rocket fly.\nMass: 2t\nThrust: 95t \nFuel Consumption: 0.5t/sec";
+        _tooltipBody = "High efficiency and high thrust engine used to make the rocket fly.\nMass: " + tier1EngineScript.mass + "t\nThrust: " + tier1EngineScript.thrust + "t \nFuel Consumption: " + tier1EngineScript.fuelConsumptionRate + "t/sec";
         createRocketPart(tier1Engine, _rocketInstance.tier1Engine);
 
         _tooltipHeader = "Engine (tier 2)";
-        _tooltipBody = "High efficiency but low thrust engine used to make the rocket fly.\nMass: 3t\nThrust: 65t \nFuel Consumption: 0.6t/sec";
+        _tooltipBody = "High efficiency but low thrust engine used to make the rocket fly.\nMass: " + tier2EngineScript.mass + "t\nThrust: " + tier2EngineScript.thrust + "t \nFuel Consumption: " + tier2EngineScript.fuelConsumptionRate + "t/sec";
         createRocketPart(tier2Engine, _rocketInstance.tier2Engine);
 
         _tooltipHeader = "Engine (tier 3)";
-        _tooltipBody = "Low efficiency and low thrust engine used to make the rocket fly.\nMass: 5t\nThrust: 40t \nFuel Consumption: 0.7t/sec";
+        _tooltipBody = "Low efficiency and low thrust engine used to make the rocket fly.\nMass: " + tier3EngineScript.mass + "t\nThrust: " + tier3EngineScript.thrust + "t \nFuel Consumption: " + tier3EngineScript.fuelConsumptionRate + "t/sec";
         createRocketPart(tier3Engine, _rocketInstance.tier3Engine);
 
         // separators

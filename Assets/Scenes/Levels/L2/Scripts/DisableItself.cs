@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DisableItself : MonoBehaviour
 {
-    public float disableTime = 3.0f; // the number of seconds before disabling the script
+    public float disableTime = 5.0f; // the number of seconds before disabling the script
 
     void OnEnable()
     {

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 650411565220102172}
   - component: {fileID: 207195240882389820}
   - component: {fileID: 7659393771144243880}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Medium Fuel Tank
   m_TagString: FuelTank
   m_Icon: {fileID: 0}
@@ -204,6 +204,8 @@ MonoBehaviour:
     tooltipHeader: 
   canBePlaced: 0
   poof: {fileID: 4125629778881658357}
+  engineFire: {fileID: 0}
+  groundExplosion: {fileID: 0}
 --- !u!1001 &4483917670814035384
 PrefabInstance:
   m_ObjectHideFlags: 0

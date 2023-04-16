@@ -29,8 +29,12 @@ public class UIManager : MonoBehaviour
     private TextMeshProUGUI _rocketStatsText;
     public GameObject trashCan;
 
-    public GameObject Intro;
-
+    public GameObject intro;
+    public GameObject twrDialogue;
+    public GameObject missingPartsDialogue;
+    public GameObject onlyOneCapsuleDialogue;
+    public GameObject arrow;
+    public GameObject howToPlayBtn;
     void Start()
     {
 
@@ -45,7 +49,7 @@ public class UIManager : MonoBehaviour
     {
         if (Input.anyKeyDown)
         {
-            Intro.SetActive(false);
+            intro.SetActive(false);
         }
     }
 
@@ -66,15 +70,36 @@ public class UIManager : MonoBehaviour
     }
     public void OnClickFinishedBuildingBtn()
     {
-        // rocketInfo greater than or equal to 1 is needed for the rocket to takeoff
-        if (rocket.TWR >= 1)
+        // twr greater than or equal to 1 is needed for the rocket to takeoff
+        if (!rocket.RocketHasBareMinimumParts())
         {
-            blackPanel.SetActive(true);
+            playerDialogue.SetActive(true);
+            missingPartsDialogue.SetActive(true);
+            twrDialogue.SetActive(false);
+            onlyOneCapsuleDialogue.SetActive(false);
+        }
+        else if (!rocket.RocketHasOnlyOneCapsule())
+        {
+            playerDialogue.SetActive(true);
+            onlyOneCapsuleDialogue.SetActive(true);
+            missingPartsDialogue.SetActive(false);
+            twrDialogue.SetActive(false);
+        }
+        else if (rocket.TWR < 1)
+        {
+            playerDialogue.SetActive(true);
+            twrDialogue.SetActive(true);
+            missingPartsDialogue.SetActive(false);
+            onlyOneCapsuleDialogue.SetActive(false);
         }
         else
         {
-            playerDialogue.SetActive(true);
+            FinishedBuilding();
         }
+    }
+    void FinishedBuilding()
+    {
+        blackPanel.SetActive(true);
     }
     private void Init()
     {
@@ -85,7 +110,10 @@ public class UIManager : MonoBehaviour
         controlsTutorial.SetActive(false);
         player.SetActive(true);
         fuelBarSlider.gameObject.SetActive(false);
-        Intro.SetActive(true);
+        intro.SetActive(true);
+        playerDialogue.SetActive(false);
+        arrow.SetActive(true);
+        howToPlayBtn.SetActive(true);
         _rocketInfoText.text = "Mass: 0t\nThrust: 0t\nThrust/Weight: 0 \nFuel: 0t \nFuel Consumption: 0t/sec";
         _rocketStatsText.text = "Height: 0.0m\nVelocity: 0.0m/s";
     }
@@ -99,6 +127,7 @@ public class UIManager : MonoBehaviour
         rocketPartsSidePanel.SetActive(false);
         fuelBarSlider.gameObject.SetActive(true);
         trashCan.SetActive(false);
+        howToPlayBtn.SetActive(false);
     }
     public void OnWinGame()
     {
@@ -107,6 +136,7 @@ public class UIManager : MonoBehaviour
         engineControllerButton.SetActive(false);
         endPortal.SetActive(false);
         rocket.gameObject.SetActive(false);
+        arrow.SetActive(false);
     }
     public void ActivateEngineControllerBtn()
     {

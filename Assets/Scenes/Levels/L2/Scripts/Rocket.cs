@@ -6,7 +6,8 @@ public class Rocket : MonoBehaviour
     public float _acceleration;
     private float _accelerationRate = 0.1f;
     public float _speed = 0f;
-    public float _maxSpeed = 15f;
+    public float _maxFlightSpeed = 15f;
+    private float _maxFallSpeed = 15f;
     private float _rotationSpeed = 0f;
     private float _rotationMaxSpeed = 100f;
     private float _torque = 0;
@@ -41,6 +42,9 @@ public class Rocket : MonoBehaviour
     public bool alreadyPlayingLaunchAudio = false;
     public bool alreadyPlayingEngineOnAudio = false;
     public float heightAboveGround = 0;
+    private bool _hasCapsule = false;
+    private bool _hasEngine = false;
+    private bool _hasFuelTank = false;
     public float velocity;
     public GameObject groundObject;
     private float _shakeAmount = 0.1f;
@@ -108,16 +112,16 @@ public class Rocket : MonoBehaviour
 
 
         // Set max speed
-        if (Mathf.Abs(_speed) >= (Mathf.Abs(_maxSpeed)))
+        if (Mathf.Abs(_speed) >= (Mathf.Abs(_maxFlightSpeed)))
         {
             // if falling, set max fall velocity as negative
             if (_speed < 0)
             {
-                _speed = -_maxSpeed;
+                _speed = -_maxFallSpeed;
             }
             else
             {
-                _speed = _maxSpeed;
+                _speed = _maxFlightSpeed;
             }
         }
 
@@ -243,7 +247,12 @@ public class Rocket : MonoBehaviour
             child.SendMessage("OnFinishedBuilding");
         }
         CalculateFuelDrainageRatePerTank();
+        SetMaxSpeedBasedOnTWR();
         uiManager.SetMaxFuelBarAmount(totalFuel);
+    }
+    void SetMaxSpeedBasedOnTWR()
+    {
+        _maxFlightSpeed *= TWR;
     }
     public void CalculateMassDistribution()
     {
@@ -266,6 +275,51 @@ public class Rocket : MonoBehaviour
         // Debug.Log(massDifference);
         // Debug.Log(percentage);
         // Debug.Log(_torqueByMass);
+    }
+    public bool RocketHasBareMinimumParts()
+    {
+        foreach (Transform child in transform)
+        {
+            if (child.tag == "Capsule")
+            {
+                _hasCapsule = true;
+            }
+            else if (child.tag == "FuelTank")
+            {
+                _hasFuelTank = true;
+            }
+            else if (child.tag == "Engine")
+            {
+                _hasEngine = true;
+            }
+        }
+        if (_hasCapsule && _hasEngine && _hasFuelTank)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public bool RocketHasOnlyOneCapsule()
+    {
+        int capsuleCount = 0;
+        foreach (Transform child in transform)
+        {
+            if (child.tag == "Capsule")
+            {
+                capsuleCount++;
+            }
+        }
+        if (capsuleCount == 1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
     private void GetReferenceToRocketParts()
     {

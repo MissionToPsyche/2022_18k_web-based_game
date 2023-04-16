@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6792789022757614469}
   - component: {fileID: 7275541031083877347}
   - component: {fileID: 6732710307008848917}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 'Tier2 Capsule '
   m_TagString: Capsule
   m_Icon: {fileID: 0}
@@ -205,6 +205,8 @@ MonoBehaviour:
     tooltipHeader: 
   canBePlaced: 1
   poof: {fileID: 3864309048100910547}
+  engineFire: {fileID: 0}
+  groundExplosion: {fileID: 0}
 --- !u!114 &6732710307008848917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -229,6 +231,10 @@ PrefabInstance:
     - target: {fileID: 539091863344517197, guid: 69c050ab25da5b14ea038ba694d9359d, type: 3}
       propertyPath: m_Name
       value: Poof
+      objectReference: {fileID: 0}
+    - target: {fileID: 539091863344517197, guid: 69c050ab25da5b14ea038ba694d9359d, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 539091863344517198, guid: 69c050ab25da5b14ea038ba694d9359d, type: 3}
       propertyPath: m_RootOrder
@@ -273,6 +279,10 @@ PrefabInstance:
     - target: {fileID: 539091863344517198, guid: 69c050ab25da5b14ea038ba694d9359d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 539091864907201918, guid: 69c050ab25da5b14ea038ba694d9359d, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69c050ab25da5b14ea038ba694d9359d, type: 3}

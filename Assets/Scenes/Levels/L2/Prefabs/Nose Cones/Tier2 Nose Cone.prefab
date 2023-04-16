@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1941902744651632235}
   - component: {fileID: 4280923383408300867}
   - component: {fileID: 6975319802812712378}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tier2 Nose Cone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.66, y: 0.74}
+  m_Size: {x: 0.64, y: 0.7}
   m_EdgeRadius: 0
 --- !u!50 &8153603580476355754
 Rigidbody2D:
@@ -204,6 +204,8 @@ MonoBehaviour:
     tooltipHeader: 
   canBePlaced: 0
   poof: {fileID: 8857100722948863411}
+  engineFire: {fileID: 0}
+  groundExplosion: {fileID: 0}
 --- !u!1001 &9048157298698806782
 PrefabInstance:
   m_ObjectHideFlags: 0

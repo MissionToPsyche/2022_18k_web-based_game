@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2241966253813329104}
   - component: {fileID: 1486083164260070175}
   - component: {fileID: 4357300578402162397}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: 'Tier3 Capsule '
   m_TagString: Capsule
   m_Icon: {fileID: 0}
@@ -205,6 +205,8 @@ MonoBehaviour:
     tooltipHeader: 
   canBePlaced: 1
   poof: {fileID: 8157181137082390074}
+  engineFire: {fileID: 0}
+  groundExplosion: {fileID: 0}
 --- !u!114 &4357300578402162397
 MonoBehaviour:
   m_ObjectHideFlags: 0

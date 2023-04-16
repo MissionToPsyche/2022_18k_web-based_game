@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3777063453740956428}
   - component: {fileID: 2820951186056686259}
   - component: {fileID: 7408862725491124165}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Tier2 Engine
   m_TagString: Engine
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ MonoBehaviour:
   attachedSideSeparator: {fileID: 0}
   mass: 3
   fuel: 0
-  fuelConsumptionRate: 0.6
+  fuelConsumptionRate: 0.8
   thrust: 65
   rocketPartBtnReference:
     prefab: {fileID: 0}

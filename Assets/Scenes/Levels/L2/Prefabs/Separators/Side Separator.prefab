@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 573264312555322755}
   - component: {fileID: 884107219521457658}
   - component: {fileID: 6127417632350676979}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Side Separator
   m_TagString: SideSeparator
   m_Icon: {fileID: 0}
@@ -204,6 +204,8 @@ MonoBehaviour:
     tooltipHeader: 
   canBePlaced: 0
   poof: {fileID: 4012068494198778621}
+  engineFire: {fileID: 0}
+  groundExplosion: {fileID: 0}
 --- !u!1001 &3519147735602510512
 PrefabInstance:
   m_ObjectHideFlags: 0
