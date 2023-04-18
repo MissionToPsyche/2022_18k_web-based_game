@@ -274,10 +274,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Mission Completed
-
-
-    You have collected 1000 resources
+  m_Text: '
 
 '
 --- !u!222 &686116979
@@ -732,8 +729,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c74b6b76c8f0b7849b7d6e4136a2fb87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeintext: {fileID: 686116976}
-  fadeinbutton: {fileID: 744006668}
+  tex: {fileID: 686116978}
 --- !u!1 &1864695101
 GameObject:
   m_ObjectHideFlags: 0
