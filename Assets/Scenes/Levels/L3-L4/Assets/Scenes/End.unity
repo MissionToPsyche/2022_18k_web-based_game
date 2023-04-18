@@ -274,13 +274,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'HIgh Score Achieved
+  m_Text: 'Mission Completed
 
 
-    All minerals have been collected.
-
-    Your
-    mission was a success.
+    You have collected 1000 resources
 
 '
 --- !u!222 &686116979

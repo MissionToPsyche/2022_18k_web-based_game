@@ -196,10 +196,13 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Increase Score by scanning ore objects
 
+    Scanning enough ore to reach
+    1000 score
+
     Keep an eye on oxygen supply
 
-    Return
-    to your ship to replenish oxygen'
+    Return to your ship to replenish
+    oxygen'
 --- !u!222 &58643494
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1936,6 +1939,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreSys: {fileID: 1539319661}
   showScore: {fileID: 664356036}
+  score: 0
+  scanUI: {fileID: 1539319656}
 --- !u!114 &1225676996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1953,7 +1958,7 @@ MonoBehaviour:
   nickelPrefab: {fileID: 3108709421314773672, guid: e6421bd50c9340d4b970e4e2b54ea0c7, type: 3}
   silicatePrefab: {fileID: 488228555}
   fieldRadius: 100
-  oreCount: 50
+  oreCount: 100
 --- !u!114 &1225676997
 MonoBehaviour:
   m_ObjectHideFlags: 0
