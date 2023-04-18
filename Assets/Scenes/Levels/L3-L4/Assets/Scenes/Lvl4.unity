@@ -2666,6 +2666,7 @@ MonoBehaviour:
   oxygenbar: {fileID: 1304383032}
   maxOxy: 200
   currentOxy: 0
+  fill: {fileID: 231473566}
   failBlock: {fileID: 1384768699}
   gameOver: {fileID: 1875348367}
 --- !u!82 &1384768704
