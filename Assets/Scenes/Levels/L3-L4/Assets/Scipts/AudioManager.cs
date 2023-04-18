@@ -29,7 +29,7 @@ public class AudioManager : MonoBehaviour
         grappleGun = GetComponent<Grappling>();
 
         music.clip = mus;
-        music.volume = .1f;
+        music.volume = .35f;
         music.Play();
     }
 
