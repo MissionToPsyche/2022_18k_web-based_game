@@ -16737,13 +16737,14 @@ MonoBehaviour:
   lookrotatespeed: 90
   rollspeed: 90
   rollAcceleration: 3.5
-  maxHealth: 100
+  maxHealth: 150
   currentHealth: 0
-  healthBoost: 10
+  healthBoost: 20
   healthBar: {fileID: 17013417}
   gameOver: {fileID: 143244794}
   change: {fileID: 1489934383}
   introScreen: {fileID: 1986158154}
+  fill: {fileID: 372013178}
 --- !u!64 &1716608562
 MeshCollider:
   m_ObjectHideFlags: 0
