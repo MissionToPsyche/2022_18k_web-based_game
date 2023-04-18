@@ -2788,7 +2788,7 @@ MonoBehaviour:
   grapple: {fileID: 8300000, guid: d8c2bc21cdf715d4e9bda9a9a6850592, type: 3}
   scan: {fileID: 8300000, guid: f71288437c9ba7d43ae20cb503a0f5a4, type: 3}
   music: {fileID: 1225676998}
-  mus: {fileID: 8300000, guid: 843d89992c7274a428f1b843082af7f7, type: 3}
+  mus: {fileID: 8300000, guid: a319132e5ac06ef478682acf8b54d41d, type: 3}
 --- !u!1 &1392190223
 GameObject:
   m_ObjectHideFlags: 0
