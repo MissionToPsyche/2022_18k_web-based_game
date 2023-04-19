@@ -59,7 +59,6 @@ public class SoundManager : MonoBehaviour
 
         audioSource.volume = 1.0f;
     }
-
     private IEnumerator FadeOut(AudioSource audioSource, float duration)
     {
         float startVolume = audioSource.volume;

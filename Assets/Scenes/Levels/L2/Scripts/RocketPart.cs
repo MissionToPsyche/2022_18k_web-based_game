@@ -26,6 +26,7 @@ public class RocketPart : MonoBehaviour
     private float _fallSpeed = -30f;
     private float _maxVelocity = -20f;
     private float _crashThreshold = -4f;
+    private float _crashRotationThreshold = 5f;
     public float mass = 0f;
     public float fuel = 0f;
     public float fuelConsumptionRate = 0f;
@@ -207,7 +208,7 @@ public class RocketPart : MonoBehaviour
                     rocketScript.isOnGround = true;
                     _isOnGround = true;
                     // If crash too hard, the rocket part gets crashed 
-                    if (rocketScript.GetSpeed() < _crashThreshold)
+                    if (rocketScript.GetSpeed() < _crashThreshold || Mathf.Abs(rocketScript.GetRotationSpeed()) > _crashRotationThreshold)
                     {
                         RocketPartCrashed();
                     }
@@ -229,6 +230,7 @@ public class RocketPart : MonoBehaviour
         RemoveRocketPartProperty(rocketPartScript);
         spriteRenderer.enabled = false;
         poof.SetActive(true);
+
     }
     void OnCollisionExit2D(Collision2D collision)
     {

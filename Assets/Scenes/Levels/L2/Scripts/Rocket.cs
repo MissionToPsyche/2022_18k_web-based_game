@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 public class Rocket : MonoBehaviour
 {
     public float _acceleration;
@@ -8,7 +10,7 @@ public class Rocket : MonoBehaviour
     public float _speed = 0f;
     public float _maxFlightSpeed = 15f;
     private float _maxFallSpeed = 15f;
-    private float _rotationSpeed = 0f;
+    public float _rotationSpeed = 0f;
     private float _rotationMaxSpeed = 100f;
     private float _torque = 0;
     private float _torqueByMass = 0;
@@ -418,6 +420,7 @@ public class Rocket : MonoBehaviour
             uiManager.ActivateEngineControllerBtn();
         }
     }
+
     IEnumerator ConsumeFuel()
     {
         while (totalFuel > 0)
@@ -444,10 +447,6 @@ public class Rocket : MonoBehaviour
     public void CalculateTWR()
     {
         TWR = totalThrust / totalMass;
-    }
-    void OnCrash()
-    {
-        gameObject.SetActive(false);
     }
     public float GetSpeed()
     {
@@ -519,5 +518,6 @@ public class Rocket : MonoBehaviour
         _acceleration = 0;
         gameObject.SetActive(false);
         SoundManager.instance.StopAll();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
