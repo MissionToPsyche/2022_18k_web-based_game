@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class Health : MonoBehaviour
     private float healthLoss = .1f;
     private float nexthealthLoss = .1f;
     private float myTime = .01f;
+    private float blink = .25f;
+    public Image fill;
 
     public HealthBar healthBar;
     // Start is called before the first frame update
@@ -57,7 +60,30 @@ public class Health : MonoBehaviour
             nexthealthLoss = nexthealthLoss - myTime;
             myTime = .01f;
         }
-        
+
+        if (myTime >= blink)
+        {
+            Debug.Log(Time.time + ">=" + blink);
+
+            if (currentHealth <= 60)
+            {
+                if (fill.color == Color.red)
+                {
+                    fill.color = Color.white;
+                }
+                else
+                {
+                    fill.color = Color.red;
+                }
+            }
+            else
+            {
+                fill.color = Color.red;
+            }
+
+            blink += .25f;
+        }
+
     }
 
     void TakeDamage(float damage)

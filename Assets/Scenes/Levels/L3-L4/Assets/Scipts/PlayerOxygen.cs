@@ -1,7 +1,9 @@
 using Assets.Scipts;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerOxygen : MonoBehaviour
 {
@@ -10,6 +12,10 @@ public class PlayerOxygen : MonoBehaviour
     public int currentOxy;
     private int nextUpdate = 1;
     private bool nearShip = false;
+    public Image fill;
+    private bool lowOx = false;
+    private float blink = .25f;
+    
 
     public PlayerMovement failBlock;
 
@@ -37,7 +43,7 @@ public class PlayerOxygen : MonoBehaviour
 
         if (Time.time >= nextUpdate)
         {
-            Debug.Log(Time.time + ">=" + nextUpdate);
+            //Debug.Log(Time.time + ">=" + nextUpdate);
 
             nextUpdate = Mathf.FloorToInt(Time.time) + 1;
 
@@ -53,7 +59,33 @@ public class PlayerOxygen : MonoBehaviour
             }
             else if (nearShip == true)
                 UpdateEverySecondRefill();
+
         }
+
+        if(Time.time >= blink)
+        {
+            Debug.Log(Time.time + ">=" + blink);
+            
+            if (currentOxy <= 80)
+            {
+                if (fill.color == Color.blue)
+                {
+                    fill.color = Color.white;
+                }
+                else
+                {
+                    fill.color = Color.blue;
+                }
+            }
+            else
+            {
+                fill.color = Color.blue;
+            }
+
+            blink += .25f;
+        }
+
+        
         
     }
 
@@ -98,4 +130,6 @@ public class PlayerOxygen : MonoBehaviour
     {
         return currentOxy;
     }
+
+    
 }

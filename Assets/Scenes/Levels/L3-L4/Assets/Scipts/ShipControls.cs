@@ -5,6 +5,7 @@ using System.Diagnostics.Contracts;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ShipControls : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class ShipControls : MonoBehaviour
 
     public int maxHealth = 100;
     public float currentHealth;
-    public float healthBoost = 50f;
+    public float healthBoost = 10f;
 
     private float healthLoss = .1f;
     private float nexthealthLoss = .1f;
@@ -37,6 +38,11 @@ public class ShipControls : MonoBehaviour
     private int startCursorLock = 0;
 
     public GameObject introScreen;
+
+    public Image fill;
+    private float blink = .15f;
+
+    public CamShake camShake;
 
     public void GameOver()
     {
@@ -170,8 +176,31 @@ public class ShipControls : MonoBehaviour
                 transform.position += (transform.up * activehoverspeed * UnityService.GetDeltaTime());
             }
         }
-        
-        
+
+        if (Time.time >= blink)
+        {
+            Debug.Log(Time.time + ">=" + blink);
+
+            if (getHealth() <= 40)
+            {
+                if (fill.color == Color.red)
+                {
+                    fill.color = Color.white;
+                }
+                else
+                {
+                    fill.color = Color.red;
+                }
+            }
+            else
+            {
+                fill.color = Color.red;
+            }
+
+            blink += .15f;
+        }
+
+
     }
 
 
@@ -181,7 +210,7 @@ public class ShipControls : MonoBehaviour
         {
             if(currentHealth <= maxHealth)
             {
-                gainHealth(healthBoost);
+                gainHealth();
                 Destroy(collision.gameObject);
                 
 
@@ -193,6 +222,8 @@ public class ShipControls : MonoBehaviour
         {
             TakeDamage(5f);
             Destroy(collision.gameObject);
+
+            StartCoroutine(camShake.Shake(.15f, .4f));
             
         }
 
@@ -223,7 +254,7 @@ public class ShipControls : MonoBehaviour
         
     }
     
-    void gainHealth(float boost)
+    void gainHealth()
     {
         currentHealth += healthBoost;
         if (currentHealth > 100)

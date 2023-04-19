@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
@@ -9,8 +10,9 @@ public class ScoreManager : MonoBehaviour
 
     public Text scoreSys;
     public Text showScore;
-    int score = 0;
+    public int score = 0;
     private bool shipscanned;
+    public GameObject scanUI;
     private void Awake()
     {
         instance = this;
@@ -22,9 +24,18 @@ public class ScoreManager : MonoBehaviour
         shipscanned = false;
     }
 
+    void Update()
+    {
+        if (score >= 1000)
+        {
+            Next();
+        }
+    }
+
 
     public void AddPoints(string x)
     {
+        
         if (x == "ship")
         {
             if (shipscanned == false)
@@ -33,36 +44,54 @@ public class ScoreManager : MonoBehaviour
                 scoreSys.text = "Ship Scanned +1";
                 showScore.text = "Score: " + score;
                 shipscanned = true;
+                StartCoroutine(Wait());
             }
             
         }
 
         if (x == "iron")
         {
-            score += 10;
-            scoreSys.text = "Iron Scanned +10";
+            score += 15;
+            scoreSys.text = "Iron Scanned +15";
             showScore.text = "Score: " + score;
+            StartCoroutine(Wait());
         }
 
         if (x == "nickel")
         {
-            score += 5;
-            scoreSys.text = "Nickel Scanned +5";
+            score += 10;
+            scoreSys.text = "Nickel Scanned +10";
             showScore.text = "Score: " + score;
+            StartCoroutine(Wait());
         }
 
         if (x == "gold")
         {
-            score += 25;
-            scoreSys.text = "Gold Scanned +25";
+            score += 30;
+            scoreSys.text = "Gold Scanned +30";
             showScore.text = "Score: " + score;
+            StartCoroutine(Wait());
         }
 
         if (x == "ice")
         {
-            score += 2;
-            scoreSys.text = "Silicate Scanned +2";
+            score += 5;
+            scoreSys.text = "Silicate Scanned +5";
             showScore.text = "Score: " + score;
+            StartCoroutine(Wait());
         }
+    }
+
+    void Next()
+    {
+        SceneManager.LoadScene("End");
+    }
+
+    IEnumerator Wait()
+    {
+
+        scanUI.SetActive(true);
+        yield return new WaitForSeconds(.5f);
+        scanUI.SetActive(false);
     }
 }

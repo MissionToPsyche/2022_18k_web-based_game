@@ -13,6 +13,7 @@ public class FadeEndGame : MonoBehaviour
     {
         objectColor = fadeout.GetComponent<Image>().color;
         objectColor.a = 0;
+        
     }
     void Update()
     {

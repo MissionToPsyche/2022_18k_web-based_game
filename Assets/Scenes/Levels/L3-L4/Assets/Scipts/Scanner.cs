@@ -186,7 +186,7 @@ public class Scanner : MonoBehaviour
           
             ScoreManager.instance.AddPoints("ship");
             //scoreSys.text = "Ship Scanned +1" + ": Score Total = " + score;
-            StartCoroutine(Wait());
+            //StartCoroutine(Wait());
             
 
         }
@@ -199,7 +199,7 @@ public class Scanner : MonoBehaviour
             iron = meshRenderer.material;
 
             ScoreManager.instance.AddPoints("iron");
-            StartCoroutine(Wait());
+            //StartCoroutine(Wait());
             StartCoroutine(Dissolve((other.gameObject), "iron"));
             Destroy(other.gameObject, 2f);
         }
@@ -212,7 +212,7 @@ public class Scanner : MonoBehaviour
             nickel = meshRenderer.material;
 
             ScoreManager.instance.AddPoints("nickel");
-            StartCoroutine(Wait());
+            //StartCoroutine(Wait());
             StartCoroutine(Dissolve((other.gameObject), "nickel"));
             Destroy(other.gameObject, 2f);
         }
@@ -225,7 +225,7 @@ public class Scanner : MonoBehaviour
             gold = meshRenderer.material;
 
             ScoreManager.instance.AddPoints("gold");
-            StartCoroutine(Wait());
+            //StartCoroutine(Wait());
             StartCoroutine(Dissolve((other.gameObject), "gold"));
             Destroy(other.gameObject, 2f);
         }
@@ -238,7 +238,7 @@ public class Scanner : MonoBehaviour
             ice = meshRenderer.material;
 
             ScoreManager.instance.AddPoints("ice");
-            StartCoroutine(Wait());
+            //StartCoroutine(Wait());
             StartCoroutine(Dissolve((other.gameObject), "ice"));
             Destroy(other.gameObject, 2f);
         }

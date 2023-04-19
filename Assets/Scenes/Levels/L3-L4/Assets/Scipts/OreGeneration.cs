@@ -9,7 +9,7 @@ public class OreGeneration : MonoBehaviour
     public Transform nickelPrefab;
     public Transform silicatePrefab;
     public int fieldRadius = 100;
-    public int oreCount = 50;
+    public int oreCount = 100;
     // Start is called before the first frame update
 
     void Start()
