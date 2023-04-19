@@ -27,6 +27,11 @@ public class mainMenu : MonoBehaviour
         Application.Quit();
     }
 
+    public void Credits()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 6);
+    }
+
     public void JumpToLevel2()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
