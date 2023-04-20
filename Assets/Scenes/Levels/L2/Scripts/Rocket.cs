@@ -114,7 +114,18 @@ public class Rocket : MonoBehaviour
 
 
         // Set max speed
-        if (Mathf.Abs(_speed) >= (Mathf.Abs(_maxFlightSpeed)))
+        if (Mathf.Abs(_speed) >= (Mathf.Abs(_maxFlightSpeed)) || Mathf.Abs(_speed) >= (Mathf.Abs(_maxFallSpeed)))
+        {
+            // if falling, set max fall velocity as negative
+            if (_speed < 0)
+            {
+                _speed = -_maxFallSpeed;
+            }
+            else
+            {
+                _speed = _maxFlightSpeed;
+            }
+        }
         {
             // if falling, set max fall velocity as negative
             if (_speed < 0)
