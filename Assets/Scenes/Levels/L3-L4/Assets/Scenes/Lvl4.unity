@@ -196,7 +196,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Increase Score by scanning ore objects
 
-    Scan enough ore to reach 1000
+    Scan enough ore to reach 500
     score as quickly as possible
 
     Keep an eye on oxygen supply
