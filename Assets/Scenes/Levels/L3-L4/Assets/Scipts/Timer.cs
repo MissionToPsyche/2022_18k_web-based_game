@@ -23,11 +23,11 @@ public class Timer : MonoBehaviour
     void Update()
     {
         
-        if (Time.time >= nextUpdate)
+        if (Time.timeSinceLevelLoad >= nextUpdate)
         {
             //Debug.Log(Time.time + ">=" + nextUpdate);
 
-            nextUpdate = Mathf.FloorToInt(Time.time) + 1;
+            nextUpdate = Mathf.FloorToInt(Time.timeSinceLevelLoad) + 1;
 
             minutes = Mathf.FloorToInt(nextUpdate / 60);
 

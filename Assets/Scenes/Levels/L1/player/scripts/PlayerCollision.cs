@@ -17,6 +17,7 @@ public class PlayerCollision : MonoBehaviour
     public float collisionRadius = 0.1f;
     public Vector2 bottomOffset, topOffset, rightOffset, leftOffset;
     private Level1AudioManager audioManager;
+    private VCameraShake cameraShake;
 
     public Vector3 lastCheckpoint;
 
@@ -24,6 +25,8 @@ public class PlayerCollision : MonoBehaviour
     void Start()
     {
         audioManager = GetComponent<Level1AudioManager>();
+        cameraShake = FindFirstObjectByType<VCameraShake>();
+        Debug.Log($"camera shake {cameraShake}");
     }
 
     // Update is called once per frame
@@ -44,6 +47,7 @@ public class PlayerCollision : MonoBehaviour
                 Destroy(collision.gameObject);
                 break;
             case "spikes":
+                cameraShake.Shake();
                 audioManager.PlayDeath();
                 transform.position = lastCheckpoint;
                 break;

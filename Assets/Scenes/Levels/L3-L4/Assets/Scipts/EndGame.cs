@@ -12,9 +12,7 @@ public class EndGame : MonoBehaviour
 
     void Start()
     {
-        
-
-        tex.text = "Mission Complete\n\nYou have collected 1000 resources\n\nin " + string.Format("{0:00}:{1:00}", Timer.minutes, Timer.seconds);
+        tex.text = "Mission Complete\n\nYou have collected 500 resources\n\nin " + string.Format("{0:00}:{1:00}", Timer.minutes, Timer.seconds);
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;

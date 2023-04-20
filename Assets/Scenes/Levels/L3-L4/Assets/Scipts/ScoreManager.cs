@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,7 +27,7 @@ public class ScoreManager : MonoBehaviour
 
     void Update()
     {
-        if (score >= 1000)
+        if (score >= 500)
         {
             Next();
         }
