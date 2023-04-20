@@ -72,7 +72,7 @@ TextureImporter:
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
-    crunchedCompression: 0
+    crunchedCompression: 1
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
@@ -1261,60 +1261,60 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      syche_anim_sprite2_23: -238875822
-      syche_anim_sprite2_19: 531311830
-      syche_anim_sprite2_8: 935183448
-      syche_anim_sprite2_25: 1075166854
-      syche_anim_sprite2_15: -662233109
-      syche_anim_sprite2_48: -1481598849
-      syche_anim_sprite2_46: 955522400
-      syche_anim_sprite2_33: -66655968
-      syche_anim_sprite2_5: -389631194
-      syche_anim_sprite2_9: 295871511
-      syche_anim_sprite2_36: 667839060
-      syche_anim_sprite2_52: -972754793
-      syche_anim_sprite2_21: -1317830406
-      syche_anim_sprite2_41: -669210485
-      syche_anim_sprite2_35: -1119046456
-      syche_anim_sprite2_50: -617241558
-      syche_anim_sprite2_7: 2069637065
-      syche_anim_sprite2_24: -1778893072
-      syche_anim_sprite2_43: 1146468118
-      syche_anim_sprite2_31: 1238346822
-      syche_anim_sprite2_40: -1397419966
-      syche_anim_sprite2_1: -1792797262
-      syche_anim_sprite2_20: 1127774915
-      syche_anim_sprite2_44: -541526833
-      syche_anim_sprite2_38: 1774851914
       syche_anim_sprite2_0: 813306378
+      syche_anim_sprite2_1: -1792797262
+      syche_anim_sprite2_10: 1328377130
+      syche_anim_sprite2_11: 2140307600
+      syche_anim_sprite2_12: -1554756814
+      syche_anim_sprite2_13: -1207704223
+      syche_anim_sprite2_14: 2135687934
+      syche_anim_sprite2_15: -662233109
+      syche_anim_sprite2_16: 1560553172
       syche_anim_sprite2_17: -1086142274
+      syche_anim_sprite2_18: -579531547
+      syche_anim_sprite2_19: 531311830
       syche_anim_sprite2_2: -1323726394
+      syche_anim_sprite2_20: 1127774915
+      syche_anim_sprite2_21: -1317830406
+      syche_anim_sprite2_22: 1007202000
+      syche_anim_sprite2_23: -238875822
+      syche_anim_sprite2_24: -1778893072
+      syche_anim_sprite2_25: 1075166854
+      syche_anim_sprite2_26: -523692698
+      syche_anim_sprite2_27: 1374235683
+      syche_anim_sprite2_28: 1642322531
+      syche_anim_sprite2_29: 1302650470
       syche_anim_sprite2_3: 2031402108
       syche_anim_sprite2_30: 709846538
-      syche_anim_sprite2_11: 2140307600
+      syche_anim_sprite2_31: 1238346822
       syche_anim_sprite2_32: -731955094
-      syche_anim_sprite2_49: 1826393390
-      syche_anim_sprite2_53: 2010262596
-      syche_anim_sprite2_14: 2135687934
-      syche_anim_sprite2_37: 403878689
-      syche_anim_sprite2_42: -477123046
-      syche_anim_sprite2_39: 1073222346
-      syche_anim_sprite2_29: 1302650470
-      syche_anim_sprite2_10: 1328377130
-      syche_anim_sprite2_45: -1453556793
-      syche_anim_sprite2_18: -579531547
-      syche_anim_sprite2_16: 1560553172
-      syche_anim_sprite2_22: 1007202000
+      syche_anim_sprite2_33: -66655968
       syche_anim_sprite2_34: 164534209
-      syche_anim_sprite2_13: -1207704223
-      syche_anim_sprite2_26: -523692698
+      syche_anim_sprite2_35: -1119046456
+      syche_anim_sprite2_36: 667839060
+      syche_anim_sprite2_37: 403878689
+      syche_anim_sprite2_38: 1774851914
+      syche_anim_sprite2_39: 1073222346
       syche_anim_sprite2_4: 732148725
-      syche_anim_sprite2_28: 1642322531
-      syche_anim_sprite2_6: 284048126
-      syche_anim_sprite2_27: 1374235683
+      syche_anim_sprite2_40: -1397419966
+      syche_anim_sprite2_41: -669210485
+      syche_anim_sprite2_42: -477123046
+      syche_anim_sprite2_43: 1146468118
+      syche_anim_sprite2_44: -541526833
+      syche_anim_sprite2_45: -1453556793
+      syche_anim_sprite2_46: 955522400
       syche_anim_sprite2_47: -666373209
+      syche_anim_sprite2_48: -1481598849
+      syche_anim_sprite2_49: 1826393390
+      syche_anim_sprite2_5: -389631194
+      syche_anim_sprite2_50: -617241558
       syche_anim_sprite2_51: 1364712058
-      syche_anim_sprite2_12: -1554756814
+      syche_anim_sprite2_52: -972754793
+      syche_anim_sprite2_53: 2010262596
+      syche_anim_sprite2_6: 284048126
+      syche_anim_sprite2_7: 2069637065
+      syche_anim_sprite2_8: 935183448
+      syche_anim_sprite2_9: 295871511
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

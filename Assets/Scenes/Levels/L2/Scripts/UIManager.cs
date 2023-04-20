@@ -35,6 +35,9 @@ public class UIManager : MonoBehaviour
     public GameObject onlyOneCapsuleDialogue;
     public GameObject arrow;
     public GameObject howToPlayBtn;
+    public GameObject howToPlayPanel;
+    public GameObject backgroundBlockPanel;
+    public GameObject[] howToPlayPages;
     void Start()
     {
 
@@ -52,7 +55,57 @@ public class UIManager : MonoBehaviour
             intro.SetActive(false);
         }
     }
+    public void OnClickHowToPlayBtn()
+    {
+        howToPlayPanel.SetActive(true);
+        backgroundBlockPanel.SetActive(true);
+    }
+    public void OnClickNextHowToPlayPageBtn()
+    {
+        for (int i = 0; i < howToPlayPages.Length; i++)
+        {
+            if (howToPlayPages[i].activeSelf)
+            {
+                if (i == howToPlayPages.Length - 1)
+                {
+                    howToPlayPages[i].SetActive(false);
+                    howToPlayPages[0].SetActive(true);
+                }
+                else
+                {
+                    howToPlayPages[i].SetActive(false);
+                    howToPlayPages[i + 1].SetActive(true);
+                }
+                break;
+            }
+        }
+    }
 
+    public void OnClickPreviousHowToPlayPageBtn()
+    {
+        for (int i = 0; i < howToPlayPages.Length; i++)
+        {
+            if (howToPlayPages[i].activeSelf)
+            {
+                if (i == 0)
+                {
+                    howToPlayPages[i].SetActive(false);
+                    howToPlayPages[howToPlayPages.Length - 1].SetActive(true);
+                }
+                else
+                {
+                    howToPlayPages[i].SetActive(false);
+                    howToPlayPages[i - 1].SetActive(true);
+                }
+                break;
+            }
+        }
+    }
+    public void OnClickExitHowToPlayPanelBtn()
+    {
+        howToPlayPanel.SetActive(false);
+        backgroundBlockPanel.SetActive(false);
+    }
     public void ToggleEngines()
     {
         if (_enginesOn)
@@ -114,6 +167,8 @@ public class UIManager : MonoBehaviour
         playerDialogue.SetActive(false);
         arrow.SetActive(true);
         howToPlayBtn.SetActive(true);
+        howToPlayPanel.SetActive(false);
+        backgroundBlockPanel.SetActive(false);
         _rocketInfoText.text = "Mass: 0t\nThrust: 0t\nThrust/Weight: 0 \nFuel: 0t \nFuel Consumption: 0t/sec";
         _rocketStatsText.text = "Height: 0.0m\nVelocity: 0.0m/s";
     }
