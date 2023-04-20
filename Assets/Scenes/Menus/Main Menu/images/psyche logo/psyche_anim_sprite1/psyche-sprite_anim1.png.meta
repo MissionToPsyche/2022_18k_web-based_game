@@ -72,7 +72,7 @@ TextureImporter:
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
-    crunchedCompression: 0
+    crunchedCompression: 1
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
@@ -1492,71 +1492,71 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      psyche-sprite_anim1_31: -217969790
-      psyche-sprite_anim1_60: -189401048
-      psyche-sprite_anim1_58: -2046040893
-      psyche-sprite_anim1_25: -43035503
-      psyche-sprite_anim1_13: -388422808
-      psyche-sprite_anim1_29: -1654770189
-      psyche-sprite_anim1_39: -254556466
-      psyche-sprite_anim1_18: -1918767199
-      psyche-sprite_anim1_3: 906208671
-      psyche-sprite_anim1_4: 610848541
-      psyche-sprite_anim1_32: -1479019842
-      psyche-sprite_anim1_35: -719376549
-      psyche-sprite_anim1_8: -1639103790
-      psyche-sprite_anim1_52: 830436445
-      psyche-sprite_anim1_59: 2029894116
-      psyche-sprite_anim1_61: 807287304
-      psyche-sprite_anim1_28: -411230422
-      psyche-sprite_anim1_48: -229216362
-      psyche-sprite_anim1_53: 269422959
-      psyche-sprite_anim1_12: 146805277
-      psyche-sprite_anim1_42: -526517580
-      psyche-sprite_anim1_2: -949932007
-      psyche-sprite_anim1_26: 517043976
-      psyche-sprite_anim1_9: -660451333
-      psyche-sprite_anim1_23: -312368393
-      psyche-sprite_anim1_1: -607723978
-      psyche-sprite_anim1_22: 1510328712
-      psyche-sprite_anim1_37: -1042477279
       psyche-sprite_anim1_0: -1998251295
-      psyche-sprite_anim1_15: 1767276720
-      psyche-sprite_anim1_6: -207884004
-      psyche-sprite_anim1_34: -1926621002
-      psyche-sprite_anim1_64: -156551574
-      psyche-sprite_anim1_40: -692075631
-      psyche-sprite_anim1_57: -1197282221
-      psyche-sprite_anim1_14: -1247599465
-      psyche-sprite_anim1_7: 631926427
-      psyche-sprite_anim1_16: -674151468
-      psyche-sprite_anim1_11: -41567968
-      psyche-sprite_anim1_33: 1895752029
-      psyche-sprite_anim1_24: 1435212151
-      psyche-sprite_anim1_41: 185807316
-      psyche-sprite_anim1_49: 692682092
-      psyche-sprite_anim1_54: 546116265
-      psyche-sprite_anim1_38: -1677791842
-      psyche-sprite_anim1_56: -1634819462
-      psyche-sprite_anim1_63: -23006738
-      psyche-sprite_anim1_50: -270226545
-      psyche-sprite_anim1_51: -814674073
-      psyche-sprite_anim1_21: -47717598
-      psyche-sprite_anim1_5: 1757898628
-      psyche-sprite_anim1_27: -1985086534
-      psyche-sprite_anim1_45: -234941968
-      psyche-sprite_anim1_44: -1964475682
-      psyche-sprite_anim1_55: 17970784
-      psyche-sprite_anim1_17: -1821988092
-      psyche-sprite_anim1_19: -1875580673
-      psyche-sprite_anim1_20: -483258193
-      psyche-sprite_anim1_30: 820965306
+      psyche-sprite_anim1_1: -607723978
       psyche-sprite_anim1_10: 1470727955
+      psyche-sprite_anim1_11: -41567968
+      psyche-sprite_anim1_12: 146805277
+      psyche-sprite_anim1_13: -388422808
+      psyche-sprite_anim1_14: -1247599465
+      psyche-sprite_anim1_15: 1767276720
+      psyche-sprite_anim1_16: -674151468
+      psyche-sprite_anim1_17: -1821988092
+      psyche-sprite_anim1_18: -1918767199
+      psyche-sprite_anim1_19: -1875580673
+      psyche-sprite_anim1_2: -949932007
+      psyche-sprite_anim1_20: -483258193
+      psyche-sprite_anim1_21: -47717598
+      psyche-sprite_anim1_22: 1510328712
+      psyche-sprite_anim1_23: -312368393
+      psyche-sprite_anim1_24: 1435212151
+      psyche-sprite_anim1_25: -43035503
+      psyche-sprite_anim1_26: 517043976
+      psyche-sprite_anim1_27: -1985086534
+      psyche-sprite_anim1_28: -411230422
+      psyche-sprite_anim1_29: -1654770189
+      psyche-sprite_anim1_3: 906208671
+      psyche-sprite_anim1_30: 820965306
+      psyche-sprite_anim1_31: -217969790
+      psyche-sprite_anim1_32: -1479019842
+      psyche-sprite_anim1_33: 1895752029
+      psyche-sprite_anim1_34: -1926621002
+      psyche-sprite_anim1_35: -719376549
+      psyche-sprite_anim1_36: 463044103
+      psyche-sprite_anim1_37: -1042477279
+      psyche-sprite_anim1_38: -1677791842
+      psyche-sprite_anim1_39: -254556466
+      psyche-sprite_anim1_4: 610848541
+      psyche-sprite_anim1_40: -692075631
+      psyche-sprite_anim1_41: 185807316
+      psyche-sprite_anim1_42: -526517580
+      psyche-sprite_anim1_43: -820056896
+      psyche-sprite_anim1_44: -1964475682
+      psyche-sprite_anim1_45: -234941968
       psyche-sprite_anim1_46: 1495807483
       psyche-sprite_anim1_47: -1455152768
-      psyche-sprite_anim1_43: -820056896
-      psyche-sprite_anim1_36: 463044103
+      psyche-sprite_anim1_48: -229216362
+      psyche-sprite_anim1_49: 692682092
+      psyche-sprite_anim1_5: 1757898628
+      psyche-sprite_anim1_50: -270226545
+      psyche-sprite_anim1_51: -814674073
+      psyche-sprite_anim1_52: 830436445
+      psyche-sprite_anim1_53: 269422959
+      psyche-sprite_anim1_54: 546116265
+      psyche-sprite_anim1_55: 17970784
+      psyche-sprite_anim1_56: -1634819462
+      psyche-sprite_anim1_57: -1197282221
+      psyche-sprite_anim1_58: -2046040893
+      psyche-sprite_anim1_59: 2029894116
+      psyche-sprite_anim1_6: -207884004
+      psyche-sprite_anim1_60: -189401048
+      psyche-sprite_anim1_61: 807287304
       psyche-sprite_anim1_62: 870941246
+      psyche-sprite_anim1_63: -23006738
+      psyche-sprite_anim1_64: -156551574
+      psyche-sprite_anim1_7: 631926427
+      psyche-sprite_anim1_8: -1639103790
+      psyche-sprite_anim1_9: -660451333
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
