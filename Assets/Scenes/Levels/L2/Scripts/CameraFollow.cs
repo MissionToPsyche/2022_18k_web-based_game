@@ -1,23 +1,26 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform target;
-    public float smoothTime = 0;
+    public GameObject cam;
+    public bool followX = true;
+    public bool followY = true;
 
-    private Vector3 velocity = Vector3.zero;
-
-    private void LateUpdate()
+    void Update()
     {
-        // If target is not set, return
-        if (target == null)
+        if (followX && followY)
         {
-            return;
+            transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, transform.position.z);
         }
-
-        // Smoothly move the camera towards the target
-        Vector3 targetPosition = target.position;
-        targetPosition.z = transform.position.z;
-        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+        else if (followX)
+        {
+            transform.position = new Vector3(cam.transform.position.x, transform.position.y, transform.position.z);
+        }
+        else if (followY)
+        {
+            transform.position = new Vector3(transform.position.x, cam.transform.position.y, transform.position.z);
+        }
     }
 }

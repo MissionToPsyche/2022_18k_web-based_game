@@ -30,7 +30,7 @@ public class Rocket : MonoBehaviour
     public float TWR = 0f;
     private List<Transform> rocketParts = new List<Transform>();
     private List<Rigidbody2D> rocketPartRigidbodies = new List<Rigidbody2D>();
-    public CameraFollow cameraFollowScript;
+    public TargetFollow targetFollowScript;
     private Coroutine _accelerationCoroutine;
     private Coroutine _smoothVelocityChangeCoroutine;
     private Coroutine _torqueCoroutine;
@@ -114,28 +114,15 @@ public class Rocket : MonoBehaviour
 
 
         // Set max speed
-        if (Mathf.Abs(_speed) >= (Mathf.Abs(_maxFlightSpeed)) || Mathf.Abs(_speed) >= (Mathf.Abs(_maxFallSpeed)))
+        if (Mathf.Abs(_speed) >= (Mathf.Abs(_maxFlightSpeed)))
         {
-            // if falling, set max fall velocity as negative
-            if (_speed < 0)
-            {
-                _speed = -_maxFallSpeed;
-            }
-            else
-            {
-                _speed = _maxFlightSpeed;
-            }
+            _speed = _maxFlightSpeed;
         }
+
+        // if falling, set max fall velocity as negative
+        if (_speed <= -_maxFallSpeed)
         {
-            // if falling, set max fall velocity as negative
-            if (_speed < 0)
-            {
-                _speed = -_maxFallSpeed;
-            }
-            else
-            {
-                _speed = _maxFlightSpeed;
-            }
+            _speed = -_maxFallSpeed;
         }
 
         // Fly in the direction of the rocket
@@ -198,19 +185,12 @@ public class Rocket : MonoBehaviour
             {
                 _shakeAmount = 0.1f;
             }
-            else if (heightAboveGround > 10000 && heightAboveGround < 20000)
+            else if (heightAboveGround > 10000 && heightAboveGround < 15000)
             {
                 _shakeAmount = 0.5f;
             }
-            else if (heightAboveGround > 20000 && heightAboveGround < 30000)
-            {
-                _shakeAmount = 0.3f;
-            }
-            else if (heightAboveGround > 30000 && heightAboveGround < 50000)
-            {
-                _shakeAmount = 0.05f;
-            }
-            else if (heightAboveGround > 50000)
+
+            else if (heightAboveGround > 15000)
             {
                 _shakeAmount = 0;
             }
@@ -342,7 +322,7 @@ public class Rocket : MonoBehaviour
             rocketPartRigidbodies.Add(child.GetComponent<Rigidbody2D>());
             if (child.tag == "Capsule")
             {
-                cameraFollowScript.target = child;
+                targetFollowScript.target = child;
             }
             else if (child.tag == "FuelTank")
             {
