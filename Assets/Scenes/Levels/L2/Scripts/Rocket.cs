@@ -359,7 +359,7 @@ public class Rocket : MonoBehaviour
             _acceleration = -0.1f;
             _rotatingLikeCrazy = true;
         }
-        else if (totalLeftMass < totalRightThrust)
+        else if (totalLeftThrust < totalRightThrust)
         {
             _torqueByThrust = -30f;
             _acceleration = -0.1f;
