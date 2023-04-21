@@ -8,6 +8,9 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
+    Scene currentscene;
+    string sceneName;
+
     GameObject canvas;
     private AudioSource[] audioSources;
     private Canvas[] canvases;
@@ -18,6 +21,9 @@ public class PauseMenu : MonoBehaviour
         canvases = FindObjectsOfType(typeof(Canvas)) as Canvas[];
         canvas = gameObject.transform.GetChild(0).gameObject;
         canvas.SetActive(false);
+
+        currentscene = SceneManager.GetActiveScene();
+        sceneName = currentscene.name;
     }
 
     // Update is called once per frame
@@ -78,6 +84,11 @@ public class PauseMenu : MonoBehaviour
         setAllAudio(true);
         setAllCanvas(true);
         Time.timeScale = 1f;
+
+        if (sceneName == "Lvl3" || sceneName == "Lvl4")
+        {
+            Cursor.visible = false;
+        }
     }
 
     public void RestartLevel()
@@ -90,5 +101,6 @@ public class PauseMenu : MonoBehaviour
     {
         Resume();
         SceneManager.LoadScene(0);
+        Cursor.visible = true;
     }
 }
