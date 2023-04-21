@@ -2127,6 +2127,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc85559fe03c9e3499bf18110cebf233, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!212 &498056551 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4137036159604789064, guid: ce80aff0236a4844c9e658b20b2a94e1, type: 3}
+  m_PrefabInstance: {fileID: 1195941427}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &542555364
 GameObject:
   m_ObjectHideFlags: 0
@@ -2690,6 +2695,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7029666086727307084, guid: 3597a0d3e5787354ebedbc255d09b865, type: 3}
   m_PrefabInstance: {fileID: 651565991}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &655936963 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4137036158131253435, guid: ce80aff0236a4844c9e658b20b2a94e1, type: 3}
+  m_PrefabInstance: {fileID: 1195941427}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &690735564
 GameObject:
@@ -5239,8 +5249,8 @@ MonoBehaviour:
   rocketInfoPanel: {fileID: 1238646077}
   playerDialogue: {fileID: 856501559}
   rocketPartsSidePanel: {fileID: 357864577}
-  nebulaSpace: {fileID: 0}
-  space: {fileID: 0}
+  nebulaSpace: {fileID: 498056551}
+  space: {fileID: 655936963}
   endPortal: {fileID: 168091571}
   fuelBarSlider: {fileID: 1033797315}
   rocketStats: {fileID: 1182343683}
