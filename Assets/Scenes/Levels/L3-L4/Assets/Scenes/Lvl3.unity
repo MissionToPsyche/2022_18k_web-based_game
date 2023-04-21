@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.09694863, g: 0.05511961, b: 0.13708088, a: 1}
+  m_IndirectSpecularColor: {r: 0.09933635, g: 0.058973767, b: 0.1389128, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10522,7 +10522,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Reach the Psyche Asteroid
 
-    Avoid the red asteroids
+    Avoid the red meteoroids
 
     Refill fuel
     by picking up blue fuel sources
