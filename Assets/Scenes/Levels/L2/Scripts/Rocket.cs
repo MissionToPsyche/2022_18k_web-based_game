@@ -11,7 +11,7 @@ public class Rocket : MonoBehaviour
     public float _maxFlightSpeed = 15f;
     private float _maxFallSpeed = 15f;
     public float _rotationSpeed = 0f;
-    private float _rotationMaxSpeed = 100f;
+    private float _rotationMaxSpeed = 300f;
     private float _torque = 0;
     private float _torqueByMass = 0;
     private float _torqueByThrust = 0;
@@ -50,6 +50,7 @@ public class Rocket : MonoBehaviour
     public float velocity;
     public GameObject groundObject;
     private float _shakeAmount = 0.1f;
+    private bool _rotatingLikeCrazy = false;
     bool once = true;
     void Start()
     {
@@ -142,7 +143,7 @@ public class Rocket : MonoBehaviour
                 }
                 _acceleration = -Mathf.Abs(_acceleration);
             }
-            else
+            else if (!_rotatingLikeCrazy)
             {
                 if (!once)
                 {
@@ -351,6 +352,18 @@ public class Rocket : MonoBehaviour
                     child.GetComponent<RocketPart>().EngineOn();
                 }
             }
+        }
+        if (totalLeftThrust > totalRightThrust)
+        {
+            _torqueByThrust = 30f;
+            _acceleration = -0.1f;
+            _rotatingLikeCrazy = true;
+        }
+        else if (totalLeftMass < totalRightThrust)
+        {
+            _torqueByThrust = -30f;
+            _acceleration = -0.1f;
+            _rotatingLikeCrazy = true;
         }
     }
     public void EnginesOff()
