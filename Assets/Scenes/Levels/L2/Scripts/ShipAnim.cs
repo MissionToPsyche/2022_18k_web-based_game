@@ -19,7 +19,7 @@ public class ShipAnim : MonoBehaviour
         startScale = transform.localScale;
         startTime = Time.time;
         audioSource = GetComponent<AudioSource>();
-        transform.position = new Vector3(transform.position.x, transform.position.y - 5f, transform.position.z);
+        transform.position = new Vector3(transform.position.x, transform.position.y - 5f, transform.position.z - 5f);
         Invoke("SpeedBurst", 7f);
     }
 
