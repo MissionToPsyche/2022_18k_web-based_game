@@ -26,7 +26,7 @@ public class GameOver : MonoBehaviour
         }
         else if (sceneName == "Lvl3")
         {
-            lossMessage.text = "GAME OVER \nAvoid red asteroids, pickup blue fuel sources";
+            lossMessage.text = "GAME OVER \nAvoid red meteoroids, pickup blue fuel sources";
         }
 
         gameObject.SetActive(true);
