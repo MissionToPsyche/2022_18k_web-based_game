@@ -308,13 +308,13 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Theme
     clip: {fileID: 8300000, guid: 1c3b1de98ed288e49bfcdc500f488fdb, type: 3}
-    volume: 1
+    volume: 0.6
     pitch: 1
     loop: 1
     source: {fileID: 0}
   - name: DisasterTheme
     clip: {fileID: 8300000, guid: d26c77d675669744fa4e33ff0a0ccc46, type: 3}
-    volume: 1
+    volume: 0.6
     pitch: 1
     loop: 1
     source: {fileID: 0}
@@ -5476,7 +5476,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4737864087024207039, guid: ec6c1ff60bd987c46b0379e1770a5db9, type: 3}
       propertyPath: m_LocalScale.y
-      value: 759.99854
+      value: 1567.8093
       objectReference: {fileID: 0}
     - target: {fileID: 4737864087024207039, guid: ec6c1ff60bd987c46b0379e1770a5db9, type: 3}
       propertyPath: m_LocalScale.z
@@ -5488,7 +5488,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4737864087024207039, guid: ec6c1ff60bd987c46b0379e1770a5db9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -7.7994
+      value: -11.8388
       objectReference: {fileID: 0}
     - target: {fileID: 4737864087024207039, guid: ec6c1ff60bd987c46b0379e1770a5db9, type: 3}
       propertyPath: m_LocalPosition.z

@@ -145,7 +145,7 @@ public class RocketPart : MonoBehaviour
     public void RemoveRocketPartProperty(RocketPart rocketPartScript)
     {
         // Remove fuel, thrust, and mass
-        if (rocketPartScript.fuel > 0)
+        if (rocketPartScript.gameObject.tag == "FuelTank" && rocketPartScript.fuel > 0)
         {
             rocketScript.numberOfFuelTanks--;
             float fuelToSubtract = rocketPartScript.fuel - rocketScript.fuelDrainagePerTank;
@@ -156,8 +156,9 @@ public class RocketPart : MonoBehaviour
             SendMessageUpwards("OnReduceFuel", fuelToSubtract, SendMessageOptions.RequireReceiver);
         }
         // If engine, remove thrust and fuel consumption rate
-        if (rocketPartScript.thrust > 0)
+        if (rocketPartScript.gameObject.tag == "Engine" && rocketPartScript.thrust > 0)
         {
+            EngineOff(rocketPartScript);
             SendMessageUpwards("OnReduceTotalThrust", rocketPartScript.thrust, SendMessageOptions.RequireReceiver);
             if (rocketPartScript.isPartOfLeftBooster)
             {
@@ -230,7 +231,6 @@ public class RocketPart : MonoBehaviour
         RemoveRocketPartProperty(rocketPartScript);
         spriteRenderer.enabled = false;
         poof.SetActive(true);
-
     }
     void OnCollisionExit2D(Collision2D collision)
     {
@@ -315,9 +315,13 @@ public class RocketPart : MonoBehaviour
             attachedSideSeparator = null;
         }
     }
-    public void EngineOff()
+    public void EngineOff(RocketPart engineScript = null)
     {
-        _engineFireAnimator.SetBool("EngineOn", false);
+        if (engineScript == null)
+        {
+            engineScript = rocketPartScript;
+        }
+        engineScript._engineFireAnimator.SetBool("EngineOn", false);
     }
     public void EngineOn()
     {

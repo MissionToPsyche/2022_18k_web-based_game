@@ -52,6 +52,9 @@ public class Rocket : MonoBehaviour
     private float _shakeAmount = 0.1f;
     private bool _rotatingLikeCrazy = false;
     bool once = true;
+    private bool inSpace = false;
+    private float _gravityAcceleration = -0.2f;
+    private bool _facingUp = true;
     void Start()
     {
         _consumeFuelEnumerator = ConsumeFuel();
@@ -62,14 +65,7 @@ public class Rocket : MonoBehaviour
     {
         while (true)
         {
-            if (_enginesOn)
-            {
-                _speed += _acceleration;
-            }
-            else
-            {
-                _speed -= _acceleration;
-            }
+            _speed += _acceleration;
             SmoothVelocityIncrease(_speed * 50f);
             yield return new WaitForSeconds(_accelerationRate);
         }
@@ -132,8 +128,12 @@ public class Rocket : MonoBehaviour
             // Move in the direction of the rocket
             Vector3 moveDirection = new Vector3(0, 1, 0);
             float transitionalSpeed = _speed / 5;
+            _facingUp = true;
+
+            // Facing down
             if (transform.eulerAngles.z > 90 && transform.eulerAngles.z < 270)
             {
+                _facingUp = false;
                 // If facing down, move in the opposite direction
                 moveDirection = new Vector3(0, -1, 0);
                 if (once)
@@ -142,6 +142,7 @@ public class Rocket : MonoBehaviour
                     once = false;
                 }
                 _acceleration = -Mathf.Abs(_acceleration);
+
             }
             else if (!_rotatingLikeCrazy)
             {
@@ -184,15 +185,18 @@ public class Rocket : MonoBehaviour
         {
             if (heightAboveGround < 10000)
             {
+                inSpace = false;
                 _shakeAmount = 0.1f;
             }
             else if (heightAboveGround > 10000 && heightAboveGround < 15000)
             {
+                inSpace = false;
                 _shakeAmount = 0.5f;
             }
-
             else if (heightAboveGround > 15000)
             {
+                // In space
+                inSpace = true;
                 _shakeAmount = 0;
             }
             // Apply a random offset to the rocket rotation
@@ -335,7 +339,7 @@ public class Rocket : MonoBehaviour
     {
         if (totalFuel > 0 && totalFuelConsumptionRate > 0)
         {
-            _acceleration = 0.05f;
+            _acceleration = 0.05f * TWR / 2;
             _enginesOn = true;
             GetReferenceToRocketParts();
             foreach (Rigidbody2D rb in rocketPartRigidbodies)
@@ -353,31 +357,43 @@ public class Rocket : MonoBehaviour
                 }
             }
         }
-        if (totalLeftThrust > totalRightThrust)
+        TorqueByUnevenThrust();
+    }
+    void TorqueByUnevenThrust()
+    {
+        if (_enginesOn)
         {
-            _torqueByThrust = 30f;
-            _acceleration = -0.1f;
-            _rotatingLikeCrazy = true;
-        }
-        else if (totalLeftThrust < totalRightThrust)
-        {
-            _torqueByThrust = -30f;
-            _acceleration = -0.1f;
-            _rotatingLikeCrazy = true;
+
+            if (totalLeftThrust > totalRightThrust)
+            {
+                _torqueByThrust = 30f;
+                _acceleration = -0.1f;
+                _rotatingLikeCrazy = true;
+            }
+            else if (totalLeftThrust < totalRightThrust)
+            {
+                _torqueByThrust = -30f;
+                _acceleration = -0.1f;
+                _rotatingLikeCrazy = true;
+            }
         }
     }
     public void EnginesOff()
     {
         _enginesOn = false;
         StopCoroutine(_consumeFuelEnumerator);
-        ApplyGravity();
-        MakeRocketPartsDynamicWithoutGravity();
+        if (!inSpace)
+        {
+            ApplyGravity();
+            MakeRocketPartsDynamicWithoutGravity();
+        }
         // Turn off engine animation
         foreach (Transform child in rocketParts)
         {
             if (child.tag == "Engine")
             {
-                child.GetComponent<RocketPart>().EngineOff();
+                RocketPart rocketPart = child.GetComponent<RocketPart>();
+                rocketPart.EngineOff();
             }
         }
         // Turn off engine audio
@@ -390,7 +406,7 @@ public class Rocket : MonoBehaviour
     {
         if (!_enginesOn && !isOnGround)
         {
-            _acceleration = 0.2f;
+            _acceleration = _gravityAcceleration;
         }
     }
     private void MakeRocketPartsDynamicWithoutGravity()
@@ -445,8 +461,11 @@ public class Rocket : MonoBehaviour
         // Turn off the engine when there is no fuel
         EnginesOff();
         // Change the Theme music into disasterTheme music
-        SoundManager.instance.Stop("Theme");
-        SoundManager.instance.Play("DisasterTheme");
+        if (_acceleration < 0 && !inSpace)
+        {
+            SoundManager.instance.Stop("Theme");
+            SoundManager.instance.Play("DisasterTheme");
+        }
     }
     public void CalculateTWR()
     {
@@ -486,11 +505,13 @@ public class Rocket : MonoBehaviour
     {
         totalRightThrust -= thrustVal;
         uiManager.UpdateRocketProperties();
+        TorqueByUnevenThrust();
     }
     public void OnReduceTotalLeftThrust(float thrustVal)
     {
         totalLeftThrust -= thrustVal;
         uiManager.UpdateRocketProperties();
+        TorqueByUnevenThrust();
     }
 
     public void OnReduceTotalMass(float massVal)
